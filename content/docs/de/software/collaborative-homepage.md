@@ -91,7 +91,7 @@ Wenn Du jetzt Lust aufs Mitmachen und diese schöne neue Welt bekommen hast, dan
 probier es doch gleich hier aus.
 
 - Hast Du einen Fehler gefunden? Korrigiere ihn, indem Du ein Pull-Request für
-  [diese Seite](https://github.com/levino/levinkeller.de/tree/main/docs/software/collaborative-homepage.md)
+  [diese Seite](https://github.com/levino/levinkeller.de/tree/main/content/docs/de/software/collaborative-homepage.md)
   aufmachst.
 - Hast Du eine tolle Idee für einen neuen Beitrag, den ich schreiben soll? Mach
   einen Issue (Arbeitsauftrag) im
@@ -113,4 +113,4 @@ Dabei wünsche ich vor allem viel Freude!
     weitgehend öffentlich statt und viele Teile der Applikation wurden von
     unabhängigen Dritten entwickelt und sind mittels
     [Pull-Requests](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-    in den Quellcode aufgenommen worden.\_
+    in den Quellcode aufgenommen worden.
