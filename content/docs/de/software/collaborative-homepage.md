@@ -113,4 +113,4 @@ Dabei wünsche ich vor allem viel Freude!
     weitgehend öffentlich statt und viele Teile der Applikation wurden von
     unabhängigen Dritten entwickelt und sind mittels
     [Pull-Requests](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-    in den Quellcode aufgenommen worden.\_
+    in den Quellcode aufgenommen worden.
