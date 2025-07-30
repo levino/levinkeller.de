@@ -20,7 +20,7 @@ export default {
     },
   },
   content: [
-    './src/**/*.{ts,tsx,md,mdx,astro}',
+    './{src,content}/**/*.{ts,tsx,md,mdx,astro}',
     path.join(
       // eslint-disable-next-line no-undef
       path.dirname(require.resolve('@levino/shipyard-base')),
