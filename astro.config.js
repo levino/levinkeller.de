@@ -49,8 +49,6 @@ export default defineConfig({
     }),
     mdx(),
     shipyard({
-      locales: ['de', 'en'],
-      defaultLocale: 'de',
       navigation: {
         docs: {
           label: 'Wissen',
