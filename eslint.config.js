@@ -8,6 +8,6 @@ export default [
   ...tseslint.config(eslint.configs.recommended, tseslint.configs.recommended),
   ...eslintPluginAstro.configs.recommended,
   {
-    ignores: ['.astro', 'src/env.d.ts'],
+    ignores: ['.astro', 'src/env.d.ts', 'dist/**', '.vercel/**'],
   },
 ]
