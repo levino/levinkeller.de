@@ -95,6 +95,7 @@ export default defineConfig({
         {
           src: 'https://analytics.levinkeller.de/js/script.js',
           defer: true,
+          'data-domain': 'levinkeller.de',
         },
       ],
     }),
