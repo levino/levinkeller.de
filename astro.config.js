@@ -91,6 +91,12 @@ export default defineConfig({
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
       brand: 'Levin Keller',
+      scripts: [
+        {
+          src: 'https://analytics.levinkeller.de/js/script.js',
+          defer: true,
+        },
+      ],
     }),
     shipyardDocs(['docs']),
     shipyardBlog(['blog']),
