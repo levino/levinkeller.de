@@ -14,4 +14,5 @@ Elektronik macht Spaß und ist eine tolle Art, spielerisch technische Grundlagen
 
 **[Blinkyparts](https://shop.blinkyparts.com/)** - Ein weiterer toller Shop mit kreativen Elektronik-Kits und Bauteilen. Perfekt für alle, die gerne experimentieren und ihre eigenen elektronischen Gadgets bauen möchten.
 
+**[Whadda](https://whadda.com/)** - Bietet eine große Auswahl an Elektronik-Bausätzen, DIY-Kits und Lernprojekten. Besonders interessant für junge Maker, die ihre ersten Schritte in der Elektronikwelt machen möchten - von einfachen Schaltungen bis zu komplexeren Robotik-Projekten.
 Diese Shops bieten nicht nur die Bauteile, sondern oft auch verständliche Anleitungen und pädagogisch wertvolle Projekte, die Kindern den Einstieg in die Welt der Elektronik erleichtern. Löten und Basteln schult nicht nur technisches Verständnis, sondern auch Feinmotorik und Problemlösungsfähigkeiten.
