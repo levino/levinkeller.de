@@ -15,7 +15,6 @@ Nach verschiedenen Versuchen habe ich festgestellt, dass sich **Hakaphos Soft El
 Ich verwende einen zweistufigen Verdünnungsprozess, der sich bei mir bewährt hat:
 
 1. **Stammlösung herstellen**: Ich löse 100g Hakaphos Soft Elite in 1 Liter Wasser auf
-
    - Maximale Konzentration der Stammlösung: 17,5%
    - Diese Lösung bereite ich bei Bedarf vor und lagere sie
 
