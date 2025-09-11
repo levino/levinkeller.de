@@ -1,10 +1,12 @@
 # Claude Code Configuration
 
-This file contains configuration and guidelines for working with this repository using Claude Code.
+This file contains configuration and guidelines for working with this repository
+using Claude Code.
 
 ## Repository Overview
 
-This is an Astro-based website for levinkeller.de with TypeScript, React components, and Tailwind CSS styling.
+This is an Astro-based website for levinkeller.de with TypeScript, React
+components, and Tailwind CSS styling.
 
 ## Development Setup
 
@@ -66,7 +68,8 @@ npx eslint .
 npm run build
 ```
 
-The repository has automated pre-commit hooks that will handle formatting automatically.
+The repository has automated pre-commit hooks that will handle formatting
+automatically.
 
 ## Tech Stack
 
@@ -87,7 +90,8 @@ The repository has automated pre-commit hooks that will handle formatting automa
 
 ## Guidelines for Claude Code
 
-1. **Always format code** before committing using the configured Prettier settings
+1. **Always format code** before committing using the configured Prettier
+   settings
 2. **Run type checks** with `npm run build` to ensure TypeScript compliance
 3. **Follow existing code patterns** in the repository
 4. **Use the configured linting rules** - don't override ESLint configuration
@@ -101,4 +105,6 @@ The repository has automated pre-commit hooks that will handle formatting automa
 - React components use `.tsx` extension
 - Configuration files are in the root directory
 
-Even if you comment or generally write in German, you need to use English for magic github words like (closes, fix, fixes, etc.). "Schließt" will not close issues.
+Even if you comment or generally write in German, you need to use English for
+magic github words like (closes, fix, fixes, etc.). "Schließt" will not close
+issues.
