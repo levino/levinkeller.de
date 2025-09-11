@@ -23,6 +23,7 @@ export default defineConfig({
       rehypeKatex,
     ],
   },
+  redirects: { '/': { destination: '/de', status: 302 } },
 
   i18n: {
     defaultLocale: 'de',
