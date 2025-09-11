@@ -100,3 +100,5 @@ The repository has automated pre-commit hooks that will handle formatting automa
 - Astro components use `.astro` extension
 - React components use `.tsx` extension
 - Configuration files are in the root directory
+
+Even if you comment or generally write in German, you need to use English for magic github words like (closes, fix, fixes, etc.). "Schließt" will not close issues.
