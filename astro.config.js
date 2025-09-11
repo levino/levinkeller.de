@@ -1,17 +1,16 @@
-import { defineConfig } from 'astro/config'
-import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
-import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
+import vercel from '@astrojs/vercel'
 import shipyard from '@levino/shipyard-base'
-import shipyardDocs from '@levino/shipyard-docs'
 import shipyardBlog from '@levino/shipyard-blog'
+import shipyardDocs from '@levino/shipyard-docs'
+import { defineConfig } from 'astro/config'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
 export default defineConfig({

@@ -1,7 +1,7 @@
-import React from 'react'
-import { getLoanPlan, type LoansSpecs } from '../tools/calculator'
-import { pipe } from 'fp-ts/lib/function'
 import { Field, Formik } from 'formik'
+import { pipe } from 'fp-ts/lib/function'
+import type React from 'react'
+import { getLoanPlan, type LoansSpecs } from '../tools/calculator'
 
 type Runtime = 10 | 15 | 20 | 25 | 30 | 35
 interface FormValues {

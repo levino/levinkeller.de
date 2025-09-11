@@ -1,8 +1,8 @@
 import { defineCollection, reference, z } from 'astro:content'
-import { vegetablesSchema } from './vegetableSchema'
 import { file, glob } from 'astro/loaders'
-import { plantSchema } from './plantSchema'
 import { parse as parseYaml } from 'yaml'
+import { plantSchema } from './plantSchema'
+import { vegetablesSchema } from './vegetableSchema'
 
 const supplierSchema = z.object({
   name: z.string(),

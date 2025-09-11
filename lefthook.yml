@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    biome-check:
+      run: npx biome check --write .
+      glob: "*.{js,ts,jsx,tsx,astro,json,jsonc}"
+      stage_fixed: true

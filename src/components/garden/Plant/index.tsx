@@ -1,6 +1,5 @@
-import { type CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
-import type { FC, PropsWithChildren } from 'react'
 import {
   IconCactus,
   IconDroplet,
@@ -12,6 +11,8 @@ import {
   IconSun,
   IconSunMoon,
 } from '@tabler/icons-react'
+import type { FC, PropsWithChildren } from 'react'
+
 type Props = { plant: CollectionEntry<'plants'> }
 
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (

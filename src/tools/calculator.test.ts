@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { getLoanPlan, interest, loanData } from './calculator'
+
 const interestRates = [
   {
     from: 0,

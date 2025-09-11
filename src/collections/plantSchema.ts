@@ -65,7 +65,7 @@ export const plantSchema = ({ image }: SchemaContext) =>
       ({ sowingTime, sowingScheme }) => sowingTime || sowingScheme,
       'You need to either set a `sowingTime` or a `sowingScheme`.'
     )
-    .transform(({ sowingTime, sowingScheme: sowingScheme, ...data }) => ({
+    .transform(({ sowingTime, sowingScheme, ...data }) => ({
       ...data,
       ...(sowingTime
         ? { sowingTime }

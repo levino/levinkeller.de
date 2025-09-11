@@ -36,7 +36,7 @@ const getAnnuity = (specs: {
 }) => {
   const rate = interestRate(specs) / 12
   const periods = specs.runtime * 12
-  const term = Math.pow(1 + rate, periods)
+  const term = (1 + rate) ** periods
   return (specs.amount * (term * rate)) / (term - 1)
 }
 
@@ -49,7 +49,7 @@ export const loanData = ({
   const rate = interestRate({ runtime, interestRates }) / 12
   const periods = runtime * 12
 
-  const term = Math.pow(1 + rate, periods)
+  const term = (1 + rate) ** periods
   const theoreticalAmount = (annuity * (term - 1)) / (term * rate)
   if (maxAmount && theoreticalAmount > maxAmount) {
     return {
