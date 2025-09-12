@@ -6,15 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": true,
-    "includes": [
-      "**/*.js",
-      "**/*.ts",
-      "**/*.jsx",
-      "**/*.tsx",
-      "**/*.json",
-      "**/*.jsonc"
-    ]
+    "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
@@ -44,12 +36,18 @@
   },
   "overrides": [
     {
-      "includes": [".astro", "src/env.d.ts", "dist/**", ".vercel/**"],
+      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
       "linter": {
-        "enabled": false
-      },
-      "formatter": {
-        "enabled": false
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
       }
     }
   ]

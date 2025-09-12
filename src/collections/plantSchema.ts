@@ -61,16 +61,17 @@ export const plantSchema = ({ image }: SchemaContext) =>
       inStock: z.boolean().default(false),
       supplier: reference('suppliers'),
     })
-    .refine(
-      ({ sowingTime, sowingScheme }) => sowingTime || sowingScheme,
-      'You need to either set a `sowingTime` or a `sowingScheme`.'
-    )
-    .transform(({ sowingTime, sowingScheme, ...data }) => ({
-      ...data,
-      ...(sowingTime
-        ? { sowingTime }
-        : { sowingTime: sowingSchemeToSowingTime(sowingScheme!) }),
-    }))
+    .transform(({ sowingTime, sowingScheme, ...data }) => {
+      if (sowingTime) {
+        return { ...data, sowingTime }
+      }
+      if (sowingScheme) {
+        return { ...data, sowingTime: sowingSchemeToSowingTime(sowingScheme) }
+      }
+      throw new Error(
+        'You need to either set a `sowingTime` or a `sowingScheme`.'
+      )
+    })
 
 const sowingSchemeToSowingTime = (
   sowingScheme: (typeof SOWING_SCHEMAS)[number]

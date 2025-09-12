@@ -16,7 +16,9 @@ export const Feature: React.FC<Props> = ({ title, description, href }) => (
     </div>
     <div className="card__footer button">
       <a href={href}>
-        <button className="button button--primary">Besuchen</button>
+        <button type="button" className="button button--primary">
+          Besuchen
+        </button>
       </a>
     </div>
   </div>

@@ -1,10 +1,10 @@
 ---
-import Layout from '@levino/shipyard-base/layouts/Page.astro'
-import type { GetStaticPaths } from 'astro'
-import { prop, map, groupBy, path, flatten } from 'ramda'
-import { pipe } from 'fp-ts/lib/function'
 import { getCollection } from 'astro:content'
 import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
+import Layout from '@levino/shipyard-base/layouts/Page.astro'
+import type { GetStaticPaths } from 'astro'
+import { pipe } from 'fp-ts/lib/function'
+import { flatten, groupBy, map, path, prop } from 'ramda'
 export const getStaticPaths = (() => {
   return [
     {

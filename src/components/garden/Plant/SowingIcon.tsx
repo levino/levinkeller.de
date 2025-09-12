@@ -2,12 +2,12 @@ export default () => (
   <svg
     className="h-4 w-4"
     version="1.1"
-    id="_x32_"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 512 512"
     xmlSpace="preserve"
   >
+    <title>Sowing icon</title>
     <g>
       <path
         d="M283.441,199.253c0-7.309-5.933-13.232-13.25-13.232c-7.3,0-13.231,5.924-13.231,13.232
