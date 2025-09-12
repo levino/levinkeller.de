@@ -255,6 +255,7 @@ const NumberInput = ({
   label: string
   unit: string
 }) => (
+  // biome-ignore lint/a11y/noLabelWithoutControl: Field is an input.
   <label className="form-control">
     <div className="label">
       <span className="label-text">{label}</span>

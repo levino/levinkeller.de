@@ -1,9 +1,9 @@
 ---
-import Layout from '@levino/shipyard-base/layouts/Page.astro'
-import { Plant } from '@/components/garden/Plant'
 import { getCollection, render } from 'astro:content'
+import Layout from '@levino/shipyard-base/layouts/Page.astro'
+import { Effect, Array as EffectArray, Exit, pipe } from 'effect'
 import { flatten } from 'ramda'
-import { Array, Effect, Exit, pipe } from 'effect'
+import { Plant } from '@/components/garden/Plant'
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const plants = await getCollection('plants')
@@ -12,8 +12,8 @@ export async function getStaticPaths() {
       ['en', 'de'].map((locale) => ({
         params: { slug: entry.id, locale },
         props: { entry },
-      })),
-    ),
+      }))
+    )
   )
 }
 // 2. For your template, you can get the entry directly from the prop
@@ -22,14 +22,12 @@ const getDescription = pipe(
   Effect.tryPromise(() =>
     getCollection(
       'plantDescriptions',
-      (entry) => entry.data.plant.id === plant.id,
-    ),
+      (entry) => entry.data.plant.id === plant.id
+    )
   ),
-  Effect.flatMap(Array.head),
-  Effect.flatMap((description) =>
-    Effect.tryPromise(() => render(description)),
-  ),
-  Effect.map(({ Content }) => Content),
+  Effect.flatMap(EffectArray.head),
+  Effect.flatMap((description) => Effect.tryPromise(() => render(description))),
+  Effect.map(({ Content }) => Content)
 )
 
 const Description = await Effect.runPromiseExit(getDescription)

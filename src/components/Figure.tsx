@@ -1,6 +1,6 @@
-import React from 'react'
-import Zoom from 'react-medium-image-zoom'
 import classnames from 'classnames'
+import type React from 'react'
+import Zoom from 'react-medium-image-zoom'
 export const Figure: React.FC<React.PropsWithChildren<{ caption: string }>> = ({
   children,
   caption,

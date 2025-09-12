@@ -1,7 +1,7 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import { getCollection, getEntry, render } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
+import type { GetStaticPaths } from 'astro'
 
 export const getStaticPaths = (async () => {
   const beds = await getCollection('beds')
@@ -11,10 +11,10 @@ export const getStaticPaths = (async () => {
         bed.data.plants.map(async (plant) => {
           const plantEntry = await getEntry(plant)
           return plantEntry.data
-        }),
+        })
       )
       return { ...bed, data: { ...bed.data, plants } }
-    }),
+    })
   )
   return bedsWithPlants.map((bed) => ({
     params: {

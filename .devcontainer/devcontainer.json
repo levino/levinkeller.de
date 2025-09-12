@@ -13,12 +13,11 @@
         "astro-build.astro-vscode",
         "bradlc.vscode-tailwindcss",
         "streetsidesoftware.code-spell-checker-german",
-        "esbenp.prettier-vscode",
-        "GitHub.vscode-pull-request-github"
+        "GitHub.vscode-pull-request-github",
+        "biomejs.biome"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[astro]": {
           "editor.defaultFormatter": "astro-build.astro-vscode"
         }

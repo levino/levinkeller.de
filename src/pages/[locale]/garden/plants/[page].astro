@@ -1,8 +1,8 @@
 ---
-import type { GetStaticPaths } from 'astro'
-import Layout from '@levino/shipyard-base/layouts/Page.astro'
-import { PlantTable } from '@/components/garden/PlantTable'
 import { getCollection } from 'astro:content'
+import Layout from '@levino/shipyard-base/layouts/Page.astro'
+import type { GetStaticPaths } from 'astro'
+import { PlantTable } from '@/components/garden/PlantTable'
 export const getStaticPaths = (async ({ paginate }) => {
   const plants = await getCollection('plants')
   return paginate(plants, {
