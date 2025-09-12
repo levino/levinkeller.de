@@ -1,5 +1,5 @@
-import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons'
 import type { CollectionEntry } from 'astro:content'
+import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons'
 import type { FC } from 'react'
 
 export const PlantTable: FC<{

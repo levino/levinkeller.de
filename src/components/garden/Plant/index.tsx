@@ -1,6 +1,5 @@
-import { type CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
-import type { FC, PropsWithChildren } from 'react'
 import {
   IconCactus,
   IconDroplet,
@@ -12,6 +11,8 @@ import {
   IconSun,
   IconSunMoon,
 } from '@tabler/icons-react'
+import type { FC, PropsWithChildren } from 'react'
+
 type Props = { plant: CollectionEntry<'plants'> }
 
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
@@ -26,6 +27,7 @@ export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
     {plant.data.images && (
       <div className="carousel aspect-[4/3] rounded-box">
         {plant.data.images.map((image, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
           <div className="carousel-item aspect-[4/3]" key={index}>
             <img
               className="w-full object-cover"
@@ -46,6 +48,7 @@ const Sun: FC<Props> = ({ plant }) => (
     <div className="stat-title">Sonne</div>
     <div className="stat-value">
       {plant.data.sunExposure.map((sunExposure, key) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
         <ExposureBadge key={key} sunExposure={sunExposure} />
       ))}
     </div>
@@ -112,11 +115,11 @@ const Soil: FC<Props> = ({ plant }) => (
 )
 
 const Dimensions: FC<Props> = ({ plant }) => [
-  <div id="height" className="stat">
+  <div key="height" className="stat">
     <div className="stat-title">Höhe</div>
     <div className="stat-value">{plant.data.height} cm</div>
   </div>,
-  <div id="spread" className="stat">
+  <div key="spread" className="stat">
     <div className="stat-title">Breite</div>
     <div className="stat-value">{plant.data.spread} cm</div>
   </div>,
@@ -129,6 +132,7 @@ const PlantTable: FC<Props> = ({ plant }) => (
         <tr>
           {MONTHS_DE.map((month, key) => (
             <th
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
               key={key}
               className="border border-slate-400 py-2 text-center font-normal"
             >
@@ -143,11 +147,13 @@ const PlantTable: FC<Props> = ({ plant }) => (
           {MONTHS_EN.map((month, key) => {
             if (plant.data.floweringSeason.includes(month)) {
               return (
+                // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
                 <td key={key} className="border border-slate-400 py-2">
                   <IconFlower className="mx-auto" />
                 </td>
               )
             }
+            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
             return <td key={key} className="border border-slate-400 py-2" />
           })}
         </tr>
@@ -155,11 +161,13 @@ const PlantTable: FC<Props> = ({ plant }) => (
           {MONTHS_EN.map((month, key) => {
             if (plant.data.sowingTime?.includes(month)) {
               return (
+                // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
                 <td key={key} className="border border-slate-400 py-2">
                   <IconSeeding className="mx-auto" />
                 </td>
               )
             }
+            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
             return <td key={key} className="border border-slate-400 py-2" />
           })}
         </tr>

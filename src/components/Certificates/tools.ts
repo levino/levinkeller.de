@@ -1,6 +1,6 @@
-import { __, add, always, cond, equals, gt, lte, max, T, times } from 'ramda'
 import { pipe } from 'effect'
 import * as A from 'effect/Array'
+import { __, add, always, cond, equals, gt, lte, max, T, times } from 'ramda'
 
 const CERTIFICATES_PER_YEAR_2021 = 1_571_000_000
 const AVERAGE_EMISSION_2018_TO_2020 = 43_003_515 / 0.022

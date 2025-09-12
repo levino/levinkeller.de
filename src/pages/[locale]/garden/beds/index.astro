@@ -1,7 +1,7 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
-import { getCollection } from 'astro:content'
 
 const beds = await getCollection('beds')
 

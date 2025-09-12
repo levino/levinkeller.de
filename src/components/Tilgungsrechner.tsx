@@ -1,7 +1,7 @@
-import React from 'react'
-import { getLoanPlan, type LoansSpecs } from '../tools/calculator'
-import { pipe } from 'fp-ts/lib/function'
 import { Field, Formik } from 'formik'
+import { pipe } from 'fp-ts/lib/function'
+import type React from 'react'
+import { getLoanPlan, type LoansSpecs } from '../tools/calculator'
 
 type Runtime = 10 | 15 | 20 | 25 | 30 | 35
 interface FormValues {
@@ -42,6 +42,7 @@ export const Tilgungsrechner: React.FC = () => {
         return (
           <div className="grid grid-cols-1 gap-6">
             <div className="grid grid-cols-3 gap-6">
+              {/** biome-ignore lint/a11y/noLabelWithoutControl: Field is an input. */}
               <label className="block">
                 <span>Monatlich verfügbares Einkommen</span>
                 <Field
@@ -53,7 +54,8 @@ export const Tilgungsrechner: React.FC = () => {
               </label>
             </div>
             <div>
-              <h3>KfW Kredit</h3>
+              <h3>KfW Kredit</h3>{' '}
+              {/** biome-ignore lint/a11y/noLabelWithoutControl: Field is an input. */}
               <label className="block">
                 <span>Tilgung in Jahren</span>
                 <Field className="block" as="select" name="kfwRuntime">
@@ -70,6 +72,7 @@ export const Tilgungsrechner: React.FC = () => {
             <div>
               <h3>Bankkredit</h3>
               <div className="grid grid-cols-3">
+                {/** biome-ignore lint/a11y/noLabelWithoutControl: Field is an input. */}
                 <label className="block">
                   <span>Tilgung in Jahren</span>
                   <Field className="block" as="select" name="bankRuntime">
@@ -80,7 +83,8 @@ export const Tilgungsrechner: React.FC = () => {
                     <option value="30">30</option>
                     <option value="35">35</option>
                   </Field>
-                </label>
+                </label>{' '}
+                {/** biome-ignore lint/a11y/noLabelWithoutControl: Field is an input. */}
                 <label className="block">
                   <span>Bankzinsen in Prozent</span>
                   <Field
@@ -101,6 +105,7 @@ export const Tilgungsrechner: React.FC = () => {
                 <th>Gesamtzinsen</th>
               </tr>
               {loanPlan.loans.map((loan, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
                 <tr key={index}>
                   <td>{loan.name}</td>
                   <td className="text-right">

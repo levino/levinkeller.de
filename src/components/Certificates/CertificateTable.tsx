@@ -1,6 +1,6 @@
-import { add, times } from 'ramda'
 import { pipe } from 'effect'
 import * as A from 'effect/Array'
+import { add, times } from 'ramda'
 import {
   decreaseInNewCertificates,
   formatNumber,
