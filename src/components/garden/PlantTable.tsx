@@ -1,14 +1,14 @@
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content'
 import {
   CheckIcon,
   Cross2Icon,
   MagnifyingGlassIcon,
-} from "@radix-ui/react-icons";
-import type { FC } from "react";
+} from '@radix-ui/react-icons'
+import type { FC } from 'react'
 
 export const PlantTable: FC<{
-  plants: CollectionEntry<"plants">[];
-  caption: string;
+  plants: CollectionEntry<'plants'>[]
+  caption: string
 }> = ({ plants, caption }) => (
   <table className="table">
     <p>{caption}</p>
@@ -45,4 +45,4 @@ export const PlantTable: FC<{
       ))}
     </tbody>
   </table>
-);
+)
