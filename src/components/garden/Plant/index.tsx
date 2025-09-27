@@ -8,6 +8,7 @@ import {
   IconFlower,
   IconMoon,
   IconPalette,
+  IconSearch,
   IconSeeding,
   IconSun,
   IconSunMoon,
@@ -52,7 +53,20 @@ const flowerColorNames: Record<string, string> = {
 
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
   <div className="py-4">
-    <h1 className="text-3xl font-bold">{plant.data.name.latin}</h1>
+    <div className="flex items-center gap-3">
+      <h1 className="text-3xl font-bold">{plant.data.name.latin}</h1>
+      <a
+        href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(plant.data.name.latin)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-sm"
+        title={`Bilder von ${plant.data.name.latin} auf Google suchen`}
+        aria-label={`Bilder von ${plant.data.name.latin} auf Google suchen`}
+      >
+        <IconSearch className="w-4 h-4" />
+        Bilder suchen
+      </a>
+    </div>
     <h2 className="text-xl">{plant.data.name.german}</h2>
     <div className="stats stats-vertical sm:stats-horizontal shadow w-full">
       <Dimensions plant={plant} />
