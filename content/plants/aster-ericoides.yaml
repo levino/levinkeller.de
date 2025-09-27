@@ -2,12 +2,13 @@ name:
   latin: Aster ericoides
   german: Myrten-Aster
 height: 100
+spread: 60
 soil:
   - normal
   - dry
 sunExposure:
   - full
-  - partial
+  - semi-shade
 hardiness: hardy
 flowerColor:
   - white

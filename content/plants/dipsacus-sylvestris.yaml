@@ -2,11 +2,12 @@ name:
   latin: Dipsacus sylvestris
   german: Wilde Karde
 height: 200
+spread: 80
 soil:
   - normal
 sunExposure:
   - full
-  - partial
+  - semi-shade
 hardiness: hardy
 flowerColor:
   - purple

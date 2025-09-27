@@ -2,11 +2,12 @@ name:
   latin: Digitalis purpurea
   german: Fingerhut
 height: 120
+spread: 40
 soil:
   - normal
 sunExposure:
   - full
-  - partial
+  - semi-shade
 hardiness: hardy
 flowerColor:
   - red

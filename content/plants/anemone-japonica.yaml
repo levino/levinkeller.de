@@ -7,7 +7,7 @@ soil:
   - normal
   - moist
 sunExposure:
-  - partial
+  - semi-shade
   - shade
 hardiness: hardy
 flowerColor:

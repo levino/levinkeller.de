@@ -7,7 +7,7 @@ soil:
   - normal
 sunExposure:
   - full
-  - partial
+  - semi-shade
 hardiness: hardy
 flowerColor:
   - violet
