@@ -40,4 +40,4 @@ jobs:
           additional_permissions: |
             actions: read
 
-          claude_args: '--allowed-tools "Bash(npm:*),Bash(npx:*)'
+          claude_args: '--dangerously-skip-permissions'
