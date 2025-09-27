@@ -7,10 +7,10 @@ import {
   IconDropletHalf2Filled,
   IconFlower,
   IconMoon,
+  IconPalette,
   IconSeeding,
   IconSun,
   IconSunMoon,
-  IconPalette,
 } from '@tabler/icons-react'
 import type { FC, PropsWithChildren } from 'react'
 
@@ -216,8 +216,10 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
         <tr>
@@ -230,8 +232,10 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
       </tbody>
