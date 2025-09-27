@@ -1,0 +1,21 @@
+name:
+  latin: Miscanthus oligostachyus
+  german: Breitblatt-Chinaschilf
+height: 120
+spread: 60
+soil:
+  - normal
+sunExposure:
+  - full
+  - partial
+hardiness: hardy
+flowerColor:
+  - silver
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - july
+  - august
+  - september
+supplier: jelitto

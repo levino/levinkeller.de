@@ -1,0 +1,22 @@
+name:
+  latin: Calamagrostis brachytricha
+  german: Diamant-Reitgras
+height: 80
+soil:
+  - normal
+sunExposure:
+  - full
+  - partial
+hardiness: hardy
+flowerColor:
+  - pink
+  - silver
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - september
+  - october
+  - november
+  - december
+supplier: jelitto

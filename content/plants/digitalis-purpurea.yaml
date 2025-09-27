@@ -1,0 +1,22 @@
+name:
+  latin: Digitalis purpurea
+  german: Fingerhut
+height: 120
+soil:
+  - normal
+sunExposure:
+  - full
+  - partial
+hardiness: hardy
+flowerColor:
+  - red
+  - pink
+  - purple
+  - white
+foliageColor: green
+lifecycle: biennial
+sowingScheme: D
+floweringSeason:
+  - june
+  - july
+supplier: jelitto

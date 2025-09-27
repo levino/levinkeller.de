@@ -1,0 +1,20 @@
+name:
+  latin: Miscanthus sinensis
+  german: Chinaschilf
+height: 250
+soil:
+  - normal
+sunExposure:
+  - full
+hardiness: hardy
+flowerColor:
+  - pink
+  - silver
+  - red
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - september
+  - october
+supplier: jelitto

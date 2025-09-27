@@ -1,0 +1,20 @@
+name:
+  latin: Dipsacus sylvestris
+  german: Wilde Karde
+height: 200
+soil:
+  - normal
+sunExposure:
+  - full
+  - partial
+hardiness: hardy
+flowerColor:
+  - purple
+  - pink
+foliageColor: green
+lifecycle: biennial
+sowingScheme: D
+floweringSeason:
+  - july
+  - august
+supplier: jelitto

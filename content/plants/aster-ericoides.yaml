@@ -1,0 +1,21 @@
+name:
+  latin: Aster ericoides
+  german: Myrten-Aster
+height: 100
+soil:
+  - normal
+  - dry
+sunExposure:
+  - full
+  - partial
+hardiness: hardy
+flowerColor:
+  - white
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - august
+  - september
+  - october
+supplier: jelitto
