@@ -31,8 +31,9 @@ export const PlantTable: FC<{
                 href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(plant.data.name.latin)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-gray-700"
+                className="btn btn-ghost btn-xs"
                 title={`Bilder von ${plant.data.name.latin} auf Google suchen`}
+                aria-label={`Bilder von ${plant.data.name.latin} auf Google suchen`}
               >
                 <MagnifyingGlassIcon className="w-4 h-4" />
               </a>

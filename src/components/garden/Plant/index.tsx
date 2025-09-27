@@ -59,11 +59,12 @@ export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
         href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(plant.data.name.latin)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+        className="btn btn-sm"
         title={`Bilder von ${plant.data.name.latin} auf Google suchen`}
+        aria-label={`Bilder von ${plant.data.name.latin} auf Google suchen`}
       >
         <IconSearch className="w-4 h-4" />
-        <span>Bilder suchen</span>
+        Bilder suchen
       </a>
     </div>
     <h2 className="text-xl">{plant.data.name.german}</h2>
