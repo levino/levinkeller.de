@@ -7,10 +7,10 @@ import {
   IconDropletHalf2Filled,
   IconFlower,
   IconMoon,
+  IconPalette,
   IconSeeding,
   IconSun,
   IconSunMoon,
-  IconPalette,
 } from '@tabler/icons-react'
 import type { FC, PropsWithChildren } from 'react'
 
@@ -30,6 +30,7 @@ const flowerColorMap: Record<string, string> = {
   rose: '#FF007F',
   black: '#1C1C1C',
   purple: '#800080',
+  cream: '#FFFDD0',
 }
 
 const flowerColorNames: Record<string, string> = {
@@ -46,6 +47,7 @@ const flowerColorNames: Record<string, string> = {
   rose: 'Rose',
   black: 'Schwarz',
   purple: 'Lila',
+  cream: 'Creme',
 }
 
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
@@ -95,9 +97,11 @@ const FlowerColors: FC<Props> = ({ plant }) => (
             >
               <div
                 className="h-4 w-4 rounded-full border border-gray-400"
-                style={{ backgroundColor: flowerColorMap[color] }}
+                style={{ backgroundColor: flowerColorMap[color] || '#CCCCCC' }}
               />
-              <span className="text-sm">{flowerColorNames[color]}</span>
+              <span className="text-sm">
+                {flowerColorNames[color] ?? color}
+              </span>
             </div>
           ))}
         </div>
@@ -216,8 +220,10 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
         <tr>
@@ -230,8 +236,10 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
       </tbody>
