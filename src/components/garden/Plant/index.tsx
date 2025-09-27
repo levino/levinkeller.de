@@ -7,6 +7,7 @@ import {
   IconDropletHalf2Filled,
   IconFlower,
   IconMoon,
+  IconPalette,
   IconSeeding,
   IconSun,
   IconSunMoon,
@@ -15,15 +16,52 @@ import type { FC, PropsWithChildren } from 'react'
 
 type Props = { plant: CollectionEntry<'plants'> }
 
+const flowerColorMap: Record<string, string> = {
+  'wine-red': '#722F37',
+  red: '#DC143C',
+  blue: '#4169E1',
+  yellow: '#FFD700',
+  white: '#FFFFFF',
+  pink: '#FFC0CB',
+  green: '#228B22',
+  brown: '#8B4513',
+  orange: '#FF8C00',
+  violet: '#8B7AB8',
+  rose: '#FF007F',
+  black: '#1C1C1C',
+  purple: '#800080',
+  cream: '#FFFDD0',
+}
+
+const flowerColorNames: Record<string, string> = {
+  'wine-red': 'Weinrot',
+  red: 'Rot',
+  blue: 'Blau',
+  yellow: 'Gelb',
+  white: 'Weiß',
+  pink: 'Rosa',
+  green: 'Grün',
+  brown: 'Braun',
+  orange: 'Orange',
+  violet: 'Violett',
+  rose: 'Rose',
+  black: 'Schwarz',
+  purple: 'Lila',
+  cream: 'Creme',
+}
+
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
   <div className="py-4">
     <h1 className="text-3xl font-bold">{plant.data.name.latin}</h1>
     <h2 className="text-xl">{plant.data.name.german}</h2>
-    <div className="stats shadow">
+    <div className="stats stats-vertical sm:stats-horizontal shadow w-full">
       <Dimensions plant={plant} />
       <Soil plant={plant} />
       <Sun plant={plant} />
     </div>
+    {plant.data.flowerColor && plant.data.flowerColor.length > 0 && (
+      <FlowerColors plant={plant} />
+    )}
     {plant.data.images && (
       <div className="carousel aspect-[4/3] rounded-box">
         {plant.data.images.map((image, index) => (
@@ -40,6 +78,35 @@ export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
     )}
     <PlantTable plant={plant} />
     <div className="py-4">{children}</div>
+  </div>
+)
+
+const FlowerColors: FC<Props> = ({ plant }) => (
+  <div className="stats shadow w-full mt-4">
+    <div className="stat">
+      <div className="stat-figure text-primary">
+        <IconPalette className="w-8 h-8" />
+      </div>
+      <div className="stat-title">Blütenfarbe</div>
+      <div className="stat-value">
+        <div className="flex flex-wrap gap-2">
+          {plant.data.flowerColor.map((color) => (
+            <div
+              key={color}
+              className="flex items-center gap-2 rounded-lg bg-base-200 px-3 py-1"
+            >
+              <div
+                className="h-4 w-4 rounded-full border border-gray-400"
+                style={{ backgroundColor: flowerColorMap[color] || '#CCCCCC' }}
+              />
+              <span className="text-sm">
+                {flowerColorNames[color] ?? color}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 )
 
@@ -126,7 +193,7 @@ const Dimensions: FC<Props> = ({ plant }) => [
 ]
 
 const PlantTable: FC<Props> = ({ plant }) => (
-  <div className="p-4">
+  <div className="overflow-x-auto mt-4">
     <table className="w-full table-fixed border-collapse rounded border border-slate-400">
       <thead>
         <tr>
@@ -134,10 +201,10 @@ const PlantTable: FC<Props> = ({ plant }) => (
             <th
               // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
               key={key}
-              className="border border-slate-400 py-2 text-center font-normal"
+              className="border border-slate-400 py-1 sm:py-2 text-center font-normal text-xs sm:text-sm"
             >
-              <span className="hidden md:block">{month.slice(0, 3)}</span>
-              <span className="md:hidden">{month.slice(0, 1)}</span>
+              <span className="hidden sm:block">{month.slice(0, 3)}</span>
+              <span className="sm:hidden">{month.slice(0, 1)}</span>
             </th>
           ))}
         </tr>
@@ -148,13 +215,15 @@ const PlantTable: FC<Props> = ({ plant }) => (
             if (plant.data.floweringSeason.includes(month)) {
               return (
                 // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-                <td key={key} className="border border-slate-400 py-2">
-                  <IconFlower className="mx-auto" />
+                <td key={key} className="border border-slate-400 py-1 sm:py-2">
+                  <IconFlower className="mx-auto h-4 w-4 sm:h-6 sm:w-6" />
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
         <tr>
@@ -162,13 +231,15 @@ const PlantTable: FC<Props> = ({ plant }) => (
             if (plant.data.sowingTime?.includes(month)) {
               return (
                 // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-                <td key={key} className="border border-slate-400 py-2">
-                  <IconSeeding className="mx-auto" />
+                <td key={key} className="border border-slate-400 py-1 sm:py-2">
+                  <IconSeeding className="mx-auto h-4 w-4 sm:h-6 sm:w-6" />
                 </td>
               )
             }
-            // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
-            return <td key={key} className="border border-slate-400 py-2" />
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
+              <td key={key} className="border border-slate-400 py-1 sm:py-2" />
+            )
           })}
         </tr>
       </tbody>
