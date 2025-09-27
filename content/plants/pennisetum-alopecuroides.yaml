@@ -1,0 +1,23 @@
+name:
+  latin: Pennisetum alopecuroides
+  german: Lampenputzergras
+height: 80
+spread: 60
+soil:
+  - normal
+sunExposure:
+  - full
+hardiness: hardy
+flowerColor:
+  - brown
+  - purple
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - august
+  - september
+  - october
+  - november
+  - december
+supplier: jelitto

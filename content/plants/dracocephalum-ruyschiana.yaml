@@ -1,0 +1,23 @@
+name:
+  latin: Dracocephalum ruyschiana
+  german: Drachenkopf
+height: 25
+spread: 30
+soil:
+  - normal
+  - dry
+sunExposure:
+  - full
+  - semi-shade
+hardiness: hardy
+flowerColor:
+  - blue
+  - violet
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - june
+  - july
+  - august
+supplier: jelitto

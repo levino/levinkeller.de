@@ -1,0 +1,21 @@
+name:
+  latin: Stipa tenuissima
+  german: Mexikanisches Federgras
+height: 40
+spread: 30
+soil:
+  - normal
+  - dry
+sunExposure:
+  - full
+hardiness: hardy
+flowerColor:
+  - green
+  - white
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - july
+  - august
+supplier: jelitto

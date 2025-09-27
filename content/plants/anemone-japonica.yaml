@@ -1,0 +1,23 @@
+name:
+  latin: Anemone japonica
+  german: Herbstanemone
+height: 100
+spread: 60
+soil:
+  - normal
+  - moist
+sunExposure:
+  - semi-shade
+  - shade
+hardiness: hardy
+flowerColor:
+  - pink
+  - white
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - august
+  - september
+  - october
+supplier: jelitto

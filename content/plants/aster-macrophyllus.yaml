@@ -1,0 +1,21 @@
+name:
+  latin: Aster macrophyllus
+  german: Großblättrige Aster
+height: 80
+spread: 60
+soil:
+  - normal
+sunExposure:
+  - full
+  - semi-shade
+hardiness: hardy
+flowerColor:
+  - violet
+  - white
+foliageColor: green
+lifecycle: perennial
+sowingScheme: D
+floweringSeason:
+  - august
+  - september
+supplier: jelitto
