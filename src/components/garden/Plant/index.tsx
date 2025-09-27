@@ -1,5 +1,5 @@
-import type { CollectionEntry } from 'astro:content'
-import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
+import type { CollectionEntry } from "astro:content";
+import { MONTHS_DE, MONTHS_EN } from "@levino/shipyard-base";
 import {
   IconCactus,
   IconDroplet,
@@ -11,48 +11,61 @@ import {
   IconSeeding,
   IconSun,
   IconSunMoon,
-} from '@tabler/icons-react'
-import type { FC, PropsWithChildren } from 'react'
+  IconSearch,
+} from "@tabler/icons-react";
+import type { FC, PropsWithChildren } from "react";
 
-type Props = { plant: CollectionEntry<'plants'> }
+type Props = { plant: CollectionEntry<"plants"> };
 
 const flowerColorMap: Record<string, string> = {
-  'wine-red': '#722F37',
-  red: '#DC143C',
-  blue: '#4169E1',
-  yellow: '#FFD700',
-  white: '#FFFFFF',
-  pink: '#FFC0CB',
-  green: '#228B22',
-  brown: '#8B4513',
-  orange: '#FF8C00',
-  violet: '#8B7AB8',
-  rose: '#FF007F',
-  black: '#1C1C1C',
-  purple: '#800080',
-  cream: '#FFFDD0',
-}
+  "wine-red": "#722F37",
+  red: "#DC143C",
+  blue: "#4169E1",
+  yellow: "#FFD700",
+  white: "#FFFFFF",
+  pink: "#FFC0CB",
+  green: "#228B22",
+  brown: "#8B4513",
+  orange: "#FF8C00",
+  violet: "#8B7AB8",
+  rose: "#FF007F",
+  black: "#1C1C1C",
+  purple: "#800080",
+  cream: "#FFFDD0",
+};
 
 const flowerColorNames: Record<string, string> = {
-  'wine-red': 'Weinrot',
-  red: 'Rot',
-  blue: 'Blau',
-  yellow: 'Gelb',
-  white: 'Weiß',
-  pink: 'Rosa',
-  green: 'Grün',
-  brown: 'Braun',
-  orange: 'Orange',
-  violet: 'Violett',
-  rose: 'Rose',
-  black: 'Schwarz',
-  purple: 'Lila',
-  cream: 'Creme',
-}
+  "wine-red": "Weinrot",
+  red: "Rot",
+  blue: "Blau",
+  yellow: "Gelb",
+  white: "Weiß",
+  pink: "Rosa",
+  green: "Grün",
+  brown: "Braun",
+  orange: "Orange",
+  violet: "Violett",
+  rose: "Rose",
+  black: "Schwarz",
+  purple: "Lila",
+  cream: "Creme",
+};
 
 export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
   <div className="py-4">
-    <h1 className="text-3xl font-bold">{plant.data.name.latin}</h1>
+    <div className="flex items-center gap-3">
+      <h1 className="text-3xl font-bold">{plant.data.name.latin}</h1>
+      <a
+        href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(plant.data.name.latin)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+        title={`Bilder von ${plant.data.name.latin} auf Google suchen`}
+      >
+        <IconSearch className="w-4 h-4" />
+        <span>Bilder suchen</span>
+      </a>
+    </div>
     <h2 className="text-xl">{plant.data.name.german}</h2>
     <div className="stats stats-vertical sm:stats-horizontal shadow w-full">
       <Dimensions plant={plant} />
@@ -79,7 +92,7 @@ export const Plant: FC<PropsWithChildren<Props>> = ({ plant, children }) => (
     <PlantTable plant={plant} />
     <div className="py-4">{children}</div>
   </div>
-)
+);
 
 const FlowerColors: FC<Props> = ({ plant }) => (
   <div className="stats shadow w-full mt-4">
@@ -97,7 +110,7 @@ const FlowerColors: FC<Props> = ({ plant }) => (
             >
               <div
                 className="h-4 w-4 rounded-full border border-gray-400"
-                style={{ backgroundColor: flowerColorMap[color] || '#CCCCCC' }}
+                style={{ backgroundColor: flowerColorMap[color] || "#CCCCCC" }}
               />
               <span className="text-sm">
                 {flowerColorNames[color] ?? color}
@@ -108,7 +121,7 @@ const FlowerColors: FC<Props> = ({ plant }) => (
       </div>
     </div>
   </div>
-)
+);
 
 const Sun: FC<Props> = ({ plant }) => (
   <div className="stat">
@@ -120,66 +133,66 @@ const Sun: FC<Props> = ({ plant }) => (
       ))}
     </div>
   </div>
-)
+);
 
 const ExposureBadge: FC<{
-  sunExposure: 'full' | 'semi-shade' | 'shade' | 'light-shade'
+  sunExposure: "full" | "semi-shade" | "shade" | "light-shade";
 }> = ({ sunExposure }) => {
   switch (sunExposure) {
-    case 'full':
+    case "full":
       return (
         <div className="tooltip" data-tip="sonnig">
           <IconSun />
         </div>
-      )
-    case 'semi-shade':
+      );
+    case "semi-shade":
       return (
         <div className="tooltip" data-tip="halbschattig">
           <IconSunMoon />
         </div>
-      )
-    case 'shade':
+      );
+    case "shade":
       return (
         <div className="tooltip" data-tip="schattig">
           <IconMoon />
         </div>
-      )
-    case 'light-shade':
+      );
+    case "light-shade":
       return (
         <div className="tooltip" data-tip="Lichter Schatten">
           <IconMoon />
         </div>
-      )
+      );
   }
-}
+};
 
 const Soil: FC<Props> = ({ plant }) => (
   <div className="stat">
     <div className="stat-title">Boden</div>
     <div className="stat-value">
-      {plant.data.soil.includes('moist') && (
+      {plant.data.soil.includes("moist") && (
         <div className="tooltip" data-tip="feucht">
           <IconDropletHalf2Filled />
         </div>
       )}
-      {plant.data.soil.includes('dry') && (
+      {plant.data.soil.includes("dry") && (
         <div className="tooltip" data-tip="trocken">
           <IconCactus />
         </div>
       )}
-      {plant.data.soil.includes('normal') && (
+      {plant.data.soil.includes("normal") && (
         <div className="tooltip" data-tip="normal">
           <IconDroplet />
         </div>
       )}
-      {plant.data.soil.includes('wet') && (
+      {plant.data.soil.includes("wet") && (
         <div className="tooltip" data-tip="nass">
           <IconDropletFilled />
         </div>
       )}
     </div>
   </div>
-)
+);
 
 const Dimensions: FC<Props> = ({ plant }) => [
   <div key="height" className="stat">
@@ -190,7 +203,7 @@ const Dimensions: FC<Props> = ({ plant }) => [
     <div className="stat-title">Breite</div>
     <div className="stat-value">{plant.data.spread} cm</div>
   </div>,
-]
+];
 
 const PlantTable: FC<Props> = ({ plant }) => (
   <div className="overflow-x-auto mt-4">
@@ -218,12 +231,12 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 <td key={key} className="border border-slate-400 py-1 sm:py-2">
                   <IconFlower className="mx-auto h-4 w-4 sm:h-6 sm:w-6" />
                 </td>
-              )
+              );
             }
             return (
               // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
               <td key={key} className="border border-slate-400 py-1 sm:py-2" />
-            )
+            );
           })}
         </tr>
         <tr>
@@ -234,15 +247,15 @@ const PlantTable: FC<Props> = ({ plant }) => (
                 <td key={key} className="border border-slate-400 py-1 sm:py-2">
                   <IconSeeding className="mx-auto h-4 w-4 sm:h-6 sm:w-6" />
                 </td>
-              )
+              );
             }
             return (
               // biome-ignore lint/suspicious/noArrayIndexKey: Did not find a better key here
               <td key={key} className="border border-slate-400 py-1 sm:py-2" />
-            )
+            );
           })}
         </tr>
       </tbody>
     </table>
   </div>
-)
+);
