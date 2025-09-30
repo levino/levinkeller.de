@@ -49,7 +49,7 @@ bessere Welt erreichen können. Sollte ich Inhalte produzieren, die für andere
 für ihr Projekt nutzen können und im Idealfall weitere wertvolle Inhalte mit
 meinen Beiträgen generieren, haben alle gewonnen. Dafür ist es wichtig, dass die
 Unterlagen möglichst in Ihrer Reinform bzw. strukturiert vorliegen und
-entsprechend einfach weiter verabeitet werden können. Dies garantiert die
+entsprechend einfach weiter verarbeitet werden können. Dies garantiert die
 Verwendung von [markdown](https://de.wikipedia.org/wiki/Markdown), git und
 github. Ich hoffe, dass es in Zukunft noch viel mehr Menschen gibt, die
 Internetseiten auf diese Art und Weise bauen, sodass ich mich auch bei Ihnen
