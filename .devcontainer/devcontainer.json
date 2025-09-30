@@ -7,7 +7,6 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "postCreateCommand": "npm install",
   "customizations": {
     "vscode": {
       "extensions": [
