@@ -22,6 +22,10 @@ export default defineConfig({
       rehypeKatex,
     ],
   },
+  image: {
+    responsiveStyles: true,
+    layout: 'constrained',
+  },
   redirects: { '/': { destination: '/de', status: 302 } },
 
   i18n: {
