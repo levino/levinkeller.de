@@ -14,12 +14,12 @@ George Monbiot fällt leider in letzter Zeit durch verschwörungstheoretisches G
 
 ## The Bell Curve (Richard J. Herrnstein, Charles Murray)
 
-Der gute alte Murray. Sicherlich gehen jetzt bei vielen die Alarmglocken an, denn Murray wird vielerorts als Rassist diffamiert. Dies kann allerdings nur von Leuten ausgehen, die seine Bücher nicht gelesen haben. Insofern kann ich nur dazu einladen, die Ergebnisse von Charles Murray und Richard Herrnstein einfach selbst zu studieren und sich seinen eigenen Teil zu denken. Man wird aber erkennen, dass es Murray darum geht, sinnvolle Lösungen für die bestehenden Ungleichheiten zu finden, indem man sich mit den Fakten auseinandersetzt. Ich halte das für das Gegenteil von Rassismus.
+Der gute alte Murray. Sicherlich gehen jetzt bei vielen die Alarmglocken an, denn Murray wird vielerorts als Rassist diffamiert. Dies kann allerdings nur von Leuten ausgehen, die seine Bücher nicht gelesen haben. Insofern kann ich nur dazu einladen, die Ergebnisse von Charles Murray und Richard Herrnstein einfach selbst zu studieren und sich seinen eigenen Teil zu denken. Man wird aber erkennen, dass es Murray darum geht, sinnvolle Lösungen für die bestehenden Ungleichheiten zu finden, indem man sich mit den Fakten auseinandersetzt. Ich halte das für das Gegenteil von Rassismus.  
 [978-0684824291](https://www.goodreads.com/book/show/28838.The_Bell_Curve)
 
 ## The Madness of Crowds (Douglas Murray)
 
-Eine brutale Aufzählung der idiotischen Dinge, die sich in unserer Zeit ereignen. Teilweise etwas einseitig, aber sehr wertvoll, vor allem, wenn man bedenkt, dass die andere Seite der Debatte, ausschließlich einseitig argumentiert.
+Eine brutale Aufzählung der idiotischen Dinge, die sich in unserer Zeit ereignen. Teilweise etwas einseitig, aber sehr wertvoll, vor allem, wenn man bedenkt, dass die andere Seite der Debatte, ausschließlich einseitig argumentiert.  
 [978-1635579987](https://www.goodreads.com/book/show/44667183-the-madness-of-crowds)
 
 ## The War on the West (Douglas Murray)
