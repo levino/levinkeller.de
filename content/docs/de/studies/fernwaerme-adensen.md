@@ -4,7 +4,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
   <div>
     <h3 class="font-bold">Hinweis zur Erstellung</h3>
-    <p>Diese Dokumentation wurde gewissenhaft mit Unterstützung von KI über die öffentliche OParl-API der Gemeinde Nordstemmen recherchiert und erstellt. Trotz sorgfältiger Prüfung können Fehler oder Ungenauigkeiten enthalten sein. Bei Fragen oder wenn Sie Fehler finden, schicken Sie bitte eine E-Mail an <a href="mailto:levin@levinkeller.de">levin@levinkeller.de</a>.</p>
+    <p>Diese Dokumentation wurde gewissenhaft mit Unterstützung von KI über die öffentliche OParl-API der Gemeinde Nordstemmen recherchiert und erstellt. Trotz sorgfältiger Prüfung können Fehler oder Ungenauigkeiten enthalten sein. Bei Fragen oder wenn Sie Fehler finden, schicken Sie bitte eine E-Mail an <a href="mailto:levin@levinkeller.de">post@levinkeller.de</a>.</p>
   </div>
 </div>
 
