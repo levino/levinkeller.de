@@ -5,7 +5,7 @@
   <div>
     <h3 class="font-bold">Hinweis zur Erstellung</h3>
     <p>Diese Dokumentation wurde gewissenhaft mit Unterstützung von KI über die öffentliche OParl-API der Gemeinde Nordstemmen recherchiert und erstellt. Trotz sorgfältiger Prüfung können Fehler oder Ungenauigkeiten enthalten sein. Bei Fragen oder wenn Sie Fehler finden, schicken Sie bitte eine E-Mail an <a href="mailto:post@levinkeller.de">post@levinkeller.de</a>.</p>
-    <p><strong>Aktualisiert am 13.10.2025:</strong> Alle Informationen wurden über die OPARL-Schnittstelle verifiziert und auf den neuesten Stand gebracht. Die Drucksache 75/2025 liegt nun in Version 2 (Stand: 30.09.2025) vor.</p>
+    <p><strong>Aktualisiert am 13.10.2025:</strong> Alle Informationen wurden über die OPARL-Schnittstelle verifiziert und auf den neuesten Stand gebracht. Die Dokumentation wurde um fehlende Finanzinformationen aus der Drucksache 75/2025 (Stand: 30.09.2025) ergänzt.</p>
   </div>
 </div>
 
@@ -19,29 +19,39 @@ Die Gemeinde erhält als Nutzungsentgelt **0,00025 Euro pro gelieferte Kilowatts
 
 Die Verwaltung begründet das Nutzungsentgelt damit, dass es "in etwa den laufenden Konzessionsabgaben entspricht". Diese Aussage ist problematisch: Konzessionsabgaben existieren nur für Strom und Gas, nicht für Fernwärme. Eine Vergleichbarkeit ist daher nicht gegeben. Im Vertrag selbst wird nicht erläutert, wie die Höhe der Vergütung berechnet wurde oder welche wirtschaftlichen Überlegungen zugrunde liegen. Die Verwaltung bezeichnet das Projekt als "ökologisch und ökonomisch sinnvoll" und attestiert ihm "Leuchtturmcharakter". Nach Fertigstellung des Netzes wäre die kommunale Wärmeplanung für Adensen und Hallerburg erfüllt.
 
-Am 4. September 2025 wurde die Vorlage zur Gründung einer GmbH für Wärmeversorgung ([DS 75/2025, PDF v1](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Beschlussvorlage_DS_75-2025.pdf) | [v2](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Beschlussvorlage_DS_75-2025.pdf)) von der Verwaltung erstellt - auf Initiative der Energiegenossenschaft Adensen-Hallerburg e.G. Im Juli 2025 hatte die Genossenschaft schriftlich an die Gemeinde herangetragen, die Nutzung des neu eingeführten § 121a Niedersächsisches Kommunalverfassungsgesetz (NKomVG) zu prüfen.
+Am 4. September 2025 wurde die Vorlage zur Gründung einer GmbH für Wärmeversorgung ([DS 75/2025, PDF](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Beschlussvorlage_DS_75-2025.pdf)) von der Verwaltung erstellt - auf Initiative der Energiegenossenschaft Adensen-Hallerburg e.G. Im Juli 2025 hatte die Genossenschaft schriftlich an die Gemeinde herangetragen, die Nutzung des neu eingeführten § 121a Niedersächsisches Kommunalverfassungsgesetz (NKomVG) zu prüfen.
 
-**Hintergrund:** Die Finanzierung des Wärmenetzes drohte zu scheitern. Ursprünglich kalkulierte die EGAH mit einem Zinssatz von 4% über 25 Jahre Laufzeit. Eine Bank hatte im Sommer 2024 eine grundsätzliche Zusage gegeben. Dann verschlechterten sich die Konditionen drastisch: Die Bank bot nur noch 5,48% Zinsen plus 80.000 Euro Bearbeitungsgebühr. Dies würde die gelieferte Kilowattstunde um 1,5 Cent verteuern und die Wirtschaftlichkeit des gesamten Projekts gefährden. Die noch junge Genossenschaft konnte kein ausreichendes bankenübliches Rating vorweisen.
+**Hintergrund:** Die Finanzierung des Wärmenetzes drohte zu scheitern. Ursprünglich kalkulierte die EGAH mit einem Zinssatz von 4% über 25 Jahre Laufzeit. Eine Bank hatte im Sommer 2024 eine grundsätzliche Zusage gegeben. Dann verschlechterten sich die Konditionen drastisch: Die Bank bot nur noch **5,48% Zinsen plus 80.000 Euro Bearbeitungsgebühr**. Dies würde die gelieferte Kilowattstunde um **1,5 Cent verteuern** und die Wirtschaftlichkeit des gesamten Projekts gefährden. Die noch junge Genossenschaft konnte kein ausreichendes bankenübliches Rating vorweisen.
 
-**Die vorgeschlagene Konstruktion:** Die Gemeinde Nordstemmen und die EGAH gründen gemeinsam eine GmbH, an der die Gemeinde die Mehrheit hält (zwingend nach § 121a Abs. 2 NKomVG). Die Gemeinde nimmt einen sogenannten Konzernkredit über die Förderbank des Landes Niedersachsen (NBank) auf und reicht diesen an die GmbH weiter. Im zweiten Darlehensvertrag zwischen Gemeinde und GmbH wird ein Zinszuschlag vereinbart, sodass die Gemeinde "einen positiven Ertrag" erzielt. Die Gemeinde trägt jedoch das volle Ausfallrisiko.
+**Die vorgeschlagene Konstruktion:** Die Gemeinde Nordstemmen und die EGAH gründen gemeinsam die **"Wärmenetz Adensen GmbH"**, an der die Gemeinde die Mehrheit hält (zwingend nach § 121a Abs. 2 NKomVG). Die Gemeinde nimmt einen sogenannten Konzernkredit über die Förderbank des Landes Niedersachsen (NBank) auf und reicht diesen an die GmbH weiter. Im zweiten Darlehensvertrag zwischen Gemeinde und GmbH wird ein Zinszuschlag vereinbart, sodass die Gemeinde **"einen positiven Ertrag"** aus der Differenz erzielt - die genaue Höhe des Zuschlags ist noch zu verhandeln. Die Gemeinde trägt jedoch das volle Ausfallrisiko.
 
 **Finanzrahmen:**
-- Gesamtinvestition für 263 geplante Wärmelieferadressen: 8,759 Millionen Euro
-- Eigenmittel der Genossenschaftsmitglieder: 1,565 Millionen Euro
-- Fördermittel des BAFA (Bewilligung liegt vor): 3,520 Millionen Euro
-- Noch zu finanzieren: 3,674 Millionen Euro
+
+- Gesamtinvestition für 263 geplante Wärmelieferadressen: **8,759 Millionen Euro**
+- Eigenmittel der Genossenschaftsmitglieder: **1,565 Millionen Euro**
+- Fördermittel des BAFA (Bewilligung liegt vor): **3,520 Millionen Euro**
+- Noch zu finanzieren: **3,674 Millionen Euro**
 - Beantragt wird ein Konzernkredit von **maximal 4,0 Millionen Euro**
+- Investition Heizzentrale/Grundstück: ca. **800.000 Euro**
+
+**Gesellschaftsstruktur der GmbH:**
+
+- Stammkapital: **25.000 Euro**
+  - Gemeinde Nordstemmen: **12.750 Euro** (51%)
+  - Energiegenossenschaft Adensen-Hallerburg e.G.: **12.250 Euro** (49%)
+- Gründungskosten: bis zu **2.500 Euro** (Notar, Handelsregister, etc.)
 
 **Rechtliche Absicherung:** Eine Rechtsberatung vom 28. August 2025 empfiehlt eine umfangreiche Absicherung in "banküblichem Umfang". Dazu gehören unter anderem: erstrangige Grundschuld auf dem Grundstück der Heizzentrale (ca. 800.000 Euro Investition), Sicherung der Nutzungsrechte am Wärmenetz bei Ausfall der EGAH, Abtretung aller Wärmelieferverträge, Globalabtretung aller Forderungen aus dem Betrieb, und weitere Sicherungsmittel. Die Verwaltung stellt fest: "Das Kreditausfallrisiko der Gemeinde wird dabei nicht beseitigt, da nicht ausgeschlossen werden kann, dass sich später keine Nachnutzung für das Wärmenetz findet."
 
 **Beratungsfolge:**
+
 - 09.09.2025: Fachausschuss Finanzen, Wirtschaftsförderung, Marketing und Feuerschutz - einstimmige Empfehlung
 - 11.09.2025: Verwaltungsausschuss - Beratung und Empfehlung
 - 16.09.2025: Rat - erste Lesung
 - 14.10.2025: Verwaltungsausschuss - zweite Beratung (geplant)
 - 14.10.2025: Rat - Beschlussfassung (geplant)
 
-Die Kommunalaufsichtsbehörde des Landkreises Hildesheim wurde eingebunden und "steht dem Vorhaben nicht negativ gegenüber". Ein erster Entwurf eines Gesellschaftervertrages der "Wärmenetz Adensen GmbH" liegt als Anlage bei ([Anlage 3, PDF v1](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_3.pdf) | [v2](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_3.pdf)). Weitere Anlagen: [§ 121a NKomVG (Anlage 1, PDF v1)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_1.pdf) | [v2](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_1.pdf), [Sicherungsmittel-Anforderungen der Kreditinstitute (Anlage 2, PDF v1)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_2.pdf) | [v2](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_2.pdf).
+Die Kommunalaufsichtsbehörde des Landkreises Hildesheim wurde eingebunden und "steht dem Vorhaben nicht negativ gegenüber". Ein erster Entwurf eines Gesellschaftervertrages der "Wärmenetz Adensen GmbH" liegt als Anlage bei ([Anlage 3, PDF](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_3.pdf)). Weitere Anlagen: [§ 121a NKomVG (Anlage 1, PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_1.pdf), [Sicherungsmittel-Anforderungen der Kreditinstitute (Anlage 2, PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_2.pdf).
 
 Am 2. Oktober 2025 wurde die Vorlage DS 80/2025 zur Anhörung des Haushaltsplans 2026 und des Investitionsprogramms bis 2029 für die Ortschaft Adensen erstellt. Die zeitliche Nähe zur GmbH-Gründung könnte auf einen Zusammenhang hindeuten, da Fernwärmenetze erhebliche Investitionen erfordern.
 
@@ -51,7 +61,7 @@ Am 14. Oktober 2025 um 18:30 Uhr steht die Vorlage zur GmbH-Gründung als TOP 5 
 
 Diese Case Study dokumentiert die Recherche dieses kommunalen Verwaltungsvorgangs über die öffentliche OParl-Schnittstelle der Gemeinde Nordstemmen. Sie zeigt, wie aus einer Informationsvorlage zur Wärmeplanung innerhalb weniger Monate eine konkrete Unternehmensgründung wird – und wie digitale Transparenz Bürgern ermöglicht, kommunalpolitische Prozesse nachzuvollziehen.
 
-Die Dokumentation wurde am 13.10.2025 aktualisiert und verifiziert. Alle Informationen wurden auf den neuesten Stand gebracht. Die Drucksache 75/2025 liegt seit dem 30.09.2025 in einer aktualisierten Version 2 vor - beide Versionen sind in dieser Dokumentation verlinkt und lokal verfügbar.
+Die Dokumentation wurde am 13.10.2025 aktualisiert und verifiziert. Alle Informationen wurden auf den neuesten Stand gebracht und um detaillierte Finanzinformationen aus der Drucksache 75/2025 (Stand: 30.09.2025) ergänzt.
 
 ## Methodologie: Wie die Daten recherchiert wurden
 
@@ -60,6 +70,7 @@ Die Dokumentation wurde am 13.10.2025 aktualisiert und verifiziert. Alle Informa
 Die Gemeinde Nordstemmen stellt ihre Ratsinformationen über eine standardisierte **OParl-API** zur Verfügung. OParl ist ein offener Standard für parlamentarische Informationssysteme in Deutschland, der maschinenlesbare Schnittstellen (JSON-LD) bereitstellt.
 
 **Einstiegspunkt der API:**
+
 ```
 https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/system
 ```
@@ -69,11 +80,13 @@ https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/system
 #### 1. API-Struktur verstehen
 
 Über den System-Endpunkt erhält man Zugang zur Körperschaft (Body):
+
 ```
 https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body
 ```
 
 Von dort aus verzweigt die API zu verschiedenen Ressourcen:
+
 - **Meetings** (Sitzungen): `/body/1/meeting`
 - **Papers** (Vorlagen/Anträge): `/body/1/paper`
 - **AgendaItems** (Tagesordnungspunkte): `/body/1/agendaitem`
@@ -84,6 +97,7 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 **Herausforderung:** Die API liefert Meetings chronologisch sortiert, älteste zuerst. Bei 44 Seiten Meetings musste ich zur letzten Seite navigieren.
 
 **Lösung:** Über die Pagination-Informationen im JSON:
+
 ```json
 "links": {
   "first": "...?page=1",
@@ -92,6 +106,7 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 ```
 
 **Gefundene Sitzung auf Seite 42:**
+
 - **Name:** Rat (21. Sitzung)
 - **Datum:** 14.10.2025, 18:30 Uhr
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5592
@@ -102,6 +117,7 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 Auf der Tagesordnung der Ratssitzung am 14.10.2025:
 
 **TOP 5: "Vorbereitung der Gründung einer Gesellschaft mit beschränkter Haftung (GmbH) -Wärmeversorgung-"**
+
 - **Vorlagennummer:** DS 75/2025
 - **Link zum Vorgang:** https://nordstemmen.ratsinfomanagement.net/vorgang/?__=UGhVM0hpd2NXNFdFcExjZcny9QaRq-M0OXfY2-h2D0o
 
@@ -110,6 +126,7 @@ Auf der Tagesordnung der Ratssitzung am 14.10.2025:
 Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 
 **Paper-Details über OParl:**
+
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5742
 - **Referenz:** DS 75/2025
 - **Titel:** "Vorbereitung der Gründung einer Gesellschaft mit beschränkter Haftung (GmbH) -Wärmeversorgung-"
@@ -121,13 +138,15 @@ Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 ### Die Vorlage DS 75/2025
 
 **Hauptdokument:**
-- [Beschlussvorlage v1 (PDF lokal)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Beschlussvorlage_DS_75-2025.pdf) | [v2 (PDF lokal)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Beschlussvorlage_DS_75-2025.pdf)
-- [Beschlussvorlage v2 (PDF über OParl-API)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZebtrBHXFbZ5mvNy6lxAPVA6rCFUv3QRDK9i_BJ_ZoGo/Beschlussvorlage_DS_75-2025.pdf)
+
+- [Beschlussvorlage (PDF lokal)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Beschlussvorlage_DS_75-2025.pdf)
+- [Beschlussvorlage (PDF über OParl-API)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZebtrBHXFbZ5mvNy6lxAPVA6rCFUv3QRDK9i_BJ_ZoGo/Beschlussvorlage_DS_75-2025.pdf)
 
 **Anlagen:**
-1. § 121a NKomVG: [Anlage 1 v1 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_1.pdf) | [v2 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_1.pdf)
-2. Sicherungsmittel: [Anlage 2 v1 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_2.pdf) | [v2 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_2.pdf)
-3. Gesellschaftsvertrag: [Anlage 3 v1 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_3.pdf) | [v2 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025_v2/Anlage_3.pdf)
+
+1. § 121a NKomVG: [Anlage 1 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_1.pdf)
+2. Sicherungsmittel: [Anlage 2 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_2.pdf)
+3. Gesellschaftsvertrag: [Anlage 3 (PDF)](/assets/nordstemmen/fernwaerme-adensen/DS_75_2025/Anlage_3.pdf)
 
 **Federführung:** Innere Dienste und Finanzen
 
@@ -136,20 +155,24 @@ Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 Die Vorlage durchlief mehrere Gremien:
 
 #### 1. Fachausschuss Finanzen, Wirtschaftsförderung, Marketing und Feuerschutz
+
 - **Datum:** 09.09.2025, 18:30 Uhr
 - **Ergebnis:** Einstimmig
 - **Tagesordnungspunkt:** Nr. 11
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5595
 
 #### 2. Rat der Gemeinde (erste Lesung)
+
 - **Datum:** 16.09.2025, 18:30 Uhr
 - **Tagesordnungspunkt:** Nr. 10
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5592
 
 #### 3. Verwaltungsausschuss
+
 - **Datum:** 11.09.2025, 17:30 Uhr (laut Web-Ansicht)
 
 #### 4. Rat der Gemeinde (zweite Lesung - anstehend)
+
 - **Datum:** 14.10.2025, 18:30 Uhr
 - **Status:** Noch zu beraten (Stand: 13.10.2025)
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5823
@@ -161,6 +184,7 @@ Die Vorlage durchlief mehrere Gremien:
 Die Gemeinde Nordstemmen beschäftigt sich seit Frühjahr 2025 mit dem Thema Wärmeversorgung:
 
 **DS 12/2025: "Sachstand zur Kommunalen Wärmeplanung"**
+
 - **Datum:** 25.03.2025
 - **Art:** Mitteilungsvorlage (Information)
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5643
@@ -170,6 +194,7 @@ Diese Vorlage informierte über den Stand der kommunalen Wärmeplanung und bilde
 ### Weiterer relevanter Vorgang
 
 **DS 53/2025: "Abschluss eines Gestattungsvertrages über die Verlegung und den Betrieb von Wärmeleitungen"**
+
 - **Datum:** 24.06.2025
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5706
 
@@ -200,6 +225,7 @@ Die geplante GmbH für Wärmeversorgung wird das Fernwärmenetz in Adensen und H
 Die OParl-API liefert keine Informationen über `originatorPerson` oder `originatorOrganization`. Es handelt sich um eine **Beschlussvorlage der Verwaltung**, nicht um einen Antrag einer Fraktion oder eines Ortsrats.
 
 Dies bedeutet: Die Gemeindeverwaltung selbst hat diese Vorlage erarbeitet, vermutlich basierend auf:
+
 - Der kommunalen Wärmeplanung (DS 12/2025)
 - Politischen Vorgaben durch Bundes- und Landesgesetze zur Wärmewende
 - Der Initiative der Energiegenossenschaft Adensen-Hallerburg e.G. (Juli 2025)
