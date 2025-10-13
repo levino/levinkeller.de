@@ -20,7 +20,7 @@ Wie ich Ihnen bereits mitgeteilt habe, [interessiert](https://www.levinkeller.de
 
 Die Gemeinde will sich mit erheblichen juristisch-gymnastischen Verrenkungen (um das Gesetz überhaupt einhalten zu können) an dem geplanten Fernwärmenetz in Adensen beteiligen. Dafür sind 8,9 Millionen Euro Invesitionsumme geplant, um 263 Abnehmer zu versorgen. Das sind pro Abnahmestelle 33.304 Euro. Ich gehe davon aus, dass dies noch nicht die Betriebskosten beinhaltet. Dazu meine Fragen:
 
-- Wie kommen Sie darauf, dass diese Art der Versorgung für die Leute wirtschaflich sein könnte, wenn diese bereits funktionierende und womöglich abgeschriebene Heizungen besitzen, oder einfach eine Wärmepumpe für deutlich weniger Investitionssumme errichten können?
+- Wie kommen Sie darauf, dass diese Art der Versorgung für die Leute wirtschaftlich sein könnte, wenn diese bereits funktionierende und womöglich abgeschriebene Heizungen besitzen, oder einfach eine Wärmepumpe für deutlich weniger Investitionssumme errichten können?
 - Wie sollen die Investitionskosten an die Betreibergesellschaft zurückgezahlt werden? Welche Wärmeabnahmemengen kalkulieren Sie und was soll die Kilowattstunde kosten? Welchen Anteil hat in diesem Preis die Rückzahlung der Investition und welchen die tatsächlichen Kosten für die Wärme aus der Biogasanlage?
 
 ## Vertragslaufzeit und Risiken
