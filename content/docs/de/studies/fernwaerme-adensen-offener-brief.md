@@ -4,13 +4,13 @@
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
   <div>
     <h3 class="font-bold">Offener Brief</h3>
-    <p>Dies ist ein offener Brief, der am 13.10.2025 an den Ersten Gemeinderat Tischbier und die Ratsmitglieder der Gemeinde Nordstemmen versendet wurde.</p>
+    <p>Dies ist ein offener Brief, der am 13.10.2025 an den Ersten Gemeinderat Niemann und die Ratsmitglieder der Gemeinde Nordstemmen versendet wurde.</p>
   </div>
 </div>
 
-## An den Ersten Gemeinderat Herrn Tischbier und die Mitglieder des Rates der Gemeinde Nordstemmen
+## An den Ersten Gemeinderat Herrn Niemann und die Mitglieder des Rates der Gemeinde Nordstemmen
 
-Sehr geehrter Herr Tischbier,
+Sehr geehrter Herr Niemann,
 
 ich schreibe Ihnen diese E-Mail als offenen Brief und setze alle Ratsleute in CC, deren E-Mail-Adressen mir bekannt sind. Ich rufe die Ratsleute auf, die E-Mail an ihre Kolleg:innen weiterzuleiten, deren E-Mail-Adressen ich nicht besitze. Frau Dombrowski kriegt natürlich auch eine Kopie.
 
@@ -51,7 +51,7 @@ Ich kann wie oben gesagt nicht im geringsten nachvollziehen, wieso diese Idee ü
 
 Ich hoffe, dass jetzt zumindest der Rat diesen Phantasien den Stecker zieht und die Gemeinde vor dem Risiko bewahrt, 4 Mio Euro in die Tonne zu werfen. Sollte er zustimmen, bin ich mir sicher, dass die Kommunalaufsicht bei genauer Prüfung ablehnen wird, ich weiß auch schon warum, aber diese Diskussionen brauchen wir jetzt hoffentlich noch nicht zu führen.
 
-An die Ratsleute gerichtet: Bitte bedenken Sie: Die Adenser werden bei einer Errichtung des Wärmenetzes wahrscheinlich kein Geld sparen (wenn Sie das anders sehen, Herr Tischbier, nennen Sie mir doch bitte mal die konkreten Zahlen, mit denen Sie da pro kWh rechnen und was Wärmepumpe oder Gasheizung (die ja schon da sind!) Ihrer Meinung nach im Vergleich kosten würden), aber die Gemeinde vielleicht (meiner Meinung nach **wahrscheinlich**) 4 Mio Euro in den Sand setzen. Macht das dann für Sie Sinn? Soll man sich später an Sie erinnern, dass Sie an einem derartigen Skandal beteiligt waren?
+An die Ratsleute gerichtet: Bitte bedenken Sie: Die Adenser werden bei einer Errichtung des Wärmenetzes wahrscheinlich kein Geld sparen (wenn Sie das anders sehen, Herr Niemann, nennen Sie mir doch bitte mal die konkreten Zahlen, mit denen Sie da pro kWh rechnen und was Wärmepumpe oder Gasheizung (die ja schon da sind!) Ihrer Meinung nach im Vergleich kosten würden), aber die Gemeinde vielleicht (meiner Meinung nach **wahrscheinlich**) 4 Mio Euro in den Sand setzen. Macht das dann für Sie Sinn? Soll man sich später an Sie erinnern, dass Sie an einem derartigen Skandal beteiligt waren?
 
 ## Schlussbemerkung
 
