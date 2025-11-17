@@ -1,20 +1,20 @@
 name:
   latin: Agastache rugosa 'Blau'
-  german: 'Blaue Bergminze'
+  german: "Blaue Bergminze"
 height: 80
 soil:
-  - 'normal'
+  - "normal"
 sunExposure:
-  - 'full'
-hardiness: 'hardy'
+  - "full"
+hardiness: "hardy"
 spread: 40
 flowerColor:
-  - 'blue'
-foliageColor: 'green'
-lifecycle: 'perennial'
+  - "blue"
+foliageColor: "green"
+lifecycle: "perennial"
 floweringSeason:
-  - 'july'
-  - 'august'
+  - "july"
+  - "august"
 inStock: true
 sowingScheme: D
 supplier: saatgut-vielfalt

@@ -1,10 +1,49 @@
 ---
-title: Software-Entwicklung
-locale: 'de'
-layout: '@levino/shipyard-base/layouts/Splash.astro'
+title: Levin Keller - Projekte & Portfolio
+locale: "de"
+layout: "@levino/shipyard-base/layouts/Splash.astro"
 ---
 
-# Freelance Software-Entwicklung
+import { PortfolioCard } from "../../components/PortfolioCard.tsx";
+
+# Projekte & Engagement
+
+Hier findest du eine Auswahl meiner Projekte - beruflich wie privat. Bei mir verschwimmen die Grenzen zwischen Arbeit und Leidenschaft oft. Ich entwickle Software, engagiere mich in der Gemeinde und setze Projekte um, die mir am Herzen liegen.
+
+<div className="container mx-auto px-4 py-8">
+
+<PortfolioCard
+  title="Go-AG an der Freien Waldorfschule"
+  description="Ein kostenloses Kursangebot für Schüler, Lehrer und Eltern zum Erlernen des strategischen Brettspiels Go. Der Großteil der AG-Zeit ist zum Spielen mit anderen Kindern und Teilnehmer:innen reserviert. Die Website bietet praktische Informationen zu Terminen, Kosten, Spielmaterial und Lernzielen."
+  motivation="[Deine Motivation hier einfügen - z.B. Förderung strategischen Denkens bei Kindern, Gemeinschaftsbildung, etc.]"
+  href="https://go-ag.levinkeller.de/"
+  imageUrl="/images/projects/go-ag-preview.png"
+  alignRight={false}
+/>
+
+<PortfolioCard
+  title="Nordstemmen KI-Connector"
+  description="Ein Tool, das KI-Assistenten wie Claude mit dem Ratsinformationssystem der Gemeinde Nordstemmen verbindet. Nutzer können natürlichsprachige Fragen zu öffentlichen Dokumenten wie Ratssitzungsprotokollen, Beschlüssen und Haushaltsplänen stellen. Das System nutzt semantische Suche über 18 Jahre Gemeindedokumente."
+  motivation="[Deine Motivation hier einfügen - z.B. Demokratie durch besseren Informationszugang stärken, Bürgerbeteiligung fördern, etc.]"
+  href="https://nordstemmen-mcp.levinkeller.de/"
+  imageUrl="/images/projects/nordstemmen-mcp-preview.png"
+  alignRight={true}
+/>
+
+<PortfolioCard
+  title="Digitales Dorfarchiv Rössing"
+  description="Ein digitales Archiv für die Geschichte des Dorfes Rössing in der Gemeinde Nordstemmen (Landkreis Hildesheim). Das Projekt bewahrt historische Dokumente, Fotografien und persönliche Erinnerungen und macht diese der Öffentlichkeit zugänglich. Besucher können stöbern, Berichte lesen und eigene Beiträge zur Dorfgeschichte einreichen."
+  motivation="[Deine Motivation hier einfügen - z.B. Bewahrung lokaler Geschichte, Gemeinschaftsidentität stärken, etc.]"
+  href="https://archiv.rössing.de/"
+  imageUrl="/images/projects/roessing-archiv-preview.png"
+  alignRight={false}
+/>
+
+</div>
+
+---
+
+## Freelance Software-Entwicklung
 
 Ich bin freier Software-Entwickler. Bitte sprechen Sie mich an, wenn Sie
 Unterstützung in Ihrem Projekt benötigen.

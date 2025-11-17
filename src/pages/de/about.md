@@ -1,6 +1,6 @@
 ---
 title: Über meine Homepage
-layout: '@levino/shipyard-base/layouts/Splash.astro'
+layout: "@levino/shipyard-base/layouts/Splash.astro"
 ---
 
 # Über levinkeller.de
