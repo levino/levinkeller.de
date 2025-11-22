@@ -1,5 +1,5 @@
 ---
-title: 'Lernen & Bildung'
+title: "Lernen & Bildung"
 ---
 
 Hier findest Du Ressourcen zum Lernen und zur Bildung, besonders auch für Kinder

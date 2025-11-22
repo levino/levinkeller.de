@@ -1,5 +1,5 @@
 ---
-title: 'Finanzen'
+title: "Finanzen"
 sidebar:
   render: false
 ---
