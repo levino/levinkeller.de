@@ -103,8 +103,8 @@ export default defineConfig({
         },
       ],
     }),
-    shipyardDocs(['docs']),
-    shipyardBlog(['blog']),
+    shipyardDocs(),
+    shipyardBlog(),
   ],
 
   adapter: vercel({
