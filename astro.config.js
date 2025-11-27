@@ -103,8 +103,18 @@ export default defineConfig({
         },
       ],
     }),
-    shipyardDocs(),
-    shipyardBlog(),
+    shipyardDocs({
+      editUrl:
+        'https://github.com/levino/levinkeller.de/edit/main/content/docs',
+      showLastUpdateTime: true,
+      showLastUpdateAuthor: true,
+    }),
+    shipyardBlog({
+      editUrl:
+        'https://github.com/levino/levinkeller.de/edit/main/content/blog',
+      showLastUpdateTime: true,
+      showLastUpdateAuthor: true,
+    }),
   ],
 
   adapter: vercel({
