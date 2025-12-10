@@ -39,7 +39,7 @@ Wahnsinnig interessant. Ob alles heute immer noch in der Wissenschaft so verstan
 
 ## Intelligence (Stuart Ritchie)
 
-Das Thema Intelligenz und IQ sind leider effektiv [third rails](<https://en.wikipedia.org/wiki/Third_rail_(politics)>). Wer sich aber damit auseinandersetzt wird die Augen kaum vor den wissenschaftlich belegten Auswirkungen und Hintergründen nicht verschließen können. Eine sehr differenzierte und knappe Zusammenfassung der aktuellen wissenschaftlichen(!) Debatte, verschafft dieses Buch.  
+Das Thema Intelligenz und IQ sind leider effektiv [third rails](https://en.wikipedia.org/wiki/Third_rail_(politics)). Wer sich aber damit auseinandersetzt wird die Augen kaum vor den wissenschaftlich belegten Auswirkungen und Hintergründen nicht verschließen können. Eine sehr differenzierte und knappe Zusammenfassung der aktuellen wissenschaftlichen(!) Debatte, verschafft dieses Buch.  
 [978-1444791877](https://www.goodreads.com/book/show/25356335-intelligence)
 
 ## The Road to Unfreedom (Timothy Snyder)

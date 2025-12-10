@@ -1,5 +1,5 @@
 ---
 sidebar:
   render: false
-title: "Nordstemmen"
+title: 'Nordstemmen'
 ---

@@ -14,7 +14,7 @@ Sehr geehrter Herr Niemann,
 
 ich schreibe Ihnen diese E-Mail als offenen Brief und setze alle Ratsleute in CC, deren E-Mail-Adressen mir bekannt sind. Ich rufe die Ratsleute auf, die E-Mail an ihre Kolleg:innen weiterzuleiten, deren E-Mail-Adressen ich nicht besitze. Frau Dombrowski kriegt natürlich auch eine Kopie.
 
-Wie ich Ihnen bereits mitgeteilt habe, [interessiert](https://www.levinkeller.de/de/docs/studies/fernwaerme-adensen) mich die angedachte "Investition" in das Wärmenetz in Adensen durch die Gemeinde sehr. Ich habe nunmehr ihre aktualisierte Version der Drucksache 75/2025 studiert. Ich schreibe Ihnen im Folgenden meine Gedanken, unterbrochen von Fragen, zu den Inhalten. Mir ist klar, dass Sie meine Meinungen und Gedanken nicht teilen (sonst wären Sie nicht zu Ihrer befürwortenden Einschätzung gekommen) und erwarte keine Zustimmung. Ich würde mich allerdings freuen, wenn Sie sich so vorbereiten, dass Sie die Fragen morgen in der Einwohner\*innen-Fragestunde beantworten könnten (ob ich die Fragen stelle, überlege ich mir noch, es würde sicherlich ziemlich viel Zeit kosten, aber womöglich der Gemeinde viel Geld sparen).
+Wie ich Ihnen bereits mitgeteilt habe, [interessiert](https://www.levinkeller.de/de/docs/studies/fernwaerme-adensen) mich die angedachte "Investition" in das Wärmenetz in Adensen durch die Gemeinde sehr. Ich habe nunmehr ihre aktualisierte Version der Drucksache 75/2025 studiert. Ich schreibe Ihnen im Folgenden meine Gedanken, unterbrochen von Fragen, zu den Inhalten. Mir ist klar, dass Sie meine Meinungen und Gedanken nicht teilen (sonst wären Sie nicht zu Ihrer befürwortenden Einschätzung gekommen) und erwarte keine Zustimmung. Ich würde mich allerdings freuen, wenn Sie sich so vorbereiten, dass Sie die Fragen morgen in der Einwohner*innen-Fragestunde beantworten könnten (ob ich die Fragen stelle, überlege ich mir noch, es würde sicherlich ziemlich viel Zeit kosten, aber womöglich der Gemeinde viel Geld sparen).
 
 ## Wirtschaftlichkeit des Projekts
 
@@ -62,5 +62,5 @@ Ihr Levin Keller
 
 ---
 
-_Versendet am: 13.10.2025_
-_Zur Case Study: [Fernwärmenetz Adensen - Recherche eines kommunalen Verwaltungsvorgangs](/de/docs/studies/fernwaerme-adensen)_
+*Versendet am: 13.10.2025*
+*Zur Case Study: [Fernwärmenetz Adensen - Recherche eines kommunalen Verwaltungsvorgangs](/de/docs/studies/fernwaerme-adensen)*

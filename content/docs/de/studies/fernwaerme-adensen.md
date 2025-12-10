@@ -25,7 +25,6 @@ Am 4. September 2025 wurde die Vorlage zur Gründung einer GmbH für Wärmeverso
 **Die vorgeschlagene Konstruktion:** Die Gemeinde Nordstemmen und die EGAH gründen gemeinsam eine GmbH, an der die Gemeinde die Mehrheit hält (zwingend nach § 121a Abs. 2 NKomVG). Die Gemeinde nimmt einen sogenannten Konzernkredit über die Förderbank des Landes Niedersachsen (NBank) auf und reicht diesen an die GmbH weiter. Im zweiten Darlehensvertrag zwischen Gemeinde und GmbH wird ein Zinszuschlag vereinbart, sodass die Gemeinde "einen positiven Ertrag" erzielt. Die Gemeinde trägt jedoch das volle Ausfallrisiko.
 
 **Finanzrahmen:**
-
 - Gesamtinvestition für 263 geplante Wärmelieferadressen: 8,759 Millionen Euro
 - Eigenmittel der Genossenschaftsmitglieder: 1,565 Millionen Euro
 - Fördermittel des BAFA (Bewilligung liegt vor): 3,520 Millionen Euro
@@ -35,7 +34,6 @@ Am 4. September 2025 wurde die Vorlage zur Gründung einer GmbH für Wärmeverso
 **Rechtliche Absicherung:** Eine Rechtsberatung vom 28. August 2025 empfiehlt eine umfangreiche Absicherung in "banküblichem Umfang". Dazu gehören unter anderem: erstrangige Grundschuld auf dem Grundstück der Heizzentrale (ca. 800.000 Euro Investition), Sicherung der Nutzungsrechte am Wärmenetz bei Ausfall der EGAH, Abtretung aller Wärmelieferverträge, Globalabtretung aller Forderungen aus dem Betrieb, und weitere Sicherungsmittel. Die Verwaltung stellt fest: "Das Kreditausfallrisiko der Gemeinde wird dabei nicht beseitigt, da nicht ausgeschlossen werden kann, dass sich später keine Nachnutzung für das Wärmenetz findet."
 
 **Beratungsfolge:**
-
 - 09.09.2025: Fachausschuss Finanzen, Wirtschaftsförderung, Marketing und Feuerschutz - einstimmige Empfehlung
 - 11.09.2025: Verwaltungsausschuss - Beratung und Empfehlung
 - 16.09.2025: Rat - erste Lesung
@@ -59,7 +57,6 @@ Diese Case Study dokumentiert die Recherche dieses kommunalen Verwaltungsvorgang
 Die Gemeinde Nordstemmen stellt ihre Ratsinformationen über eine standardisierte **OParl-API** zur Verfügung. OParl ist ein offener Standard für parlamentarische Informationssysteme in Deutschland, der maschinenlesbare Schnittstellen (JSON-LD) bereitstellt.
 
 **Einstiegspunkt der API:**
-
 ```
 https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/system
 ```
@@ -69,13 +66,11 @@ https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/system
 #### 1. API-Struktur verstehen
 
 Über den System-Endpunkt erhält man Zugang zur Körperschaft (Body):
-
 ```
 https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body
 ```
 
 Von dort aus verzweigt die API zu verschiedenen Ressourcen:
-
 - **Meetings** (Sitzungen): `/body/1/meeting`
 - **Papers** (Vorlagen/Anträge): `/body/1/paper`
 - **AgendaItems** (Tagesordnungspunkte): `/body/1/agendaitem`
@@ -86,7 +81,6 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 **Herausforderung:** Die API liefert Meetings chronologisch sortiert, älteste zuerst. Bei 44 Seiten Meetings musste ich zur letzten Seite navigieren.
 
 **Lösung:** Über die Pagination-Informationen im JSON:
-
 ```json
 "links": {
   "first": "...?page=1",
@@ -95,7 +89,6 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 ```
 
 **Gefundene Sitzung auf Seite 42:**
-
 - **Name:** Rat (21. Sitzung)
 - **Datum:** 14.10.2025, 18:30 Uhr
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5592
@@ -106,7 +99,6 @@ Von dort aus verzweigt die API zu verschiedenen Ressourcen:
 Auf der Tagesordnung der Ratssitzung am 14.10.2025:
 
 **TOP 5: "Vorbereitung der Gründung einer Gesellschaft mit beschränkter Haftung (GmbH) -Wärmeversorgung-"**
-
 - **Vorlagennummer:** DS 75/2025
 - **Link zum Vorgang:** https://nordstemmen.ratsinfomanagement.net/vorgang/?__=UGhVM0hpd2NXNFdFcExjZcny9QaRq-M0OXfY2-h2D0o
 
@@ -115,7 +107,6 @@ Auf der Tagesordnung der Ratssitzung am 14.10.2025:
 Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 
 **Paper-Details über OParl:**
-
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5742
 - **Referenz:** DS 75/2025
 - **Titel:** "Vorbereitung der Gründung einer Gesellschaft mit beschränkter Haftung (GmbH) -Wärmeversorgung-"
@@ -126,11 +117,9 @@ Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 ### Die Vorlage DS 75/2025
 
 **Hauptdokument:**
-
 - [Beschlussvorlage (PDF)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZebtrBHXFbZ5mvNy6lxAPVA6rCFUv3QRDK9i_BJ_ZoGo/Beschlussvorlage_DS_75-2025.pdf)
 
 **Anlagen:**
-
 1. [Anlage 1 (PDF)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZU7BqC2bCAm7083aLM07EWcjmQUPIxqcCL0dMrdNWtGR/Anlage_1.pdf)
 2. [Anlage 2 (PDF)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZdO0z2R4pF3V69CCHYAeNIvP8_7AIyCc0krQa_UhKtco/Anlage_2.pdf)
 3. [Anlage 3 (PDF)](https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/files/UGhVM0hpd2NXNFdFcExjZbSE4kKzZzNoDQ4upa_V2nsaznsCG35tXidqxi5Jp4JF/Anlage_3.pdf)
@@ -142,24 +131,20 @@ Die Paper-API hat 62 Seiten. Auch hier: neueste Papers auf der letzten Seite.
 Die Vorlage durchlief mehrere Gremien:
 
 #### 1. Fachausschuss Finanzen, Wirtschaftsförderung, Marketing und Feuerschutz
-
 - **Datum:** 09.09.2025, 18:30 Uhr
 - **Ergebnis:** Einstimmig
 - **Tagesordnungspunkt:** Nr. 11
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5595
 
 #### 2. Rat der Gemeinde (erste Lesung)
-
 - **Datum:** 16.09.2025, 18:30 Uhr
 - **Tagesordnungspunkt:** Nr. 10
 - **Meeting-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/meeting/5592
 
 #### 3. Verwaltungsausschuss
-
 - **Datum:** 11.09.2025, 17:30 Uhr (laut Web-Ansicht)
 
 #### 4. Rat der Gemeinde (zweite Lesung - anstehend)
-
 - **Datum:** 14.10.2025, 18:30 Uhr
 - **Status:** Noch zu beraten
 
@@ -170,7 +155,6 @@ Die Vorlage durchlief mehrere Gremien:
 Die Gemeinde Nordstemmen beschäftigt sich seit Frühjahr 2025 mit dem Thema Wärmeversorgung:
 
 **DS 12/2025: "Sachstand zur Kommunalen Wärmeplanung"**
-
 - **Datum:** 25.03.2025
 - **Art:** Mitteilungsvorlage (Information)
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5643
@@ -180,7 +164,6 @@ Diese Vorlage informierte über den Stand der kommunalen Wärmeplanung und bilde
 ### Weiterer relevanter Vorgang
 
 **DS 53/2025: "Abschluss eines Gestattungsvertrages über die Verlegung und den Betrieb von Wärmeleitungen"**
-
 - **Datum:** 24.06.2025
 - **OParl-ID:** https://nordstemmen.ratsinfomanagement.net/webservice/oparl/v1.1/body/1/paper/5706
 
@@ -211,7 +194,6 @@ Die geplante GmbH für Wärmeversorgung könnte ein Fernwärmenetz in Adensen be
 Die OParl-API liefert keine Informationen über `originatorPerson` oder `originatorOrganization`. Es handelt sich um eine **Beschlussvorlage der Verwaltung**, nicht um einen Antrag einer Fraktion oder eines Ortsrats.
 
 Dies bedeutet: Die Gemeindeverwaltung selbst hat diese Vorlage erarbeitet, vermutlich basierend auf:
-
 - Der kommunalen Wärmeplanung (DS 12/2025)
 - Politischen Vorgaben durch Bundes- und Landesgesetze zur Wärmewende
 - Lokalen Bedarfen in einzelnen Ortschaften (möglicherweise Adensen)
@@ -255,4 +237,4 @@ Alle Informationen wurden ausschließlich über öffentlich zugängliche Daten r
 
 ---
 
-_Diese Case Study wurde am 10.10.2025 erstellt und dokumentiert den Stand vor der entscheidenden Ratssitzung._
+*Diese Case Study wurde am 10.10.2025 erstellt und dokumentiert den Stand vor der entscheidenden Ratssitzung.*

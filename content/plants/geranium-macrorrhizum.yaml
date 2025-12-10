@@ -22,7 +22,7 @@ floweringSeason:
   - july
 supplier: saatgut-vielfalt
 images:
-  - src: "./images/geraniumMacrorrhizum/PXL_20240417_163850264.jpg"
+  - src: './images/geraniumMacrorrhizum/PXL_20240417_163850264.jpg'
     alt: Blüten der Sterndolde
-  - src: "./images/geraniumMacrorrhizum/PXL_20240417_163912999.jpg"
+  - src: './images/geraniumMacrorrhizum/PXL_20240417_163912999.jpg'
     alt: Blüten der Sterndolde

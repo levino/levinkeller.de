@@ -151,4 +151,5 @@ Ich hoffe, auch hierzu bald einen Artikel schreiben zu können.
     gegeben. Ich würde mich sehr über Hinweise freuen, die diese Vermutung
     bestätigen oder widerlegen.
 
-[^3]: [§15 Richtlinie zum Elektrizitätsbinnenmarkt](/assets/binnenmarkrichtlinie.pdf)
+[^3]:
+    [§15 Richtlinie zum Elektrizitätsbinnenmarkt](/assets/binnenmarkrichtlinie.pdf)

@@ -1,6 +1,6 @@
 ---
 title: Wissen
-slug: "de"
+slug: 'de'
 ---
 
 Hier findet man eine Sammlung von Dingen, die ich einmal gelernt oder
