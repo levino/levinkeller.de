@@ -64,7 +64,20 @@ export default defineConfig({
         },
         work: {
           label: 'Levin',
-          href: '/work',
+          subEntry: {
+            projects: {
+              label: 'Projekte',
+              href: '/work',
+            },
+            techStack: {
+              label: 'Tech Stack',
+              href: '/levin/tech-stack',
+            },
+            mindset: {
+              label: 'Arbeitsweise',
+              href: '/levin/mindset',
+            },
+          },
         },
         garden: {
           label: 'Gartenplaner',
