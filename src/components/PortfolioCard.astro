@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string
+  href: string
+  imageUrl: string
+  reverse?: boolean
+}
+
+const { title, href, imageUrl, reverse = false } = Astro.props
+const hasMotivation = Astro.slots.has('motivation')
+---
+
+<div
+  class:list={[
+    "card not-prose mb-8 bg-base-200 shadow-xl lg:card-side lg:mb-12",
+    reverse && "lg:flex-row-reverse",
+  ]}
+>
+  <figure class="p-4 lg:w-1/2">
+    <a href={href} target="_blank" rel="noopener noreferrer" class="w-full">
+      <div class="mockup-browser border-base-300 border bg-base-300">
+        <div class="mockup-browser-toolbar">
+          <div class="input">{href}</div>
+        </div>
+        <img src={imageUrl} alt={`Screenshot von ${title}`} class="w-full" />
+      </div>
+    </a>
+  </figure>
+  <div class="card-body lg:w-1/2">
+    <h2 class="card-title text-2xl">{title}</h2>
+    <div class="prose">
+      <slot name="description" />
+    </div>
+    {
+      hasMotivation && (
+        <div class="prose mt-2 border-l-4 border-primary pl-4 prose-p:first:mt-0">
+          <slot name="motivation" />
+        </div>
+      )
+    }
+    <div class="card-actions justify-end">
+      <a
+        class="btn btn-primary"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Projekt besuchen →
+      </a>
+    </div>
+  </div>
+</div>

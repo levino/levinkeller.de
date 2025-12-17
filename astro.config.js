@@ -63,7 +63,7 @@ export default defineConfig({
           href: '/blog',
         },
         work: {
-          label: 'Work',
+          label: 'Levin',
           href: '/work',
         },
         garden: {

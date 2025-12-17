@@ -32,75 +32,64 @@ npm test        # Run tests with Vitest
 
 ## Code Quality & Formatting
 
-This repository uses automated code formatting and linting:
+This repository uses Biome for formatting and linting:
 
-### Formatting
+### Formatting & Linting
 
-- **Prettier** is configured with:
-  - Trailing commas: ES5 style
-  - No semicolons
+- **Biome** handles both formatting and linting
+- Config file: `biome.json`
+- Settings:
+  - Indent: 2 spaces
   - Single quotes
-  - Config file: `.prettierrc.yaml`
-
-### Linting
-
-- **ESLint** is configured for TypeScript and Astro
-- Config file: `eslint.config.js`
-- Ignores: `.astro`, `src/env.d.ts`, `dist/**`, `.vercel/**`
+  - No semicolons (as needed)
+  - Trailing commas: ES5 style
 
 ### Pre-commit Hooks
 
-- **lint-staged** is configured to run formatting/linting before commits
-- Managed by **Husky** for git hooks
+- **Lefthook** manages git hooks for automated checks
 
 ## Before Committing
 
-Always ensure code is properly formatted:
-
 ```bash
-# Format code
-npx prettier --write .
+# Format and lint code
+npm run format
+npm run lint:fix
 
-# Check linting
-npx eslint .
+# Or check without fixing
+npm run lint
 
 # Run type checking
 npm run build
 ```
 
-The repository has automated pre-commit hooks that will handle formatting
-automatically.
-
 ## Tech Stack
 
 - **Framework**: Astro 5.x
 - **UI**: React 18 with TypeScript
-- **Styling**: Tailwind CSS with custom components
+- **Styling**: Tailwind CSS with DaisyUI components
 - **Build**: Astro with Vercel deployment
 - **Testing**: Vitest
 - **Content**: MDX for content authoring
 
 ## Key Dependencies
 
-- Astro ecosystem (@astrojs/\*)
+- Astro ecosystem (@astrojs/*)
 - React and React DOM
-- Tailwind CSS and related plugins
-- TypeScript and ESLint
-- Various UI libraries (Radix UI, Heroicons, etc.)
+- Tailwind CSS with DaisyUI
+- TypeScript
+- Various UI libraries (Radix UI, Heroicons, Tabler Icons)
 
 ## Guidelines for Claude Code
 
-1. **Always format code** before committing using the configured Prettier
-   settings
+1. **Format code** with `npm run format` before committing
 2. **Run type checks** with `npm run build` to ensure TypeScript compliance
 3. **Follow existing code patterns** in the repository
-4. **Use the configured linting rules** - don't override ESLint configuration
-5. **Test changes** when possible using `npm test`
-6. **Respect the Astro framework patterns** for components and pages
+4. **Test changes** when possible using `npm test`
+5. **Respect the Astro framework patterns** for components and pages
 
 ## File Structure Notes
 
-- Source code is typically in `src/`
+- Source code is in `src/`
 - Astro components use `.astro` extension
 - React components use `.tsx` extension
 - Configuration files are in the root directory
