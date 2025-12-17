@@ -23,7 +23,10 @@ const projects = [
   },
   { url: 'https://www.xn--rssing-wxa.de/', name: 'roessing-preview' },
   { url: 'https://archiv.xn--rssing-wxa.de/', name: 'roessing-archiv-preview' },
-  { url: 'https://haushalt-nordstemmen.pages.dev/', name: 'haushalt-nordstemmen-preview' },
+  {
+    url: 'https://haushalt-nordstemmen.pages.dev/',
+    name: 'haushalt-nordstemmen-preview',
+  },
 ]
 
 const OUTPUT_DIR = './public/images/projects'
