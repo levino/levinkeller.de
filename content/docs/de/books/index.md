@@ -4,7 +4,7 @@ title: Buchempfehlungen
 
 # Bücher
 
-Ich halte Bücher für deutlich lesenswerter, als Blogposts und ähnliches (zum Beispiel meine Homepage 😃). Das kommt daher, dass ich vermute, dass die Autor:innen und Lektor:innen sich sehr viel Zeit genommen haben, ein Thema sehr genau anzuschauen und viel Arbeit investiert haben. Außerdem wurde geprüft, dass das Thema eine hohe Relevanz hat, sonst hätte niemand Geld in die Produktion investiert. In diesem Sinne findet man hier eine Liste mit Büchern, die ich gelesen habe(!) und für äußerst empfehlenswert halte. Sortiert nach Nachnamen der Autor:innen (also nicht nach Wertigkeit!).
+Ich halte Bücher für deutlich lesenswerter als Blogposts und ähnliches (zum Beispiel meine Homepage 😃). Das kommt daher, dass ich vermute, dass die Autor:innen und Lektor:innen sich sehr viel Zeit genommen haben, ein Thema sehr genau anzuschauen und viel Arbeit investiert haben. Außerdem wurde geprüft, dass das Thema eine hohe Relevanz hat, sonst hätte niemand Geld in die Produktion investiert. In diesem Sinne findet man hier eine Liste mit Büchern, die ich gelesen habe(!) und für äußerst empfehlenswert halte. Sortiert nach Nachnamen der Autor:innen (also nicht nach Wertigkeit!).
 
 ## Regenesis (George Monbiot)
 
@@ -19,7 +19,7 @@ Der gute alte Murray. Sicherlich gehen jetzt bei vielen die Alarmglocken an, den
 
 ## The Madness of Crowds (Douglas Murray)
 
-Eine brutale Aufzählung der idiotischen Dinge, die sich in unserer Zeit ereignen. Teilweise etwas einseitig, aber sehr wertvoll, vor allem, wenn man bedenkt, dass die andere Seite der Debatte, ausschließlich einseitig argumentiert.  
+Eine brutale Aufzählung der idiotischen Dinge, die sich in unserer Zeit ereignen. Teilweise etwas einseitig, aber sehr wertvoll, vor allem, wenn man bedenkt, dass die andere Seite der Debatte ausschließlich einseitig argumentiert.  
 [978-1635579987](https://www.goodreads.com/book/show/44667183-the-madness-of-crowds)
 
 ## The War on the West (Douglas Murray)
@@ -34,12 +34,12 @@ Für mich ein Augen öffnendes Buch. Ich empfehle es allen, denen die "Klimakris
 
 ## The Red Queen (Matt Ridley)
 
-Wahnsinnig interessant. Ob alles heute immer noch in der Wissenschaft so verstanden und betrachtet wird, weiß ich nicht genau, aber die Aspekte, die hier aufkommen sind äußerst interessant und ich halte sie auch für sehr relevant für unser zwischenmenschliches Zusammenleben. Auch ganz konkret für die eigene Paarbeziehung, Erziehung er eignen Kinder und den Umgang mit Freund:innen und Kolleg:innen.  
+Wahnsinnig interessant. Ob alles heute immer noch in der Wissenschaft so verstanden und betrachtet wird, weiß ich nicht genau, aber die Aspekte, die hier aufkommen, sind äußerst interessant und ich halte sie auch für sehr relevant für unser zwischenmenschliches Zusammenleben. Auch ganz konkret für die eigene Paarbeziehung, Erziehung der eigenen Kinder und den Umgang mit Freund:innen und Kolleg:innen.  
 [978-0060556570](https://www.goodreads.com/book/show/16176.The_Red_Queen)
 
 ## Intelligence (Stuart Ritchie)
 
-Das Thema Intelligenz und IQ sind leider effektiv [third rails](https://en.wikipedia.org/wiki/Third_rail_(politics)). Wer sich aber damit auseinandersetzt wird die Augen kaum vor den wissenschaftlich belegten Auswirkungen und Hintergründen nicht verschließen können. Eine sehr differenzierte und knappe Zusammenfassung der aktuellen wissenschaftlichen(!) Debatte, verschafft dieses Buch.  
+Das Thema Intelligenz und IQ sind leider effektiv [third rails](https://en.wikipedia.org/wiki/Third_rail_(politics)). Wer sich aber damit auseinandersetzt, wird die Augen vor den wissenschaftlich belegten Auswirkungen und Hintergründen kaum verschließen können. Eine sehr differenzierte und knappe Zusammenfassung der aktuellen wissenschaftlichen(!) Debatte verschafft dieses Buch.  
 [978-1444791877](https://www.goodreads.com/book/show/25356335-intelligence)
 
 ## The Road to Unfreedom (Timothy Snyder)
