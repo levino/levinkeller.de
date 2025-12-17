@@ -1,0 +1,202 @@
+---
+import Layout from '@levino/shipyard-base/layouts/Page.astro'
+import PortfolioCard from '../../components/PortfolioCard.astro'
+
+const title = 'Projekte & Portfolio'
+---
+
+<Layout {title}>
+  <div class="container mx-auto px-4 py-8">
+    <div class="prose max-w-none">
+      <h2>Freelance Software-Entwicklung</h2>
+      <p>
+        Ich bin freier Software-Entwickler. Bitte sprechen Sie mich an, wenn Sie
+        Unterstützung in Ihrem Projekt benötigen.
+      </p>
+
+      <h2>Open Source</h2>
+      <p>
+        Einige meiner Open-Source-Projekte, die ich entwickelt habe und pflege.
+      </p>
+
+      <PortfolioCard
+        title="Shipyard"
+        href="https://github.com/levino/shipyard"
+        imageUrl="/images/projects/shipyard-preview.png"
+      >
+        <Fragment slot="description">
+          Ein modulares Astro-Framework zum schnellen Erstellen von Websites. Es
+          bietet fertige Layouts, Komponenten und Konfigurationen für Blogs,
+          Dokumentation und Landing Pages. Shipyard nutzt DaisyUI für
+          konsistentes Styling und unterstützt Mehrsprachigkeit out-of-the-box.
+        </Fragment>
+        <Fragment slot="motivation">
+          <p>
+            Ich habe Shipyard entwickelt, um meine eigenen Webprojekte schneller
+            umsetzen zu können. Statt bei jedem Projekt von vorne anzufangen,
+            kann ich jetzt auf bewährte Komponenten zurückgreifen. Das Framework
+            ist Open Source und wird auch von dieser Website verwendet.
+          </p>
+          <p>
+            Das Projekt ist auch ein Test für mich, ob ich es mit Hilfe von KI
+            schaffe, es mit etablierten Frameworks wie Astro Starlight oder
+            Docusaurus aufzunehmen, die von großen Teams mit gut bezahlten
+            Entwickler:innen ständig weiterentwickelt werden. Bislang sieht es
+            ganz gut aus.
+          </p>
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="mock-jwks"
+        href="https://github.com/levino/mock-jwks"
+        imageUrl="/images/projects/mock-jwks-preview.png"
+        reverse
+      >
+        <Fragment slot="description">
+          Eine Bibliothek zum Testen von JWT-Authentifizierung in Node.js. Sie
+          erstellt einen Mock-JWKS-Server, der JWTs signiert und validiert -
+          ideal für Integration Tests ohne echten Identity Provider.
+        </Fragment>
+        <Fragment slot="motivation">
+          Beim Testen von APIs mit JWT-Auth fehlte mir ein einfaches Tool. Diese
+          Bibliothek wird mittlerweile von vielen Entwicklern genutzt und hat
+          über 25.000 wöchentliche Downloads auf npm.
+        </Fragment>
+      </PortfolioCard>
+
+      <h2>Bildung</h2>
+      <p>
+        Kinder für Technik und strategisches Denken begeistern - das liegt mir
+        am Herzen.
+      </p>
+
+      <PortfolioCard
+        title="Coding Class"
+        href="https://coding-class.levinkeller.de/"
+        imageUrl="/images/projects/coding-class-preview.png"
+      >
+        <Fragment slot="description">
+          Ein Programmierkurs für Kinder, der echte Entwickler-Tools vermittelt.
+          Kein Scratch oder Spielzeug-Beispiele, sondern Git, GitHub, VS Code
+          und Web-Entwicklung mit React und Astro. Asynchrones Lernen im eigenen
+          Tempo mit regelmäßigen Gruppen-Sessions.
+        </Fragment>
+        <Fragment slot="motivation">
+          Ich wollte Kindern aus meinem Umfeld zeigen, wie Software-Entwicklung
+          wirklich funktioniert. Statt vereinfachter Lernumgebungen arbeiten wir
+          mit den gleichen Tools, die Profis nutzen - das motiviert und bereitet
+          auf echte Projekte vor.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="Go-AG an der Freien Waldorfschule"
+        href="https://go-ag.levinkeller.de/"
+        imageUrl="/images/projects/go-ag-preview.png"
+        reverse
+      >
+        <Fragment slot="description">
+          Das Strategiespiel Go ist leider immer noch weitgehend unbekannt. Ich
+          liebe es, auch wenn ich nicht besonders stark spiele. Um den Kindern
+          einen frühen Einstieg und damit auch eine später potentiell höhere
+          Spielstärke zu ermöglichen, unterrichte ich 2 Stunden in der Woche Go
+          an der Freien Waldorfschule Hannover Maschsee. Alle Infos findet man
+          auf einer KI-generierten Website.
+        </Fragment>
+      </PortfolioCard>
+
+      <h2>Gesellschaft & Politik</h2>
+      <p>
+        Projekte für mein Heimatdorf Rössing und die Gemeinde Nordstemmen.
+      </p>
+
+      <PortfolioCard
+        title="Rössing.de"
+        href="https://rössing.de/"
+        imageUrl="/images/projects/roessing-preview.png"
+      >
+        <Fragment slot="description">
+          Ein digitales schwarzes Brett für das Dorf Rössing. Bürger und lokale
+          Gruppen können Veranstaltungen und Informationen veröffentlichen.
+          Beiträge werden über GitHub eingereicht und mit KI-Unterstützung
+          aufbereitet.
+        </Fragment>
+        <Fragment slot="motivation">
+          Das klassische schwarze Brett am Dorfplatz erreicht immer weniger
+          Menschen. Mit dieser Plattform können Vereine und Nachbarn ihre
+          Ankündigungen digital teilen - niedrigschwellig und für alle
+          zugänglich.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="Digitales Dorfarchiv Rössing"
+        href="https://archiv.rössing.de/"
+        imageUrl="/images/projects/roessing-archiv-preview.png"
+        reverse
+      >
+        <Fragment slot="description">
+          Ein digitales Archiv für die Geschichte des Dorfes Rössing in der
+          Gemeinde Nordstemmen (Landkreis Hildesheim). Das Projekt bewahrt
+          historische Dokumente, Fotografien und persönliche Erinnerungen und
+          macht diese der Öffentlichkeit zugänglich. Besucher können stöbern,
+          Berichte lesen und eigene Beiträge zur Dorfgeschichte einreichen.
+        </Fragment>
+        <Fragment slot="motivation">
+          Mir ist es wichtig, dass Dokumente sowohl gesichert, als auch
+          zugänglich gehalten werden. Die Inhalte in diesem digitalen Archiv
+          sind unter Creative Commons lizenziert, so dass sie in Zukunft genutzt
+          und leicht gefunden werden können. Gleichzeitig ist die
+          Implementierung eine schöne Demonstration wie man billig und
+          skalierbar große Datenmengen hosten und verwalten kann. Es wird ein
+          git large file storage (LFS) Backend verwendet, welches gleichzeitig
+          als CDN für die Webseite dient. Die Kosten sind extrem gering und die
+          Verfügbarkeit, sowie Geschwindigkeit können es mit jedem
+          professionellen Setting aufnehmen.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="Nordstemmen KI-Connector"
+        href="https://nordstemmen-mcp.levinkeller.de/"
+        imageUrl="/images/projects/nordstemmen-mcp-preview.png"
+      >
+        <Fragment slot="description">
+          Ein Tool, das KI-Assistenten wie Claude mit dem Ratsinformationssystem
+          der Gemeinde Nordstemmen verbindet. Nutzer können natürlichsprachige
+          Fragen zu öffentlichen Dokumenten wie Ratssitzungsprotokollen,
+          Beschlüssen und Haushaltsplänen stellen. Das System nutzt semantische
+          Suche über 18 Jahre Gemeindedokumente.
+        </Fragment>
+        <Fragment slot="motivation">
+          Ich habe diesen KI-Connector mit Hilfe von Claude im Grunde an einem
+          Tag entwickelt. Ohne hätte es vermutlich einige Wochen gedauert. Es
+          ist insofern ein erfolgreiches Experiment in Sachen KI-gestützter
+          Software-Entwicklung. Gleichzeitig zeigt es, wie durch Transparenz und
+          die Verwendung von KI die Bürgerbeteiligung in der Kommunalpolitik
+          gestärkt werden kann. Ich hoffe, diesen Ansatz in Zukunft auf weitere
+          öffentliche Datenquellen ausweiten zu können.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="Haushalt Nordstemmen"
+        href="https://haushalt-nordstemmen.pages.dev/"
+        imageUrl="/images/projects/haushalt-nordstemmen-preview.png"
+        reverse
+      >
+        <Fragment slot="description">
+          Visualisierung des Gemeindehaushalts mit Sankey-Diagrammen. Die Seite
+          zeigt Einnahmen, Ausgaben und Finanzströme der Gemeinde Nordstemmen
+          über mehrere Jahre - komplett statisch generiert.
+        </Fragment>
+        <Fragment slot="motivation">
+          Haushaltsdaten sind öffentlich, aber schwer verständlich. Mit
+          Visualisierungen wird sichtbar, woher das Geld kommt und wohin es
+          fließt - ein Beitrag zur Transparenz in der Kommunalpolitik.
+        </Fragment>
+      </PortfolioCard>
+    </div>
+  </div>
+</Layout>
