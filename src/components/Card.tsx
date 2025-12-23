@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Card: React.FC<Props> = ({ title, href, description }) => (
-  <div className="card shadow-xl">
+  <div className="card bg-base-200 shadow-xl">
     <div className="card-body">
       <h2 className="card-title">{title}</h2>
       <p>{description}</p>
