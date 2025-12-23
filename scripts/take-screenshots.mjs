@@ -27,6 +27,10 @@ const projects = [
     url: 'https://haushalt-nordstemmen.pages.dev/',
     name: 'haushalt-nordstemmen-preview',
   },
+  {
+    url: 'https://community-scheduler-demo.levinkeller.de/',
+    name: 'community-scheduler-preview',
+  },
 ]
 
 const OUTPUT_DIR = './public/images/projects'
