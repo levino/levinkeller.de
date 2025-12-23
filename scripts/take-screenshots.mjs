@@ -28,7 +28,7 @@ const projects = [
     name: 'haushalt-nordstemmen-preview',
   },
   {
-    url: 'https://github.com/levino/community-scheduler',
+    url: 'https://community-scheduler-demo.levinkeller.de/',
     name: 'community-scheduler-preview',
   },
 ]
