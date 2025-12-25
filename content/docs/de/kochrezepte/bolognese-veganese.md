@@ -49,7 +49,11 @@ Eine vegane Bolognese-Soße auf Basis von Linsen und getrockneten Pilzen.
    ausstellen.
 
 2. In der Zwischenzeit Zwiebel, Karotte und Sellerie grob zerteilen und in der
-   Küchenmaschine mit dem Hackmesser zu kleinen Stücken verarbeiten.
+   Küchenmaschine mit dem Hackmesser zu kleinen Stücken verarbeiten. Aufpassen,
+   dass es nicht zu Brei wird – aber die Stücke sollten schon sehr klein sein.
+   _(Im Originalrezept soll man das Gemüse von Hand in 2-3 mm kleine Würfel
+   schneiden, was sehr aufwendig ist. Der Tipp mit der Küchenmaschine stammt aus
+   einem Bolognese-Rezept der Stiftung Warentest.)_
 
 3. Einen großen Topf gesalzenes Wasser für die Nudeln zum Kochen bringen.
    Olivenöl in einer großen Pfanne erhitzen, das gehackte Gemüse zusammen mit
