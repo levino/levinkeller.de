@@ -6,6 +6,11 @@ title: 'Bolognese Veganese'
 
 Eine vegane Bolognese-Soße auf Basis von Linsen und getrockneten Pilzen.
 
+Diese vegane Bolognese ist wirklich fast so gut wie das Original mit Fleisch.
+Meine Kinder lieben die Soße und ich koche sie oft und dann auch auf Vorrat
+(ungefähr die 5-fache Menge). Wir nehmen vegetarischen Parmesankäse dazu – die
+Hefeflocken sind nicht schlecht, aber das Original ist hier dann doch überlegen.
+
 ## Zutaten für drei bis vier Portionen
 
 ### Linsen-Pilz-Basis
