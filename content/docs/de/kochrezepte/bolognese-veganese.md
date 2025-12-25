@@ -82,3 +82,8 @@ Eine vegane Bolognese-Soße auf Basis von Linsen und getrockneten Pilzen.
   leicht angebraten werden.
 - Der Anisstern setzt in Kombination mit Zwiebeln einen Umami-Geschmack frei.
 - Die Zimtstangen verleihen dem Ganzen eine tiefe Süße.
+
+## Quelle
+
+Basierend auf einem Rezept aus: Marta Dymek, _International Zufällig Vegan_,
+smarticular Verlag, ISBN 978-3-946658-46-7
