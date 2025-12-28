@@ -4,6 +4,8 @@ title: 'Semmelknödel'
 
 # Semmelknödel
 
+_Rezept von meinem Vater_
+
 Klassische Semmelknödel aus angetrocknetem Baguette – die perfekte Beilage zu
 Braten, Pilzrahmsauce oder Gulasch.
 
