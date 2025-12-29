@@ -32,25 +32,22 @@ Braten, Pilzrahmsauce oder Gulasch.
 
 1. Die Baguettes in kleine Würfel schneiden und in eine große Schüssel geben.
 
-2. Die heiße Hafermilch über die Brotwürfel gießen und alles gut vermischen.
-   Etwa 15-20 Minuten ziehen lassen, bis das Brot die Flüssigkeit aufgenommen
-   hat.
+2. Die Zwiebeln fein würfeln und in einer Pfanne mit etwas Öl goldbraun
+   anbraten. Beiseite stellen und abkühlen lassen.
 
-3. In der Zwischenzeit die Zwiebeln fein würfeln und in einer Pfanne mit etwas
-   Öl goldbraun anbraten. Beiseite stellen und abkühlen lassen.
+3. Die gebratenen Zwiebeln, Eier, Mehl, gehackte Petersilie, Salz und Pfeffer
+   zum Brot geben und alles gut vermischen.
 
-4. Die Eier und das Mehl zur eingeweichten Brotmasse geben und gut verkneten.
+4. Die heiße Hafermilch über die Masse gießen und gut verkneten. Etwa 15-20
+   Minuten ziehen lassen, bis das Brot die Flüssigkeit aufgenommen hat.
 
-5. Die gebratenen Zwiebeln, gehackte Petersilie, Salz und Pfeffer hinzufügen und
-   alles zu einer homogenen Masse verarbeiten.
+5. Mit angefeuchteten Händen etwa 8 gleichmäßige Knödel formen.
 
-6. Mit angefeuchteten Händen etwa 8 gleichmäßige Knödel formen.
-
-7. Einen großen Topf mit Salzwasser zum Kochen bringen, dann die Hitze
+6. Einen großen Topf mit Salzwasser zum Kochen bringen, dann die Hitze
    reduzieren, sodass das Wasser nur noch leicht simmert. Die Knödel vorsichtig
    ins Wasser gleiten lassen.
 
-8. Die Knödel etwa 20 Minuten bei schwacher Hitze ziehen lassen (nicht kochen,
+7. Die Knödel etwa 20 Minuten bei schwacher Hitze ziehen lassen (nicht kochen,
    sonst fallen sie auseinander).
 
 ## Tipps
