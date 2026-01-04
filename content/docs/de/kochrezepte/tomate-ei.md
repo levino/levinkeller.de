@@ -1,6 +1,5 @@
 ---
-title: Tomate-Ei (番茄炒蛋)
-layout: '@levino/shipyard-base/layouts/Splash.astro'
+title: 'Tomate-Ei (番茄炒蛋)'
 ---
 
 # Tomate-Ei (番茄炒蛋)
