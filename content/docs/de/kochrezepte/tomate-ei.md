@@ -4,32 +4,43 @@ title: 'Tomate-Ei (番茄炒蛋)'
 
 # Tomate-Ei (番茄炒蛋)
 
-Klassisches chinesisches Pfannengericht – schnell, günstig und lecker.
+4 Minuten EINFACHES Tomaten-Ei-Pfannengericht
 
-## Zutaten (2 Portionen)
+## Zutaten
 
 - 4 Eier
-- 4 kleine Tomaten (~500g), in Spalten
-- 1 Frühlingszwiebel, fein gehackt
-- 3 EL Pflanzenöl
-- ¾ TL Salz
-- 2 TL Zucker
-- ¼ TL weißer Pfeffer
-- ½ TL Sesamöl
-- 1 TL Shaoxing-Wein (optional)
-- ¼ Tasse Wasser
+- ½ TL Salz, halbiert
+- 2 EL Speiseöl, halbiert
+- 2-3 Frühlingszwiebeln, gehackt, halbiert
+- 3 Tomaten, in ca. 1 cm breite Spalten geschnitten
+- 2 TL Sojasauce
+- 1 TL Ketchup
+- Sesamöl, optional
 
 ## Zubereitung
 
-1. Eier mit ¼ TL Salz, Pfeffer, Sesamöl und Wein verquirlen.
-2. Wok stark erhitzen, 2 EL Öl hinein. Eier stocken lassen, grob rühren,
-   herausnehmen.
-3. 1 EL Öl in den Wok, Tomaten und Frühlingszwiebeln 1 Min. anbraten.
-4. Zucker, ½ TL Salz und Wasser zugeben. Eier zurück in den Wok.
-5. Deckel drauf, 1-2 Min. köcheln bis Tomaten weich sind.
-6. Ohne Deckel weiterrühren bis Soße eindickt. Mit Reis servieren.
+1. Eier in einer Schüssel mit ¼ TL Salz verquirlen. Eine große Pfanne oder
+   einen Wok bei starker Hitze erhitzen und 1 EL Speiseöl hinzufügen. Die
+   verquirlten Eier in den rauchend heißen Wok gießen und rühren, um sie
+   gleichmäßig zu garen. Nicht zu viel rühren – wir wollen die Eier zusammenhalten.
+   Eier aus dem Wok nehmen und beiseite stellen.
 
-**Zeit:** ~10 Minuten
+2. Den nun leeren Wok erhitzen und 1 EL Öl sowie die Hälfte der gehackten
+   Frühlingszwiebeln hinzufügen. Die Frühlingszwiebeln mit dem Öl braten, bis
+   man das Aroma riecht, etwa 30 Sekunden bis 1 Minute.
+
+3. Tomaten einrühren. Sojasauce am Rand des Woks hinzufügen, damit sie anbrennt
+   und ein wunderbares Aroma und Umami-Geschmack entsteht. Auch Ketchup und
+   ¼ TL Salz hinzufügen. Alles zusammen pfannenrühren, bis die Tomaten ihren
+   Saft abgeben und köcheln, etwa 1-2 Minuten. Jetzt die Eier hinzufügen und
+   schnell in die Tomaten und den Saft einarbeiten. Aufpassen, dass nichts
+   verkocht.
+
+4. Hitze ausschalten, restliche Frühlingszwiebeln einrühren und in eine
+   Servierschüssel geben. Nach Geschmack etwas Sesamöl darüber träufeln.
+   Mit warmem gekochtem Reis genießen!
+
+**Zeit:** ~4 Minuten
 
 ---
 
