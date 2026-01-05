@@ -4,7 +4,7 @@ title: 'Haferflockenkekse mit Schokolade'
 
 # Haferflockenkekse mit Schokolade
 
-Ein einfaches und leckeres Rezept für knusprige Haferkekse mit Schokolade.
+Ein einfaches und leckeres Rezept für saftige, weiche Haferkekse mit Schokolade.
 
 ## Zutaten
 
@@ -28,6 +28,5 @@ Ein einfaches und leckeres Rezept für knusprige Haferkekse mit Schokolade.
 
 ## Tipps
 
-- Die Kekse werden beim Abkühlen noch fester
-- Für extra Crunch die Haferflocken vorher kurz in der Pfanne anrösten
+- Die Kekse bleiben schön weich und saftig
 - Statt Schokolade können auch Rosinen oder Nüsse verwendet werden
