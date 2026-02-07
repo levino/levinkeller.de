@@ -1,7 +1,7 @@
-name: "Pak Choi"
+name: "Fenchel"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
+  - month: july
     succession: 2

@@ -1,0 +1,6 @@
+name: "Kartoffel"
+sowings:
+  - month: march
+    timing: late
+  - month: april
+  - month: may

@@ -1,0 +1,6 @@
+name: "Pastinake"
+sowings:
+  - month: march
+  - month: april
+  - month: june
+    timing: early

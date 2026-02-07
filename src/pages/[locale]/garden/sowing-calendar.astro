@@ -1,10 +1,14 @@
 ---
 import { getCollection } from 'astro:content'
-import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
+import { MONTHS_DE } from '@levino/shipyard-base'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
-import { pipe } from 'fp-ts/lib/function'
-import { flatten, groupBy, map, path, prop } from 'ramda'
+import {
+  type CalendarWeekMap,
+  getCalendarWeeks,
+  type SowingCalendarEntry,
+} from '@/tools/calendarWeeks'
+
 export const getStaticPaths = (() => {
   return [
     {
@@ -15,68 +19,109 @@ export const getStaticPaths = (() => {
   ]
 }) satisfies GetStaticPaths
 
-const vegetables = await getCollection('vegetables').then((vegetables) =>
-  vegetables.map(
-    ({
-      id,
-      data: {
-        sowing,
-        name: { de: name },
-      },
-    }) => ({ sowing, name, link: `./vegetables/${id}` })
-  )
-)
+const vegetables = await getCollection('vegetables')
 
-const plants = await getCollection('plants', path(['data', 'toSow'])).then(
-  (plants) =>
-    plants.map(
-      ({
-        id,
-        data: {
-          sowingTime,
-          name: { latin: name },
-        },
-      }) => ({ sowing: sowingTime, name, link: `./plants/${id}` })
-    )
-)
-const plantsBySowingMonth = pipe(
-  vegetables.concat(plants),
-  map((plant) => plant.sowing.map((sowing) => ({ ...plant, sowing }))),
-  flatten,
-  groupBy(prop('sowing'))
-)
+const calendarWeekMap: CalendarWeekMap = new Map()
+
+for (const veg of vegetables) {
+  for (const sowing of veg.data.sowings) {
+    const weeks = getCalendarWeeks(sowing.month, sowing.timing ?? 'full')
+    const entry: SowingCalendarEntry = {
+      name: veg.data.name,
+      id: veg.id,
+      succession: sowing.succession ?? 1,
+      underCover: sowing.underCover ?? false,
+      overwintering: sowing.overwintering ?? false,
+      note: sowing.note,
+    }
+    for (const week of weeks) {
+      const existing = calendarWeekMap.get(week) ?? []
+      if (
+        !existing.some(
+          (e) => e.id === entry.id && e.succession === entry.succession
+        )
+      ) {
+        existing.push(entry)
+      }
+      calendarWeekMap.set(week, existing)
+    }
+  }
+}
+
+const sortedWeeks = [...calendarWeekMap.keys()].sort((a, b) => a - b)
+
+// Map KW to approximate month name for grouping headers
+const kwToMonth = (kw: number): string => {
+  const date = new Date(new Date().getFullYear(), 0, 1 + (kw - 1) * 7)
+  return MONTHS_DE[date.getMonth()]
+}
 ---
 
 <Layout>
-  <div class="container mx-auto">
-    <h1 class="m-4 text-center text-xl">Aussaatkalender</h1>
-    <table class="table table-xs">
-      <thead>
-        <tr>
-          {
-            MONTHS_DE.map((month) => (
-              <th class="odd:bg-base-200 even:bg-base-100">{month}</th>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {
-            MONTHS_EN.map((month) => (
-              <td class="align-top odd:bg-base-200 even:bg-base-100">
-                <ul class="list-none">
-                  {plantsBySowingMonth[month]?.map(({ name, link }) => (
-                    <li class="py-1">
-                      <a href={link}>{name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </td>
-            ))
-          }
-        </tr>
-      </tbody>
-    </table>
+  <div class="container mx-auto max-w-4xl px-4">
+    <h1 class="m-4 text-center text-2xl font-bold">Aussaatkalender</h1>
+    <p class="mb-6 text-center text-sm opacity-70">
+      Wochenweise Übersicht der Aussaattermine
+    </p>
+    <div class="space-y-1">
+      {
+        sortedWeeks.map((kw, idx) => {
+          const entries = calendarWeekMap.get(kw)!
+          const month = kwToMonth(kw)
+          const prevMonth = idx > 0 ? kwToMonth(sortedWeeks[idx - 1]) : ''
+          const showMonthHeader = month !== prevMonth
+          return (
+            <>
+              {showMonthHeader && (
+                <div class="mt-6 mb-2 border-b-2 border-primary pb-1">
+                  <h2 class="text-lg font-semibold text-primary">{month}</h2>
+                </div>
+              )}
+              <div class="collapse collapse-arrow bg-base-200">
+                <input type="checkbox" checked />
+                <div class="collapse-title font-medium">
+                  KW {kw}
+                  <span class="ml-2 text-sm opacity-60">
+                    ({entries.length} {entries.length === 1 ? 'Gemüse' : 'Gemüse'})
+                  </span>
+                </div>
+                <div class="collapse-content">
+                  <ul class="list-none space-y-1">
+                    {entries.map((entry) => (
+                      <li class="flex items-center gap-2">
+                        <a
+                          href={`./vegetables/${entry.id}`}
+                          class="link link-hover"
+                        >
+                          {entry.name}
+                        </a>
+                        {entry.succession > 1 && (
+                          <span class="badge badge-sm badge-outline">
+                            {entry.succession}. Aussaat
+                          </span>
+                        )}
+                        {entry.underCover && (
+                          <span class="badge badge-sm badge-info">geschützt</span>
+                        )}
+                        {entry.overwintering && (
+                          <span class="badge badge-sm badge-warning">
+                            Überwinterung
+                          </span>
+                        )}
+                        {entry.note && (
+                          <span class="badge badge-sm badge-ghost">
+                            {entry.note}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </>
+          )
+        })
+      }
+    </div>
   </div>
 </Layout>

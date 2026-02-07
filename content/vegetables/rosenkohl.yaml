@@ -1,0 +1,6 @@
+name: "Rosenkohl"
+sowings:
+  - month: april
+  - month: may
+  - month: june
+    note: "nur Kalettes"
