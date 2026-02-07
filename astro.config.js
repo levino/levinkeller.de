@@ -83,17 +83,25 @@ export default defineConfig({
           label: 'Garten',
           href: '/garden',
           subEntry: {
+            principles: {
+              label: 'Grundsätze',
+              href: '/garden/grundsaetze',
+            },
             naturgarten: {
               label: 'Naturgarten-Projekt',
-              href: '/garden/naturgarten',
+              href: '/garden',
             },
-            meadow: {
-              label: 'Blumenwiese',
-              href: '/garden/meadow',
+            staudenbeete: {
+              label: 'Staudenbeete im Bestand',
+              href: '/garden/staudenbeete-im-bestand',
             },
             seedlingFertilization: {
               label: 'Jungpflanzen düngen',
               href: '/garden/duengung-jungpflanzen',
+            },
+            meadow: {
+              label: 'Blumenwiese',
+              href: '/garden/meadow',
             },
             beds: {
               label: 'Beetplaner',
