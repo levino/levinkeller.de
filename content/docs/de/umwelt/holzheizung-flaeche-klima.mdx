@@ -15,18 +15,19 @@ seien „nachhaltig“, weil Holz ja nachwachse. Das klingt intuitiv plausibel �
 aber bei genauer Rechnung weder beim Flächenbedarf noch beim Klimaschutz
 überzeugend.
 
-Hier ist eine einfache, belastbare Überschlagsrechnung mit konservativen
-Annahmen.
+Hier ist eine einfache Überschlagsrechnung mit **direkten Quellen-Links**.
 
 ## 1) Annahmen
 
 ### Nachhaltiger Holzzuwachs pro Fläche
 
-Für Deutschland wird der jährliche Holzzuwachs in der Größenordnung von rund
-11 m³/ha·a angegeben (Bundeswaldinventur / Thünen).
+Für Deutschland wird in den Ergebnissen der 4. Bundeswaldinventur ein
+jährlicher Holzzuwachs in der Größenordnung von etwa **11 m³/ha·a** ausgewiesen.
+([Bundeswaldinventur, Ergebnisbroschüre (PDF)](https://www.bundeswaldinventur.de/fileadmin/Projekte/2024/bundeswaldinventur/Downloads/BWI-2022_Broschuere_bf-neu_01.pdf))
 
 - Annahme: **11,2 m³ Holz pro Hektar und Jahr**
-- Heizwert (lufttrocken, grob): **2.000 kWh pro m³**
+- Annahme Heizwert lufttrockenes Brennholz (grob): **2.000 kWh pro m³**
+  ([Brennholz-Grundlagen, StMELF Bayern](https://www.stmelf.bayern.de/wald/waldbesitzer_portal/brennholz/index.html))
 
 Daraus folgt der jährliche Energieertrag je Hektar:
 
@@ -38,8 +39,9 @@ also:
 
 ### Wirkungsgrad Holzofen
 
-Bei Einzelraumfeuerungen/Kaminöfen liegen realistische Wirkungsgrade grob um
-70–80 % (je nach Gerät, Betrieb, Holzfeuchte und Bedienung).
+Bei Einzelraumfeuerungen/Kaminöfen liegen technische Wirkungsgrade typischerweise
+im Bereich um **70–80 %** (geräte- und betriebsabhängig).
+([UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz))
 
 - Konservative Annahme: **70 % Nutzungsgrad**
 
@@ -51,9 +53,9 @@ Damit nutzbare Wärme pro Fläche:
 
 In meiner Windkraft-Rechnung nutze ich für moderne Onshore-Anlagen eine
 Größenordnung von **3.000 kWh Strom pro m² versiegelter Fläche und Jahr**
-(inkl. Fundament-/Zuwegungsfläche als grobe Planungsgröße).
+([eigene Herleitung hier](https://www.levinkeller.de/de/docs/umwelt/windkraft)).
 
-Mit einer Wärmepumpe und einer realistischen Jahresarbeitszahl (JAZ) von **3**
+Mit Wärmepumpe und einer realistischen Jahresarbeitszahl (JAZ) von **3**
 werden daraus:
 
 **3.000 × 3 = 9.000 kWh Wärme pro m²·a**
@@ -62,7 +64,7 @@ Das Verhältnis ist dann:
 
 **9.000 / 1,57 ≈ 5.700**
 
-**Windstrom + Wärmepumpe liefert pro beanspruchtem m² etwa den Faktor 5.000+
+**Windstrom + Wärmepumpe liefert pro beanspruchtem m² grob den Faktor 5.000+
 mehr nutzbare Wärme als nachhaltige Holzbereitstellung über Waldfläche.**
 
 ## 3) Hochrechnung für Nordstemmen
@@ -70,9 +72,11 @@ mehr nutzbare Wärme als nachhaltige Holzbereitstellung über Waldfläche.**
 Für eine grobe kommunale Betrachtung nehme ich an:
 
 - Bevölkerung Nordstemmen: **rund 12.000 Personen**
-- Durchschnittliche Heizwärme (Raumwärme + anteilig Warmwasser) in Deutschland:
-  **ca. 7.000 kWh pro Kopf und Jahr** (Größenordnung aus nationalen
-  Endenergie-Statistiken für Haushalte)
+  ([Gemeindeprofil bei Destatis/Regionaldaten](https://www.destatis.de))
+- Durchschnittliche Heizwärme (Raumwärme + anteilig Warmwasser):
+  **ca. 7.000 kWh pro Kopf und Jahr** (überschlägiger Mittelwert auf Basis
+  nationaler Haushalts-Endenergie für Wärmeanwendungen).
+  ([Destatis Energie/Umwelt](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Umwelt/_inhalt.html))
 
 Gesamtwärmebedarf:
 
@@ -87,22 +91,20 @@ also rund:
 - **5.350 ha**
 - **53,5 km²**
 
-Die Gemeinde Nordstemmen liegt insgesamt nur in der Größenordnung von rund
-60 km² Fläche. Mit anderen Worten: **Wenn alle mit Holz heizen wollten, bräuchte
-man fast die gesamte Gemeindefläche als dauerhafte Energieholzfläche.**
+Die Gemeinde Nordstemmen liegt insgesamt bei rund 60 km². Ergebnis:
+**Wenn alle mit Holz heizen wollten, bräuchte man fast die gesamte
+Gemeindefläche als dauerhafte Energieholzfläche.**
 
 ## 4) CO₂: Holz vs. Erdgas pro kWh Wärme
 
-### Direkte Emissionen aus der Verbrennung
+Die direkten CO₂-Faktoren aus der Verbrennung können über die
+IPCC-Defaultwerte hergeleitet werden.
+([IPCC 2006 Guidelines, Vol. 2, Ch. 2 (PDF)](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/2_Volume2/V2_2_Ch2_Stationary_Combustion.pdf))
 
-Chemisch betrachtet setzt Holz pro kWh Brennstoffenergie bei der Verbrennung
-nicht wenig CO₂ frei – typischerweise sogar mehr als Erdgas, weil Holz einen
-niedrigeren Wasserstoffanteil hat.
-
-Grobe Standardfaktoren (IPCC-Methodik):
+Grobe Standardfaktoren (als Näherung):
 
 - Erdgas: ca. **0,202 kg CO₂ / kWh Brennstoff**
-- Holz: ca. **0,39–0,40 kg CO₂ / kWh Brennstoff**
+- Holz/Biomasse: ca. **0,39–0,40 kg CO₂ / kWh Brennstoff**
 
 Auf die **gelieferte Wärme** umgerechnet:
 
@@ -112,10 +114,9 @@ Auf die **gelieferte Wärme** umgerechnet:
 Damit liegen die **direkten Emissionen am Schornstein bei Holz grob beim 2,5x
 von Gas** (pro gelieferter kWh Wärme).
 
-Wichtig: In Klimabilanzen wird Holz-CO₂ oft als „biogen“ separat bilanziert. Für
-das Klima in den nächsten Jahrzehnten zählt aber zunächst die reale CO₂-Menge,
-die sofort in die Atmosphäre geht; der Wiederaufbau des Kohlenstoffspeichers im
-Wald dauert Jahre bis Jahrzehnte.
+Wichtig: In Klimabilanzen wird Holz-CO₂ oft als „biogen“ separat bilanziert.
+Zur Einordnung der zeitlichen Klimawirkung siehe auch:
+[UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz).
 
 ## 5) Zusätzliche Vorkettenemissionen bei Holz
 
@@ -127,9 +128,9 @@ Zusätzlich zu den Schornsteinemissionen kommen bei Holz an:
 - Lagerung
 - Transport
 
-Je nach Prozesskette entstehen dafür zusätzliche Treibhausgasemissionen
-(typisch einige Dutzend g CO₂e pro kWh Wärme). Diese Emissionen verschlechtern
-die Bilanz weiter.
+Diese Prozesse verursachen zusätzliche Treibhausgasemissionen und
+Luftschadstoffe, die in der Praxis die Bilanz weiter verschlechtern.
+([UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz))
 
 ## 6) Fazit
 
@@ -144,22 +145,12 @@ Für dicht besiedelte Gemeinden ist der robuste Weg: **Elektrifizierung der
 Wärme (Wärmepumpe) plus Wind- und Solarstrom**, statt Holzverbrennung zu
 normalisieren.
 
-## Quellen (Auswahl)
+## Quellen (mit Links)
 
-1. Thünen-Institut / Bundeswaldinventur – Kennzahlen zu Zuwachs, Vorrat,
-   Nutzung deutscher Wälder.
-   https://www.bundeswaldinventur.de
-2. Fachinformationen zum Heizwert von Brennholz (typisch ca. 1.500–2.100 kWh/m³,
-   je Holzart/Feuchte).
-   https://www.fnr.de
-3. HKI / Geräteinformationen zu Wirkungsgraden moderner Einzelraumfeuerungen.
-   https://www.ratgeber-ofen.de
-4. IPCC 2006 Guidelines – Default-CO₂-Faktoren für Brennstoffe (u. a. Gas,
-   Biomasse).
-   https://www.ipcc-nggip.iges.or.jp/public/2006gl/
-5. UBA – Einordnung zu Holzfeuerungen (Luftschadstoffe, Klimawirkung,
-   Nachhaltigkeitsgrenzen).
-   https://www.umweltbundesamt.de
-6. Destatis / Energie- und Bevölkerungsstatistiken als Grundlage für
-   Pro-Kopf-Heizwärmeabschätzungen.
-   https://www.destatis.de
+- [Bundeswaldinventur (Startseite)](https://www.bundeswaldinventur.de/)
+- [Bundeswaldinventur 2022 – Ergebnisbroschüre (PDF)](https://www.bundeswaldinventur.de/fileadmin/Projekte/2024/bundeswaldinventur/Downloads/BWI-2022_Broschuere_bf-neu_01.pdf)
+- [StMELF Bayern: Brennholz – Grundinformationen](https://www.stmelf.bayern.de/wald/waldbesitzer_portal/brennholz/index.html)
+- [Umweltbundesamt: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz)
+- [IPCC 2006 Guidelines – Stationary Combustion (PDF)](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/2_Volume2/V2_2_Ch2_Stationary_Combustion.pdf)
+- [Destatis: Themenbereich Umwelt](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Umwelt/_inhalt.html)
+- [Destatis (Startseite für Regional-/Bevölkerungsdaten)](https://www.destatis.de/)
