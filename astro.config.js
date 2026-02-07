@@ -80,8 +80,21 @@ export default defineConfig({
           },
         },
         garden: {
-          label: 'Gartenplaner',
+          label: 'Garten',
+          href: '/garden',
           subEntry: {
+            naturgarten: {
+              label: 'Naturgarten-Projekt',
+              href: '/garden/naturgarten',
+            },
+            meadow: {
+              label: 'Blumenwiese',
+              href: '/garden/meadow',
+            },
+            seedlingFertilization: {
+              label: 'Jungpflanzen düngen',
+              href: '/garden/duengung-jungpflanzen',
+            },
             beds: {
               label: 'Beetplaner',
               href: '/garden/beds',
@@ -119,6 +132,14 @@ export default defineConfig({
     shipyardDocs({
       editUrl:
         'https://github.com/levino/levinkeller.de/edit/main/content/docs',
+      showLastUpdateTime: true,
+      showLastUpdateAuthor: true,
+    }),
+    shipyardDocs({
+      routeBasePath: 'garden',
+      collectionName: 'gardenDocs',
+      editUrl:
+        'https://github.com/levino/levinkeller.de/edit/main/content/gardenDocs',
       showLastUpdateTime: true,
       showLastUpdateAuthor: true,
     }),
