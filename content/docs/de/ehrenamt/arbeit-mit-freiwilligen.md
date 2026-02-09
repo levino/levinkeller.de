@@ -122,7 +122,51 @@ die zu ihren Fähigkeiten und ihrer aktuellen Kapazität passt.
 
 Genau das sollte eine freiwillige Organisation auch tun: einen gut gepflegten
 Stapel von konkreten Aufgaben bereithalten, an denen sich Freiwillige bedienen
-können. Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
+können. Und das gilt auch und gerade für die Aufgaben, die nicht besonders
+attraktiv sind. Denn natürlich gibt es in jeder Organisation Tätigkeiten, die
+keinem Spaß machen, die aber erledigt werden müssen. Die Versuchung für einen
+Vorstand ist dann groß, einzelne Leute "festzunageln" und ihnen diese Aufgaben
+zuzuweisen. Aber auch hier funktioniert der andere Weg besser: Transparenz
+schaffen darüber, welche Aufgaben alle zu erledigen sind, damit das gemeinsame
+Projekt gelingt, und dann den Mitgliedern zutrauen, dass sie eigenständig
+Verantwortung übernehmen. Menschen sind von Natur aus bereit, auch undankbare
+Aufgaben zu übernehmen, wenn sie den Zusammenhang zwischen dieser Aufgabe und
+dem Erfolg des gemeinsamen Projekts verstehen. Das muss man ihnen nicht wie
+kleinen Kindern beibringen - man muss es ihnen nur sichtbar machen.
+
+:::note[Anekdote: Toiletten putzen in Dhagpo Möhra]
+<details>
+<summary>Eine persönliche Erfahrung, die dieses Prinzip gut illustriert.</summary>
+
+Im Rahmen meiner buddhistischen Praxis besuche ich mehrmals im Jahr das
+Zentrum Dhagpo Möhra für den Austausch mit der Sangha. Diese Aufenthalte
+finden als mehrtägige Seminare statt, bei denen viele Menschen vor Ort
+sind - es gibt Kurse für Kinder und Erwachsene. Alle Teilnehmenden arbeiten
+jeden Tag eine Stunde bei Haushaltstätigkeiten mit. Gemüse schneiden und
+Essen kochen sind die offensichtlichen Aufgaben, die sichtbaren Impact
+haben und bei denen sich schnell Freiwillige finden. Ich übernehme
+eigentlich immer das Toilettenputzen - weil ich davon ausgehe, dass es eine
+Aufgabe ist, die wenige machen wollen, die aber im höchsten Maße notwendig
+ist, damit alle einen schönen Aufenthalt haben.
+
+Was ich dort besonders schätze: Es stehen fertig gepackte Eimer mit allen
+nötigen Utensilien bereit, dazu laminierte Zettel, die genau erklären, was
+zu tun ist - welche Lappenfarbe für die Toiletten, welche für die
+Waschbecken und so weiter. Das ist ein Beispiel für gelungene
+Strukturierung. Es war transparent, was zu tun ist, und ich habe mich
+entschieden. Niemand musste mich dazu zwingen. Und so geht es vielen
+Mitgliedern: Sie verstehen, dass auch solche Aufgaben erledigt werden
+müssen, und übernehmen sie freiwillig. Tatsächlich fallen selten Aufgaben
+hinten runter, wenn man die Sache laufen lässt. Und selbst wenn - angenommen
+niemand trüge sich fürs Toilettenputzen ein und alle litten unter
+schmutzigen Toiletten - dann sähe die Gruppe selbst, was das Problem ist.
+Sie könnte dann nicht die Leitung verantwortlich machen, sondern müsste sich
+ehrlich in die Augen schauen und fragen, warum niemand diese Aufgabe
+übernommen hat, obwohl klar kommuniziert war, dass sie erledigt werden muss.
+</details>
+:::
+
+Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
 Mitglied kommt motiviert zur Sitzung oder meldet sich und sagt "Ich habe Zeit
 und Lust, etwas zu machen - was kann ich tun?" Und dann herrscht Stille, weil
 niemand vorbereitet hat, welche Aufgaben eigentlich anstehen. Die Motivation
