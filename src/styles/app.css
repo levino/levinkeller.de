@@ -1,0 +1,44 @@
+/* biome-ignore-all lint/suspicious/noUnknownAtRules: Tailwind CSS directives */
+/* biome-ignore-all lint/correctness/noUnknownProperty: DaisyUI plugin configuration */
+
+@import "tailwindcss";
+@import "@levino/shipyard-base";
+@import "@levino/shipyard-blog";
+@import "@levino/shipyard-docs";
+
+@plugin 'daisyui' {
+  themes:
+    retro --default,
+    forest-custom --prefersdark;
+}
+
+@plugin '@tailwindcss/typography';
+
+@source '../../content';
+
+@plugin 'daisyui/theme' {
+  name: "forest-custom";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-primary: #1eb854;
+  --color-primary-content: #000000;
+  --color-secondary: #1db88e;
+  --color-accent: #1db8ab;
+  --color-neutral: #19362d;
+  --color-neutral-content: #d4e5df;
+  --color-base-100: #171212;
+  --color-base-200: #251d1d;
+  --color-base-300: #352a2a;
+  --color-base-content: #e8e4e4;
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #f87272;
+  --rounded-btn: 1.9rem;
+}
+
+/* Typography customization */
+.prose :is(h1, h2, h3, h4, h5, h6) a {
+  text-decoration: none;
+}
