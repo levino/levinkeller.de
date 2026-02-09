@@ -1,12 +1,8 @@
 ---
 title: Warum Biogas beendet werden muss
-authors:
-  - name: Levin Keller
 description:
   Biogas ist weder klimaneutral noch flächeneffizient. Die staatliche Förderung
   war zeitlich begrenzt – ein Ausstieg ist richtig und notwendig.
-date: 2026-02-09
-tags: [energie, biogas]
 ---
 
 # Warum Biogas beendet werden muss
@@ -30,6 +26,9 @@ Landwirtschaft fährt mit Diesel, und auch Bau und Betrieb der Anlagen sind nich
 emissionsfrei. Für jede erzeugte Kilowattstunde Biogasenergie werden erhebliche
 fossile Inputs benötigt. Wer Biogas trotzdem als klimaneutral bezeichnet,
 betreibt Schönrechnung.
+
+Einen Überblick über den Flächenverbrauch von Biogas im Vergleich zu Wind und
+Solar gibt mein [Vergleich alternativer Energiequellen](/de/docs/umwelt/windkraft/).
 
 ## Eine ökologische Flächenkatastrophe
 
