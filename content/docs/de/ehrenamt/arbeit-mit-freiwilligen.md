@@ -122,7 +122,36 @@ die zu ihren Fähigkeiten und ihrer aktuellen Kapazität passt.
 
 Genau das sollte eine freiwillige Organisation auch tun: einen gut gepflegten
 Stapel von konkreten Aufgaben bereithalten, an denen sich Freiwillige bedienen
-können. Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
+können. Und das gilt auch und gerade für die Aufgaben, die nicht besonders
+attraktiv sind. Denn natürlich gibt es in jeder Organisation Tätigkeiten, die
+keinem Spaß machen, die aber erledigt werden müssen. Die Versuchung für einen
+Vorstand ist dann groß, einzelne Leute "festzunageln" und ihnen diese Aufgaben
+zuzuweisen. Aber auch hier funktioniert der andere Weg besser: Transparenz
+schaffen darüber, welche Aufgaben alle zu erledigen sind, damit das gemeinsame
+Projekt gelingt, und dann den Mitgliedern zutrauen, dass sie eigenständig
+Verantwortung übernehmen. Menschen sind von Natur aus bereit, auch undankbare
+Aufgaben zu übernehmen, wenn sie den Zusammenhang zwischen dieser Aufgabe und
+dem Erfolg des gemeinsamen Projekts verstehen. Das muss man ihnen nicht wie
+kleinen Kindern beibringen - man muss es ihnen nur sichtbar machen.
+
+:::tip[Toiletten putzen in Dhagpo Möhra]
+Ich bin Buddhist und besuche mehrmals im Jahr das buddhistische Zentrum Dhagpo
+Möhra für den Austausch mit der Sangha. Diese Aufenthalte finden als
+mehrtägige Seminare statt, bei denen viele Menschen vor Ort sind - es gibt
+Kurse für Kinder und Erwachsene. Alle Teilnehmenden arbeiten jeden Tag eine
+Stunde bei Haushaltstätigkeiten mit: Essen kochen, Gemüse schneiden, putzen.
+Manche dieser Aufgaben sind angenehm, andere weniger. Ich übernehme
+eigentlich immer das Toilettenputzen.
+
+Was ich dort besonders schätze: Es stehen fertig gepackte Eimer mit allen
+nötigen Utensilien bereit, dazu laminierte Zettel, die genau erklären, was zu
+tun ist - welche Lappenfarbe für die Toiletten, welche für die Waschbecken
+und so weiter. Das ist ein Beispiel für gelungene Strukturierung solcher
+Vorgänge. Ich freue mich jedes Mal, meinen Beitrag leisten zu können, indem
+ich diese vermeintlich undankbare Aufgabe übernehme, die ich aber für
+wichtig halte. Niemand hat mich dazu gezwungen - es war transparent, was zu
+tun ist, und ich habe mich entschieden.
+::: Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
 Mitglied kommt motiviert zur Sitzung oder meldet sich und sagt "Ich habe Zeit
 und Lust, etwas zu machen - was kann ich tun?" Und dann herrscht Stille, weil
 niemand vorbereitet hat, welche Aufgaben eigentlich anstehen. Die Motivation
