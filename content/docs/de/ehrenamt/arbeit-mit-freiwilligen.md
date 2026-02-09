@@ -151,7 +151,9 @@ Vorgänge. Ich freue mich jedes Mal, meinen Beitrag leisten zu können, indem
 ich diese vermeintlich undankbare Aufgabe übernehme, die ich aber für
 wichtig halte. Niemand hat mich dazu gezwungen - es war transparent, was zu
 tun ist, und ich habe mich entschieden.
-::: Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
+:::
+
+Denn die Situation, die ich immer wieder erlebe, ist folgende: Ein
 Mitglied kommt motiviert zur Sitzung oder meldet sich und sagt "Ich habe Zeit
 und Lust, etwas zu machen - was kann ich tun?" Und dann herrscht Stille, weil
 niemand vorbereitet hat, welche Aufgaben eigentlich anstehen. Die Motivation
