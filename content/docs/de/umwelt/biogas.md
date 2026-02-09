@@ -58,8 +58,7 @@ verschwindet der Absatzmarkt für Energiemais. Die Flächen werden frei – für
 Nahrungsmittelproduktion, für Naturschutz, für andere Nutzungen. Und genau das
 ist der Punkt: Flächen, die heute für die ineffizienteste Form der
 Stromerzeugung blockiert sind, stehen wieder zur Verfügung. Landwirte können auf
-diesen Flächen Lebensmittel anbauen, Blühstreifen anlegen, oder sie für
-Agri-Photovoltaik nutzen – alles sinnvoller als Energiemais.
+diesen Flächen Lebensmittel anbauen oder Blühstreifen anlegen.
 
 ## „Das überfordert die Region"
 
