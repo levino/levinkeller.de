@@ -3,7 +3,7 @@ title: Don't send me PDFs
 ---
 
 :::tip[Hinweis vorab]
-Ich habe diesen Text geschrieben, weil mir dieses Thema im Alltag immer wieder begegnet. Die Intention ist nicht, jemanden zu kritisieren oder zu belehren, sondern neue Wege aufzuzeigen, die sich für Leser:innen besser anfühlen.
+Ich habe diesen Text geschrieben, weil mir dieses Thema im Alltag immer wieder begegnet. Die Intention ist nicht, jemanden zu kritisieren oder zu belehren, sondern neue Wege aufzuzeigen, die sich für Leser\:innen besser anfühlen.
 
 Ja, es ist erst einmal Arbeit, eine neue Methode zu lernen. Das war bei PDFs genauso – auch die waren irgendwann neu. Der Unterschied ist: Dieser kleine Mehraufwand zahlt sich direkt für die Menschen aus, die Deine Inhalte lesen. Sie können Texte entspannter lesen, auf dem Gerät ihrer Wahl, ohne Zoomen, ohne Frust und ohne dass man selbst zum Technikprofi werden muss.
 
@@ -32,7 +32,7 @@ Eine sehr pragmatische erste Variante ist inzwischen: Lass Dir das HTML von eine
 
 Und dann gibt es zwei alltagstaugliche Wege, wie das bei Menschen ankommt: Der erste ist: Die E-Mail selbst ist das Dokument. Also: kein Anhang, sondern der Inhalt steht direkt in der Mail. Viele Mailprogramme können HTML-Mails darstellen. In Thunderbird kann man HTML beim Schreiben einfügen; in Outlook klappt es je nach Variante ebenfalls (z.B. indem man HTML „als Text" in den Nachrichtenkörper einfügt). Trotzdem gilt: E-Mail-HTML hat seine Eigenheiten, also lieber simpel bleiben und einmal an sich selbst testen. ([support.mozilla.org](https://support.mozilla.org/en-US/questions/1101669?utm_source=chatgpt.com))
 
-Der zweite – und oft bessere – Weg ist: ein Link. Der Text liegt als normale Webseite in einem Wiki, in Docs oder an einem Ort, wo er gut lesbar ist. Wenn eine Zugangsbeschränkung notwendig ist, dann eben mit Login. Für Leser:innen ist das simpel: klicken, lesen, fertig. Und für Autor:innen ist es leichter, Dinge nachträglich zu korrigieren, ohne neue Anhänge herumzuschicken. Man kann außerdem sicher sein, immer die aktuelle Version des Dokuments zu lesen.
+Der zweite – und oft bessere – Weg ist: ein Link. Der Text liegt als normale Webseite in einem Wiki, in Docs oder an einem Ort, wo er gut lesbar ist. Wenn eine Zugangsbeschränkung notwendig ist, dann eben mit Login. Für Leser\:innen ist das simpel: klicken, lesen, fertig. Und für Autor\:innen ist es leichter, Dinge nachträglich zu korrigieren, ohne neue Anhänge herumzuschicken. Man kann außerdem sicher sein, immer die aktuelle Version des Dokuments zu lesen.
 
 Nebenbei löst das noch etwas anderes: Wenn Inhalte sowieso an einem festen Ort liegen, muss man nicht jede Änderung per Rundmail verteilen. Dann reichen Benachrichtigungen – zum Beispiel über ein System, das die Leute ohnehin nutzen (GitHub-Notifications, Wiki-Updates, etc.). E-Mail wird wieder das, was sie sein sollte: Kommunikation. Nicht Dateitransport.
 
@@ -52,7 +52,7 @@ Das war sinnvoll. Word-Dateien sahen auf unterschiedlichen Systemen unterschiedl
 
 Heute werden Inhalte überwiegend digital konsumiert. Auf Handys, Tablets, Laptops, großen Bildschirmen. In wechselnden Situationen, zwischendurch, unterwegs, abends auf dem Sofa. Ein Format, das für den Ausdruck optimiert ist, wird diesem Alltag nicht gerecht. PDFs sind deshalb keine neutrale Wahl. Sie machen das Lesen unnötig anstrengend. Und was anstrengend ist, wird weniger gelesen.
 
-HTML ist dafür gebaut, Inhalte auf unterschiedlichen Geräten gut lesbar zu machen. Entscheidend ist erst einmal das Ergebnis: Texte, die sich gut lesen lassen. Und die naheliegende Frage ist dann natürlich: „Okay – aber wie schreibt man sowas, ohne Webentwickler:in zu sein?" Das lässt sich erstaunlich einfach halten.
+HTML ist dafür gebaut, Inhalte auf unterschiedlichen Geräten gut lesbar zu machen. Entscheidend ist erst einmal das Ergebnis: Texte, die sich gut lesen lassen. Und die naheliegende Frage ist dann natürlich: „Okay – aber wie schreibt man sowas, ohne Webentwickler\:in zu sein?" Das lässt sich erstaunlich einfach halten.
 
 Variante A: Man schreibt sehr simples HTML (wirklich: Überschriften, Absätze, Listen, Links) – das reicht für 90%. Variante B: Man schreibt in einem einfacher zu tippenden Format und lässt daraus HTML machen. Der Klassiker dafür ist Markdown: Überschriften mit `#`, Listen mit `-`, Links in einer einfachen Schreibweise. Das ist kein Muss, aber oft der bequemste Weg. Variante C: Man lässt es von einer KI erzeugen und schaut nur noch drüber. Damit ist man in der Praxis meist schneller am Ziel, als ein Dokument in Word zu formatieren und anschließend als PDF zu exportieren.
 
