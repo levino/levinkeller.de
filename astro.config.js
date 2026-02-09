@@ -1,7 +1,7 @@
+import { fileURLToPath } from 'node:url'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
 import vercel from '@astrojs/vercel'
 import shipyard from '@levino/shipyard-base'
 import shipyardBlog from '@levino/shipyard-blog'
@@ -45,14 +45,12 @@ export default defineConfig({
 
   integrations: [
     react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     sitemap({
       filter: (page) => !page.startsWith('https://www.levinkeller.de/private/'),
     }),
     mdx(),
     shipyard({
+      css: fileURLToPath(new URL('./src/styles/app.css', import.meta.url)),
       navigation: {
         docs: {
           label: 'Wissen',

@@ -2,12 +2,13 @@
 title: Don't send me PDFs
 ---
 
-> **Hinweis vorab**
-> Ich habe diesen Text geschrieben, weil mir dieses Thema im Alltag immer wieder begegnet. Die Intention ist nicht, jemanden zu kritisieren oder zu belehren, sondern neue Wege aufzuzeigen, die sich für Leser:innen besser anfühlen.
->
-> Ja, es ist erst einmal Arbeit, eine neue Methode zu lernen. Das war bei PDFs genauso – auch die waren irgendwann neu. Der Unterschied ist: Dieser kleine Mehraufwand zahlt sich direkt für die Menschen aus, die deine Inhalte lesen. Sie können Texte entspannter lesen, auf dem Gerät ihrer Wahl, ohne Zoomen, ohne Frust und ohne dass man selbst zum Technikprofi werden muss.
->
-> Wenn du PDFs verschickst, machst du nichts „falsch". Dieser Text erklärt nur, warum es sich heute oft besser anfühlt, Inhalte anders zu lesen.
+:::tip[Hinweis vorab]
+Ich habe diesen Text geschrieben, weil mir dieses Thema im Alltag immer wieder begegnet. Die Intention ist nicht, jemanden zu kritisieren oder zu belehren, sondern neue Wege aufzuzeigen, die sich für Leser:innen besser anfühlen.
+
+Ja, es ist erst einmal Arbeit, eine neue Methode zu lernen. Das war bei PDFs genauso – auch die waren irgendwann neu. Der Unterschied ist: Dieser kleine Mehraufwand zahlt sich direkt für die Menschen aus, die deine Inhalte lesen. Sie können Texte entspannter lesen, auf dem Gerät ihrer Wahl, ohne Zoomen, ohne Frust und ohne dass man selbst zum Technikprofi werden muss.
+
+Wenn du PDFs verschickst, machst du nichts „falsch". Dieser Text erklärt nur, warum es sich heute oft besser anfühlt, Inhalte anders zu lesen.
+:::
 
 ## Was wir eigentlich wollen
 
