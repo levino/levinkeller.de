@@ -13,6 +13,10 @@ const docs = defineCollection({
   schema: docsSchema,
   loader: glob({ pattern: '**/*.{md,mdx}', base: './content/docs' }),
 })
+const gardenDocs = defineCollection({
+  schema: docsSchema,
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/gardenDocs' }),
+})
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { blog, docs, ...plantCollections }
+export const collections = { blog, docs, gardenDocs, ...plantCollections }
