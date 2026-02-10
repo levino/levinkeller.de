@@ -6,6 +6,10 @@
     "ghcr.io/devcontainers/features/sshd:1": {},
     "ghcr.io/tailscale/codespace/tailscale": {}
   },
+  "containerEnv": {
+      "TS_AUTHKEY": "${localEnv:TS_AUTHKEY}",
+      "TS_HOSTNAME": "${localEnv:TS_HOSTNAME}"
+  },
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
   "customizations": {
     "vscode": {
