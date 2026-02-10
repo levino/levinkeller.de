@@ -7,7 +7,6 @@
       "ghcr.io/devcontainers/features/sshd:1": {},
       "ghcr.io/tailscale/codespace/tailscale": {}
     },
-    "capAdd": ["NET_ADMIN", "NET_RAW"],
     "containerEnv": {
       "HATCHERY_TS_AUTH_KEY": "${localEnv:HATCHERY_TS_AUTH_KEY}",
       "HATCHERY_TS_HOSTNAME": "${localEnv:HATCHERY_TS_HOSTNAME}",
