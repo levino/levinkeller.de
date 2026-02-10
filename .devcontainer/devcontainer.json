@@ -1,33 +1,36 @@
-{
-  "name": "Node.js & TypeScript",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/sshd:1": {},
-    "ghcr.io/tailscale/codespace/tailscale": {}
-  },
-  "containerEnv": {
-      "TS_AUTHKEY": "${localEnv:TS_AUTHKEY}",
-      "TS_HOSTNAME": "${localEnv:TS_HOSTNAME}"
-  },
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "unifiedjs.vscode-mdx",
-        "streetsidesoftware.code-spell-checker",
-        "astro-build.astro-vscode",
-        "bradlc.vscode-tailwindcss",
-        "streetsidesoftware.code-spell-checker-german",
-        "GitHub.vscode-pull-request-github",
-        "biomejs.biome"
-      ],
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        "[astro]": {
-          "editor.defaultFormatter": "astro-build.astro-vscode"
+ {
+    "name": "Node.js & TypeScript",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:2": {},
+      "ghcr.io/devcontainers/features/github-cli:1": {},
+      "ghcr.io/devcontainers/features/sshd:1": {},
+      "ghcr.io/tailscale/codespace/tailscale": {}
+    },
+    "capAdd": ["NET_ADMIN", "NET_RAW"],
+    "containerEnv": {
+      "HATCHERY_TS_AUTH_KEY": "${localEnv:HATCHERY_TS_AUTH_KEY}",
+      "HATCHERY_TS_HOSTNAME": "${localEnv:HATCHERY_TS_HOSTNAME}",
+      "HATCHERY_TS_LOGIN_SERVER": "${localEnv:HATCHERY_TS_LOGIN_SERVER}"
+    },
+    "postStartCommand": "sudo tailscale up --login-server=${HATCHERY_TS_LOGIN_SERVER} --authkey=${HATCHERY_TS_AUTH_KEY} --hostname=${HATCHERY_TS_HOSTNAME}",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "unifiedjs.vscode-mdx",
+          "streetsidesoftware.code-spell-checker",
+          "astro-build.astro-vscode",
+          "bradlc.vscode-tailwindcss",
+          "streetsidesoftware.code-spell-checker-german",
+          "GitHub.vscode-pull-request-github",
+          "biomejs.biome"
+        ],
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "zsh",
+          "[astro]": {
+            "editor.defaultFormatter": "astro-build.astro-vscode"
+          }
         }
       }
     }
   }
-}
