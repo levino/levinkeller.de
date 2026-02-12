@@ -1,7 +1,6 @@
-name: "Pak Choi"
+name: "Erbsensprossen"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
-    succession: 2
+  - month: april

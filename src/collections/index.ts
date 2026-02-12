@@ -33,36 +33,12 @@ export const collections = {
       plant: reference('plants'),
     }),
   }),
-  beds: defineCollection({
-    loader: glob({
-      pattern: '**/*.md',
-      base: './content/beds',
-    }),
-    schema: z.object({
-      plants: z.array(reference('plants')),
-      name: z.string(),
-    }),
-  }),
   vegetables: defineCollection({
     loader: glob({
       pattern: '**/*.yaml',
       base: './content/vegetables',
     }),
     schema: vegetablesSchema,
-  }),
-  vegetableStock: defineCollection({
-    schema: z.object({
-      vegetable: reference('vegetables'),
-      inStock: z.boolean(),
-    }),
-    loader: file('./content/vegetableStock.yaml', {
-      parser: (text) =>
-        Object.entries(parseYaml(text)).map(([vegetable, inStock], id) => ({
-          vegetable,
-          inStock,
-          id,
-        })),
-    }),
   }),
   plantStock: defineCollection({
     schema: z.object({

@@ -1,0 +1,9 @@
+name: "Mangold"
+sowings:
+  - month: april
+  - month: july
+    succession: 2
+  - month: august
+    timing: late
+    succession: 2
+    underCover: true

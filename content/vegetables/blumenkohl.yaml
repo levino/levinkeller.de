@@ -1,0 +1,14 @@
+name: "Blumenkohl"
+sowings:
+  - month: february
+    timing: 2nd-half
+    note: "für Sommer"
+  - month: march
+    note: "für Sommer"
+  - month: june
+    note: "für Herbst"
+  - month: july
+    timing: late
+    note: "für Frühling"
+  - month: august
+    note: "für Frühling"

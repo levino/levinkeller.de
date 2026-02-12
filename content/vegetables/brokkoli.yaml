@@ -1,7 +1,7 @@
-name: "Pak Choi"
+name: "Brokkoli"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
+  - month: june
     succession: 2

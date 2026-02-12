@@ -1,7 +1,7 @@
-name: "Pak Choi"
+name: "Chili"
 sowings:
   - month: february
     timing: 2nd-half
+    underCover: true
   - month: march
-  - month: august
-    succession: 2
+    underCover: true

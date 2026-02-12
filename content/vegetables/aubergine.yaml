@@ -1,10 +1,7 @@
-name:
-  latin: Solanum melongena
-  de: Aubergine
-sowing:
-  - february
-harvest:
-  - june
-planting:
-  - may
-supplier: culinaris
+name: "Aubergine"
+sowings:
+  - month: february
+    timing: 2nd-half
+    underCover: true
+  - month: march
+    underCover: true

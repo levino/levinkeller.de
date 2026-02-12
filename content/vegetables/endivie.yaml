@@ -1,6 +1,7 @@
-name: "Radicchio"
+name: "Endivie"
 sowings:
   - month: june
     timing: 2nd-half
   - month: july
+  - month: august
     timing: 1st-half

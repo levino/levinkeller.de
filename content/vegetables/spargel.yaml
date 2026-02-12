@@ -1,7 +1,5 @@
-name: "Pak Choi"
+name: "Spargel"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
-    succession: 2

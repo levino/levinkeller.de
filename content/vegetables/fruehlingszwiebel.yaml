@@ -1,7 +1,9 @@
-name: "Pak Choi"
+name: "Frühlingszwiebel"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
+  - month: may
     succession: 2
+  - month: july
+    succession: 3
