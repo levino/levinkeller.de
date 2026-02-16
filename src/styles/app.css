@@ -6,17 +6,17 @@
 @import "@levino/shipyard-blog";
 @import "@levino/shipyard-docs";
 
-@plugin 'daisyui' {
+@plugin "daisyui" {
   themes:
     retro --default,
     forest-custom --prefersdark;
 }
 
-@plugin '@tailwindcss/typography';
+@plugin "@tailwindcss/typography";
 
-@source '../../content';
+@source "../../content";
 
-@plugin 'daisyui/theme' {
+@plugin "daisyui/theme" {
   name: "forest-custom";
   default: false;
   prefersdark: true;
