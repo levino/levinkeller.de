@@ -7,9 +7,18 @@ interface Props {
   alt: string
   loading?: 'lazy' | 'eager'
   class?: string
+  sizes?: string
+  quality?: number
 }
 
-const { src, alt, loading = 'lazy', class: className } = Astro.props
+const {
+  src,
+  alt,
+  loading = 'lazy',
+  class: className,
+  sizes = '(max-width: 800px) 100vw, 800px',
+  quality = 85,
+} = Astro.props
 ---
 
 <Image
@@ -17,6 +26,7 @@ const { src, alt, loading = 'lazy', class: className } = Astro.props
   alt={alt}
   loading={loading}
   widths={[480, 800, 1200]}
-  sizes="(max-width: 800px) 100vw, 800px"
-  class:list={['h-auto max-w-full', className]}
+  sizes={sizes}
+  quality={quality}
+  class:list={['h-auto max-w-full rounded-md', className]}
 />
