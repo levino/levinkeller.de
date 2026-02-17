@@ -5,7 +5,7 @@ authors:
 description:
   Bericht aus dem Garten im August 2023. Die Tomaten werden reif, die Wiese
   wurde geschnitten und die Blumen blühen üppig.
-image: ./hibiskusOG.webp
+image: /blog/hibiskusOG.webp
 date: 2023-08-15
 ---
 
@@ -25,31 +25,21 @@ import agastache from './agastache.jpg'
 import beetRechts from './beetRechts.jpg'
 import bluetenImBeet from './bluetenImBeet.jpg'
 import sonnenblumen from './sonnenblumen.jpg'
-import {
-  FigureCaption,
-  Figure,
-  ZoomableResponsiveImage,
-} from '@/components/Figure'
+import BlogImage from '@/components/BlogImage.astro'
 import flaechenkompostierungUnterBueschen from './flaechenkompostierungUnterBueschen.jpg'
 
-<Figure caption="Die Hibiskusblüte läutet das Sommerende ein">
-  <ZoomableResponsiveImage
-    loading="eager"
-    {...hibiskus}
-    alt="Hibiskusblüte vor Lagerfeuer"
-  />
-</Figure>
+<figure>
+  <BlogImage src={hibiskus} alt="Hibiskusblüte vor Lagerfeuer" loading="eager" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Die Hibiskusblüte läutet das Sommerende ein</figcaption>
+</figure>
 
 Es ist Mitte August und weil ich meine Wiesenflächen abmagern will und mich für
 eine dreischürige Mahd entschieden habe, war es wieder an der Zeit zu mähen.
 
-<Figure caption="Bei der Aufnahme des Schnittguts">
-  <ZoomableResponsiveImage
-    loading="eager"
-    {...wieseMitHeu}
-    alt="Wiese mit Heu"
-  />
-</Figure>
+<figure>
+  <BlogImage src={wieseMitHeu} alt="Wiese mit Heu" loading="eager" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Bei der Aufnahme des Schnittguts</figcaption>
+</figure>
 
 Ich habe die Wiese mit der Sense gemäht, das Schnittgut einen Tag liegen lassen
 und dann zusammengesammelt und der Kompostierung zugeführt. Da in meiner Wiese
@@ -58,21 +48,15 @@ einen dieser Haufen fährt, musste ich sehr viel schleifen und die Mahd dauerte
 entsprechend länger. Das Aufsammeln des Mahdguts ging aber gut von der Hand.
 
 <figure>
-  <div className="grid grid-flow-col grid-rows-3 items-center gap-2">
-    <div className="row-span-3">
-      <ZoomableResponsiveImage {...heutonne} alt="Drahttonne mit Heu" />
+  <div class="grid grid-flow-col grid-rows-3 items-center gap-2">
+    <div class="row-span-3">
+      <BlogImage src={heutonne} alt="Drahttonne mit Heu" />
     </div>
-    <ZoomableResponsiveImage {...heutonnen} alt="Mehrere Drahttonnen mit Heu" />
-    <ZoomableResponsiveImage
-      {...flaechenkompostierungUnterBueschen}
-      alt="Flächenkompostierung unter Büschen"
-    />
-    <ZoomableResponsiveImage
-      {...flaechenkompostierung3}
-      alt="Flächenkompostierung unter Büschen von der anderen Seite"
-    />
+    <BlogImage src={heutonnen} alt="Mehrere Drahttonnen mit Heu" />
+    <BlogImage src={flaechenkompostierungUnterBueschen} alt="Flächenkompostierung unter Büschen" />
+    <BlogImage src={flaechenkompostierung3} alt="Flächenkompostierung unter Büschen von der anderen Seite" />
   </div>
-  <FigureCaption>Kompostierung des Mahdguts</FigureCaption>
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Kompostierung des Mahdguts</figcaption>
 </figure>
 
 Wie in den Bildern zu erkennen, kompostiere ich das Mahdgut (also das
@@ -88,8 +72,8 @@ vielen Erde durch die Ameisenhaufen schlecht möglich und ich lehne es auch aus
 Veganismus-Gründen ab, Tierhaltung auf diese Weise zu unterstützen.
 
 <figure>
-  <ZoomableResponsiveImage {...kroete} alt="Erdkröte auf Hand" />
-  <FigureCaption>Eine junge Erdkröte</FigureCaption>
+  <BlogImage src={kroete} alt="Erdkröte auf Hand" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Eine junge Erdkröte</figcaption>
 </figure>
 
 Beim Mähen der Wiesen am unteren Ende des Grundstücks, wo es feuchter ist, habe
@@ -97,14 +81,11 @@ ich auch noch eine kleine Erdkröte entdeckt. Wenn sie groß ist, frisst sie
 hoffentlich viele Schnecken.
 
 <figure>
-  <div className="flex gap-2">
-    <ZoomableResponsiveImage {...kompost} alt="Komposthaufen" />
-    <ZoomableResponsiveImage
-      {...thermometerInKompost}
-      alt="50 Grad Celsius im Kompost"
-    />
+  <div class="flex gap-2">
+    <BlogImage src={kompost} alt="Komposthaufen" />
+    <BlogImage src={thermometerInKompost} alt="50 Grad Celsius im Kompost" />
   </div>
-  <FigureCaption>Kompost</FigureCaption>
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Kompost</figcaption>
 </figure>
 
 Der Kompost sieht inzwischen auch sehr gut aus. Mir gefällt die würfelförmige
@@ -117,18 +98,12 @@ für die Sterilisation reichen, wenn diese Temperatur lange genug andauert. Ich
 hoffe aber, dass die Temperatur wie sonst auf 65 Grad Celsius hochgeht.
 
 <figure>
-  <div className="flex gap-2">
-    <ZoomableResponsiveImage {...tomaten} alt="Tomatenpflanzen im Unkraut" />
-    <ZoomableResponsiveImage
-      {...tomate}
-      alt="Tomatenpflanze mit reifen und unreifen Früchten"
-    />
-    <ZoomableResponsiveImage
-      {...tomate2}
-      alt="Tomatenpflanze mit reifen und unreifen Früchten"
-    />
+  <div class="flex gap-2">
+    <BlogImage src={tomaten} alt="Tomatenpflanzen im Unkraut" />
+    <BlogImage src={tomate} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
+    <BlogImage src={tomate2} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
   </div>
-  <FigureCaption>Tomaten im Unkraut</FigureCaption>
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Tomaten im Unkraut</figcaption>
 </figure>
 
 Nach einigen Startschwierigkeiten machen sich die Tomaten inzwischen ganz gut.
@@ -143,27 +118,15 @@ Tomaten stehen oder den resistenten
 von Culinaris, kann ich nicht sagen. Ich bin jedenfalls zufrieden.
 
 <figure>
-  <div className="grid grid-cols-2 grid-rows-3 items-center gap-2">
-    <ZoomableResponsiveImage
-      {...beetLinks}
-      alt="Tomatenpflanze mit reifen und unreifen Früchten"
-    />
-    <div className="row-span-3">
-      <ZoomableResponsiveImage
-        {...agastache}
-        alt="50 Grad Celsius im Kompost"
-      />
+  <div class="grid grid-cols-2 grid-rows-3 items-center gap-2">
+    <BlogImage src={beetLinks} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
+    <div class="row-span-3">
+      <BlogImage src={agastache} alt="50 Grad Celsius im Kompost" />
     </div>
-    <ZoomableResponsiveImage
-      {...beetRechts}
-      alt="Tomatenpflanze mit reifen und unreifen Früchten"
-    />
-    <ZoomableResponsiveImage
-      {...bluetenImBeet}
-      alt="50 Grad Celsius im Kompost"
-    />
+    <BlogImage src={beetRechts} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
+    <BlogImage src={bluetenImBeet} alt="50 Grad Celsius im Kompost" />
   </div>
-  <FigureCaption>Beete in Hochform</FigureCaption>
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Beete in Hochform</figcaption>
 </figure>
 
 Und auch die Blumenbeete haben sich prächtig entwickelt. Die Wiese im Spätwinter
@@ -177,8 +140,8 @@ gerechnet hatte. Der Mohn und die Nachtkerzen waren schön, die Brennnesseln und
 der gemeine Rainkohl waren es nicht.
 
 <figure>
-  <ZoomableResponsiveImage {...sonnenblumen} alt="Sonnenblumen am Gartenzaun" />
-  <FigureCaption>Sonnenblumen</FigureCaption>
+  <BlogImage src={sonnenblumen} alt="Sonnenblumen am Gartenzaun" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Sonnenblumen</figcaption>
 </figure>
 
 Und mit einem letzten Blick auf die Sonnenblumen der Sorten "Russian Giant" und

@@ -31,11 +31,6 @@
       "trailingCommas": "es5"
     }
   },
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
   "assist": {
     "enabled": true,
     "actions": {
