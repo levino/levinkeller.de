@@ -1,5 +1,6 @@
 ---
 title: Ehrenamt
+render: false
 sidebar:
-  render: false
+  position: 7
 ---
