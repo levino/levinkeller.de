@@ -26,6 +26,7 @@ import beetRechts from './beetRechts.jpg'
 import bluetenImBeet from './bluetenImBeet.jpg'
 import sonnenblumen from './sonnenblumen.jpg'
 import BlogImage from '@/components/BlogImage.astro'
+import BlogCarousel from '@/components/BlogCarousel.astro'
 import flaechenkompostierungUnterBueschen from './flaechenkompostierungUnterBueschen.jpg'
 
 <figure>
@@ -48,14 +49,19 @@ einen dieser Haufen fährt, musste ich sehr viel schleifen und die Mahd dauerte
 entsprechend länger. Das Aufsammeln des Mahdguts ging aber gut von der Hand.
 
 <figure>
-  <div class="grid grid-cols-2 gap-2">
-    <div class="row-span-3">
-      <BlogImage src={heutonne} alt="Drahttonne mit Heu" class="h-full object-cover" />
-    </div>
-    <BlogImage src={heutonnen} alt="Mehrere Drahttonnen mit Heu" />
-    <BlogImage src={flaechenkompostierungUnterBueschen} alt="Flächenkompostierung unter Büschen" />
-    <BlogImage src={flaechenkompostierung3} alt="Flächenkompostierung unter Büschen von der anderen Seite" />
-  </div>
+  <BlogImage src={heutonne} alt="Drahttonne mit Heu" class="mx-auto max-h-[70vh] w-auto" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Drahttonne mit Heu</figcaption>
+</figure>
+
+<figure>
+  <BlogCarousel
+    id="kompostierung"
+    slides={[
+      { src: heutonnen, alt: 'Mehrere Drahttonnen mit Heu' },
+      { src: flaechenkompostierungUnterBueschen, alt: 'Flächenkompostierung unter Büschen' },
+      { src: flaechenkompostierung3, alt: 'Flächenkompostierung unter Büschen von der anderen Seite' },
+    ]}
+  />
   <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Kompostierung des Mahdguts</figcaption>
 </figure>
 
@@ -81,10 +87,13 @@ ich auch noch eine kleine Erdkröte entdeckt. Wenn sie groß ist, frisst sie
 hoffentlich viele Schnecken.
 
 <figure>
-  <div class="grid grid-cols-2 gap-2">
-    <BlogImage src={kompost} alt="Komposthaufen" />
-    <BlogImage src={thermometerInKompost} alt="50 Grad Celsius im Kompost" />
-  </div>
+  <BlogCarousel
+    id="kompost"
+    slides={[
+      { src: kompost, alt: 'Komposthaufen' },
+      { src: thermometerInKompost, alt: '50 Grad Celsius im Kompost' },
+    ]}
+  />
   <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Kompost</figcaption>
 </figure>
 
@@ -98,11 +107,14 @@ für die Sterilisation reichen, wenn diese Temperatur lange genug andauert. Ich
 hoffe aber, dass die Temperatur wie sonst auf 65 Grad Celsius hochgeht.
 
 <figure>
-  <div class="grid grid-cols-3 gap-2">
-    <BlogImage src={tomaten} alt="Tomatenpflanzen im Unkraut" />
-    <BlogImage src={tomate} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
-    <BlogImage src={tomate2} alt="Tomatenpflanze mit reifen und unreifen Früchten" />
-  </div>
+  <BlogCarousel
+    id="tomaten"
+    slides={[
+      { src: tomaten, alt: 'Tomatenpflanzen im Unkraut' },
+      { src: tomate, alt: 'Tomatenpflanze mit reifen und unreifen Früchten' },
+      { src: tomate2, alt: 'Tomatenpflanze mit reifen und unreifen Früchten' },
+    ]}
+  />
   <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Tomaten im Unkraut</figcaption>
 </figure>
 
@@ -118,15 +130,20 @@ Tomaten stehen oder den resistenten
 von Culinaris, kann ich nicht sagen. Ich bin jedenfalls zufrieden.
 
 <figure>
-  <div class="grid grid-cols-2 gap-2">
-    <BlogImage src={beetLinks} alt="Blumenbeet links" />
-    <div class="row-span-3">
-      <BlogImage src={agastache} alt="Blühende Agastache" class="h-full object-cover" />
-    </div>
-    <BlogImage src={beetRechts} alt="Blumenbeet rechts" />
-    <BlogImage src={bluetenImBeet} alt="Blüten im Beet" />
-  </div>
+  <BlogCarousel
+    id="beete"
+    slides={[
+      { src: beetLinks, alt: 'Blumenbeet links' },
+      { src: beetRechts, alt: 'Blumenbeet rechts' },
+      { src: bluetenImBeet, alt: 'Blüten im Beet' },
+    ]}
+  />
   <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Beete in Hochform</figcaption>
+</figure>
+
+<figure>
+  <BlogImage src={agastache} alt="Blühende Agastache" class="mx-auto max-h-[70vh] w-auto" />
+  <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">Blühende Agastache</figcaption>
 </figure>
 
 Und auch die Blumenbeete haben sich prächtig entwickelt. Die Wiese im Spätwinter
