@@ -42,3 +42,10 @@
 .prose :is(h1, h2, h3, h4, h5, h6) a {
   text-decoration: none;
 }
+
+/* Constrain blog post prose width for readability (overrides shipyard max-w-none) */
+.prose {
+  max-width: 75ch;
+  margin-left: auto;
+  margin-right: auto;
+}
