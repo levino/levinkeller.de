@@ -41,12 +41,12 @@ export default defineConfig({
     },
   },
 
-  site: 'https://www.levinkeller.de',
+  site: 'https://levinkeller.de',
 
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.startsWith('https://www.levinkeller.de/private/'),
+      filter: (page) => !page.startsWith('https://levinkeller.de/private/'),
     }),
     mdx(),
     shipyard({
