@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /de/hidden/
+Disallow: /en/hidden/
+
+Sitemap: https://levinkeller.de/sitemap-index.xml
