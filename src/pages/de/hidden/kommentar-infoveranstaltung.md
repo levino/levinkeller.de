@@ -5,6 +5,9 @@ locale: 'de'
 prev: false
 next: false
 tableOfContents: false
+customMetaTags:
+  - name: robots
+    content: 'noindex, nofollow'
 ---
 
 # Kommentar zur Infoveransaltung über den geplanten Solarpark in Rössing

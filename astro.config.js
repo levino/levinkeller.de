@@ -46,7 +46,9 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.startsWith('https://levinkeller.de/private/'),
+      filter: (page) =>
+        !page.startsWith('https://levinkeller.de/private/') &&
+        !page.includes('/hidden/'),
     }),
     mdx(),
     shipyard({
