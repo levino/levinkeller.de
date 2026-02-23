@@ -1,0 +1,15 @@
+# Aussaat-Protokoll 2026
+# Hier werden tatsächliche Aussaaten eingetragen.
+# Format pro Eintrag:
+#   - vegetable: <id aus content/vegetables, z.B. "tomate">
+#     date: "YYYY-MM-DD"
+#
+# Die Succession (1., 2., 3. Aussaat) wird automatisch aus der
+# Reihenfolge der Einträge für dasselbe Gemüse abgeleitet.
+#
+# Beispiel:
+#   - vegetable: kopfsalat
+#     date: "2026-02-25"
+#   - vegetable: kopfsalat
+#     date: "2026-04-15"
+entries: []
