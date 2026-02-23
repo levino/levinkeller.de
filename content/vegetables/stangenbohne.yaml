@@ -1,6 +1,8 @@
 name: "Stangenbohne"
-sowings:
-  - month: may
-    timing: mid-late
-  - month: june
-    timing: 1st-half
+sowingWindows:
+  - from:
+      month: may
+      timing: mid-late
+    until:
+      month: june
+      timing: 1st-half

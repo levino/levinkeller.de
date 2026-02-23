@@ -1,19 +1,26 @@
 name: "Pflücksalat"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: april
-  - month: may
-    timing: late
-    succession: 2
-  - month: june
-    timing: early
-    succession: 2
-  - month: july
-    timing: mid
-    succession: 3
-  - month: september
-    timing: early
-    succession: 4
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: april
+  - from:
+      month: may
+      timing: late
+    until:
+      month: june
+      timing: early
+  - from:
+      month: july
+      timing: mid
+    until:
+      month: july
+      timing: mid
+  - from:
+      month: september
+      timing: early
+    until:
+      month: september
+      timing: early
     overwintering: true

@@ -1,5 +1,11 @@
 name: "Steckzwiebel"
-sowings:
-  - month: march
-  - month: october
+sowingWindows:
+  - from:
+      month: march
+    until:
+      month: march
+  - from:
+      month: october
+    until:
+      month: october
     overwintering: true

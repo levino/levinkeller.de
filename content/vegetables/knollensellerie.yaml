@@ -1,3 +1,6 @@
 name: "Knollensellerie"
-sowings:
-  - month: march
+sowingWindows:
+  - from:
+      month: march
+    until:
+      month: march

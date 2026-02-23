@@ -1,4 +1,8 @@
 name: "Winterrettich"
-sowings:
-  - month: july
-    timing: early-mid
+sowingWindows:
+  - from:
+      month: july
+      timing: early-mid
+    until:
+      month: july
+      timing: early-mid

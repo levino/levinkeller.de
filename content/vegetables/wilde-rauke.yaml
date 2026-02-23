@@ -1,4 +1,8 @@
 name: "Wilde Rauke"
-sowings:
-  - month: october
-    timing: early
+sowingWindows:
+  - from:
+      month: october
+      timing: early
+    until:
+      month: october
+      timing: early

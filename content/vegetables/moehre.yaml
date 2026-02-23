@@ -1,10 +1,12 @@
 name: "Möhre"
-sowings:
-  - month: march
-    timing: late
-  - month: april
-  - month: june
-    succession: 2
-  - month: july
-    timing: early
-    succession: 2
+sowingWindows:
+  - from:
+      month: march
+      timing: late
+    until:
+      month: april
+  - from:
+      month: june
+    until:
+      month: july
+      timing: early

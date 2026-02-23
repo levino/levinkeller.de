@@ -1,9 +1,14 @@
 name: "Knoblauch"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: october
-    timing: late
-    overwintering: true
-  - month: november
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: february
+      timing: 2nd-half
+  - from:
+      month: october
+      timing: late
+    until:
+      month: november
     overwintering: true

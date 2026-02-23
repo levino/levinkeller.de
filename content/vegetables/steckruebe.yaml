@@ -1,3 +1,6 @@
 name: "Steckrübe"
-sowings:
-  - month: april
+sowingWindows:
+  - from:
+      month: april
+    until:
+      month: april

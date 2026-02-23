@@ -1,6 +1,8 @@
 name: "Feldsalat"
-sowings:
-  - month: september
-    timing: late
-  - month: october
-    timing: early
+sowingWindows:
+  - from:
+      month: september
+      timing: late
+    until:
+      month: october
+      timing: early

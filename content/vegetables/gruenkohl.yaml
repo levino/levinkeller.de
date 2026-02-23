@@ -1,9 +1,8 @@
 name: "Grünkohl"
-sowings:
-  - month: april
-  - month: may
-  - month: june
-  - month: july
-  - month: august
-    timing: late
-    underCover: true
+sowingWindows:
+  - from:
+      month: april
+    until:
+      month: august
+      timing: late
+    note: "August geschützt"

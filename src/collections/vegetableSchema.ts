@@ -14,10 +14,15 @@ const timing = z.enum([
   'full',
 ])
 
-const sowingEntry = z.object({
+const monthPoint = z.object({
   month: months,
-  timing: timing.default('full'),
-  succession: z.number().default(1),
+  timing: timing.optional(),
+})
+
+const sowingWindow = z.object({
+  from: monthPoint,
+  until: monthPoint,
+  successionIntervalWeeks: z.number().optional(),
   underCover: z.boolean().default(false),
   overwintering: z.boolean().default(false),
   note: z.string().optional(),
@@ -25,5 +30,5 @@ const sowingEntry = z.object({
 
 export const vegetablesSchema = z.object({
   name: z.string(),
-  sowings: z.array(sowingEntry),
+  sowingWindows: z.array(sowingWindow),
 })

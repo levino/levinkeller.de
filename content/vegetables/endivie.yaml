@@ -1,7 +1,8 @@
 name: "Endivie"
-sowings:
-  - month: june
-    timing: 2nd-half
-  - month: july
-  - month: august
-    timing: 1st-half
+sowingWindows:
+  - from:
+      month: june
+      timing: 2nd-half
+    until:
+      month: august
+      timing: 1st-half

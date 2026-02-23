@@ -1,10 +1,12 @@
 name: "Staudensellerie"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: may
-    succession: 2
-  - month: june
-    timing: early
-    succession: 2
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: march
+  - from:
+      month: may
+    until:
+      month: june
+      timing: early

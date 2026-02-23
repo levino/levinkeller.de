@@ -1,4 +1,8 @@
 name: "Kürbis"
-sowings:
-  - month: april
-    timing: 2nd-half
+sowingWindows:
+  - from:
+      month: april
+      timing: 2nd-half
+    until:
+      month: april
+      timing: 2nd-half

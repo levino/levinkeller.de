@@ -1,4 +1,6 @@
 name: "Topinambur"
-sowings:
-  - month: march
-  - month: april
+sowingWindows:
+  - from:
+      month: march
+    until:
+      month: april

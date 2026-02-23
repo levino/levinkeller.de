@@ -1,8 +1,9 @@
 name: "Melone"
-sowings:
-  - month: march
-    timing: late
-    underCover: true
-  - month: april
-    timing: early
+sowingWindows:
+  - from:
+      month: march
+      timing: late
+    until:
+      month: april
+      timing: early
     underCover: true

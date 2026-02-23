@@ -1,7 +1,11 @@
 name: "Brokkoli"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: june
-    succession: 2
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: march
+  - from:
+      month: june
+    until:
+      month: june

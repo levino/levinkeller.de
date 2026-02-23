@@ -1,9 +1,12 @@
 name: "Spinat"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: april
-    timing: early
-  - month: september
-    succession: 2
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: april
+      timing: early
+  - from:
+      month: september
+    until:
+      month: september

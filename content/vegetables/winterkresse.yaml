@@ -1,4 +1,8 @@
 name: "Winterkresse"
-sowings:
-  - month: august
-    timing: late
+sowingWindows:
+  - from:
+      month: august
+      timing: late
+    until:
+      month: august
+      timing: late

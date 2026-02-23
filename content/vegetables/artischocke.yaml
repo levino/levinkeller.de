@@ -1,6 +1,7 @@
 name: "Artischocke"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: april
+sowingWindows:
+  - from:
+      month: february
+      timing: 2nd-half
+    until:
+      month: april
