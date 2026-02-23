@@ -230,8 +230,8 @@ export function buildTrackedCalendar(
         actualWeek,
       }
 
-      if (status === 'done') {
-        addToMap(calendarWeekMap, actualWeek!, entry)
+      if (status === 'done' && actualWeek !== undefined) {
+        addToMap(calendarWeekMap, actualWeek, entry)
       } else if (status === 'overdue') {
         addToMap(calendarWeekMap, currentWeek, entry)
       } else if (status === 'upcoming') {
