@@ -1,0 +1,9 @@
+name: "Grünkohl"
+sowings:
+  - month: april
+  - month: may
+  - month: june
+  - month: july
+  - month: august
+    timing: late
+    underCover: true

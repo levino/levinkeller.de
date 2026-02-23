@@ -6,24 +6,22 @@ export const VegetableTable: FC<{
   caption: string
 }> = ({ vegetables, caption }) => (
   <table className="table">
-    <p>{caption}</p>
+    <caption className="mb-2 text-lg font-semibold">{caption}</caption>
     <thead>
       <tr>
         <th>Name</th>
-        <th>deutscher Name</th>
-        <th>vorrätig</th>
+        <th>Aussaaten</th>
       </tr>
     </thead>
     <tbody>
       {vegetables.map((vegetable) => (
         <tr key={vegetable.id}>
           <th>
-            <a href={`/de/garden/plants/${vegetable.id}`}>
-              {vegetable.data.name.latin}
+            <a href={`/de/garden/vegetables/${vegetable.id}`}>
+              {vegetable.data.name}
             </a>
           </th>
-          <td>{vegetable.data.name.de}</td>
-          <td></td>
+          <td>{vegetable.data.sowings.length} Termine</td>
         </tr>
       ))}
     </tbody>

@@ -1,7 +1,9 @@
-name: "Pak Choi"
+name: "Spinat"
 sowings:
   - month: february
     timing: 2nd-half
   - month: march
-  - month: august
+  - month: april
+    timing: early
+  - month: september
     succession: 2

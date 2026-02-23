@@ -1,26 +1,80 @@
 ---
 import { getCollection } from 'astro:content'
+import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
-import { flatten } from 'ramda'
-// 1. Generate a new path for every collection entry
-export async function getStaticPaths() {
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (async () => {
   const vegs = await getCollection('vegetables')
-  return flatten(
-    vegs.map((entry) =>
-      ['en', 'de'].map((locale) => ({
-        params: { slug: entry.id, locale },
-        props: { entry },
-      }))
-    )
-  )
-}
-// 2. For your template, you can get the entry directly from the prop
+  return vegs.map((entry) => ({
+    params: { slug: entry.id, locale: 'de' },
+    props: { entry },
+  }))
+}) satisfies GetStaticPaths
+
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
+const timingLabel = (timing: string) => {
+  const labels: Record<string, string> = {
+    early: 'Anfang',
+    mid: 'Mitte',
+    late: 'Ende',
+    'early-mid': 'Anfang–Mitte',
+    'mid-late': 'Mitte–Ende',
+    '1st-half': '1. Hälfte',
+    '2nd-half': '2. Hälfte',
+    full: '',
+  }
+  return labels[timing] ?? ''
+}
+const monthLabel = (month: string) =>
+  MONTHS_DE[MONTHS_EN.indexOf(month as (typeof MONTHS_EN)[number])]
 ---
 
-<Layout canonicalUrl={canonicalUrl}>
-  <div class="mx-auto max-w-3xl">
-    {veg.data.name.latin}
+<Layout canonicalUrl={canonicalUrl} title={veg.data.name}>
+  <div class="mx-auto max-w-3xl px-4 py-8">
+    <h1 class="mb-6 text-2xl font-bold">{veg.data.name}</h1>
+    <h2 class="mb-3 text-lg font-semibold">Aussaattermine</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Monat</th>
+          <th>Zeitraum</th>
+          <th>Aussaat Nr.</th>
+          <th>Hinweise</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          veg.data.sowings.map((sowing) => (
+            <tr>
+              <td>{monthLabel(sowing.month)}</td>
+              <td>{timingLabel(sowing.timing ?? 'full') || 'ganzer Monat'}</td>
+              <td>
+                {(sowing.succession ?? 1) > 1
+                  ? `${sowing.succession}. Aussaat`
+                  : '1. Aussaat'}
+              </td>
+              <td class="flex flex-wrap gap-1">
+                {(sowing.underCover ?? false) && (
+                  <span class="badge badge-sm badge-info">geschützt</span>
+                )}
+                {(sowing.overwintering ?? false) && (
+                  <span class="badge badge-sm badge-warning">Überwinterung</span>
+                )}
+                {sowing.note && (
+                  <span class="badge badge-sm badge-ghost">{sowing.note}</span>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+    <div class="mt-6">
+      <a href="../sowing-calendar" class="btn btn-outline btn-sm">
+        ← Zurück zum Aussaatkalender
+      </a>
+    </div>
   </div>
 </Layout>

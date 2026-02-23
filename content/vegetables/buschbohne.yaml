@@ -1,0 +1,6 @@
+name: "Buschbohne"
+sowings:
+  - month: may
+  - month: june
+  - month: july
+    timing: early
