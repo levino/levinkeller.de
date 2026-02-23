@@ -1,7 +1,5 @@
 name: "Salat-Mix"
 sowingWindows:
-  - from:
-      month: october
-    until:
-      month: october
+  - from: 40
+    until: 44
     underCover: true

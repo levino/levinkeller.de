@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content'
-import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
 
@@ -14,28 +13,6 @@ export const getStaticPaths = (async () => {
 
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
-const timingLabel = (timing?: string) => {
-  if (!timing) return ''
-  const labels: Record<string, string> = {
-    early: 'Anfang',
-    mid: 'Mitte',
-    late: 'Ende',
-    'early-mid': 'Anfang–Mitte',
-    'mid-late': 'Mitte–Ende',
-    '1st-half': '1. Hälfte',
-    '2nd-half': '2. Hälfte',
-    full: '',
-  }
-  return labels[timing] ?? ''
-}
-const monthLabel = (month: string) =>
-  MONTHS_DE[MONTHS_EN.indexOf(month as (typeof MONTHS_EN)[number])]
-
-const formatPoint = (point: { month: string; timing?: string }) => {
-  const m = monthLabel(point.month)
-  const t = timingLabel(point.timing)
-  return t ? `${t} ${m}` : m
-}
 ---
 
 <Layout canonicalUrl={canonicalUrl} title={veg.data.name}>
@@ -45,8 +22,8 @@ const formatPoint = (point: { month: string; timing?: string }) => {
     <table class="table">
       <thead>
         <tr>
-          <th>Von</th>
-          <th>Bis</th>
+          <th>Von (KW)</th>
+          <th>Bis (KW)</th>
           <th>Folgesaat</th>
           <th>Hinweise</th>
         </tr>
@@ -55,8 +32,8 @@ const formatPoint = (point: { month: string; timing?: string }) => {
         {
           veg.data.sowingWindows.map((w) => (
             <tr>
-              <td>{formatPoint(w.from)}</td>
-              <td>{formatPoint(w.until)}</td>
+              <td>{w.from}</td>
+              <td>{w.until}</td>
               <td>
                 {w.successionIntervalWeeks
                   ? `alle ${w.successionIntervalWeeks} Wochen`

@@ -35,8 +35,7 @@ const logEntries: SowingLogEntry[] = (yearLog?.data.entries ?? []).map((e) => ({
 const { weekMap: calendarWeekMap, missedVegetables } = buildTrackedCalendar(
   vegetables,
   logEntries,
-  currentWeek,
-  year
+  currentWeek
 )
 
 const sortedWeeks = [...calendarWeekMap.keys()].sort((a, b) => a - b)

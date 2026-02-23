@@ -1,11 +1,6 @@
 name: "Pak Choi"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: march
-  - from:
-      month: august
-    until:
-      month: august
+  - from: 8
+    until: 14
+  - from: 31
+    until: 36

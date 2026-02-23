@@ -1,6 +1,4 @@
 name: "Steckrübe"
 sowingWindows:
-  - from:
-      month: april
-    until:
-      month: april
+  - from: 14
+    until: 18

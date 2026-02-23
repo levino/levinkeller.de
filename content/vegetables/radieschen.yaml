@@ -1,15 +1,8 @@
 name: "Radieschen"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: may
-      timing: early
+  - from: 8
+    until: 19
     successionIntervalWeeks: 4
-  - from:
-      month: september
-    until:
-      month: october
-      timing: mid
+  - from: 36
+    until: 43
     successionIntervalWeeks: 4

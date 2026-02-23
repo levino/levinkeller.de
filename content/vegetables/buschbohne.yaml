@@ -1,8 +1,5 @@
 name: "Buschbohne"
 sowingWindows:
-  - from:
-      month: may
-    until:
-      month: july
-      timing: early
+  - from: 18
+    until: 28
     successionIntervalWeeks: 4

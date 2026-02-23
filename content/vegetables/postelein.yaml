@@ -1,6 +1,4 @@
 name: "Postelein"
 sowingWindows:
-  - from:
-      month: september
-    until:
-      month: october
+  - from: 36
+    until: 44

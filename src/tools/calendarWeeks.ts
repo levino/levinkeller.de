@@ -1,19 +1,3 @@
-import { MONTHS_EN } from '@levino/shipyard-base'
-
-type Month = (typeof MONTHS_EN)[number]
-
-type Timing =
-  | 'early'
-  | 'mid'
-  | 'late'
-  | 'early-mid'
-  | 'mid-late'
-  | '1st-half'
-  | '2nd-half'
-  | 'full'
-
-type MonthPoint = { month: Month; timing?: Timing }
-
 export function getISOWeek(date: Date): number {
   const d = new Date(date.getTime())
   d.setHours(0, 0, 0, 0)
@@ -28,69 +12,6 @@ export function getISOWeek(date: Date): number {
         7
     )
   )
-}
-
-function getDayRange(
-  timing: Timing,
-  lastDay: number
-): { startDay: number; endDay: number } {
-  switch (timing) {
-    case 'early':
-      return { startDay: 1, endDay: 10 }
-    case 'mid':
-      return { startDay: 11, endDay: 20 }
-    case 'late':
-      return { startDay: 21, endDay: lastDay }
-    case 'early-mid':
-      return { startDay: 1, endDay: 20 }
-    case 'mid-late':
-      return { startDay: 11, endDay: lastDay }
-    case '1st-half':
-      return { startDay: 1, endDay: 15 }
-    case '2nd-half':
-      return { startDay: 16, endDay: lastDay }
-    default:
-      return { startDay: 1, endDay: lastDay }
-  }
-}
-
-function getCalendarWeeks(
-  month: Month,
-  timing: Timing = 'full',
-  year: number = new Date().getFullYear()
-): number[] {
-  const monthIndex = MONTHS_EN.indexOf(month)
-  const lastDay = new Date(year, monthIndex + 1, 0).getDate()
-  const { startDay, endDay } = getDayRange(timing, lastDay)
-
-  const startDate = new Date(year, monthIndex, startDay)
-  const endDate = new Date(year, monthIndex, endDay)
-
-  const startWeek = getISOWeek(startDate)
-  const endWeek = getISOWeek(endDate)
-
-  if (endWeek < startWeek) {
-    const weeks: number[] = []
-    for (let w = startWeek; w <= 52; w++) weeks.push(w)
-    for (let w = 1; w <= endWeek; w++) weeks.push(w)
-    return weeks
-  }
-
-  const weeks: number[] = []
-  for (let w = startWeek; w <= endWeek; w++) {
-    weeks.push(w)
-  }
-  return weeks
-}
-
-function getFirstWeek(point: MonthPoint, year: number): number {
-  const weeks = getCalendarWeeks(point.month, point.timing ?? 'full', year)
-  return Math.min(...weeks)
-}
-
-function getLastWeek(point: MonthPoint, year: number): number {
-  const weeks = getCalendarWeeks(point.month, point.timing ?? 'full', year)
-  return Math.max(...weeks)
 }
 
 export interface SowingCalendarEntry {
@@ -132,8 +53,8 @@ export interface TrackedCalendarResult {
 }
 
 interface SowingWindowInput {
-  from: MonthPoint
-  until: MonthPoint
+  from: number
+  until: number
   successionIntervalWeeks?: number
   underCover?: boolean
   overwintering?: boolean
@@ -163,8 +84,7 @@ export function buildTrackedCalendar(
     }
   }>,
   logEntries: SowingLogEntry[],
-  currentWeek: number,
-  year: number = new Date().getFullYear()
+  currentWeek: number
 ): TrackedCalendarResult {
   const calendarWeekMap: CalendarWeekMap = new Map()
   const missedVegetables: MissedVegetable[] = []
@@ -195,8 +115,8 @@ export function buildTrackedCalendar(
     let hasAnyEntry = false
 
     for (const window of veg.data.sowingWindows) {
-      const firstWeek = getFirstWeek(window.from, year)
-      const lastWeek = getLastWeek(window.until, year)
+      const firstWeek = window.from
+      const lastWeek = window.until
       const underCover = window.underCover ?? false
       const overwintering = window.overwintering ?? false
 
@@ -271,7 +191,7 @@ export function buildTrackedCalendar(
     // If no entries at all across all windows → missed
     if (!hasAnyEntry) {
       const overallLastWeek = Math.max(
-        ...veg.data.sowingWindows.map((w) => getLastWeek(w.until, year))
+        ...veg.data.sowingWindows.map((w) => w.until)
       )
       missedVegetables.push({
         name: veg.data.name,

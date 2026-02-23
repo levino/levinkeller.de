@@ -1,12 +1,6 @@
 name: "Rote Bete"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: april
-  - from:
-      month: june
-    until:
-      month: july
-      timing: early
+  - from: 8
+    until: 18
+  - from: 23
+    until: 28

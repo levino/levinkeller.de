@@ -1,7 +1,4 @@
 name: "Zucchini"
 sowingWindows:
-  - from:
-      month: april
-      timing: 2nd-half
-    until:
-      month: may
+  - from: 16
+    until: 22

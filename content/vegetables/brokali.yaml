@@ -1,6 +1,4 @@
 name: "Brokali"
 sowingWindows:
-  - from:
-      month: july
-    until:
-      month: july
+  - from: 27
+    until: 31

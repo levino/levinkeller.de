@@ -1,9 +1,5 @@
 name: "Kopfsalat"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: august
-      timing: early
+  - from: 8
+    until: 33
     successionIntervalWeeks: 4

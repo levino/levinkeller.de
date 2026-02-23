@@ -1,7 +1,5 @@
 name: "Tomate"
 sowingWindows:
-  - from:
-      month: april
-    until:
-      month: may
+  - from: 14
+    until: 22
     note: "April geschützt"

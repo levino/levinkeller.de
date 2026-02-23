@@ -1,8 +1,5 @@
 name: "Grünkohl"
 sowingWindows:
-  - from:
-      month: april
-    until:
-      month: august
-      timing: late
+  - from: 14
+    until: 36
     note: "August geschützt"

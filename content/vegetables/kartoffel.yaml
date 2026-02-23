@@ -1,7 +1,4 @@
 name: "Kartoffel"
 sowingWindows:
-  - from:
-      month: march
-      timing: late
-    until:
-      month: may
+  - from: 12
+    until: 22

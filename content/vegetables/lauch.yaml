@@ -1,6 +1,4 @@
 name: "Lauch"
 sowingWindows:
-  - from:
-      month: march
-    until:
-      month: april
+  - from: 9
+    until: 18

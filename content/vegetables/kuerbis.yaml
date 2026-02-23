@@ -1,8 +1,4 @@
 name: "Kürbis"
 sowingWindows:
-  - from:
-      month: april
-      timing: 2nd-half
-    until:
-      month: april
-      timing: 2nd-half
+  - from: 16
+    until: 18

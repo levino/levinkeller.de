@@ -1,11 +1,6 @@
 name: "Speiserübe"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: march
-  - from:
-      month: july
-    until:
-      month: july
+  - from: 8
+    until: 14
+  - from: 27
+    until: 31

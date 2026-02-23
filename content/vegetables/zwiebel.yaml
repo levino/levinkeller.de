@@ -1,13 +1,7 @@
 name: "Zwiebel"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: march
-  - from:
-      month: october
-      timing: late
-    until:
-      month: november
+  - from: 8
+    until: 14
+  - from: 43
+    until: 49
     overwintering: true

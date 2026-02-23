@@ -1,8 +1,4 @@
 name: "Chinakohl"
 sowingWindows:
-  - from:
-      month: july
-      timing: late
-    until:
-      month: august
-      timing: early
+  - from: 30
+    until: 33

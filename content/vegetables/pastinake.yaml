@@ -1,7 +1,4 @@
 name: "Pastinake"
 sowingWindows:
-  - from:
-      month: march
-    until:
-      month: june
-      timing: early
+  - from: 9
+    until: 24

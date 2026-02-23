@@ -1,12 +1,7 @@
 name: "Mangold"
 sowingWindows:
-  - from:
-      month: april
-    until:
-      month: april
-  - from:
-      month: july
-    until:
-      month: august
-      timing: late
+  - from: 14
+    until: 18
+  - from: 27
+    until: 36
     note: "August geschützt"

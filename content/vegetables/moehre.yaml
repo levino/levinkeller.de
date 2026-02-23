@@ -1,12 +1,6 @@
 name: "Möhre"
 sowingWindows:
-  - from:
-      month: march
-      timing: late
-    until:
-      month: april
-  - from:
-      month: june
-    until:
-      month: july
-      timing: early
+  - from: 12
+    until: 18
+  - from: 23
+    until: 28

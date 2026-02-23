@@ -1,8 +1,4 @@
 name: "Endivie"
 sowingWindows:
-  - from:
-      month: june
-      timing: 2nd-half
-    until:
-      month: august
-      timing: 1st-half
+  - from: 25
+    until: 33

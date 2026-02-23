@@ -1,12 +1,6 @@
 name: "Staudensellerie"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: march
-  - from:
-      month: may
-    until:
-      month: june
-      timing: early
+  - from: 8
+    until: 14
+  - from: 18
+    until: 24

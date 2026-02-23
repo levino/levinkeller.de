@@ -1,12 +1,6 @@
 name: "Spinat"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: april
-      timing: early
-  - from:
-      month: september
-    until:
-      month: september
+  - from: 8
+    until: 15
+  - from: 36
+    until: 40

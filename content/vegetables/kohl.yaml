@@ -1,18 +1,11 @@
 name: "Kohl"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: may
+  - from: 8
+    until: 22
     note: "für Sommer und Herbst"
-  - from:
-      month: june
-    until:
-      month: june
+  - from: 23
+    until: 27
     note: "Wirsing für Winter"
-  - from:
-      month: august
-    until:
-      month: august
+  - from: 31
+    until: 36
     note: "für Frühling"

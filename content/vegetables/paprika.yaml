@@ -1,8 +1,5 @@
 name: "Paprika"
 sowingWindows:
-  - from:
-      month: february
-      timing: 2nd-half
-    until:
-      month: march
+  - from: 8
+    until: 14
     underCover: true

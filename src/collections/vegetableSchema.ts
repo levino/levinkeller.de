@@ -1,27 +1,8 @@
 import { z } from 'astro:content'
-import { MONTHS_EN } from '@levino/shipyard-base'
-
-const months = z.enum(MONTHS_EN)
-
-const timing = z.enum([
-  'early',
-  'mid',
-  'late',
-  'early-mid',
-  'mid-late',
-  '1st-half',
-  '2nd-half',
-  'full',
-])
-
-const monthPoint = z.object({
-  month: months,
-  timing: timing.optional(),
-})
 
 const sowingWindow = z.object({
-  from: monthPoint,
-  until: monthPoint,
+  from: z.number().min(1).max(53),
+  until: z.number().min(1).max(53),
   successionIntervalWeeks: z.number().optional(),
   underCover: z.boolean().default(false),
   overwintering: z.boolean().default(false),

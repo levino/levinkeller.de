@@ -1,6 +1,4 @@
 name: "Knollensellerie"
 sowingWindows:
-  - from:
-      month: march
-    until:
-      month: march
+  - from: 9
+    until: 14
