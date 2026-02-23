@@ -1,9 +1,8 @@
-import { z } from 'astro:content'
+import { reference, z } from 'astro:content'
 
 const sowingLogEntry = z.object({
-  vegetable: z.string(),
-  succession: z.number().default(1),
-  week: z.number(),
+  vegetable: reference('vegetables'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Format: YYYY-MM-DD'),
 })
 
 export const sowingLogSchema = z.object({

@@ -95,14 +95,16 @@ export interface SowingCalendarEntry {
   lastPossibleWeek: number
   /** Status: 'done' | 'overdue' | 'upcoming' | 'pending' */
   status: 'done' | 'overdue' | 'upcoming' | 'pending'
-  /** Actual week sown (from log), if any */
+  /** Actual date sown (from log), if done */
+  actualDate?: string
+  /** Actual week sown (from log), if done */
   actualWeek?: number
 }
 
+/** Raw log entry: vegetable ID + date string */
 export interface SowingLogEntry {
   vegetable: string
-  succession: number
-  week: number
+  date: string
 }
 
 export type CalendarWeekMap = Map<number, SowingCalendarEntry[]>
@@ -113,6 +115,9 @@ export type CalendarWeekMap = Map<number, SowingCalendarEntry[]>
  * - Which are overdue (planned week passed, not yet done, still possible)
  * - Which are upcoming (planned week hasn't arrived yet)
  * - Adjusted follow-up sowings based on actual sowing dates
+ *
+ * Succession is derived from the order of log entries per vegetable:
+ * the first logged sowing for a vegetable is succession 1, the second is 2, etc.
  */
 export function buildTrackedCalendar(
   vegetables: Array<{
@@ -135,113 +140,107 @@ export function buildTrackedCalendar(
 ): CalendarWeekMap {
   const calendarWeekMap: CalendarWeekMap = new Map()
 
+  // Group log entries by vegetable, sorted by date.
+  // The nth entry for a vegetable = succession n.
+  const logByVegetable = new Map<
+    string,
+    Array<{ date: string; week: number; succession: number }>
+  >()
+  for (const entry of logEntries) {
+    const vegId =
+      typeof entry.vegetable === 'object'
+        ? (entry.vegetable as { id: string }).id
+        : entry.vegetable
+    const list = logByVegetable.get(vegId) ?? []
+    const d = new Date(entry.date)
+    list.push({
+      date: entry.date,
+      week: getISOWeek(d),
+      succession: list.length + 1,
+    })
+    logByVegetable.set(vegId, list)
+  }
+
   for (const veg of vegetables) {
-    // Group sowings by succession to calculate delays
-    const sowingsBySuccession = new Map<
-      number,
-      {
-        month: Month
-        timing: Timing
-        succession: number
-        underCover: boolean
-        overwintering: boolean
-        note?: string
-        weeks: number[]
-      }
-    >()
+    const vegLog = logByVegetable.get(veg.id) ?? []
 
-    for (const sowing of veg.data.sowings) {
-      const succession = sowing.succession ?? 1
-      const timing = sowing.timing ?? 'full'
-      const weeks = getCalendarWeeks(sowing.month, timing, year)
-      sowingsBySuccession.set(succession, {
-        month: sowing.month,
-        timing,
-        succession,
-        underCover: sowing.underCover ?? false,
-        overwintering: sowing.overwintering ?? false,
-        note: sowing.note,
-        weeks,
+    // Build ordered list of planned sowings (sorted by succession number)
+    const plannedSowings = veg.data.sowings
+      .map((sowing) => {
+        const succession = sowing.succession ?? 1
+        const timing = sowing.timing ?? 'full'
+        const weeks = getCalendarWeeks(sowing.month, timing, year)
+        return {
+          succession,
+          timing,
+          underCover: sowing.underCover ?? false,
+          overwintering: sowing.overwintering ?? false,
+          note: sowing.note,
+          weeks,
+          plannedFirstWeek: Math.min(...weeks),
+          plannedLastWeek: Math.max(...weeks),
+        }
       })
-    }
-
-    // Sort successions
-    const sortedSuccessions = [...sowingsBySuccession.keys()].sort(
-      (a, b) => a - b
-    )
+      .sort((a, b) => a.succession - b.succession)
 
     // Track delay from previous sowings
     let accumulatedDelay = 0
 
-    for (const succNum of sortedSuccessions) {
-      const sowing = sowingsBySuccession.get(succNum)
-      if (!sowing) continue
-      const plannedFirstWeek = Math.min(...sowing.weeks)
-      const plannedLastWeek = Math.max(...sowing.weeks)
-
-      // Check if this succession was already sown
-      const logEntry = logEntries.find(
-        (e) => e.vegetable === veg.id && e.succession === succNum
-      )
+    for (const sowing of plannedSowings) {
+      // Find matching log entry by succession number
+      const logEntry = vegLog.find((e) => e.succession === sowing.succession)
 
       // Adjust based on accumulated delay from previous successions
-      const adjustedFirstWeek = plannedFirstWeek + accumulatedDelay
-      const adjustedLastWeek = plannedLastWeek + accumulatedDelay
+      const adjustedFirstWeek = sowing.plannedFirstWeek + accumulatedDelay
+      const adjustedLastWeek = sowing.plannedLastWeek + accumulatedDelay
 
       let status: SowingCalendarEntry['status']
-      let displayWeek: number
+      let actualDate: string | undefined
       let actualWeek: number | undefined
 
       if (logEntry) {
-        // This sowing was done
         status = 'done'
+        actualDate = logEntry.date
         actualWeek = logEntry.week
-        displayWeek = logEntry.week
 
         // Calculate delay for subsequent successions
-        const delay = logEntry.week - plannedFirstWeek
-        accumulatedDelay = delay
+        accumulatedDelay = logEntry.week - sowing.plannedFirstWeek
       } else if (currentWeek > adjustedLastWeek) {
         // Window has completely passed - too late
-        status = 'pending' // won't show, it's past
-        displayWeek = adjustedFirstWeek
+        status = 'pending'
       } else if (currentWeek >= adjustedFirstWeek) {
-        // We're in the window or past the first planned week but still possible
+        // Past the first planned week but still in the window
         status = 'overdue'
-        displayWeek = currentWeek
-        // Also show in the original planned week
       } else {
         // Future sowing
         status = 'upcoming'
-        displayWeek = adjustedFirstWeek
       }
 
       const entry: SowingCalendarEntry = {
         name: veg.data.name,
         id: veg.id,
-        succession: succNum,
+        succession: sowing.succession,
         underCover: sowing.underCover,
         overwintering: sowing.overwintering,
         note: sowing.note,
-        plannedWeek: plannedFirstWeek,
+        plannedWeek: sowing.plannedFirstWeek,
         lastPossibleWeek: adjustedLastWeek,
         status,
+        actualDate,
         actualWeek,
       }
 
       if (status === 'done') {
-        // Show in the week it was actually done
-        addToMap(calendarWeekMap, displayWeek, entry)
+        addToMap(calendarWeekMap, actualWeek!, entry)
       } else if (status === 'overdue') {
-        // Show in current week (so user sees it now)
         addToMap(calendarWeekMap, currentWeek, entry)
       } else if (status === 'upcoming') {
-        // Show in all adjusted planned weeks
         for (const w of sowing.weeks) {
           const adjustedW = w + accumulatedDelay
           addToMap(calendarWeekMap, adjustedW, entry)
         }
       }
+      // 'pending' (too late) entries are not shown
     }
   }
 

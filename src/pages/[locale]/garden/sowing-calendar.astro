@@ -28,7 +28,10 @@ const sowingLogs = await getCollection('sowingLog')
 
 // Find log for current year
 const yearLog = sowingLogs.find((log) => log.id === String(year))
-const logEntries: SowingLogEntry[] = yearLog?.data.entries ?? []
+const logEntries: SowingLogEntry[] = (yearLog?.data.entries ?? []).map((e) => ({
+  vegetable: typeof e.vegetable === 'object' ? e.vegetable.id : e.vegetable,
+  date: e.date,
+}))
 
 const calendarWeekMap: CalendarWeekMap = buildTrackedCalendar(
   vegetables,
@@ -152,9 +155,9 @@ const kwToMonth = (kw: number): string => {
                             {entry.note}
                           </span>
                         )}
-                        {entry.status === 'done' && entry.actualWeek && (
+                        {entry.status === 'done' && entry.actualDate && (
                           <span class="text-xs opacity-50">
-                            (gesät KW {entry.actualWeek})
+                            (gesät {entry.actualDate}, KW {entry.actualWeek})
                           </span>
                         )}
                         {entry.status === 'overdue' && (
