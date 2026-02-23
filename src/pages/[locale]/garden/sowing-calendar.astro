@@ -188,12 +188,6 @@ const kwToMonth = (kw: number): string => {
                             (noch möglich bis KW {entry.lastPossibleWeek})
                           </span>
                         )}
-                        {entry.status === 'upcoming' &&
-                          entry.plannedWeek !== kw && (
-                            <span class="text-xs opacity-50">
-                              (verschoben von KW {entry.plannedWeek})
-                            </span>
-                          )}
                       </li>
                     ))}
                   </ul>

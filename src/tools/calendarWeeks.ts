@@ -122,16 +122,18 @@ export interface TrackedCalendarResult {
 }
 
 /**
- * Given vegetables and a sowing log, build a calendar week map that reflects:
- * - Which sowings are done (logged)
- * - Which are available now (within the sowing window, can be sown)
- * - Which are upcoming (planned for the future)
+ * Build a calendar week map showing what to sow when.
  *
- * Also returns a list of vegetables whose entire sowing window has passed
- * without ever being sown.
+ * Each succession of each vegetable appears exactly ONCE:
+ * - 'done': in the week it was actually sown
+ * - 'available': in the current week (window is open, not yet sown)
+ * - 'upcoming': in the first week of its window (still in the future)
  *
- * The lastPossibleWeek always refers to the overall last possible sowing date
- * for the vegetable (across all successions), not individual succession windows.
+ * Multiple sowing entries sharing the same succession number are merged
+ * into one window (e.g. Artischocke: Feb + Mar + Apr = one window).
+ *
+ * Vegetables whose entire window has passed without a single sowing
+ * are returned in missedVegetables.
  */
 export function buildTrackedCalendar(
   vegetables: Array<{
@@ -155,7 +157,7 @@ export function buildTrackedCalendar(
   const calendarWeekMap: CalendarWeekMap = new Map()
   const missedVegetables: MissedVegetable[] = []
 
-  // Group log entries by vegetable, sorted by date.
+  // Group log entries by vegetable.
   // The nth entry for a vegetable = succession n.
   const logByVegetable = new Map<
     string,
@@ -179,100 +181,114 @@ export function buildTrackedCalendar(
   for (const veg of vegetables) {
     const vegLog = logByVegetable.get(veg.id) ?? []
 
-    // Build ordered list of planned sowings (sorted by succession number)
-    const plannedSowings = veg.data.sowings
-      .map((sowing) => {
-        const succession = sowing.succession ?? 1
-        const timing = sowing.timing ?? 'full'
-        const weeks = getCalendarWeeks(sowing.month, timing, year)
+    // Group sowing entries by succession number and merge into windows
+    const bySuccession = new Map<
+      number,
+      Array<{
+        underCover: boolean
+        overwintering: boolean
+        note?: string
+        weeks: number[]
+      }>
+    >()
+    for (const sowing of veg.data.sowings) {
+      const succession = sowing.succession ?? 1
+      const timing = sowing.timing ?? 'full'
+      const weeks = getCalendarWeeks(sowing.month, timing, year)
+      const group = bySuccession.get(succession) ?? []
+      group.push({
+        underCover: sowing.underCover ?? false,
+        overwintering: sowing.overwintering ?? false,
+        note: sowing.note,
+        weeks,
+      })
+      bySuccession.set(succession, group)
+    }
+
+    // Build one merged window per succession
+    const successionWindows = [...bySuccession.entries()]
+      .map(([succession, entries]) => {
+        const allWeeks = entries.flatMap((e) => e.weeks)
+        const first = entries[0]
         return {
           succession,
-          timing,
-          underCover: sowing.underCover ?? false,
-          overwintering: sowing.overwintering ?? false,
-          note: sowing.note,
-          weeks,
-          plannedFirstWeek: Math.min(...weeks),
-          plannedLastWeek: Math.max(...weeks),
+          firstWeek: Math.min(...allWeeks),
+          lastWeek: Math.max(...allWeeks),
+          underCover: first.underCover,
+          overwintering: first.overwintering,
+          note: first.note,
         }
       })
       .sort((a, b) => a.succession - b.succession)
 
-    // Calculate overall sowing window for this vegetable
+    // Overall last possible week across all successions
     const overallLastPossibleWeek = Math.max(
-      ...plannedSowings.map((s) => s.plannedLastWeek)
+      ...successionWindows.map((s) => s.lastWeek)
     )
 
-    // Track delay from previous sowings
-    let accumulatedDelay = 0
-
-    // Track whether any entry is done or still possible
     let hasDone = false
     let hasAvailableOrUpcoming = false
+    let accumulatedDelay = 0
 
-    for (const sowing of plannedSowings) {
-      // Find matching log entry by succession number
-      const logEntry = vegLog.find((e) => e.succession === sowing.succession)
+    for (const window of successionWindows) {
+      const logEntry = vegLog.find((e) => e.succession === window.succession)
 
-      // Adjust based on accumulated delay from previous successions
-      const adjustedFirstWeek = sowing.plannedFirstWeek + accumulatedDelay
-      const adjustedLastWeek = sowing.plannedLastWeek + accumulatedDelay
-
-      let status: SowingCalendarEntry['status'] | 'skipped'
-      let actualDate: string | undefined
-      let actualWeek: number | undefined
+      const adjustedFirstWeek = window.firstWeek + accumulatedDelay
+      const adjustedLastWeek = window.lastWeek + accumulatedDelay
 
       if (logEntry) {
-        status = 'done'
         hasDone = true
-        actualDate = logEntry.date
-        actualWeek = logEntry.week
+        accumulatedDelay = logEntry.week - window.firstWeek
 
-        // Calculate delay for subsequent successions
-        accumulatedDelay = logEntry.week - sowing.plannedFirstWeek
+        addToMap(calendarWeekMap, logEntry.week, {
+          name: veg.data.name,
+          id: veg.id,
+          succession: window.succession,
+          underCover: window.underCover,
+          overwintering: window.overwintering,
+          note: window.note,
+          plannedWeek: window.firstWeek,
+          lastPossibleWeek: overallLastPossibleWeek,
+          status: 'done',
+          actualDate: logEntry.date,
+          actualWeek: logEntry.week,
+        })
       } else if (currentWeek > adjustedLastWeek) {
-        // Individual succession window passed — skip silently
-        status = 'skipped'
+        // Window passed — skip silently
       } else if (currentWeek >= adjustedFirstWeek) {
-        // Within the sowing window — available to sow now
-        status = 'available'
+        // Within window — show once in current week
         hasAvailableOrUpcoming = true
+
+        addToMap(calendarWeekMap, currentWeek, {
+          name: veg.data.name,
+          id: veg.id,
+          succession: window.succession,
+          underCover: window.underCover,
+          overwintering: window.overwintering,
+          note: window.note,
+          plannedWeek: window.firstWeek,
+          lastPossibleWeek: adjustedLastWeek,
+          status: 'available',
+        })
       } else {
-        // Future sowing
-        status = 'upcoming'
+        // Future — show once in first week of window
         hasAvailableOrUpcoming = true
-      }
 
-      if (status === 'skipped') continue
-
-      const entry: SowingCalendarEntry = {
-        name: veg.data.name,
-        id: veg.id,
-        succession: sowing.succession,
-        underCover: sowing.underCover,
-        overwintering: sowing.overwintering,
-        note: sowing.note,
-        plannedWeek: sowing.plannedFirstWeek,
-        lastPossibleWeek: overallLastPossibleWeek,
-        status: status as SowingCalendarEntry['status'],
-        actualDate,
-        actualWeek,
-      }
-
-      if (status === 'done' && actualWeek !== undefined) {
-        addToMap(calendarWeekMap, actualWeek, entry)
-      } else if (status === 'available') {
-        addToMap(calendarWeekMap, currentWeek, entry)
-      } else if (status === 'upcoming') {
-        for (const w of sowing.weeks) {
-          const adjustedW = w + accumulatedDelay
-          addToMap(calendarWeekMap, adjustedW, entry)
-        }
+        addToMap(calendarWeekMap, adjustedFirstWeek, {
+          name: veg.data.name,
+          id: veg.id,
+          succession: window.succession,
+          underCover: window.underCover,
+          overwintering: window.overwintering,
+          note: window.note,
+          plannedWeek: window.firstWeek,
+          lastPossibleWeek: adjustedLastWeek,
+          status: 'upcoming',
+        })
       }
     }
 
-    // If no succession was done and none are available/upcoming,
-    // the entire window has passed — add to missed list
+    // Entire window passed without any sowing → missed
     if (!hasDone && !hasAvailableOrUpcoming) {
       missedVegetables.push({
         name: veg.data.name,
