@@ -83,53 +83,25 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
 <Layout>
   {/* ── Print-only compact checklist ── */}
   <div class="print-checklist hidden print:block mx-auto max-w-4xl px-4 text-black">
-    <h1 class="text-base font-bold mb-0">
-      Aussaatkalender {year} — Checkliste
+    <h1 class="text-base font-bold mb-1">
+      Aussaat KW {currentWeek}
     </h1>
-    <p class="text-xs mb-2 opacity-70">Stand: KW {currentWeek}</p>
 
     {currentWeekEntries && (() => {
       const todo = sortByUrgency(currentWeekEntries).filter((e) => e.status !== 'done')
       return todo.length > 0 && (
-        <div class="mb-2">
-          <h2 class="text-sm font-semibold border-b border-black pb-0.5 mb-1">
-            KW {currentWeek} (diese Woche)
-          </h2>
-          <div class="print-grid">
-            {todo.map((entry) => (
-              <label class="print-item">
-                <input type="checkbox" class="print-checkbox" />
-                <span>{entry.name}</span>
-                {entry.underCover && <span class="print-note"> (geschützt)</span>}
-                {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
-              </label>
-            ))}
-          </div>
+        <div class="print-grid">
+          {todo.map((entry) => (
+            <label class="print-item">
+              <input type="checkbox" class="print-checkbox" />
+              <span>{entry.name}</span>
+              {entry.underCover && <span class="print-note"> (geschützt)</span>}
+              {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
+            </label>
+          ))}
         </div>
       )
     })()}
-
-    {futureWeeks.map((kw) => {
-      const entries = calendarWeekMap.get(kw)!
-      const todo = sortByUrgency(entries).filter((e) => e.status !== 'done')
-      return todo.length > 0 && (
-        <div class="mb-2">
-          <h2 class="text-sm font-semibold border-b border-black pb-0.5 mb-1">
-            KW {kw} — {kwToMonth(kw)}
-          </h2>
-          <div class="print-grid">
-            {todo.map((entry) => (
-              <label class="print-item">
-                <input type="checkbox" class="print-checkbox" />
-                <span>{entry.name}</span>
-                {entry.underCover && <span class="print-note"> (geschützt)</span>}
-                {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
-              </label>
-            ))}
-          </div>
-        </div>
-      )
-    })}
   </div>
 
   {/* ── Screen-only interactive view ── */}
