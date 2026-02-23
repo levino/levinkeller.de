@@ -47,26 +47,31 @@ const kwToMonth = (kw: number): string => {
   return MONTHS_DE[date.getMonth()]
 }
 
-// Sort entries by urgency: fewest remaining weeks first (most urgent = top)
+// Sort entries: urgent first, then alphabetically within each group
 const sortByUrgency = (entries: SowingCalendarEntry[]) => {
   return [...entries].sort((a, b) => {
     // Done entries always last
     if (a.status === 'done' && b.status !== 'done') return 1
     if (a.status !== 'done' && b.status === 'done') return -1
-    // Sort by remaining weeks (ascending = most urgent first)
-    const remainA = a.lastPossibleWeek - currentWeek
-    const remainB = b.lastPossibleWeek - currentWeek
-    return remainA - remainB
+    if (a.status === 'done' && b.status === 'done')
+      return a.name.localeCompare(b.name)
+    // Urgent (remaining <= 1) before non-urgent
+    const urgentA = a.lastPossibleWeek - currentWeek <= 1
+    const urgentB = b.lastPossibleWeek - currentWeek <= 1
+    if (urgentA && !urgentB) return -1
+    if (!urgentA && urgentB) return 1
+    // Within same urgency group, sort alphabetically
+    return a.name.localeCompare(b.name)
   })
 }
 
-// Urgency color: dark green = last chance, light green = plenty of time
+// Urgency color: warm amber = last chance, soft sage = plenty of time
 const urgencyColor = (entry: SowingCalendarEntry): string => {
   if (entry.status === 'done') return ''
   const remaining = entry.lastPossibleWeek - currentWeek
-  if (remaining <= 1) return 'border-l-4 border-green-800 bg-green-100'
-  if (remaining <= 4) return 'border-l-4 border-green-600 bg-green-50'
-  return 'border-l-4 border-green-300 bg-green-50/50'
+  if (remaining <= 1) return 'border-l-4 border-warning bg-warning/10'
+  if (remaining <= 4) return 'border-l-4 border-secondary bg-secondary/10'
+  return 'border-l-4 border-base-300 bg-base-200/50'
 }
 
 // Split weeks into current, past, and future
@@ -88,11 +93,11 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
         <span class="inline-block h-3 w-3 rounded-full bg-success"></span> Erledigt
       </span>
       <span class="flex items-center gap-1">
-        <span class="inline-block h-3 w-3 border-l-4 border-green-800 bg-green-100 h-3 w-6"></span> Letzte
+        <span class="inline-block h-3 w-6 border-l-4 border-warning bg-warning/10"></span> Letzte
         Chance
       </span>
       <span class="flex items-center gap-1">
-        <span class="inline-block h-3 w-3 border-l-4 border-green-300 bg-green-50/50 h-3 w-6"></span> Noch
+        <span class="inline-block h-3 w-6 border-l-4 border-base-300 bg-base-200/50"></span> Noch
         Zeit
       </span>
     </div>
@@ -163,7 +168,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                 </span>
               )}
               {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek < 2 && (
-                <span class="text-xs font-medium text-green-800">
+                <span class="text-xs font-medium text-warning">
                   Letzte Chance
                 </span>
               )}

@@ -1,6 +1,6 @@
 name: "Knoblauch"
 sowingWindows:
-  - from: 8
+  - from: 1
     until: 9
   - from: 43
     until: 49
