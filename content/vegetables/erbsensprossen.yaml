@@ -1,4 +1,5 @@
 name: "Erbsensprossen"
 sowingWindows:
   - from: 8
-    until: 18
+    until: 38
+    successionIntervalWeeks: 2
