@@ -1,4 +1,4 @@
 name: "Markerbsen"
-sowings:
-  - month: march
-  - month: april
+sowingWindows:
+  - from: 9
+    until: 18

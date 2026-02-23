@@ -1,5 +1,4 @@
 name: "Gründüngung"
-sowings:
-  - month: october
-  - month: november
-    timing: early
+sowingWindows:
+  - from: 40
+    until: 46

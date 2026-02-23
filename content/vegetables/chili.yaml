@@ -1,7 +1,5 @@
 name: "Chili"
-sowings:
-  - month: february
-    timing: 2nd-half
-    underCover: true
-  - month: march
+sowingWindows:
+  - from: 8
+    until: 14
     underCover: true

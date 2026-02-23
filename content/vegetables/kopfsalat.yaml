@@ -1,15 +1,5 @@
 name: "Kopfsalat"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: april
-    succession: 2
-  - month: june
-    timing: early
-    succession: 3
-  - month: july
-    timing: early
-    succession: 4
-  - month: august
-    timing: early
-    succession: 5
+sowingWindows:
+  - from: 8
+    until: 33
+    successionIntervalWeeks: 4

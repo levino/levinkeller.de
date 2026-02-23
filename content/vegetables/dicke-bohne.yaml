@@ -1,7 +1,6 @@
 name: "Dicke Bohne"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: april
-  - month: november
+sowingWindows:
+  - from: 8
+    until: 18
+  - from: 44
+    until: 49

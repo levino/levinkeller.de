@@ -5,8 +5,8 @@ import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
 import {
   buildTrackedCalendar,
-  type CalendarWeekMap,
   getISOWeek,
+  type SowingCalendarEntry,
   type SowingLogEntry,
 } from '@/tools/calendarWeeks'
 
@@ -33,11 +33,10 @@ const logEntries: SowingLogEntry[] = (yearLog?.data.entries ?? []).map((e) => ({
   date: e.date,
 }))
 
-const calendarWeekMap: CalendarWeekMap = buildTrackedCalendar(
+const { weekMap: calendarWeekMap, missedVegetables } = buildTrackedCalendar(
   vegetables,
   logEntries,
-  currentWeek,
-  year
+  currentWeek
 )
 
 const sortedWeeks = [...calendarWeekMap.keys()].sort((a, b) => a - b)
@@ -47,140 +46,334 @@ const kwToMonth = (kw: number): string => {
   const date = new Date(year, 0, 1 + (kw - 1) * 7)
   return MONTHS_DE[date.getMonth()]
 }
+
+// Sort entries: urgent first, then alphabetically within each group
+const sortByUrgency = (entries: SowingCalendarEntry[]) => {
+  return [...entries].sort((a, b) => {
+    // Done entries always last
+    if (a.status === 'done' && b.status !== 'done') return 1
+    if (a.status !== 'done' && b.status === 'done') return -1
+    if (a.status === 'done' && b.status === 'done')
+      return a.name.localeCompare(b.name)
+    // Urgent (remaining <= 1) before non-urgent
+    const urgentA = a.lastPossibleWeek - currentWeek <= 1
+    const urgentB = b.lastPossibleWeek - currentWeek <= 1
+    if (urgentA && !urgentB) return -1
+    if (!urgentA && urgentB) return 1
+    // Within same urgency group, sort alphabetically
+    return a.name.localeCompare(b.name)
+  })
+}
+
+// Urgency color: warm amber = last chance, soft sage = plenty of time
+const urgencyColor = (entry: SowingCalendarEntry): string => {
+  if (entry.status === 'done') return ''
+  const remaining = entry.lastPossibleWeek - currentWeek
+  if (remaining <= 1) return 'border-l-4 border-warning bg-warning/10'
+  if (remaining <= 4) return 'border-l-4 border-secondary bg-secondary/10'
+  return 'border-l-4 border-base-300 bg-base-200/50'
+}
+
+// Split weeks into current, past, and future
+const currentWeekEntries = calendarWeekMap.get(currentWeek)
+const pastWeeks = sortedWeeks.filter((kw) => kw < currentWeek)
+const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
 ---
 
 <Layout>
-  <div class="container mx-auto max-w-4xl px-4">
+  {/* ── Print-only compact checklist ── */}
+  <div class="print-checklist hidden print:block mx-auto max-w-4xl px-4 text-black">
+    <h1 class="text-base font-bold mb-1">
+      Aussaat KW {currentWeek}
+    </h1>
+
+    {currentWeekEntries && (() => {
+      const todo = sortByUrgency(currentWeekEntries).filter((e) => e.status !== 'done')
+      return todo.length > 0 && (
+        <div class="print-grid">
+          {todo.map((entry) => (
+            <label class="print-item">
+              <input type="checkbox" class="print-checkbox" />
+              <span>{entry.name}</span>
+              {entry.underCover && <span class="print-note"> (geschützt)</span>}
+              {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
+            </label>
+          ))}
+        </div>
+      )
+    })()}
+  </div>
+
+  {/* ── Screen-only interactive view ── */}
+  <div class="container mx-auto max-w-4xl px-4 print:hidden">
     <h1 class="m-4 text-center text-2xl font-bold">
       Aussaatkalender {year}
     </h1>
     <p class="mb-2 text-center text-sm opacity-70">
-      Wochenweise Übersicht der Aussaattermine — aktuelle KW: {currentWeek}
+      Wochenweise Übersicht — aktuelle KW: {currentWeek}
     </p>
     <div class="mb-6 flex flex-wrap justify-center gap-3 text-xs">
       <span class="flex items-center gap-1">
         <span class="inline-block h-3 w-3 rounded-full bg-success"></span> Erledigt
       </span>
       <span class="flex items-center gap-1">
-        <span class="inline-block h-3 w-3 rounded-full bg-error"></span> Überfällig
+        <span class="inline-block h-3 w-6 border-l-4 border-warning bg-warning/10"></span> Letzte
+        Chance
       </span>
       <span class="flex items-center gap-1">
-        <span class="inline-block h-3 w-3 rounded-full bg-base-300"></span> Geplant
+        <span class="inline-block h-3 w-6 border-l-4 border-base-300 bg-base-200/50"></span> Noch
+        Zeit
       </span>
     </div>
-    <div class="space-y-1">
-      {
-        sortedWeeks.map((kw, idx) => {
-          const entries = calendarWeekMap.get(kw)!
-          const month = kwToMonth(kw)
-          const prevMonth = idx > 0 ? kwToMonth(sortedWeeks[idx - 1]) : ''
-          const showMonthHeader = month !== prevMonth
-          const isCurrentWeek = kw === currentWeek
-          const hasOverdue = entries.some((e) => e.status === 'overdue')
-          return (
-            <>
-              {showMonthHeader && (
-                <div class="mt-6 mb-2 border-b-2 border-primary pb-1">
-                  <h2 class="text-lg font-semibold text-primary">{month}</h2>
-                </div>
+
+    {missedVegetables.length > 0 && (
+      <div class="mb-6 rounded-lg bg-base-200 p-4">
+        <h2 class="mb-2 text-sm font-medium opacity-70">
+          Dieses Jahr nicht ausgesät
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {missedVegetables.map((veg) => (
+            <a
+              href={`./vegetables/${veg.id}`}
+              class="badge badge-outline badge-sm opacity-60 hover:opacity-100"
+            >
+              {veg.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {/* Current week — always visible and expanded */}
+    {currentWeekEntries && (
+      <div class="mb-6">
+        <h2 class="mb-3 text-lg font-semibold">
+          Diese Woche (KW {currentWeek})
+        </h2>
+        <ul class="list-none space-y-1">
+          {sortByUrgency(currentWeekEntries).map((entry) => (
+            <li
+              class:list={[
+                'flex items-center gap-2 rounded px-3 py-2',
+                entry.status === 'done' ? 'bg-success/10' : urgencyColor(entry),
+              ]}
+            >
+              {entry.status === 'done' && (
+                <span class="text-success" title="Erledigt">
+                  &#10003;
+                </span>
               )}
-              <div
+              <a
+                href={`./vegetables/${entry.id}`}
                 class:list={[
-                  'collapse collapse-arrow',
-                  isCurrentWeek
-                    ? 'bg-primary/10 border-2 border-primary'
-                    : hasOverdue
-                      ? 'bg-error/10 border border-error/30'
-                      : 'bg-base-200',
+                  'link link-hover',
+                  entry.status === 'done' && 'line-through opacity-60',
                 ]}
               >
-                <input type="checkbox" checked={isCurrentWeek || hasOverdue || kw > currentWeek - 2} />
-                <div class="collapse-title font-medium">
-                  KW {kw}
-                  {isCurrentWeek && (
-                    <span class="badge badge-sm badge-primary ml-2">
-                      aktuelle Woche
+                {entry.name}
+              </a>
+              {entry.succession > 1 && (
+                <span class="badge badge-sm badge-outline">
+                  {entry.succession}. Aussaat
+                </span>
+              )}
+              {entry.underCover && (
+                <span class="badge badge-sm badge-info">geschützt</span>
+              )}
+              {entry.overwintering && (
+                <span class="badge badge-sm badge-warning">Überwinterung</span>
+              )}
+              {entry.note && (
+                <span class="badge badge-sm badge-ghost">{entry.note}</span>
+              )}
+              {entry.status === 'done' && entry.actualDate && (
+                <span class="text-xs opacity-50">
+                  (gesät {entry.actualDate}, KW {entry.actualWeek})
+                </span>
+              )}
+              {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek < 2 && (
+                <span class="text-xs font-medium text-warning">
+                  Letzte Chance
+                </span>
+              )}
+              {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek > 1 && (
+                <span class="text-xs opacity-50">
+                  (noch bis KW {entry.lastPossibleWeek})
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {/* Past weeks — collapsed */}
+    {pastWeeks.length > 0 && (
+      <details class="mb-4">
+        <summary class="cursor-pointer text-sm font-medium opacity-60 hover:opacity-100">
+          Vergangene Wochen anzeigen ({pastWeeks.length})
+        </summary>
+        <div class="mt-2 space-y-1">
+          {pastWeeks.map((kw, idx) => {
+            const entries = calendarWeekMap.get(kw)!
+            const month = kwToMonth(kw)
+            const prevMonth = idx > 0 ? kwToMonth(pastWeeks[idx - 1]) : ''
+            const showMonthHeader = month !== prevMonth
+            return (
+              <>
+                {showMonthHeader && (
+                  <div class="mt-4 mb-2 border-b pb-1">
+                    <h3 class="text-base font-semibold opacity-70">{month}</h3>
+                  </div>
+                )}
+                <div class="collapse collapse-arrow bg-base-200">
+                  <input type="checkbox" />
+                  <div class="collapse-title font-medium text-sm">
+                    KW {kw}
+                    <span class="ml-2 text-sm opacity-60">
+                      ({entries.length} Gemüse)
                     </span>
-                  )}
-                  <span class="ml-2 text-sm opacity-60">
-                    ({entries.length} Gemüse)
-                  </span>
-                </div>
-                <div class="collapse-content">
-                  <ul class="list-none space-y-1">
-                    {entries.map((entry) => (
-                      <li
-                        class:list={[
-                          'flex items-center gap-2 rounded px-2 py-1',
-                          entry.status === 'done' && 'bg-success/10',
-                          entry.status === 'overdue' && 'bg-error/10',
-                        ]}
-                      >
-                        {entry.status === 'done' && (
-                          <span class="text-success" title="Erledigt">
-                            &#10003;
-                          </span>
-                        )}
-                        {entry.status === 'overdue' && (
-                          <span class="text-error font-bold" title="Überfällig">
-                            !
-                          </span>
-                        )}
-                        <a
-                          href={`./vegetables/${entry.id}`}
-                          class:list={[
-                            'link link-hover',
-                            entry.status === 'done' && 'line-through opacity-60',
-                          ]}
-                        >
-                          {entry.name}
-                        </a>
-                        {entry.succession > 1 && (
-                          <span class="badge badge-sm badge-outline">
-                            {entry.succession}. Aussaat
-                          </span>
-                        )}
-                        {entry.underCover && (
-                          <span class="badge badge-sm badge-info">
-                            geschützt
-                          </span>
-                        )}
-                        {entry.overwintering && (
-                          <span class="badge badge-sm badge-warning">
-                            Überwinterung
-                          </span>
-                        )}
-                        {entry.note && (
-                          <span class="badge badge-sm badge-ghost">
-                            {entry.note}
-                          </span>
-                        )}
-                        {entry.status === 'done' && entry.actualDate && (
-                          <span class="text-xs opacity-50">
-                            (gesät {entry.actualDate}, KW {entry.actualWeek})
-                          </span>
-                        )}
-                        {entry.status === 'overdue' && (
-                          <span class="text-xs text-error">
-                            (geplant KW {entry.plannedWeek}, noch möglich bis KW{' '}
-                            {entry.lastPossibleWeek})
-                          </span>
-                        )}
-                        {entry.status === 'upcoming' &&
-                          entry.plannedWeek !== kw && (
+                  </div>
+                  <div class="collapse-content">
+                    <ul class="list-none space-y-1">
+                      {entries.map((entry) => (
+                        <li class="flex items-center gap-2 rounded px-2 py-1 bg-success/10">
+                          <span class="text-success" title="Erledigt">&#10003;</span>
+                          <a
+                            href={`./vegetables/${entry.id}`}
+                            class="link link-hover line-through opacity-60"
+                          >
+                            {entry.name}
+                          </a>
+                          {entry.actualDate && (
                             <span class="text-xs opacity-50">
-                              (verschoben von KW {entry.plannedWeek})
+                              (gesät {entry.actualDate})
                             </span>
                           )}
-                      </li>
-                    ))}
-                  </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </>
-          )
-        })
-      }
-    </div>
+              </>
+            )
+          })}
+        </div>
+      </details>
+    )}
+
+    {/* Future weeks — hidden behind toggle */}
+    {futureWeeks.length > 0 && (
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm font-medium opacity-60 hover:opacity-100">
+          Weitere Wochen anzeigen ({futureWeeks.length})
+        </summary>
+        <div class="mt-2 space-y-1">
+          {futureWeeks.map((kw, idx) => {
+            const entries = calendarWeekMap.get(kw)!
+            const month = kwToMonth(kw)
+            const prevMonth = idx > 0 ? kwToMonth(futureWeeks[idx - 1]) : ''
+            const showMonthHeader = month !== prevMonth
+            return (
+              <>
+                {showMonthHeader && (
+                  <div class="mt-4 mb-2 border-b pb-1">
+                    <h3 class="text-base font-semibold opacity-70">{month}</h3>
+                  </div>
+                )}
+                <div class="collapse collapse-arrow bg-base-200">
+                  <input type="checkbox" />
+                  <div class="collapse-title font-medium text-sm">
+                    KW {kw}
+                    <span class="ml-2 text-sm opacity-60">
+                      ({entries.length} Gemüse)
+                    </span>
+                  </div>
+                  <div class="collapse-content">
+                    <ul class="list-none space-y-1">
+                      {sortByUrgency(entries).map((entry) => (
+                        <li
+                          class:list={[
+                            'flex items-center gap-2 rounded px-2 py-1',
+                            entry.status === 'done'
+                              ? 'bg-success/10'
+                              : urgencyColor(entry),
+                          ]}
+                        >
+                          {entry.status === 'done' && (
+                            <span class="text-success" title="Erledigt">&#10003;</span>
+                          )}
+                          <a
+                            href={`./vegetables/${entry.id}`}
+                            class:list={[
+                              'link link-hover',
+                              entry.status === 'done' && 'line-through opacity-60',
+                            ]}
+                          >
+                            {entry.name}
+                          </a>
+                          {entry.succession > 1 && (
+                            <span class="badge badge-sm badge-outline">
+                              {entry.succession}. Aussaat
+                            </span>
+                          )}
+                          {entry.underCover && (
+                            <span class="badge badge-sm badge-info">geschützt</span>
+                          )}
+                          {entry.overwintering && (
+                            <span class="badge badge-sm badge-warning">Überwinterung</span>
+                          )}
+                          {entry.note && (
+                            <span class="badge badge-sm badge-ghost">{entry.note}</span>
+                          )}
+                          {entry.status !== 'done' && (
+                            <span class="text-xs opacity-50">
+                              (noch bis KW {entry.lastPossibleWeek})
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )
+          })}
+        </div>
+      </details>
+    )}
   </div>
 </Layout>
+
+<style is:global>
+  @media print {
+    /* Hide site chrome */
+    header, footer, nav, .navbar { display: none !important; }
+
+    /* Print checklist layout */
+    .print-grid {
+      columns: 3;
+      column-gap: 1.5rem;
+    }
+    .print-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      break-inside: avoid;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+    .print-checkbox {
+      width: 0.7rem;
+      height: 0.7rem;
+      flex-shrink: 0;
+      appearance: none;
+      border: 1.5px solid black;
+      border-radius: 1px;
+    }
+    .print-note {
+      font-size: 0.65rem;
+      opacity: 0.7;
+    }
+  }
+</style>

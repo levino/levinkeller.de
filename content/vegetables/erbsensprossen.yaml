@@ -1,6 +1,4 @@
 name: "Erbsensprossen"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: april
+sowingWindows:
+  - from: 8
+    until: 18

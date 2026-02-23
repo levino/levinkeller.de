@@ -1,6 +1,4 @@
 name: "Chinakohl"
-sowings:
-  - month: july
-    timing: late
-  - month: august
-    timing: early
+sowingWindows:
+  - from: 30
+    until: 33

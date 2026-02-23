@@ -1,6 +1,4 @@
 name: "Lauch"
-sowings:
-  - month: march
-    note: "für Sommer"
-  - month: april
-    note: "für Winter"
+sowingWindows:
+  - from: 9
+    until: 18

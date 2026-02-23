@@ -1,6 +1,4 @@
 name: "Radicchio"
-sowings:
-  - month: june
-    timing: 2nd-half
-  - month: july
-    timing: 1st-half
+sowingWindows:
+  - from: 25
+    until: 29

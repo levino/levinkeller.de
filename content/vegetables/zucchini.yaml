@@ -1,5 +1,4 @@
 name: "Zucchini"
-sowings:
-  - month: april
-    timing: 2nd-half
-  - month: may
+sowingWindows:
+  - from: 16
+    until: 22

@@ -21,7 +21,7 @@ export const VegetableTable: FC<{
               {vegetable.data.name}
             </a>
           </th>
-          <td>{vegetable.data.sowings.length} Termine</td>
+          <td>{vegetable.data.sowingWindows.length} Aussaatfenster</td>
         </tr>
       ))}
     </tbody>

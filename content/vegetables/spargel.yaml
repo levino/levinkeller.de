@@ -1,5 +1,4 @@
 name: "Spargel"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
+sowingWindows:
+  - from: 8
+    until: 14

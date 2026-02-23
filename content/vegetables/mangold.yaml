@@ -1,9 +1,7 @@
 name: "Mangold"
-sowings:
-  - month: april
-  - month: july
-    succession: 2
-  - month: august
-    timing: late
-    succession: 2
-    underCover: true
+sowingWindows:
+  - from: 14
+    until: 18
+  - from: 27
+    until: 36
+    note: "August geschützt"

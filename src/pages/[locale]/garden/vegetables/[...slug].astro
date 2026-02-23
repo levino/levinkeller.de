@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content'
-import { MONTHS_DE, MONTHS_EN } from '@levino/shipyard-base'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
 
@@ -14,56 +13,41 @@ export const getStaticPaths = (async () => {
 
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
-const timingLabel = (timing: string) => {
-  const labels: Record<string, string> = {
-    early: 'Anfang',
-    mid: 'Mitte',
-    late: 'Ende',
-    'early-mid': 'Anfang–Mitte',
-    'mid-late': 'Mitte–Ende',
-    '1st-half': '1. Hälfte',
-    '2nd-half': '2. Hälfte',
-    full: '',
-  }
-  return labels[timing] ?? ''
-}
-const monthLabel = (month: string) =>
-  MONTHS_DE[MONTHS_EN.indexOf(month as (typeof MONTHS_EN)[number])]
 ---
 
 <Layout canonicalUrl={canonicalUrl} title={veg.data.name}>
   <div class="mx-auto max-w-3xl px-4 py-8">
     <h1 class="mb-6 text-2xl font-bold">{veg.data.name}</h1>
-    <h2 class="mb-3 text-lg font-semibold">Aussaattermine</h2>
+    <h2 class="mb-3 text-lg font-semibold">Aussaatfenster</h2>
     <table class="table">
       <thead>
         <tr>
-          <th>Monat</th>
-          <th>Zeitraum</th>
-          <th>Aussaat Nr.</th>
+          <th>Von (KW)</th>
+          <th>Bis (KW)</th>
+          <th>Folgesaat</th>
           <th>Hinweise</th>
         </tr>
       </thead>
       <tbody>
         {
-          veg.data.sowings.map((sowing) => (
+          veg.data.sowingWindows.map((w) => (
             <tr>
-              <td>{monthLabel(sowing.month)}</td>
-              <td>{timingLabel(sowing.timing ?? 'full') || 'ganzer Monat'}</td>
+              <td>{w.from}</td>
+              <td>{w.until}</td>
               <td>
-                {(sowing.succession ?? 1) > 1
-                  ? `${sowing.succession}. Aussaat`
-                  : '1. Aussaat'}
+                {w.successionIntervalWeeks
+                  ? `alle ${w.successionIntervalWeeks} Wochen`
+                  : '–'}
               </td>
               <td class="flex flex-wrap gap-1">
-                {(sowing.underCover ?? false) && (
+                {(w.underCover ?? false) && (
                   <span class="badge badge-sm badge-info">geschützt</span>
                 )}
-                {(sowing.overwintering ?? false) && (
+                {(w.overwintering ?? false) && (
                   <span class="badge badge-sm badge-warning">Überwinterung</span>
                 )}
-                {sowing.note && (
-                  <span class="badge badge-sm badge-ghost">{sowing.note}</span>
+                {w.note && (
+                  <span class="badge badge-sm badge-ghost">{w.note}</span>
                 )}
               </td>
             </tr>

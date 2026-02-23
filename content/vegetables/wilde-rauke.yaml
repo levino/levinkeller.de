@@ -1,4 +1,4 @@
 name: "Wilde Rauke"
-sowings:
-  - month: october
-    timing: early
+sowingWindows:
+  - from: 40
+    until: 41

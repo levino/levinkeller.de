@@ -1,5 +1,4 @@
 name: "Mais"
-sowings:
-  - month: april
-    timing: late
-  - month: may
+sowingWindows:
+  - from: 17
+    until: 22

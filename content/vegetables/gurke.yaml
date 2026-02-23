@@ -1,5 +1,5 @@
 name: "Gurke"
-sowings:
-  - month: april
-    underCover: true
-  - month: may
+sowingWindows:
+  - from: 14
+    until: 22
+    note: "April geschützt"

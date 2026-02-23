@@ -1,9 +1,8 @@
 name: "Frühlingszwiebel"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: may
-    succession: 2
-  - month: july
-    succession: 3
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 18
+    until: 22
+  - from: 27
+    until: 31

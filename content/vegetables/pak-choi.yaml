@@ -1,7 +1,6 @@
 name: "Pak Choi"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: august
-    succession: 2
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 31
+    until: 36

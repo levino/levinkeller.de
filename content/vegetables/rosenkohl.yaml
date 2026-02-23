@@ -1,6 +1,5 @@
 name: "Rosenkohl"
-sowings:
-  - month: april
-  - month: may
-  - month: june
-    note: "nur Kalettes"
+sowingWindows:
+  - from: 14
+    until: 27
+    note: "Juni nur Kalettes"

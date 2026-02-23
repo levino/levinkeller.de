@@ -1,7 +1,6 @@
 name: "Kohlrabi"
-sowings:
-  - month: february
-    timing: 2nd-half
-  - month: march
-  - month: july
-    succession: 2
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 27
+    until: 31
