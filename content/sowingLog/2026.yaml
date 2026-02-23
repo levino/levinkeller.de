@@ -1,0 +1,12 @@
+# Aussaat-Protokoll 2026
+# Hier werden tatsächliche Aussaaten eingetragen.
+# Format pro Eintrag:
+#   - vegetable: <id aus content/vegetables, z.B. "tomate">
+#     succession: <welche Aussaat, z.B. 1 für erste Aussaat>
+#     week: <Kalenderwoche der tatsächlichen Aussaat>
+#
+# Beispiel:
+#   - vegetable: kopfsalat
+#     succession: 1
+#     week: 9
+entries: []

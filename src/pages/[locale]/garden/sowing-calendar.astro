@@ -4,9 +4,10 @@ import { MONTHS_DE } from '@levino/shipyard-base'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
 import {
+  buildTrackedCalendar,
   type CalendarWeekMap,
-  getCalendarWeeks,
-  type SowingCalendarEntry,
+  getISOWeek,
+  type SowingLogEntry,
 } from '@/tools/calendarWeeks'
 
 export const getStaticPaths = (() => {
@@ -19,50 +20,51 @@ export const getStaticPaths = (() => {
   ]
 }) satisfies GetStaticPaths
 
+const year = 2026
+const currentWeek = getISOWeek(new Date())
+
 const vegetables = await getCollection('vegetables')
+const sowingLogs = await getCollection('sowingLog')
 
-const calendarWeekMap: CalendarWeekMap = new Map()
+// Find log for current year
+const yearLog = sowingLogs.find((log) => log.id === String(year))
+const logEntries: SowingLogEntry[] = yearLog?.data.entries ?? []
 
-for (const veg of vegetables) {
-  for (const sowing of veg.data.sowings) {
-    const weeks = getCalendarWeeks(sowing.month, sowing.timing ?? 'full')
-    const entry: SowingCalendarEntry = {
-      name: veg.data.name,
-      id: veg.id,
-      succession: sowing.succession ?? 1,
-      underCover: sowing.underCover ?? false,
-      overwintering: sowing.overwintering ?? false,
-      note: sowing.note,
-    }
-    for (const week of weeks) {
-      const existing = calendarWeekMap.get(week) ?? []
-      if (
-        !existing.some(
-          (e) => e.id === entry.id && e.succession === entry.succession
-        )
-      ) {
-        existing.push(entry)
-      }
-      calendarWeekMap.set(week, existing)
-    }
-  }
-}
+const calendarWeekMap: CalendarWeekMap = buildTrackedCalendar(
+  vegetables,
+  logEntries,
+  currentWeek,
+  year
+)
 
 const sortedWeeks = [...calendarWeekMap.keys()].sort((a, b) => a - b)
 
 // Map KW to approximate month name for grouping headers
 const kwToMonth = (kw: number): string => {
-  const date = new Date(new Date().getFullYear(), 0, 1 + (kw - 1) * 7)
+  const date = new Date(year, 0, 1 + (kw - 1) * 7)
   return MONTHS_DE[date.getMonth()]
 }
 ---
 
 <Layout>
   <div class="container mx-auto max-w-4xl px-4">
-    <h1 class="m-4 text-center text-2xl font-bold">Aussaatkalender</h1>
-    <p class="mb-6 text-center text-sm opacity-70">
-      Wochenweise Übersicht der Aussaattermine
+    <h1 class="m-4 text-center text-2xl font-bold">
+      Aussaatkalender {year}
+    </h1>
+    <p class="mb-2 text-center text-sm opacity-70">
+      Wochenweise Übersicht der Aussaattermine — aktuelle KW: {currentWeek}
     </p>
+    <div class="mb-6 flex flex-wrap justify-center gap-3 text-xs">
+      <span class="flex items-center gap-1">
+        <span class="inline-block h-3 w-3 rounded-full bg-success"></span> Erledigt
+      </span>
+      <span class="flex items-center gap-1">
+        <span class="inline-block h-3 w-3 rounded-full bg-error"></span> Überfällig
+      </span>
+      <span class="flex items-center gap-1">
+        <span class="inline-block h-3 w-3 rounded-full bg-base-300"></span> Geplant
+      </span>
+    </div>
     <div class="space-y-1">
       {
         sortedWeeks.map((kw, idx) => {
@@ -70,6 +72,8 @@ const kwToMonth = (kw: number): string => {
           const month = kwToMonth(kw)
           const prevMonth = idx > 0 ? kwToMonth(sortedWeeks[idx - 1]) : ''
           const showMonthHeader = month !== prevMonth
+          const isCurrentWeek = kw === currentWeek
+          const hasOverdue = entries.some((e) => e.status === 'overdue')
           return (
             <>
               {showMonthHeader && (
@@ -77,21 +81,54 @@ const kwToMonth = (kw: number): string => {
                   <h2 class="text-lg font-semibold text-primary">{month}</h2>
                 </div>
               )}
-              <div class="collapse collapse-arrow bg-base-200">
-                <input type="checkbox" checked />
+              <div
+                class:list={[
+                  'collapse collapse-arrow',
+                  isCurrentWeek
+                    ? 'bg-primary/10 border-2 border-primary'
+                    : hasOverdue
+                      ? 'bg-error/10 border border-error/30'
+                      : 'bg-base-200',
+                ]}
+              >
+                <input type="checkbox" checked={isCurrentWeek || hasOverdue || kw > currentWeek - 2} />
                 <div class="collapse-title font-medium">
                   KW {kw}
+                  {isCurrentWeek && (
+                    <span class="badge badge-sm badge-primary ml-2">
+                      aktuelle Woche
+                    </span>
+                  )}
                   <span class="ml-2 text-sm opacity-60">
-                    ({entries.length} {entries.length === 1 ? 'Gemüse' : 'Gemüse'})
+                    ({entries.length} Gemüse)
                   </span>
                 </div>
                 <div class="collapse-content">
                   <ul class="list-none space-y-1">
                     {entries.map((entry) => (
-                      <li class="flex items-center gap-2">
+                      <li
+                        class:list={[
+                          'flex items-center gap-2 rounded px-2 py-1',
+                          entry.status === 'done' && 'bg-success/10',
+                          entry.status === 'overdue' && 'bg-error/10',
+                        ]}
+                      >
+                        {entry.status === 'done' && (
+                          <span class="text-success" title="Erledigt">
+                            &#10003;
+                          </span>
+                        )}
+                        {entry.status === 'overdue' && (
+                          <span class="text-error font-bold" title="Überfällig">
+                            !
+                          </span>
+                        )}
                         <a
                           href={`./vegetables/${entry.id}`}
-                          class="link link-hover"
+                          class:list={[
+                            'link link-hover',
+                            entry.status === 'done' && 'line-through opacity-60',
+                          ]}
                         >
                           {entry.name}
                         </a>
@@ -101,7 +138,9 @@ const kwToMonth = (kw: number): string => {
                           </span>
                         )}
                         {entry.underCover && (
-                          <span class="badge badge-sm badge-info">geschützt</span>
+                          <span class="badge badge-sm badge-info">
+                            geschützt
+                          </span>
                         )}
                         {entry.overwintering && (
                           <span class="badge badge-sm badge-warning">
@@ -113,6 +152,23 @@ const kwToMonth = (kw: number): string => {
                             {entry.note}
                           </span>
                         )}
+                        {entry.status === 'done' && entry.actualWeek && (
+                          <span class="text-xs opacity-50">
+                            (gesät KW {entry.actualWeek})
+                          </span>
+                        )}
+                        {entry.status === 'overdue' && (
+                          <span class="text-xs text-error">
+                            (geplant KW {entry.plannedWeek}, noch möglich bis KW{' '}
+                            {entry.lastPossibleWeek})
+                          </span>
+                        )}
+                        {entry.status === 'upcoming' &&
+                          entry.plannedWeek !== kw && (
+                            <span class="text-xs opacity-50">
+                              (verschoben von KW {entry.plannedWeek})
+                            </span>
+                          )}
                       </li>
                     ))}
                   </ul>
