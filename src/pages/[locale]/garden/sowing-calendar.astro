@@ -23,7 +23,9 @@ export const getStaticPaths = (() => {
 const year = 2026
 const currentWeek = getISOWeek(new Date())
 
-const vegetables = await getCollection('vegetables')
+const vegetables = (await getCollection('vegetables')).filter(
+  (v) => !v.data.skip
+)
 const sowingLogs = await getCollection('sowingLog')
 
 // Find log for current year
