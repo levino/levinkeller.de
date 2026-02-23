@@ -1,0 +1,5 @@
+name: "Tomate"
+sowings:
+  - month: april
+    underCover: true
+  - month: may

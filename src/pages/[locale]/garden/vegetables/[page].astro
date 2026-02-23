@@ -6,7 +6,7 @@ import { VegetableTable } from '@/components/garden/VegetableTable'
 export const getStaticPaths = (async ({ paginate }) => {
   const vegetables = await getCollection('vegetables')
   return paginate(vegetables, {
-    pageSize: 30,
+    pageSize: 60,
     params: {
       locale: 'de',
     },
@@ -16,11 +16,13 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props
 ---
 
-<Layout>
-  <div class="mt-8">
-    <VegetableTable caption="Pflanzen" vegetables={page.data} />
+<Layout title="Gemüse">
+  <div class="container mx-auto mt-8 px-4">
+    <VegetableTable caption="Gemüse" vegetables={page.data} />
 
-    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+    <div class="mt-4 flex gap-4">
+      {page.url.prev ? <a class="btn btn-outline btn-sm" href={page.url.prev}>Zurück</a> : null}
+      {page.url.next ? <a class="btn btn-outline btn-sm" href={page.url.next}>Weiter</a> : null}
+    </div>
   </div>
 </Layout>
