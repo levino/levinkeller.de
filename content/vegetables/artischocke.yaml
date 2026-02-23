@@ -1,4 +1,5 @@
 name: "Artischocke"
+skip: true
 sowingWindows:
   - from: 8
     until: 18

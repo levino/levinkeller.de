@@ -11,5 +11,6 @@ const sowingWindow = z.object({
 
 export const vegetablesSchema = z.object({
   name: z.string(),
+  skip: z.boolean().default(false),
   sowingWindows: z.array(sowingWindow),
 })

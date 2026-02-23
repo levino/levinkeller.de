@@ -1,11 +1,8 @@
-name: "Kohl"
+name: "Wirsing"
 sowingWindows:
   - from: 8
     until: 22
     note: "für Sommer und Herbst"
   - from: 23
     until: 27
-    note: "Wirsing für Winter"
-  - from: 31
-    until: 36
-    note: "für Frühling"
+    note: "für Winter"

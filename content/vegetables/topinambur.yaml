@@ -1,4 +1,5 @@
 name: "Topinambur"
+skip: true
 sowingWindows:
   - from: 9
     until: 18

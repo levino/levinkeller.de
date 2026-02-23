@@ -1,4 +1,5 @@
 name: "Spargel"
+skip: true
 sowingWindows:
   - from: 8
     until: 14
