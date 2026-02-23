@@ -91,10 +91,10 @@ export interface SowingCalendarEntry {
   note?: string
   /** First planned calendar week for this sowing */
   plannedWeek: number
-  /** Last calendar week where this sowing is still possible */
+  /** Last calendar week where this vegetable can still be sown (overall) */
   lastPossibleWeek: number
-  /** Status: 'done' | 'overdue' | 'upcoming' | 'pending' */
-  status: 'done' | 'overdue' | 'upcoming' | 'pending'
+  /** Status: 'done' | 'available' | 'upcoming' */
+  status: 'done' | 'available' | 'upcoming'
   /** Actual date sown (from log), if done */
   actualDate?: string
   /** Actual week sown (from log), if done */
@@ -107,17 +107,31 @@ export interface SowingLogEntry {
   date: string
 }
 
+/** A vegetable whose entire sowing window has passed without any sowing */
+export interface MissedVegetable {
+  name: string
+  id: string
+  lastPossibleWeek: number
+}
+
 export type CalendarWeekMap = Map<number, SowingCalendarEntry[]>
+
+export interface TrackedCalendarResult {
+  weekMap: CalendarWeekMap
+  missedVegetables: MissedVegetable[]
+}
 
 /**
  * Given vegetables and a sowing log, build a calendar week map that reflects:
  * - Which sowings are done (logged)
- * - Which are overdue (planned week passed, not yet done, still possible)
- * - Which are upcoming (planned week hasn't arrived yet)
- * - Adjusted follow-up sowings based on actual sowing dates
+ * - Which are available now (within the sowing window, can be sown)
+ * - Which are upcoming (planned for the future)
  *
- * Succession is derived from the order of log entries per vegetable:
- * the first logged sowing for a vegetable is succession 1, the second is 2, etc.
+ * Also returns a list of vegetables whose entire sowing window has passed
+ * without ever being sown.
+ *
+ * The lastPossibleWeek always refers to the overall last possible sowing date
+ * for the vegetable (across all successions), not individual succession windows.
  */
 export function buildTrackedCalendar(
   vegetables: Array<{
@@ -137,8 +151,9 @@ export function buildTrackedCalendar(
   logEntries: SowingLogEntry[],
   currentWeek: number,
   year: number = new Date().getFullYear()
-): CalendarWeekMap {
+): TrackedCalendarResult {
   const calendarWeekMap: CalendarWeekMap = new Map()
+  const missedVegetables: MissedVegetable[] = []
 
   // Group log entries by vegetable, sorted by date.
   // The nth entry for a vegetable = succession n.
@@ -183,8 +198,17 @@ export function buildTrackedCalendar(
       })
       .sort((a, b) => a.succession - b.succession)
 
+    // Calculate overall sowing window for this vegetable
+    const overallLastPossibleWeek = Math.max(
+      ...plannedSowings.map((s) => s.plannedLastWeek)
+    )
+
     // Track delay from previous sowings
     let accumulatedDelay = 0
+
+    // Track whether any entry is done or still possible
+    let hasDone = false
+    let hasAvailableOrUpcoming = false
 
     for (const sowing of plannedSowings) {
       // Find matching log entry by succession number
@@ -194,27 +218,32 @@ export function buildTrackedCalendar(
       const adjustedFirstWeek = sowing.plannedFirstWeek + accumulatedDelay
       const adjustedLastWeek = sowing.plannedLastWeek + accumulatedDelay
 
-      let status: SowingCalendarEntry['status']
+      let status: SowingCalendarEntry['status'] | 'skipped'
       let actualDate: string | undefined
       let actualWeek: number | undefined
 
       if (logEntry) {
         status = 'done'
+        hasDone = true
         actualDate = logEntry.date
         actualWeek = logEntry.week
 
         // Calculate delay for subsequent successions
         accumulatedDelay = logEntry.week - sowing.plannedFirstWeek
       } else if (currentWeek > adjustedLastWeek) {
-        // Window has completely passed - too late
-        status = 'pending'
+        // Individual succession window passed — skip silently
+        status = 'skipped'
       } else if (currentWeek >= adjustedFirstWeek) {
-        // Past the first planned week but still in the window
-        status = 'overdue'
+        // Within the sowing window — available to sow now
+        status = 'available'
+        hasAvailableOrUpcoming = true
       } else {
         // Future sowing
         status = 'upcoming'
+        hasAvailableOrUpcoming = true
       }
+
+      if (status === 'skipped') continue
 
       const entry: SowingCalendarEntry = {
         name: veg.data.name,
@@ -224,15 +253,15 @@ export function buildTrackedCalendar(
         overwintering: sowing.overwintering,
         note: sowing.note,
         plannedWeek: sowing.plannedFirstWeek,
-        lastPossibleWeek: adjustedLastWeek,
-        status,
+        lastPossibleWeek: overallLastPossibleWeek,
+        status: status as SowingCalendarEntry['status'],
         actualDate,
         actualWeek,
       }
 
       if (status === 'done' && actualWeek !== undefined) {
         addToMap(calendarWeekMap, actualWeek, entry)
-      } else if (status === 'overdue') {
+      } else if (status === 'available') {
         addToMap(calendarWeekMap, currentWeek, entry)
       } else if (status === 'upcoming') {
         for (const w of sowing.weeks) {
@@ -240,11 +269,20 @@ export function buildTrackedCalendar(
           addToMap(calendarWeekMap, adjustedW, entry)
         }
       }
-      // 'pending' (too late) entries are not shown
+    }
+
+    // If no succession was done and none are available/upcoming,
+    // the entire window has passed — add to missed list
+    if (!hasDone && !hasAvailableOrUpcoming) {
+      missedVegetables.push({
+        name: veg.data.name,
+        id: veg.id,
+        lastPossibleWeek: overallLastPossibleWeek,
+      })
     }
   }
 
-  return calendarWeekMap
+  return { weekMap: calendarWeekMap, missedVegetables }
 }
 
 function addToMap(
