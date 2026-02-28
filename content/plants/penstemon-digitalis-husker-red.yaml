@@ -1,7 +1,8 @@
 name:
   latin: Penstemon digitalis Husker Red Strain
   german: "Rotbl\xE4ttriger Fingerhut-Bartfaden"
-height: 150
+height: 100
+spread: 50
 soil:
   - normal
 sunExposure:

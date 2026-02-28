@@ -7,7 +7,7 @@ soil:
 sunExposure:
   - full
 hardiness: tender
-spread: 20 # Estimated spread based on height
+spread: 25
 flowerColor:
   - blue
   - white

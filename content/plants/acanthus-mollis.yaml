@@ -2,6 +2,7 @@ name:
   latin: Acanthus mollis
   german: Weicher Akanthus
 height: 100
+spread: 60
 soil:
   - normal
 sunExposure:

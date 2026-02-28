@@ -2,6 +2,7 @@ name:
   latin: Helenium autumnale Rotgold-Hybriden
   german: Rot-Gelbe Herbst-Sonnenbraut
 height: 150
+spread: 60
 soil:
   - normal
   - moist

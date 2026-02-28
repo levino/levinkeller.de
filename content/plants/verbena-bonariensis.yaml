@@ -7,7 +7,7 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 50 # Estimated spread based on plant height
+spread: 45
 flowerColor:
   - violet
 lifecycle: perennial

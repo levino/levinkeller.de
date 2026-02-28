@@ -2,6 +2,7 @@ name:
   latin: Chelone obliqua
   german: Schlangenkopf
 height: 100
+spread: 50
 soil:
   - moist
 sunExposure:

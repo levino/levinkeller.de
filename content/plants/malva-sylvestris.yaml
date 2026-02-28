@@ -7,7 +7,7 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 75 # Estimated spread based on height and plant characteristics
+spread: 75
 flowerColor:
   - pink
 lifecycle: perennial
@@ -15,7 +15,7 @@ sowingTime:
   - march
   - april
   - may
-sowingScheme: B # Assuming scheme B based on sowing time
+sowingScheme: B
 floweringSeason:
   - june
   - july

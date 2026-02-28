@@ -1,8 +1,8 @@
 name:
   latin: Dracocephalum ruyschiana
   german: Drachenkopf
-height: 25
-spread: 30
+height: 40
+spread: 45
 soil:
   - normal
   - dry
