@@ -1,7 +1,8 @@
 name:
   latin: Gaura lindheimeri
   german: "Pr\xE4riekerze"
-height: 150
+height: 120
+spread: 75
 soil:
   - normal
   - dry

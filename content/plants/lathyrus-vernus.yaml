@@ -7,7 +7,7 @@ soil:
 sunExposure:
   - semi-shade
 hardiness: hardy
-spread: 20 # Estimated spread based on height
+spread: 30
 flowerColor:
   - red
 lifecycle: perennial

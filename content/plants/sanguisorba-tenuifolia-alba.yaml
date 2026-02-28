@@ -2,6 +2,7 @@ name:
   latin: Sanguisorba tenuifolia Alba
   german: 'Weißer Wiesenknopf'
 height: 150
+spread: 60
 soil:
   - normal
   - moist

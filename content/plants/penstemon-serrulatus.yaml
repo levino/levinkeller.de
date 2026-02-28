@@ -1,7 +1,8 @@
 name:
   latin: Penstemon serrulatus
   german: "Ges\xE4gter Bartfaden"
-height: 70
+height: 50
+spread: 30
 soil:
   - normal
   - moist

@@ -8,7 +8,7 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 75 # Estimated spread based on height and plant characteristics
+spread: 75
 flowerColor:
   - white
   - pink

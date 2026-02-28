@@ -2,6 +2,7 @@ name:
   latin: Centaurea scabiosa
   german: Skabiosen-Flockenblume
 height: 100
+spread: 50
 soil:
   - normal
   - dry

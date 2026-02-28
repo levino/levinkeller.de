@@ -13,7 +13,8 @@ germination:
 flowerColor:
   - white
 foliageColor: red
-lifecycle: annual
+spread: 60
+lifecycle: perennial
 sowingTime:
   - august
 sowingScheme: A
