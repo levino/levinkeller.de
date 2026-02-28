@@ -217,27 +217,9 @@ Echinacea, Stauden um die Grashorste herum.
 So könnte ein langes Beet zwischen Haus und Zaun aussehen, bestehend aus
 abwechselnden Wolken:
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│ HAUS                                                                     │
-├──────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌──────────┐  ┌─────────┐    │
-│  │ Sommer- │  │  Herbst- │  │  Mond-  │  │  Blaue   │  │ Herbst- │    │
-│  │ wiese   │  │  feuer   │  │  schein │  │  Stunde  │  │ zauber  │    │
-│  │ (5 m²)  │  │  (6 m²)  │  │ (5 m²)  │  │  (5 m²)  │  │ (6 m²)  │    │
-│  └─────────┘  └──────────┘  └─────────┘  └──────────┘  └─────────┘    │
-│                                                                          │
-│  ┌──────────┐  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌──────────┐  │
-│  │ Sternen- │  │ Prärie- │  │ Sonnen- │  │ Sommer- │  │  Mond-   │  │
-│  │ reigen   │  │  traum  │  │  tanz   │  │ wiese   │  │  schein  │  │
-│  │ (5 m²)  │  │ (5 m²)  │  │ (6 m²)  │  │ (5 m²)  │  │  (5 m²)  │  │
-│  └──────────┘  └─────────┘  └──────────┘  └─────────┘  └──────────┘  │
-│                                                                          │
-├──────────────────────────────────────────────────────────────────────────┤
-│ ZAUN                                                                     │
-└──────────────────────────────────────────────────────────────────────────┘
-```
+import { GardenBedVisualization } from '@/components/garden/GardenBedVisualization'
+
+<GardenBedVisualization client:load />
 
 Einige Gruppen werden wiederholt, um Rhythmus und Zusammenhalt zu erzeugen.
 Die hohen Gruppen (Herbstfeuer, Herbstzauber, Sonnentanz) kommen eher in die
@@ -318,3 +300,129 @@ Wolke gesetzt, nicht als flächige Matrix.
 - **Calamagrostis brachytricha:** 40-50 cm Abstand (ca. 4-6 pro m²)
 - **Stauden (Features):** zwischen die Gräser einstreuen, je nach
   Art 30-50 cm Abstand
+
+---
+
+## Empfohlene Gräser zum Nachkaufen
+
+Die vorhandenen Gräser (Stipa, Pennisetum, Calamagrostis, Miscanthus) sind ein
+guter Anfang, aber für eine abwechslungsreiche Matrixpflanzung lohnt es sich,
+das Sortiment zu erweitern. Diese Gräser haben sich in naturalistischen
+Pflanzungen bewährt:
+
+### Für sonnige, trockene Standorte
+
+| Gras | Höhe | Warum geeignet |
+|---|---|---|
+| **Sesleria autumnalis** (Herbst-Kopfgras) | 30-40 cm | *Der* Klassiker für Matrix nach Nigel Dunnett. Immergrün, bildet dichte Horste, blüht ab September. Auch für Halbschatten geeignet. |
+| **Sesleria nitida** (Nest-Kopfgras) | 40-50 cm | Dunnetts bevorzugtes Matrixgras am Barbican, London. Bildet dichte, niedrige Polster. Sehr winterhart. |
+| **Sporobolus heterolepis** (Prärie-Tropfengras) | 50-60 cm | Grundlage der Oudolf-Pflanzungen (Lurie Garden, High Line). Feine Textur, duftend, extrem langlebig. Sorte 'Tara' besonders empfehlenswert. |
+| **Bouteloua gracilis** (Blaues Moskitogras) | 20-30 cm | Niedrige Matrix für sehr trockene Standorte. Sorte 'Blonde Ambition' mit attraktiven Wimpern-Ähren. |
+| **Schizachyrium scoparium** (Prärie-Bartgras) | 60-80 cm | Leuchtend orange-rote Herbstfärbung. Kompakter, aufrechter Wuchs. Klassisches Präriematrix-Gras. |
+
+### Für frische bis feuchte Standorte
+
+| Gras | Höhe | Warum geeignet |
+|---|---|---|
+| **Deschampsia cespitosa** (Rasen-Schmiele) | 60-80 cm | Luftige, transparente Rispen. Auch für Halbschatten und feuchte Standorte. Von Oudolf viel verwendet. |
+| **Molinia caerulea** (Kleines Pfeifengras) | 40-60 cm | Filigrane Halme, leuchtende Herbstfärbung. Sorten: 'Edith Dudzus', 'Moorhexe'. |
+| **Molinia arundinacea 'Transparent'** (Hohes Pfeifengras) | 150-200 cm | Hohe, transparente Rispen. Ideale Strukturpflanze, die den Blick durchlässt. Petra Pelz' Favorit. |
+| **Carex morrowii** (Japan-Segge) | 30-40 cm | Immergrüne Matrix für schattige Bereiche. Einzige echte Schattenmatrix-Option. |
+
+### Bezugsquellen-Tipp
+
+Für günstige Großmengen Gräser als Plugs (kleine Töpfe) bestellen -- das spart
+bei Matrixpflanzungen erheblich. Spezialgärtnereien wie Gräfin von Zeppelin,
+Staudengärtnerei Gaißmayer oder die Staudengärtnerei Stade bieten Stauden und
+Gräser in guter Qualität.
+
+---
+
+## Tipps für Erweiterungen
+
+### Frühblüher-Schicht einarbeiten
+
+In die Matrix lassen sich **Geophyten** (Zwiebelpflanzen) einstreuen, die im
+Frühling blühen, bevor die Gräser austreiben:
+
+- **Crocus tommasinianus** -- verwildert zuverlässig in der Grasmatrix
+- **Narcissus poeticus** -- natürlich wirkend, passt zur Prärieästhetik
+- **Camassia leichtlinii** -- blüht Mai/Juni, exzellent zwischen Gräsern
+- **Allium sphaerocephalon** -- blüht im Sommer zwischen den Gräserhalmen
+
+### Winterstruktur verbessern
+
+Für visuelles Interesse von November bis März:
+
+- Gräser **nicht** im Herbst zurückschneiden, sondern erst im März
+- **Echinacea**-Samenstände stehen lassen (Vögel fressen die Samen)
+- **Miscanthus**-Fahnen wirken besonders schön mit Raureif
+- Ergänzend immergrüne Stauden einstreuen: **Bergenia**, **Helleborus**
+
+### Pflanzung im Laufe der Jahre optimieren
+
+- **Jahr 1:** Lücken sind normal, mit einjährigen Blumen
+  (Cosmos, Ammi majus) füllen
+- **Jahr 2-3:** Matrix schließt sich, Unkrautdruck nimmt ab
+- **Ab Jahr 4:** Zu dominante Pflanzen auslichten, schwächere nachpflanzen
+- **Selbstaussaat** nutzen: Verbena bonariensis, Knautia und Gaura säen sich
+  gerne selbst aus -- das verstärkt den natürlichen Charakter
+
+### Farbthemen weiterentwickeln
+
+- **Hot Border:** Gruppe 2 (Herbstfeuer) + 8 (Sonnentanz) nebeneinander für
+  ein warmes, lebhaftes Band
+- **Cool Border:** Gruppe 3 (Mondschein) + 5 (Blaue Stunde) für beruhigende
+  Wirkung
+- **Dramatischer Kontrast:** Gruppe 4 (Prärietraum) neben Gruppe 1
+  (Sommerwiese) -- dunkelrotes Laub trifft auf goldene Stipa
+
+---
+
+## Quellen und weiterführende Literatur
+
+### Bücher
+
+- **Nigel Dunnett: *Naturalistic Planting Design: The Essential Guide***
+  (Filbert Press, 2019) -- Das Standardwerk zur Matrixpflanzung. Dunnett
+  beschreibt das Prinzip der 60-70% Strukturpflanzen (Matrix) und 30-40%
+  saisonaler Füllpflanzen.
+  [Amazon](https://www.amazon.com/Nigel-Dunnett-Planting-High-Impact-Low-Input/dp/0993389260)
+- **Thomas Rainer & Claudia West: *Planting in a Post-Wild World***
+  (Timber Press, 2015) -- Designed plant communities mit Matrixschicht
+  (50% Bodendecker), Themenpflanzen (25-40%) und Strukturpflanzen (10-15%).
+  [thomasrainer.com](https://www.thomasrainer.com/book)
+- **Piet Oudolf & Noel Kingsbury: *Planting: A New Perspective***
+  (Timber Press, 2013) -- Die 70/30-Regel: 70% Strukturpflanzen, 30%
+  Füllpflanzen. Grundlage vieler moderner Staudenpflanzungen.
+
+### Fachartikel und Blogposts
+
+- [The Matrix Planting Approach to Garden Design](https://www.hortmag.com/gardens/matrix-planting-garden-design)
+  -- *Horticulture Magazine*: Guter Überblick über das Konzept mit
+  Praxistipps von Thomas Rainer.
+- [Ditch the Mulch, Plant Densely](https://groundedgardens.ca/ditch-the-mulch-plant-densely-a-natural-approach-to-gardening/)
+  -- Grounded Gardens: Matrix als Alternative zu Mulch, mit Pflanzbeispielen.
+- [Layer by Layer: Simplifying Naturalistic Planting Design](https://meristemhorticulture.com/planted/layer-by-layer)
+  -- *Meristem*: Schicht-für-Schicht-Erklärung der Matrixpflanzung.
+- [Five Great Grasses from the Oudolf Garden](https://hoffmannursery.com/blog/article/five-great-grasses-from-the-oudolf-garden)
+  -- Hoffman Nursery: Sporobolus 'Tara', Deschampsia und weitere Gräser.
+- [Petra Pelz: Zarte Gräser im sonnigen Garten](https://www.petra-pelz.com/post/zarte-gr%C3%A4ser-im-sonnigen-garten)
+  -- Petra Pelz: 70% Gräser, 30% Stauden auf 2.500 m². Empfohlene Arten
+  für verschiedene Standorte.
+- [Warum sich eine Matrixpflanzung lohnen kann](https://www.myhomebook.de/garten/matrixpflanzung)
+  -- *myHOMEBOOK*: Deutschsprachige Einführung in die Matrixpflanzung.
+- [Natürliche Vegetationsbilder als Inspiration](https://petra-pelz.com/natuerliche-vegetationsbilder-als-inspiration-fuer-deinen-garten/)
+  -- Cassian Schmidt (via Petra Pelz): Hochgrasprärie als Gestaltungsvorbild.
+- [Stimmungsvolle Staudenwiese](https://staudenwiese.de/stimmungsvolle-staudenwiese/)
+  -- Praxisbeispiel einer Staudenwiese mit Gräsermatrix und Blühstauden.
+
+### Referenzgärten
+
+- **Barbican Beech Gardens, London** -- Nigel Dunnetts Matrixpflanzung mit
+  Sesleria nitida als durchgehender Grundschicht.
+  [Gardens Illustrated](https://www.gardensillustrated.com/gardens/town-and-city/beech-gardens-barbican)
+- **Lurie Garden, Chicago** -- Piet Oudolfs Pflanzung mit Sporobolus
+  heterolepis und Deschampsia als Matrix.
+- **High Line, New York** -- Oudolfs berühmtestes Projekt mit naturalistischer
+  Gräsermatrix.
