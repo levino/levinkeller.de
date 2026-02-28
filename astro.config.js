@@ -83,8 +83,8 @@ export default defineConfig({
           label: 'Gartenplaner',
           subEntry: {
             beds: {
-              label: 'Beetplaner',
-              href: '/garden/beds',
+              label: 'Pflanzgruppen',
+              href: '/docs/gardening/pflanzgruppen',
             },
             plants: {
               label: 'Pflanzen',
