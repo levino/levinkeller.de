@@ -1,5 +1,5 @@
 name: "Herbstlauch"
 sowingWindows:
-  - from: 8
-    until: 16
+  - from: 12
+    until: 18
     note: "Blaugrüner Herbst"
