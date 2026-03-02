@@ -2,3 +2,4 @@ name: "Paprika"
 sowingWindows:
   - from: 8
     until: 14
+    note: "Vorkultur"
