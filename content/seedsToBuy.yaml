@@ -1,0 +1,6 @@
+# Einkaufsliste Samen
+# Samen, die nachgekauft werden müssen (z.B. Weihnachten 2026)
+- name: "Winterlauch"
+  sorte: "Blaugrüner Winter"
+  anbieter: "Reinsaat"
+- name: "Zwiebel"
