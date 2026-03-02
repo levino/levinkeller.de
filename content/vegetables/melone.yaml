@@ -2,4 +2,4 @@ name: "Melone"
 sowingWindows:
   - from: 12
     until: 15
-    underCover: true
+    note: "Vorkultur"

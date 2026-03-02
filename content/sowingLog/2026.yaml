@@ -15,3 +15,19 @@
 entries:
   - vegetable: knoblauch
     date: "2026-01-03"
+  - vegetable: zwiebel
+    date: "2026-03-02"
+  - vegetable: blumenkohl
+    date: "2026-03-02"
+  - vegetable: brokkoli
+    date: "2026-03-02"
+  - vegetable: sommerlauch
+    date: "2026-03-02"
+  - vegetable: spitzkohl
+    date: "2026-03-02"
+  - vegetable: fruehlingszwiebel
+    date: "2026-03-02"
+  - vegetable: spinat
+    date: "2026-03-02"
+  - vegetable: kopfsalat
+    date: "2026-03-02"

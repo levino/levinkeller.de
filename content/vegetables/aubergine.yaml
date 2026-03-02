@@ -2,4 +2,4 @@ name: "Aubergine"
 sowingWindows:
   - from: 8
     until: 14
-    underCover: true
+    note: "Vorkultur"
