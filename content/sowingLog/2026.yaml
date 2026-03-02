@@ -17,3 +17,7 @@ entries:
     date: "2026-01-03"
   - vegetable: zwiebel
     date: "2026-03-02"
+  - vegetable: blumenkohl
+    date: "2026-03-02"
+  - vegetable: brokkoli
+    date: "2026-03-02"

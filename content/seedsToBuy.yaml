@@ -1,5 +1,12 @@
 # Einkaufsliste Samen
-# Samen, die nachgekauft werden müssen (z.B. Weihnachten 2026)
+# Samen, die nachgekauft werden müssen
+
+# Frühling 2026 (jetzt noch in der Saison kaufen)
+- name: "Brokkoli"
+- name: "Blumenkohl"
+  notiz: "gute Sorte von Reinsaat oder Bingenheimer"
+
+# Winter 2026 (Weihnachten, für nächste Saison)
 - name: "Winterlauch"
   sorte: "Blaugrüner Winter"
   anbieter: "Reinsaat"
