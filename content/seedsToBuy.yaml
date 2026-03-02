@@ -1,17 +1,21 @@
-# Einkaufsliste Samen
-# Samen, die nachgekauft werden müssen
+# Einkaufsliste Gemüsesamen
+# Organisiert nach Kaufzeitraum
 
-# Frühling 2026 (jetzt noch in der Saison kaufen)
-- name: "Brokkoli"
-- name: "Blumenkohl"
-  notiz: "gute Sorte von Reinsaat oder Bingenheimer"
-- name: "Kopfsalat"
-  sorte: "Lalita"
+fruehling2026:
+  label: "Frühling 2026"
+  beschreibung: "Jetzt noch für die laufende Saison kaufen"
+  items:
+    - name: "Brokkoli"
+    - name: "Blumenkohl"
+    - name: "Kopfsalat"
+      sorte: "Lalita"
 
-# Winter 2026 (Weihnachten, für nächste Saison)
-- name: "Winterlauch"
-  sorte: "Blaugrüner Winter"
-  anbieter: "Reinsaat"
-- name: "Sommerlauch"
-  sorte: "Hilari"
-- name: "Zwiebel"
+winter2026:
+  label: "Winter 2026"
+  beschreibung: "Für die nächste Saison bestellen"
+  items:
+    - name: "Winterlauch"
+      sorte: "Blaugrüner Winter"
+    - name: "Sommerlauch"
+      sorte: "Hilari"
+    - name: "Zwiebel"

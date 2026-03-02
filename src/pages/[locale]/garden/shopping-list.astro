@@ -1,9 +1,10 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
+import { readFile } from 'node:fs/promises'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
-import { pipe } from 'fp-ts/lib/function'
-import { groupBy, indexBy, mapObjIndexed, prop } from 'ramda'
+import { parse as parseYaml } from 'yaml'
+
 export const getStaticPaths = (() => {
   return [
     {
@@ -14,66 +15,85 @@ export const getStaticPaths = (() => {
   ]
 }) satisfies GetStaticPaths
 
-const outOfStock = ({ data: { inStock } }: { data: { inStock: boolean } }) =>
-  !inStock
+// Gemüsesamen laden
+const seedsRaw = await readFile('./content/seedsToBuy.yaml', 'utf-8')
+const seedsData = parseYaml(seedsRaw) as Record<
+  string,
+  {
+    label: string
+    beschreibung: string
+    items: Array<{ name: string; sorte?: string }>
+  }
+>
+const seedSeasons = Object.values(seedsData)
 
-const plants = await getCollection('plantStock', outOfStock)
+// Stauden: nicht vorrätige Pflanzen laden
+const outOfStockPlants = await getCollection(
+  'plantStock',
+  ({ data }) => !data.inStock
+)
   .then((plants) =>
     plants.map(({ data: { plant } }) =>
-      getEntry(plant).then(
-        ({
-          id,
-          data: {
-            supplier: { id: supplierId },
-            name: { german: name },
-          },
-        }) => ({ supplierId, name, link: `./plants/${id}` })
-      )
+      getEntry(plant).then(({ id, data: { name } }) => ({
+        id,
+        name: name.german,
+        latin: name.latin,
+        link: `./plants/${id}`,
+      }))
     )
   )
   .then((promises) => Promise.all(promises))
-
-const suppliers = await getCollection('suppliers').then(indexBy(prop('id')))
-const plantsBySupplier = pipe(
-  plants,
-  groupBy(prop('supplierId')),
-  mapObjIndexed((items, supplierId) => ({
-    supplierName: suppliers[supplierId].data.name,
-    items,
-  }))
-)
 ---
 
 <Layout title="Einkaufsliste">
-  <div class="container mx-auto">
-    <h1 class="m-4 text-center text-xl">Einkaufsliste</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ supplierName }) => (
-              <th>{supplierName}</th>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ items }) => (
-              <td class="align-top">
-                <ul class="list-inside list-disc">
-                  {items!.map(({ name, link }) => (
-                    <li>
-                      <a href={link}>{name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </td>
-            ))
-          }
-        </tr>
-      </tbody>
-    </table>
+  <div class="container mx-auto max-w-2xl px-4 py-8">
+    <h1 class="mb-8 text-center text-2xl font-bold">Einkaufsliste</h1>
+
+    <section class="mb-10">
+      <h2 class="mb-4 text-xl font-semibold">Gemüsesamen</h2>
+      {
+        seedSeasons.map(({ label, beschreibung, items }) => (
+          <div class="mb-6">
+            <h3 class="mb-1 text-lg font-medium">{label}</h3>
+            <p class="mb-2 text-sm opacity-70">{beschreibung}</p>
+            <ul class="list-inside list-disc space-y-1">
+              {items.map(({ name, sorte }) => (
+                <li>
+                  {name}
+                  {sorte && (
+                    <span class="opacity-70"> — Sorte: {sorte}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <div class="divider" />
+
+    <section>
+      <h2 class="mb-4 text-xl font-semibold">Stauden & Zierpflanzen</h2>
+      <p class="mb-4 text-sm opacity-70">
+        Samen oder Pflanzen, die nachgekauft werden müssen
+      </p>
+      {
+        outOfStockPlants.length > 0 ? (
+          <ul class="list-inside list-disc space-y-1">
+            {outOfStockPlants.map(({ name, latin, link }) => (
+              <li>
+                <a href={link} class="link">
+                  {name}
+                </a>
+                <span class="text-sm opacity-60"> ({latin})</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="opacity-60">Alle Stauden sind vorrätig.</p>
+        )
+      }
+    </section>
   </div>
 </Layout>
