@@ -10,7 +10,29 @@ const supplierSchema = z.object({
   url: z.string(),
 })
 
+const vegetableSeedSchema = z.object({
+  saison: z.string(),
+  beschreibung: z.string().optional(),
+  samen: z.array(
+    z.object({
+      name: z.string(),
+      sorte: z.string().optional(),
+      notiz: z.string().optional(),
+    })
+  ),
+})
+
 export const collections = {
+  vegetableSeedsToBuy: defineCollection({
+    schema: vegetableSeedSchema,
+    loader: file('./content/vegetableSeedsToBuy.yaml', {
+      parser: (text) =>
+        (parseYaml(text) as Record<string, unknown>[]).map((entry, index) => ({
+          ...entry,
+          id: String(index),
+        })),
+    }),
+  }),
   plants: defineCollection({
     loader: glob({
       pattern: '*.yaml',

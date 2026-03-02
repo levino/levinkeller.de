@@ -2,8 +2,7 @@
 import { getCollection, getEntry } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
-import { pipe } from 'fp-ts/lib/function'
-import { groupBy, indexBy, mapObjIndexed, prop } from 'ramda'
+
 export const getStaticPaths = (() => {
   return [
     {
@@ -14,66 +13,71 @@ export const getStaticPaths = (() => {
   ]
 }) satisfies GetStaticPaths
 
-const outOfStock = ({ data: { inStock } }: { data: { inStock: boolean } }) =>
-  !inStock
+const vegetableSeeds = await getCollection('vegetableSeedsToBuy')
 
-const plants = await getCollection('plantStock', outOfStock)
+const outOfStockPlants = await getCollection(
+  'plantStock',
+  ({ data: { inStock } }) => !inStock
+)
   .then((plants) =>
     plants.map(({ data: { plant } }) =>
       getEntry(plant).then(
         ({
           id,
           data: {
-            supplier: { id: supplierId },
             name: { german: name },
           },
-        }) => ({ supplierId, name, link: `./plants/${id}` })
+        }) => ({ name, link: `./plants/${id}` })
       )
     )
   )
   .then((promises) => Promise.all(promises))
-
-const suppliers = await getCollection('suppliers').then(indexBy(prop('id')))
-const plantsBySupplier = pipe(
-  plants,
-  groupBy(prop('supplierId')),
-  mapObjIndexed((items, supplierId) => ({
-    supplierName: suppliers[supplierId].data.name,
-    items,
-  }))
-)
 ---
 
 <Layout title="Einkaufsliste">
-  <div class="container mx-auto">
-    <h1 class="m-4 text-center text-xl">Einkaufsliste</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ supplierName }) => (
-              <th>{supplierName}</th>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ items }) => (
-              <td class="align-top">
-                <ul class="list-inside list-disc">
-                  {items!.map(({ name, link }) => (
-                    <li>
-                      <a href={link}>{name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </td>
-            ))
-          }
-        </tr>
-      </tbody>
-    </table>
+  <div class="container mx-auto p-4">
+    <h1 class="mb-8 text-center text-2xl font-bold">Einkaufsliste</h1>
+
+    <h2 class="mb-4 text-xl font-semibold">Gemüse-Samen</h2>
+    {
+      vegetableSeeds.map(({ data: { saison, beschreibung, samen } }) => (
+        <div class="mb-6">
+          <h3 class="mb-1 text-lg font-medium">{saison}</h3>
+          {beschreibung && (
+            <p class="mb-2 text-sm opacity-60">{beschreibung}</p>
+          )}
+          <ul class="list-inside list-disc">
+            {samen.map(({ name, sorte, notiz }) => (
+              <li>
+                {name}
+                {sorte && (
+                  <span class="text-sm opacity-60"> — Sorte: {sorte}</span>
+                )}
+                {notiz && <span class="text-sm opacity-60"> — {notiz}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+
+    <div class="divider"></div>
+
+    <h2 class="mb-4 text-xl font-semibold">Stauden & Zierpflanzen</h2>
+    {
+      outOfStockPlants.length > 0 ? (
+        <ul class="list-inside list-disc">
+          {outOfStockPlants.map(({ name, link }) => (
+            <li>
+              <a href={link} class="link">
+                {name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="opacity-60">Alle Stauden sind auf Lager.</p>
+      )
+    }
   </div>
 </Layout>
