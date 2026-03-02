@@ -5,6 +5,8 @@
 - name: "Brokkoli"
 - name: "Blumenkohl"
   notiz: "gute Sorte von Reinsaat oder Bingenheimer"
+- name: "Kopfsalat"
+  sorte: "Lalita"
 
 # Winter 2026 (Weihnachten, für nächste Saison)
 - name: "Winterlauch"
