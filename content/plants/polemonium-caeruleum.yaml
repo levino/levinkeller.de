@@ -19,6 +19,5 @@ hardiness: hardy
 spread: 50
 foliageColor: green
 supplier: saatgut-vielfalt
-inStock: true
 sowingScheme: D
 toSow: true

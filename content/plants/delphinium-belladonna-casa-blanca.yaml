@@ -16,7 +16,6 @@ germination:
   light: false
 hardiness: hardy
 height: 120
-inStock: false
 lifecycle: perennial
 name:
   german: Rittersporn weiß

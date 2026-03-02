@@ -15,6 +15,5 @@ lifecycle: 'perennial'
 floweringSeason:
   - 'july'
   - 'august'
-inStock: true
 sowingScheme: D
 supplier: saatgut-vielfalt

@@ -21,7 +21,6 @@ hardiness: hardy
 spread: 100
 foliageColor: green
 supplier: eggert
-inStock: true
 sowingTime:
   - march
   - april
