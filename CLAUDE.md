@@ -94,6 +94,19 @@ npm run build
 - React components use `.tsx` extension
 - Configuration files are in the root directory
 
+## Sowing Calendar Notes
+
+- **No greenhouse cultivation**: The garden has a greenhouse but it is only used
+  for raising seedlings (Jungpflanzenanzucht), not for growing crops. Do not add
+  sowing windows with `underCover: true` or "geschützt" notes that imply
+  greenhouse cultivation.
+- Vegetables like tomatoes, aubergines, and peppers are sown at normal Freiland
+  timing (later than greenhouse schedules suggest) and pre-cultivated indoors
+  before being planted out after the last frost.
+- When adding vegetables to the sowing calendar, use the `note` field on sowing
+  windows for variety names (e.g., `note: "Hilari"`) so the user knows which
+  seeds to use.
+
 Even if you comment or generally write in German, you need to use English for
 magic github words like (closes, fix, fixes, etc.). "Schließt" will not close
 issues.

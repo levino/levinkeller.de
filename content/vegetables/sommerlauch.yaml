@@ -1,0 +1,5 @@
+name: "Sommerlauch"
+sowingWindows:
+  - from: 4
+    until: 10
+    note: "Hilari"
