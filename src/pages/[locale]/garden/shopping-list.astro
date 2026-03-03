@@ -2,8 +2,7 @@
 import { getCollection, getEntry } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
-import { pipe } from 'fp-ts/lib/function'
-import { groupBy, indexBy, mapObjIndexed, prop } from 'ramda'
+
 export const getStaticPaths = (() => {
   return [
     {
@@ -14,66 +13,168 @@ export const getStaticPaths = (() => {
   ]
 }) satisfies GetStaticPaths
 
-const outOfStock = ({ data: { inStock } }: { data: { inStock: boolean } }) =>
-  !inStock
+// Seasonal visibility: show a season from 4 months before its date
+// until 9 months after. This gives a rolling window where seasons
+// overlap briefly during transition.
+function isSeasonVisible(seasonDate: Date, today: Date): boolean {
+  const monthsDiff =
+    (today.getFullYear() - seasonDate.getFullYear()) * 12 +
+    (today.getMonth() - seasonDate.getMonth())
+  return monthsDiff >= -4 && monthsDiff < 9
+}
 
-const plants = await getCollection('plantStock', outOfStock)
+function getSeasonLabel(seasonDate: Date): string {
+  const year = seasonDate.getFullYear()
+  return `Saison ${year - 1}/${String(year).slice(-2)}`
+}
+
+const today = new Date()
+
+const allSeasons = await getCollection('seedsToBuy')
+const visibleSeasons = allSeasons
+  .filter(({ data: { saison } }) => isSeasonVisible(saison, today))
+  .sort((a, b) => a.data.saison.getTime() - b.data.saison.getTime())
+
+type ResolvedItem = {
+  type: 'vegetable' | 'plant'
+  name: string
+  slug: string
+  sorte?: string
+  notiz?: string
+}
+
+const resolvedSeasons = await Promise.all(
+  visibleSeasons.map(async ({ data: { saison, samen } }) => {
+    const resolvedSamen: ResolvedItem[] = await Promise.all(
+      samen.map(async (item) => {
+        if (item.vegetable) {
+          const entry = await getEntry(item.vegetable)
+          return {
+            type: 'vegetable' as const,
+            name: entry.data.name,
+            slug: entry.id,
+            sorte: item.sorte,
+            notiz: item.notiz,
+          }
+        }
+        // biome-ignore lint/style/noNonNullAssertion: either vegetable or plant is set
+        const entry = await getEntry(item.plant!)
+        return {
+          type: 'plant' as const,
+          name: entry.data.name.german,
+          slug: entry.id,
+          sorte: item.sorte,
+          notiz: item.notiz,
+        }
+      })
+    )
+
+    return {
+      saison,
+      label: getSeasonLabel(saison),
+      vegetables: resolvedSamen.filter((s) => s.type === 'vegetable'),
+      plants: resolvedSamen.filter((s) => s.type === 'plant'),
+    }
+  })
+)
+
+// Additional out-of-stock plants from plantStock (not already in seedsToBuy)
+const outOfStockPlants = await getCollection(
+  'plantStock',
+  ({ data: { inStock } }) => !inStock
+)
   .then((plants) =>
     plants.map(({ data: { plant } }) =>
       getEntry(plant).then(
         ({
           id,
           data: {
-            supplier: { id: supplierId },
             name: { german: name },
           },
-        }) => ({ supplierId, name, link: `./plants/${id}` })
+        }) => ({ name, link: `./plants/${id}` })
       )
     )
   )
   .then((promises) => Promise.all(promises))
-
-const suppliers = await getCollection('suppliers').then(indexBy(prop('id')))
-const plantsBySupplier = pipe(
-  plants,
-  groupBy(prop('supplierId')),
-  mapObjIndexed((items, supplierId) => ({
-    supplierName: suppliers[supplierId].data.name,
-    items,
-  }))
-)
 ---
 
 <Layout title="Einkaufsliste">
-  <div class="container mx-auto">
-    <h1 class="m-4 text-center text-xl">Einkaufsliste</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ supplierName }) => (
-              <th>{supplierName}</th>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {
-            Object.values(plantsBySupplier).map(({ items }) => (
-              <td class="align-top">
+  <div class="container mx-auto p-4">
+    <h1 class="mb-8 text-center text-2xl font-bold">Einkaufsliste</h1>
+
+    <h2 class="mb-4 text-xl font-semibold">Gemüse-Samen</h2>
+    {
+      resolvedSeasons.some((s) => s.vegetables.length > 0) ? (
+        resolvedSeasons.map(
+          ({ label, vegetables }) =>
+            vegetables.length > 0 && (
+              <div class="mb-6">
+                <h3 class="mb-2 text-lg font-medium">{label}</h3>
                 <ul class="list-inside list-disc">
-                  {items!.map(({ name, link }) => (
+                  {vegetables.map(({ name, slug, sorte, notiz }) => (
                     <li>
-                      <a href={link}>{name}</a>
+                      <a href={`./vegetables/${slug}`} class="link">
+                        {name}
+                      </a>
+                      {sorte && (
+                        <span class="text-sm opacity-60">
+                          {' '}
+                          — Sorte: {sorte}
+                        </span>
+                      )}
+                      {notiz && (
+                        <span class="text-sm opacity-60"> — {notiz}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
-              </td>
-            ))
-          }
-        </tr>
-      </tbody>
-    </table>
+              </div>
+            ),
+        )
+      ) : (
+        <p class="opacity-60">Keine Gemüse-Samen auf der Einkaufsliste.</p>
+      )
+    }
+
+    <div class="divider"></div>
+
+    <h2 class="mb-4 text-xl font-semibold">Stauden & Zierpflanzen</h2>
+    {
+      (() => {
+        const seasonPlants = resolvedSeasons.flatMap((s) => s.plants)
+        const allPlants = [
+          ...seasonPlants.map((p) => ({
+            name: p.name,
+            link: `./plants/${p.slug}`,
+            sorte: p.sorte,
+            notiz: p.notiz,
+          })),
+          ...outOfStockPlants.map((p) => ({
+            ...p,
+            sorte: undefined as string | undefined,
+            notiz: undefined as string | undefined,
+          })),
+        ]
+        return allPlants.length > 0 ? (
+          <ul class="list-inside list-disc">
+            {allPlants.map(({ name, link, sorte, notiz }) => (
+              <li>
+                <a href={link} class="link">
+                  {name}
+                </a>
+                {sorte && (
+                  <span class="text-sm opacity-60"> — Sorte: {sorte}</span>
+                )}
+                {notiz && (
+                  <span class="text-sm opacity-60"> — {notiz}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="opacity-60">Keine Stauden auf der Einkaufsliste.</p>
+        )
+      })()
+    }
   </div>
 </Layout>
