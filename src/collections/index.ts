@@ -10,22 +10,22 @@ const supplierSchema = z.object({
   url: z.string(),
 })
 
-const vegetableSeedSchema = z.object({
-  saison: z.string(),
-  beschreibung: z.string().optional(),
-  samen: z.array(
-    z.object({
-      name: z.string(),
-      sorte: z.string().optional(),
-      notiz: z.string().optional(),
-    })
-  ),
+const seedItemSchema = z.object({
+  vegetable: reference('vegetables').optional(),
+  plant: reference('plants').optional(),
+  sorte: z.string().optional(),
+  notiz: z.string().optional(),
+})
+
+const seedsToBuySchema = z.object({
+  saison: z.coerce.date(),
+  samen: z.array(seedItemSchema),
 })
 
 export const collections = {
-  vegetableSeedsToBuy: defineCollection({
-    schema: vegetableSeedSchema,
-    loader: file('./content/vegetableSeedsToBuy.yaml', {
+  seedsToBuy: defineCollection({
+    schema: seedsToBuySchema,
+    loader: file('./content/seedsToBuy.yaml', {
       parser: (text) =>
         (parseYaml(text) as Record<string, unknown>[]).map((entry, index) => ({
           ...entry,
