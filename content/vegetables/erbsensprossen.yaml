@@ -3,3 +3,4 @@ sowingWindows:
   - from: 8
     until: 38
     successionIntervalWeeks: 2
+    note: "Palerbse"
