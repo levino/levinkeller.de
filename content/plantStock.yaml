@@ -1,8 +1,25 @@
-agastache-cana: false
-callistephus-chinensis: false
-cimicifuga-ramosa: false
-francoa-sonchifolia: false
-orlaya-grandiflora: false
-daphne-mezereum: false
-humulus-lupulus: false
-phlomis-samia: false
+# Staudenvorrat basierend auf Aussaat 2025
+# Quelle: /de/blog/2025-08-18-staudenvorrat
+agastache-foeniculum: true
+agastache-rugosa-alba: true
+anemone-japonica: true
+anthericum-ramosum: true
+aster-ericoides: true
+aster-macrophyllus: true
+aster-novae-angliae: true
+aster-novi-belgii: true
+astrantia-major: true
+calamagrostis-brachytricha: true
+dipsacus-sylvestris: true
+dracocephalum-ruyschiana: true
+francoa-sonchifolia: true
+gaura-lindheimeri: true
+helenium-autumnale-rotgold-hybriden: true
+hyssopus-officinale: true
+miscanthus-oligostachyus: true
+miscanthus-sinensis: true
+pennisetum-alopecuroides: true
+penstemon-digitalis-husker-red: true
+penstemon-serrulatus: true
+stipa-tenuissima: true
+veronica-longifolia: true

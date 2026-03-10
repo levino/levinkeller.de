@@ -171,6 +171,54 @@ const groups: PlantGroup[] = [
   },
 ]
 
+const shadeGroups: PlantGroup[] = [
+  {
+    key: 'waldlichtung-1',
+    id: 9,
+    name: 'Waldlichtung',
+    color: '#7a9f6a',
+    textColor: '#fff',
+    plants: [
+      "Cimicifuga ramosa 'Atropurpurea'",
+      'Aster macrophyllus',
+      'Alchemilla mollis',
+    ],
+    cx: 180,
+    cy: 490,
+    rx: 100,
+    ry: 70,
+    rotation: -8,
+  },
+  {
+    key: 'fruehlingswald-1',
+    id: 10,
+    name: 'Frühlingswald',
+    color: '#9b8fc8',
+    textColor: '#fff',
+    plants: ['Polemonium caeruleum', 'Aquilegia atrata', 'Lathyrus vernus'],
+    cx: 480,
+    cy: 485,
+    rx: 95,
+    ry: 68,
+    rotation: 10,
+  },
+  {
+    key: 'schattenzauber-1',
+    id: 11,
+    name: 'Schattenzauber',
+    color: '#6a8f8a',
+    textColor: '#fff',
+    plants: ["Sanguisorba tenuifolia 'Alba'", 'Chelone obliqua', 'Geum rivale'],
+    cx: 760,
+    cy: 492,
+    rx: 90,
+    ry: 72,
+    rotation: -5,
+  },
+]
+
+const allGroups = [...groups, ...shadeGroups]
+
 function blobPath(
   cx: number,
   cy: number,
@@ -235,7 +283,7 @@ export const GardenBedVisualization: FC = () => {
   const svgRef = useRef<SVGSVGElement>(null)
 
   const width = 960
-  const height = 380
+  const height = 580
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
     const svg = svgRef.current
@@ -244,7 +292,7 @@ export const GardenBedVisualization: FC = () => {
     const svgX = ((e.clientX - rect.left) / rect.width) * width
     const svgY = ((e.clientY - rect.top) / rect.height) * height
 
-    for (const g of groups) {
+    for (const g of allGroups) {
       if (isInsideEllipse(svgX, svgY, g.cx, g.cy, g.rx, g.ry)) {
         setHoveredKey(g.key)
         return
@@ -263,15 +311,19 @@ export const GardenBedVisualization: FC = () => {
         ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
         className="w-full rounded-xl border border-base-300 bg-gradient-to-b from-green-50 to-emerald-50"
-        style={{ maxHeight: '500px' }}
+        style={{ maxHeight: '700px' }}
         role="img"
-        aria-label="Beetplanung: Pflanzgruppen als organische Wolken zwischen Haus und Zaun"
+        aria-label="Beetplanung: Pflanzgruppen als organische Wolken zwischen Haus und Zaun, sowie Schattenstauden unter Sträuchern"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         <title>Beetplanung mit Pflanzgruppen</title>
         <defs>
-          {groups.map((g) => (
+          <linearGradient id="shade-bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#e0e8e0" />
+            <stop offset="100%" stopColor="#d0ddd0" />
+          </linearGradient>
+          {allGroups.map((g) => (
             <filter key={g.key} id={`shadow-${g.key}`}>
               <feDropShadow
                 dx="0"
@@ -295,25 +347,41 @@ export const GardenBedVisualization: FC = () => {
           strokeDasharray="6 3"
         />
 
-        <text
-          x="20"
-          y={height - 8}
-          fontSize="13"
-          fill="#666"
-          fontFamily="sans-serif"
-        >
+        <text x="20" y="368" fontSize="13" fill="#666" fontFamily="sans-serif">
           ZAUN
         </text>
         <line
           x1="0"
-          y1={height - 24}
+          y1="356"
           x2={width}
-          y2={height - 24}
+          y2="356"
           stroke="#aaa"
           strokeDasharray="6 3"
         />
 
-        {groups.map((g) => {
+        <rect x="0" y="375" width={width} height="205" fill="url(#shade-bg)" />
+
+        <g opacity="0.5">
+          <ellipse cx="100" cy="400" rx="40" ry="18" fill="#5a8a4a" />
+          <ellipse cx="280" cy="396" rx="50" ry="20" fill="#4a7a3a" />
+          <ellipse cx="500" cy="402" rx="35" ry="16" fill="#5a8a4a" />
+          <ellipse cx="700" cy="398" rx="45" ry="19" fill="#4a7a3a" />
+          <ellipse cx="880" cy="400" rx="38" ry="17" fill="#5a8a4a" />
+        </g>
+
+        <text x="20" y="436" fontSize="13" fill="#555" fontFamily="sans-serif">
+          UNTER STRÄUCHERN (Halbschatten)
+        </text>
+        <line
+          x1="0"
+          y1="442"
+          x2={width}
+          y2="442"
+          stroke="#8a8"
+          strokeDasharray="4 4"
+        />
+
+        {allGroups.map((g) => {
           const isHovered = hoveredKey === g.key
           const scale = isHovered ? 1.06 : 1
           return (
@@ -388,7 +456,8 @@ export const GardenBedVisualization: FC = () => {
       </svg>
       <p className="mt-2 text-center text-sm text-base-content/60">
         Hover/Tap auf eine Wolke, um die Pflanzen zu sehen. Einige Gruppen
-        werden wiederholt, um Rhythmus zu erzeugen.
+        werden wiederholt, um Rhythmus zu erzeugen. Unten: Schattenstauden unter
+        Sträuchern.
       </p>
     </div>
   )

@@ -19,7 +19,6 @@ spread: 40
 flowerColor:
   - yellow
   - green
-inStock: true
 toSow: false
 supplier: saatgut-vielfalt
 sowingScheme: A

@@ -15,7 +15,6 @@ soil:
 spread: 50
 sunExposure:
   - full
-inStock: true
 foliageColor: green
 supplier: saatgut-vielfalt
 sowingScheme: D
