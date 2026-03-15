@@ -1,0 +1,6 @@
+name: "Möhre"
+sowingWindows:
+  - from: 12
+    until: 18
+  - from: 23
+    until: 28

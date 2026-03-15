@@ -8,7 +8,7 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 35 # Estimated spread based on height
+spread: 50
 flowerColor:
   - white
 lifecycle: perennial
@@ -25,5 +25,4 @@ floweringSeason:
   - august
   - september
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

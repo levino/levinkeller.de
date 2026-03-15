@@ -1,7 +1,8 @@
 name:
   latin: Veronica longifolia
   german: Langblättriger Ehrenpreis
-height: 100
+height: 80
+spread: 45
 soil:
   - normal
   - moist
@@ -9,7 +10,6 @@ sunExposure:
   - full
   - semi-shade
 hardiness: hardy
-spread: 50 # Estimated spread based on height
 flowerColor:
   - blue
 lifecycle: perennial
@@ -22,6 +22,5 @@ floweringSeason:
   - august
   - september
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt
 toSow: true

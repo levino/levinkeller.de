@@ -1,0 +1,8 @@
+name: "Frühlingszwiebel"
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 18
+    until: 22
+  - from: 27
+    until: 31

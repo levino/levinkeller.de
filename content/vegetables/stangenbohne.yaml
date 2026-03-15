@@ -1,0 +1,4 @@
+name: "Stangenbohne"
+sowingWindows:
+  - from: 20
+    until: 24

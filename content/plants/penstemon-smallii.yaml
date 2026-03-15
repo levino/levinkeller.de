@@ -2,6 +2,7 @@ name:
   latin: Penstemon smallii
   german: Bartfaden
 height: 70
+spread: 30
 soil:
   - normal
 sunExposure:

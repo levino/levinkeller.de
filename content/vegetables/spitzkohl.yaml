@@ -1,0 +1,5 @@
+name: "Spitzkohl"
+sowingWindows:
+  - from: 8
+    until: 18
+    note: "für Sommer"

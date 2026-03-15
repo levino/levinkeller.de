@@ -86,6 +86,11 @@ npm run build
 3. **Follow existing code patterns** in the repository
 4. **Test changes** when possible using `npm test`
 5. **Respect the Astro framework patterns** for components and pages
+6. **Never read files directly from disk** — do not use `readFile`, `fs`, or any
+   direct file system access to read content files (YAML, JSON, etc.). Always use
+   Astro content collections (`getCollection`, `getEntry`) as defined in
+   `src/content.config.ts` and `src/collections/index.ts`. If new content is
+   needed, create a new content collection with a proper schema.
 
 ## File Structure Notes
 
@@ -93,6 +98,19 @@ npm run build
 - Astro components use `.astro` extension
 - React components use `.tsx` extension
 - Configuration files are in the root directory
+
+## Sowing Calendar Notes
+
+- **No greenhouse cultivation**: The garden has a greenhouse but it is only used
+  for raising seedlings (Jungpflanzenanzucht), not for growing crops. Do not add
+  sowing windows with `underCover: true` or "geschützt" notes that imply
+  greenhouse cultivation.
+- Vegetables like tomatoes, aubergines, and peppers are sown at normal Freiland
+  timing (later than greenhouse schedules suggest) and pre-cultivated indoors
+  before being planted out after the last frost.
+- When adding vegetables to the sowing calendar, use the `note` field on sowing
+  windows for variety names (e.g., `note: "Hilari"`) so the user knows which
+  seeds to use.
 
 Even if you comment or generally write in German, you need to use English for
 magic github words like (closes, fix, fixes, etc.). "Schließt" will not close

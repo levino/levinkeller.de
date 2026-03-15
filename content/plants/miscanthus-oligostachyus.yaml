@@ -3,6 +3,7 @@ name:
   german: Breitblatt-Chinaschilf
 height: 120
 spread: 60
+voleVulnerable: true
 soil:
   - normal
 sunExposure:

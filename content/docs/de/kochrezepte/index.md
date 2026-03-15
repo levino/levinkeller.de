@@ -1,5 +1,6 @@
 ---
 title: 'Kochrezepte'
+render: false
 sidebar:
-  render: false
+  position: 3
 ---

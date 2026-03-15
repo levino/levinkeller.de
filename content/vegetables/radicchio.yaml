@@ -1,13 +1,4 @@
-name:
-  latin: Cichorium intybus
-  de: Radicchio
-sowing:
-  - june
-  - july
-planting:
-  - july
-  - august
-harvest:
-  - october
-  - november
-supplier: reinsaat
+name: "Radicchio"
+sowingWindows:
+  - from: 25
+    until: 29

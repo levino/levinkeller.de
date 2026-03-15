@@ -2,6 +2,7 @@ name:
   latin: Geum coccineum Borisii
   german: Orangerote Nelkenwurz
 height: 40
+spread: 30
 soil:
   - normal
   - moist

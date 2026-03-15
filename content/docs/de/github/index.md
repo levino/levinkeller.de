@@ -1,5 +1,6 @@
 ---
 title: GitHub
+render: false
 sidebar:
-  render: false
+  position: 6
 ---

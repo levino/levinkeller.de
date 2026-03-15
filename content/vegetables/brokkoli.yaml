@@ -1,0 +1,6 @@
+name: "Brokkoli"
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 23
+    until: 27

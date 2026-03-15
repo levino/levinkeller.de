@@ -7,7 +7,7 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 60 # Estimated spread based on height
+spread: 60
 flowerColor:
   - pink
 lifecycle: perennial
@@ -20,5 +20,4 @@ floweringSeason:
   - august
   - september
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

@@ -1,0 +1,11 @@
+name: "Pflücksalat"
+sowingWindows:
+  - from: 8
+    until: 18
+  - from: 21
+    until: 24
+  - from: 28
+    until: 30
+  - from: 36
+    until: 37
+    overwintering: true

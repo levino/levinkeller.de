@@ -1,11 +1,6 @@
-name:
-  latin: Brassica rapa var. chinensis
-  de: Pak Choi
-sowing:
-  - july
-  - august
-harvest:
-  - september
-  - october
-  - november
-supplier: reinsaat
+name: "Pak Choi"
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 31
+    until: 36

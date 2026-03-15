@@ -1,0 +1,7 @@
+name: "Zwiebel"
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 43
+    until: 49
+    overwintering: true

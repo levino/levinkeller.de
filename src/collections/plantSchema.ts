@@ -20,6 +20,7 @@ export const plantSchema = ({ image }: SchemaContext) =>
       ),
       hardiness: z.enum(['hardy', 'tender']),
       spread: z.number().optional(),
+      voleVulnerable: z.boolean().optional(),
       germination: z
         .object({
           dark: z.boolean().default(false),

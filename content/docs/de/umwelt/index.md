@@ -1,5 +1,6 @@
 ---
 title: Umwelt & Energie
+render: false
 sidebar:
-  render: false
+  position: 2
 ---

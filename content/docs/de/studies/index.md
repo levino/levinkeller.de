@@ -1,5 +1,6 @@
 ---
-title: Studien & Analysen
+title: 'Studien & Analysen'
+render: false
 sidebar:
-  render: false
+  position: 9
 ---

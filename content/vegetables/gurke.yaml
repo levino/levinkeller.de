@@ -1,0 +1,5 @@
+name: "Gurke"
+sowingWindows:
+  - from: 14
+    until: 22
+    note: "Vorkultur ab April, Direktsaat ab Mitte Mai"

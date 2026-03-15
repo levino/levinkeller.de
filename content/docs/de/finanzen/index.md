@@ -1,5 +1,6 @@
 ---
 title: 'Finanzen'
+render: false
 sidebar:
-  render: false
+  position: 8
 ---

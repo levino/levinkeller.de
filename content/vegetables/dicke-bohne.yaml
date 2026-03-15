@@ -1,0 +1,7 @@
+name: "Dicke Bohne"
+skip: true
+sowingWindows:
+  - from: 8
+    until: 18
+  - from: 44
+    until: 49

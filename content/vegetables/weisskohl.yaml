@@ -1,0 +1,5 @@
+name: "Weißkohl"
+sowingWindows:
+  - from: 8
+    until: 22
+    note: "für Sommer und Herbst"

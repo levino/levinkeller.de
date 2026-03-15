@@ -1,0 +1,6 @@
+name: "Mangold"
+sowingWindows:
+  - from: 14
+    until: 18
+  - from: 27
+    until: 31

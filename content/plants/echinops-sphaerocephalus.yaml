@@ -2,6 +2,7 @@ name:
   latin: Echinops sphaerocephalus
   german: Kugeldistel
 height: 200
+spread: 70
 soil:
   - normal
 sunExposure:

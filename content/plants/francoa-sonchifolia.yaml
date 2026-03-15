@@ -2,6 +2,7 @@ name:
   latin: Francoa sonchifolia
   german: Francoa sonchifolia
 height: 60
+spread: 45
 soil:
   - wet
 sunExposure:

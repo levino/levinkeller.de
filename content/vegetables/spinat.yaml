@@ -1,0 +1,8 @@
+name: "Spinat"
+sowingWindows:
+  - from: 8
+    until: 15
+    successionIntervalWeeks: 3
+  - from: 36
+    until: 40
+    successionIntervalWeeks: 3

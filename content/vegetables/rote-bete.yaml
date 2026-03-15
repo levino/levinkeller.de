@@ -1,0 +1,6 @@
+name: "Rote Bete"
+sowingWindows:
+  - from: 8
+    until: 18
+  - from: 23
+    until: 28

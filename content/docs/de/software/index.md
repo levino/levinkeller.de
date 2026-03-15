@@ -1,5 +1,6 @@
 ---
 title: Software
+render: false
 sidebar:
-  render: false
+  position: 5
 ---

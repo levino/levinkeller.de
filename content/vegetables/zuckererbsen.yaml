@@ -1,0 +1,10 @@
+name: "Zuckererbsen"
+sowingWindows:
+  - from: 9
+    until: 26
+    successionIntervalWeeks: 3
+    note: "Zuckererbse"
+  - from: 44
+    until: 47
+    overwintering: true
+    note: "Zuckererbse"

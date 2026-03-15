@@ -6,7 +6,7 @@ import { collections as plantCollections } from './collections/index.ts'
 
 // 3. Define your collection(s)
 const blog = defineCollection({
-  schema: blogSchema,
+  schema: ({ image }) => blogSchema({ image }),
   loader: glob({ pattern: '**/*.{md,mdx}', base: './content/blog' }),
 })
 const docs = defineCollection({

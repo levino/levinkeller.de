@@ -1,0 +1,6 @@
+name: "Chili"
+skip: true
+sowingWindows:
+  - from: 8
+    until: 14
+    note: "Vorkultur"

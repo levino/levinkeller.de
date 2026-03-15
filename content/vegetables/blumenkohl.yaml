@@ -1,0 +1,11 @@
+name: "Blumenkohl"
+sowingWindows:
+  - from: 8
+    until: 14
+    note: "für Sommer"
+  - from: 23
+    until: 27
+    note: "für Herbst"
+  - from: 30
+    until: 36
+    note: "für Frühling"

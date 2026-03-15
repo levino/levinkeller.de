@@ -41,12 +41,14 @@ export default defineConfig({
     },
   },
 
-  site: 'https://www.levinkeller.de',
+  site: 'https://levinkeller.de',
 
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.startsWith('https://www.levinkeller.de/private/'),
+      filter: (page) =>
+        !page.startsWith('https://levinkeller.de/private/') &&
+        !page.includes('/hidden/'),
     }),
     mdx(),
     shipyard({
@@ -102,8 +104,8 @@ export default defineConfig({
               href: '/garden/meadow',
             },
             beds: {
-              label: 'Beetplaner',
-              href: '/garden/beds',
+              label: 'Pflanzgruppen',
+              href: '/docs/gardening/pflanzgruppen',
             },
             plants: {
               label: 'Pflanzen',

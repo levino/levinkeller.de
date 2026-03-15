@@ -1,0 +1,4 @@
+name: "Kartoffel"
+sowingWindows:
+  - from: 12
+    until: 22

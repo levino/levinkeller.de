@@ -1,0 +1,8 @@
+name: "Radieschen"
+sowingWindows:
+  - from: 8
+    until: 19
+    successionIntervalWeeks: 4
+  - from: 36
+    until: 43
+    successionIntervalWeeks: 4

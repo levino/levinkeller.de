@@ -18,7 +18,6 @@ germination:
   light: false
 hardiness: tender
 height: 40
-inStock: false
 lifecycle: annual
 name:
   german: Collarette-Dahlie

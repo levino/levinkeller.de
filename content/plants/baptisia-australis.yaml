@@ -2,6 +2,7 @@ name:
   latin: Baptisia australis
   german: Indigolupine
 height: 150
+spread: 90
 soil:
   - dry
   - normal
@@ -20,5 +21,4 @@ floweringSeason:
   - july
   - august
 images: []
-inStock: true
 supplier: saatgut-vielfalt

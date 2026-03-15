@@ -1,19 +1,5 @@
-harvest:
-  - may
-  - june
-  - july
-  - august
-  - september
-name:
-  de: Dill
-  latin: Anethum graveolens
-planting:
-  - april
-  - may
-  - june
-sowing:
-  - march
-  - april
-  - may
-  - june
-supplier: reinsaat
+name: "Dill"
+sowingWindows:
+  - from: 14
+    until: 30
+    successionIntervalWeeks: 3

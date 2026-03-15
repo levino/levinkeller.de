@@ -1,5 +1,7 @@
 ---
 title: Buchempfehlungen
+sidebar:
+  position: 10
 ---
 
 # Bücher

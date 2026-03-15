@@ -1,0 +1,19 @@
+# Einkaufsliste Samen
+# saison: Datum (01.01. des Jahres) — bestimmt die Saison (z.B. 2026-01-01 = Saison 2025/26)
+# vegetable/plant: Referenz auf vegetables- oder plants-Collection
+
+- saison: 2026-01-01
+  samen:
+    - vegetable: brokkoli
+    - vegetable: blumenkohl
+    - vegetable: kopfsalat
+      sorte: Lalita
+
+- saison: 2027-01-01
+  samen:
+    - vegetable: winterlauch
+      sorte: "Blaugrüner Winter"
+    - vegetable: sommerlauch
+      sorte: Hilari
+    - vegetable: zwiebel
+    - vegetable: knollenfenchel

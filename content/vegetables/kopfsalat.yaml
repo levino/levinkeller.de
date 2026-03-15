@@ -1,0 +1,6 @@
+name: "Kopfsalat"
+sowingWindows:
+  - from: 8
+    until: 33
+    successionIntervalWeeks: 4
+    note: "Lalita"

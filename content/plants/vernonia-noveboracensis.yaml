@@ -7,7 +7,6 @@ floweringSeason:
 foliageColor: green
 hardiness: hardy
 height: 170
-inStock: false
 lifecycle: perennial
 name:
   german: Scheinaster

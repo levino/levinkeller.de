@@ -2,6 +2,7 @@ name:
   latin: Rudbeckia occidentalis
   german: Strahlenloser Sonnenhut
 height: 150
+spread: 45
 soil:
   - normal
   - moist

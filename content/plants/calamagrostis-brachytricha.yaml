@@ -3,6 +3,7 @@ name:
   german: Diamant-Reitgras
 height: 80
 spread: 50
+voleVulnerable: true
 soil:
   - normal
 sunExposure:

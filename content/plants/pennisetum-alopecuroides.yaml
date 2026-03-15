@@ -3,6 +3,7 @@ name:
   german: Lampenputzergras
 height: 80
 spread: 60
+voleVulnerable: true
 soil:
   - normal
 sunExposure:

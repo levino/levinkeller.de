@@ -1,0 +1,6 @@
+name: "Knollenfenchel"
+sowingWindows:
+  - from: 8
+    until: 14
+  - from: 27
+    until: 31

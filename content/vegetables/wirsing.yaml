@@ -1,0 +1,8 @@
+name: "Wirsing"
+sowingWindows:
+  - from: 8
+    until: 22
+    note: "für Sommer und Herbst"
+  - from: 23
+    until: 27
+    note: "für Winter"

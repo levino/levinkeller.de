@@ -3,6 +3,7 @@ name:
   latin: Phlomis samia
 supplier: jelitto
 height: 150
+spread: 60
 soil:
   - dry
 sunExposure:

@@ -1,5 +1,4 @@
 ---
-sidebar:
-  render: false
 title: 'Nordstemmen'
+render: false
 ---
