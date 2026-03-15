@@ -1,27 +1,27 @@
-import { type FC, useCallback, useRef, useState } from "react";
+import { type FC, useCallback, useRef, useState } from 'react'
 
 interface PlantGroup {
-  key: string;
-  id: number;
-  name: string;
-  color: string;
-  textColor: string;
-  plants: string[];
-  cx: number;
-  cy: number;
-  rx: number;
-  ry: number;
-  rotation: number;
+  key: string
+  id: number
+  name: string
+  color: string
+  textColor: string
+  plants: string[]
+  cx: number
+  cy: number
+  rx: number
+  ry: number
+  rotation: number
 }
 
 const groups: PlantGroup[] = [
   {
-    key: "sommerwiese-1",
+    key: 'sommerwiese-1',
     id: 1,
-    name: "Sommerwiese",
-    color: "#e8d44d",
-    textColor: "#5a4e00",
-    plants: ["Stipa tenuissima", "Agastache foeniculum", "Knautia macedonica"],
+    name: 'Sommerwiese',
+    color: '#e8d44d',
+    textColor: '#5a4e00',
+    plants: ['Stipa tenuissima', 'Agastache foeniculum', 'Knautia macedonica'],
     cx: 120,
     cy: 110,
     rx: 95,
@@ -29,15 +29,15 @@ const groups: PlantGroup[] = [
     rotation: -15,
   },
   {
-    key: "herbstfeuer-1",
+    key: 'herbstfeuer-1',
     id: 2,
-    name: "Herbstfeuer",
-    color: "#e07840",
-    textColor: "#fff",
+    name: 'Herbstfeuer',
+    color: '#e07840',
+    textColor: '#fff',
     plants: [
-      "Pennisetum alopecuroides",
-      "Helenium autumnale",
-      "Aster novae-angliae",
+      'Pennisetum alopecuroides',
+      'Helenium autumnale',
+      'Aster novae-angliae',
     ],
     cx: 300,
     cy: 90,
@@ -46,14 +46,14 @@ const groups: PlantGroup[] = [
     rotation: 10,
   },
   {
-    key: "mondschein-1",
+    key: 'mondschein-1',
     id: 3,
-    name: "Mondschein",
-    color: "#c8d8e8",
-    textColor: "#2a3a4a",
+    name: 'Mondschein',
+    color: '#c8d8e8',
+    textColor: '#2a3a4a',
     plants: [
-      "Calamagrostis brachytricha",
-      "Gaura lindheimeri",
+      'Calamagrostis brachytricha',
+      'Gaura lindheimeri',
       "Agastache rugosa 'Alba'",
     ],
     cx: 490,
@@ -63,12 +63,12 @@ const groups: PlantGroup[] = [
     rotation: -8,
   },
   {
-    key: "blaue-stunde-1",
+    key: 'blaue-stunde-1',
     id: 4,
-    name: "Blaue Stunde",
-    color: "#6b8db5",
-    textColor: "#fff",
-    plants: ["Stipa tenuissima", "Veronica longifolia", "Hyssopus officinalis"],
+    name: 'Blaue Stunde',
+    color: '#6b8db5',
+    textColor: '#fff',
+    plants: ['Stipa tenuissima', 'Veronica longifolia', 'Hyssopus officinalis'],
     cx: 670,
     cy: 100,
     rx: 85,
@@ -76,15 +76,15 @@ const groups: PlantGroup[] = [
     rotation: 12,
   },
   {
-    key: "herbstzauber-1",
+    key: 'herbstzauber-1',
     id: 5,
-    name: "Herbstzauber",
-    color: "#b07db8",
-    textColor: "#fff",
+    name: 'Herbstzauber',
+    color: '#b07db8',
+    textColor: '#fff',
     plants: [
-      "Calamagrostis brachytricha",
-      "Anemone japonica",
-      "Aster novi-belgii",
+      'Calamagrostis brachytricha',
+      'Anemone japonica',
+      'Aster novi-belgii',
     ],
     cx: 840,
     cy: 110,
@@ -93,12 +93,12 @@ const groups: PlantGroup[] = [
     rotation: -5,
   },
   {
-    key: "sternenreigen-1",
+    key: 'sternenreigen-1',
     id: 6,
-    name: "Sternenreigen",
-    color: "#a8c8a0",
-    textColor: "#2a4a28",
-    plants: ["Pennisetum alopecuroides", "Aster ericoides", "Astrantia major"],
+    name: 'Sternenreigen',
+    color: '#a8c8a0',
+    textColor: '#2a4a28',
+    plants: ['Pennisetum alopecuroides', 'Aster ericoides', 'Astrantia major'],
     cx: 140,
     cy: 270,
     rx: 100,
@@ -106,15 +106,15 @@ const groups: PlantGroup[] = [
     rotation: 8,
   },
   {
-    key: "praerietraum-1",
+    key: 'praerietraum-1',
     id: 7,
-    name: "Prärietraum",
-    color: "#c4a882",
-    textColor: "#3a2a10",
+    name: 'Prärietraum',
+    color: '#c4a882',
+    textColor: '#3a2a10',
     plants: [
-      "Miscanthus oligostachyus",
+      'Miscanthus oligostachyus',
       "Penstemon digitalis 'Husker Red'",
-      "Veronica longifolia",
+      'Veronica longifolia',
     ],
     cx: 330,
     cy: 280,
@@ -123,15 +123,15 @@ const groups: PlantGroup[] = [
     rotation: -12,
   },
   {
-    key: "sonnentanz-1",
+    key: 'sonnentanz-1',
     id: 8,
-    name: "Sonnentanz",
-    color: "#e8a848",
-    textColor: "#4a3200",
+    name: 'Sonnentanz',
+    color: '#e8a848',
+    textColor: '#4a3200',
     plants: [
-      "Miscanthus oligostachyus",
-      "Verbena bonariensis",
-      "Echinacea Paradiso",
+      'Miscanthus oligostachyus',
+      'Verbena bonariensis',
+      'Echinacea Paradiso',
     ],
     cx: 520,
     cy: 265,
@@ -140,12 +140,12 @@ const groups: PlantGroup[] = [
     rotation: 5,
   },
   {
-    key: "sommerwiese-2",
+    key: 'sommerwiese-2',
     id: 1,
-    name: "Sommerwiese",
-    color: "#e8d44d",
-    textColor: "#5a4e00",
-    plants: ["Stipa tenuissima", "Agastache foeniculum", "Knautia macedonica"],
+    name: 'Sommerwiese',
+    color: '#e8d44d',
+    textColor: '#5a4e00',
+    plants: ['Stipa tenuissima', 'Agastache foeniculum', 'Knautia macedonica'],
     cx: 700,
     cy: 275,
     rx: 85,
@@ -153,14 +153,14 @@ const groups: PlantGroup[] = [
     rotation: -10,
   },
   {
-    key: "mondschein-2",
+    key: 'mondschein-2',
     id: 3,
-    name: "Mondschein",
-    color: "#c8d8e8",
-    textColor: "#2a3a4a",
+    name: 'Mondschein',
+    color: '#c8d8e8',
+    textColor: '#2a3a4a',
     plants: [
-      "Calamagrostis brachytricha",
-      "Gaura lindheimeri",
+      'Calamagrostis brachytricha',
+      'Gaura lindheimeri',
       "Agastache rugosa 'Alba'",
     ],
     cx: 870,
@@ -169,19 +169,19 @@ const groups: PlantGroup[] = [
     ry: 65,
     rotation: 15,
   },
-];
+]
 
 const shadeGroups: PlantGroup[] = [
   {
-    key: "waldlichtung-1",
+    key: 'waldlichtung-1',
     id: 9,
-    name: "Waldlichtung",
-    color: "#7a9f6a",
-    textColor: "#fff",
+    name: 'Waldlichtung',
+    color: '#7a9f6a',
+    textColor: '#fff',
     plants: [
-      "Aster macrophyllus",
-      "Dracocephalum ruyschiana",
-      "Penstemon serrulatus",
+      'Aster macrophyllus',
+      'Dracocephalum ruyschiana',
+      'Penstemon serrulatus',
     ],
     cx: 250,
     cy: 490,
@@ -190,15 +190,15 @@ const shadeGroups: PlantGroup[] = [
     rotation: -8,
   },
   {
-    key: "diamantschleier-1",
+    key: 'diamantschleier-1',
     id: 10,
-    name: "Diamantschleier",
-    color: "#9b8fc8",
-    textColor: "#fff",
+    name: 'Diamantschleier',
+    color: '#9b8fc8',
+    textColor: '#fff',
     plants: [
-      "Calamagrostis brachytricha",
-      "Astrantia major",
-      "Francoa sonchifolia",
+      'Calamagrostis brachytricha',
+      'Astrantia major',
+      'Francoa sonchifolia',
     ],
     cx: 700,
     cy: 485,
@@ -206,56 +206,54 @@ const shadeGroups: PlantGroup[] = [
     ry: 68,
     rotation: 10,
   },
-];
+]
 
-const allGroups = [...groups, ...shadeGroups];
+const allGroups = [...groups, ...shadeGroups]
 
 function blobPath(
   cx: number,
   cy: number,
   rx: number,
   ry: number,
-  rotation: number,
+  rotation: number
 ): string {
-  const points = 8;
-  const angleStep = (Math.PI * 2) / points;
-  const wobble = [0.92, 1.08, 0.95, 1.05, 0.9, 1.1, 0.93, 1.07];
+  const points = 8
+  const angleStep = (Math.PI * 2) / points
+  const wobble = [0.92, 1.08, 0.95, 1.05, 0.9, 1.1, 0.93, 1.07]
 
-  const coords: [number, number][] = [];
-  const rad = (rotation * Math.PI) / 180;
+  const coords: [number, number][] = []
+  const rad = (rotation * Math.PI) / 180
 
   for (let i = 0; i < points; i++) {
-    const angle = angleStep * i;
-    const w = wobble[i];
+    const angle = angleStep * i
+    const w = wobble[i]
     const x =
       cx +
       rx * w * Math.cos(angle) * Math.cos(rad) -
-      ry * w * Math.sin(angle) * Math.sin(rad);
+      ry * w * Math.sin(angle) * Math.sin(rad)
     const y =
       cy +
       rx * w * Math.cos(angle) * Math.sin(rad) +
-      ry * w * Math.sin(angle) * Math.cos(rad);
-    coords.push([x, y]);
+      ry * w * Math.sin(angle) * Math.cos(rad)
+    coords.push([x, y])
   }
 
-  let d = `M ${coords[0][0]},${coords[0][1]}`;
+  let d = `M ${coords[0][0]},${coords[0][1]}`
   for (let i = 0; i < coords.length; i++) {
-    const curr = coords[i];
-    const next = coords[(i + 1) % coords.length];
+    const curr = coords[i]
+    const next = coords[(i + 1) % coords.length]
     const cpx1 =
       curr[0] +
-      (next[0] - coords[(i - 1 + coords.length) % coords.length][0]) * 0.25;
+      (next[0] - coords[(i - 1 + coords.length) % coords.length][0]) * 0.25
     const cpy1 =
       curr[1] +
-      (next[1] - coords[(i - 1 + coords.length) % coords.length][1]) * 0.25;
-    const cpx2 =
-      next[0] - (coords[(i + 2) % coords.length][0] - curr[0]) * 0.25;
-    const cpy2 =
-      next[1] - (coords[(i + 2) % coords.length][1] - curr[1]) * 0.25;
-    d += ` C ${cpx1},${cpy1} ${cpx2},${cpy2} ${next[0]},${next[1]}`;
+      (next[1] - coords[(i - 1 + coords.length) % coords.length][1]) * 0.25
+    const cpx2 = next[0] - (coords[(i + 2) % coords.length][0] - curr[0]) * 0.25
+    const cpy2 = next[1] - (coords[(i + 2) % coords.length][1] - curr[1]) * 0.25
+    d += ` C ${cpx1},${cpy1} ${cpx2},${cpy2} ${next[0]},${next[1]}`
   }
-  d += " Z";
-  return d;
+  d += ' Z'
+  return d
 }
 
 function isInsideEllipse(
@@ -264,41 +262,41 @@ function isInsideEllipse(
   cx: number,
   cy: number,
   rx: number,
-  ry: number,
+  ry: number
 ): boolean {
-  const dx = px - cx;
-  const dy = py - cy;
-  return (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry) <= 1;
+  const dx = px - cx
+  const dy = py - cy
+  return (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry) <= 1
 }
 
 export const GardenBedVisualization: FC = () => {
-  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
 
-  const width = 960;
-  const height = 580;
-  const fenceY = 356;
-  const shadeStartY = fenceY + 19;
+  const width = 960
+  const height = 580
+  const fenceY = 356
+  const shadeStartY = fenceY + 19
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
-    const svg = svgRef.current;
-    if (!svg) return;
-    const rect = svg.getBoundingClientRect();
-    const svgX = ((e.clientX - rect.left) / rect.width) * width;
-    const svgY = ((e.clientY - rect.top) / rect.height) * height;
+    const svg = svgRef.current
+    if (!svg) return
+    const rect = svg.getBoundingClientRect()
+    const svgX = ((e.clientX - rect.left) / rect.width) * width
+    const svgY = ((e.clientY - rect.top) / rect.height) * height
 
     for (const g of allGroups) {
       if (isInsideEllipse(svgX, svgY, g.cx, g.cy, g.rx, g.ry)) {
-        setHoveredKey(g.key);
-        return;
+        setHoveredKey(g.key)
+        return
       }
     }
-    setHoveredKey(null);
-  }, []);
+    setHoveredKey(null)
+  }, [])
 
   const handleMouseLeave = useCallback(() => {
-    setHoveredKey(null);
-  }, []);
+    setHoveredKey(null)
+  }, [])
 
   return (
     <div className="my-6">
@@ -306,7 +304,7 @@ export const GardenBedVisualization: FC = () => {
         ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
         className="w-full rounded-xl border border-base-300 bg-gradient-to-b from-green-50 to-emerald-50"
-        style={{ maxHeight: "700px" }}
+        style={{ maxHeight: '700px' }}
         role="img"
         aria-label="Beetplanung: Pflanzgruppen als organische Wolken zwischen Haus und Zaun, sowie Schattenstauden unter Sträuchern"
         onMouseMove={handleMouseMove}
@@ -395,16 +393,16 @@ export const GardenBedVisualization: FC = () => {
         />
 
         {allGroups.map((g) => {
-          const isHovered = hoveredKey === g.key;
-          const scale = isHovered ? 1.06 : 1;
+          const isHovered = hoveredKey === g.key
+          const scale = isHovered ? 1.06 : 1
           return (
             <g
               key={g.key}
               style={{
-                cursor: "pointer",
+                cursor: 'pointer',
                 transform: `scale(${scale})`,
                 transformOrigin: `${g.cx}px ${g.cy}px`,
-                transition: "transform 0.3s ease",
+                transition: 'transform 0.3s ease',
               }}
             >
               <path
@@ -412,7 +410,7 @@ export const GardenBedVisualization: FC = () => {
                 fill={g.color}
                 opacity={isHovered ? 0.95 : 0.7}
                 filter={`url(#shadow-${g.key})`}
-                style={{ transition: "opacity 0.3s ease" }}
+                style={{ transition: 'opacity 0.3s ease' }}
               />
               <text
                 x={g.cx}
@@ -446,13 +444,13 @@ export const GardenBedVisualization: FC = () => {
                 >
                   <div
                     style={{
-                      background: "rgba(255,255,255,0.95)",
-                      borderRadius: "8px",
-                      padding: "6px 10px",
-                      fontSize: "11px",
-                      lineHeight: "1.4",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                      color: "#333",
+                      background: 'rgba(255,255,255,0.95)',
+                      borderRadius: '8px',
+                      padding: '6px 10px',
+                      fontSize: '11px',
+                      lineHeight: '1.4',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                      color: '#333',
                     }}
                   >
                     {g.plants.map((p) => (
@@ -464,7 +462,7 @@ export const GardenBedVisualization: FC = () => {
                 </foreignObject>
               )}
             </g>
-          );
+          )
         })}
       </svg>
       <p className="mt-2 text-center text-sm text-base-content/60">
@@ -473,5 +471,5 @@ export const GardenBedVisualization: FC = () => {
         Sträuchern.
       </p>
     </div>
-  );
-};
+  )
+}
