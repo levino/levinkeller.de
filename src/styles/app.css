@@ -38,6 +38,12 @@
   --rounded-btn: 1.9rem;
 }
 
+/* Hide theme toggle — theme follows OS preference via DaisyUI --prefersdark */
+html .swap:has(.theme-controller),
+html li:has(.theme-controller) {
+  display: none;
+}
+
 /* Typography customization */
 .prose :is(h1, h2, h3, h4, h5, h6) a {
   text-decoration: none;

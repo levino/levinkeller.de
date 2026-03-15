@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkMath from 'remark-math'
+import themeCleanup from './src/integrations/theme-cleanup'
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,6 +45,7 @@ export default defineConfig({
   site: 'https://levinkeller.de',
 
   integrations: [
+    themeCleanup(),
     react(),
     sitemap({
       filter: (page) =>
