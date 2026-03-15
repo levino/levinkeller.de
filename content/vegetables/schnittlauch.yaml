@@ -1,0 +1,7 @@
+name: "Schnittlauch"
+sowingWindows:
+  - from: 10
+    until: 14
+    note: "Vorkultur"
+  - from: 14
+    until: 26
