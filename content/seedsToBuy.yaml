@@ -1,21 +1,18 @@
-# Einkaufsliste Gemüsesamen
-# Organisiert nach Kaufzeitraum
+# Einkaufsliste Samen
+# saison: Datum (01.01. des Jahres) — bestimmt die Saison (z.B. 2026-01-01 = Saison 2025/26)
+# vegetable/plant: Referenz auf vegetables- oder plants-Collection
 
-fruehling2026:
-  label: "Frühling 2026"
-  beschreibung: "Jetzt noch für die laufende Saison kaufen"
-  items:
-    - name: "Brokkoli"
-    - name: "Blumenkohl"
-    - name: "Kopfsalat"
-      sorte: "Lalita"
+- saison: 2026-01-01
+  samen:
+    - vegetable: brokkoli
+    - vegetable: blumenkohl
+    - vegetable: kopfsalat
+      sorte: Lalita
 
-winter2026:
-  label: "Winter 2026"
-  beschreibung: "Für die nächste Saison bestellen"
-  items:
-    - name: "Winterlauch"
+- saison: 2027-01-01
+  samen:
+    - vegetable: winterlauch
       sorte: "Blaugrüner Winter"
-    - name: "Sommerlauch"
-      sorte: "Hilari"
-    - name: "Zwiebel"
+    - vegetable: sommerlauch
+      sorte: Hilari
+    - vegetable: zwiebel

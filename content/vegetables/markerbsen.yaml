@@ -3,6 +3,8 @@ sowingWindows:
   - from: 9
     until: 26
     successionIntervalWeeks: 3
+    note: "Markerbse"
   - from: 44
     until: 47
     overwintering: true
+    note: "Markerbse"
