@@ -15,7 +15,6 @@ germination:
   light: false
 hardiness: hardy
 height: 150
-inStock: false
 lifecycle: perennial
 name:
   german: Dunkelblauer Rittersporn
