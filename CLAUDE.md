@@ -86,6 +86,11 @@ npm run build
 3. **Follow existing code patterns** in the repository
 4. **Test changes** when possible using `npm test`
 5. **Respect the Astro framework patterns** for components and pages
+6. **Never read files directly from disk** — do not use `readFile`, `fs`, or any
+   direct file system access to read content files (YAML, JSON, etc.). Always use
+   Astro content collections (`getCollection`, `getEntry`) as defined in
+   `src/content.config.ts` and `src/collections/index.ts`. If new content is
+   needed, create a new content collection with a proper schema.
 
 ## File Structure Notes
 
