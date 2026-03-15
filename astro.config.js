@@ -108,6 +108,13 @@ export default defineConfig({
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
       brand: 'Levin Keller',
+      footer: {
+        links: [
+          { label: 'Impressum', to: '/imprint' },
+          { label: 'About', to: '/about' },
+        ],
+        copyright: `&copy; ${new Date().getFullYear()} Levin Keller`,
+      },
       scripts: [
         {
           src: 'https://analytics.levinkeller.de/js/script.js',
