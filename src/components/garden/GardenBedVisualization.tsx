@@ -179,41 +179,32 @@ const shadeGroups: PlantGroup[] = [
     color: '#7a9f6a',
     textColor: '#fff',
     plants: [
-      "Cimicifuga ramosa 'Atropurpurea'",
       'Aster macrophyllus',
-      'Alchemilla mollis',
+      'Dracocephalum ruyschiana',
+      'Penstemon serrulatus',
     ],
-    cx: 180,
+    cx: 250,
     cy: 490,
     rx: 100,
     ry: 70,
     rotation: -8,
   },
   {
-    key: 'fruehlingswald-1',
+    key: 'diamantschleier-1',
     id: 10,
-    name: 'Frühlingswald',
+    name: 'Diamantschleier',
     color: '#9b8fc8',
     textColor: '#fff',
-    plants: ['Polemonium caeruleum', 'Aquilegia atrata', 'Lathyrus vernus'],
-    cx: 480,
+    plants: [
+      'Calamagrostis brachytricha',
+      'Astrantia major',
+      'Francoa sonchifolia',
+    ],
+    cx: 700,
     cy: 485,
     rx: 95,
     ry: 68,
     rotation: 10,
-  },
-  {
-    key: 'schattenzauber-1',
-    id: 11,
-    name: 'Schattenzauber',
-    color: '#6a8f8a',
-    textColor: '#fff',
-    plants: ["Sanguisorba tenuifolia 'Alba'", 'Chelone obliqua', 'Geum rivale'],
-    cx: 760,
-    cy: 492,
-    rx: 90,
-    ry: 72,
-    rotation: -5,
   },
 ]
 
@@ -284,6 +275,8 @@ export const GardenBedVisualization: FC = () => {
 
   const width = 960
   const height = 580
+  const fenceY = 356
+  const shadeStartY = fenceY + 19
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
     const svg = svgRef.current
@@ -347,36 +340,54 @@ export const GardenBedVisualization: FC = () => {
           strokeDasharray="6 3"
         />
 
-        <text x="20" y="368" fontSize="13" fill="#666" fontFamily="sans-serif">
+        <text
+          x="20"
+          y={fenceY + 12}
+          fontSize="13"
+          fill="#666"
+          fontFamily="sans-serif"
+        >
           ZAUN
         </text>
         <line
           x1="0"
-          y1="356"
+          y1={fenceY}
           x2={width}
-          y2="356"
+          y2={fenceY}
           stroke="#aaa"
           strokeDasharray="6 3"
         />
 
-        <rect x="0" y="375" width={width} height="205" fill="url(#shade-bg)" />
+        <rect
+          x="0"
+          y={shadeStartY}
+          width={width}
+          height={height - shadeStartY}
+          fill="url(#shade-bg)"
+        />
 
         <g opacity="0.5">
-          <ellipse cx="100" cy="400" rx="40" ry="18" fill="#5a8a4a" />
-          <ellipse cx="280" cy="396" rx="50" ry="20" fill="#4a7a3a" />
-          <ellipse cx="500" cy="402" rx="35" ry="16" fill="#5a8a4a" />
-          <ellipse cx="700" cy="398" rx="45" ry="19" fill="#4a7a3a" />
-          <ellipse cx="880" cy="400" rx="38" ry="17" fill="#5a8a4a" />
+          <ellipse cx="100" cy={fenceY + 44} rx="40" ry="18" fill="#5a8a4a" />
+          <ellipse cx="280" cy={fenceY + 40} rx="50" ry="20" fill="#4a7a3a" />
+          <ellipse cx="500" cy={fenceY + 46} rx="35" ry="16" fill="#5a8a4a" />
+          <ellipse cx="700" cy={fenceY + 42} rx="45" ry="19" fill="#4a7a3a" />
+          <ellipse cx="880" cy={fenceY + 44} rx="38" ry="17" fill="#5a8a4a" />
         </g>
 
-        <text x="20" y="436" fontSize="13" fill="#555" fontFamily="sans-serif">
+        <text
+          x="20"
+          y={fenceY + 80}
+          fontSize="13"
+          fill="#555"
+          fontFamily="sans-serif"
+        >
           UNTER STRÄUCHERN (Halbschatten)
         </text>
         <line
           x1="0"
-          y1="442"
+          y1={fenceY + 86}
           x2={width}
-          y2="442"
+          y2={fenceY + 86}
           stroke="#8a8"
           strokeDasharray="4 4"
         />
