@@ -80,8 +80,29 @@ export default defineConfig({
           },
         },
         garden: {
-          label: 'Gartenplaner',
+          label: 'Garten',
+          href: '/garden',
           subEntry: {
+            principles: {
+              label: 'Grundsätze',
+              href: '/garden/grundsaetze',
+            },
+            naturgarten: {
+              label: 'Naturgarten-Projekt',
+              href: '/garden',
+            },
+            staudenbeete: {
+              label: 'Staudenbeete im Bestand',
+              href: '/garden/staudenbeete-im-bestand',
+            },
+            seedlingFertilization: {
+              label: 'Jungpflanzen düngen',
+              href: '/garden/duengung-jungpflanzen',
+            },
+            meadow: {
+              label: 'Blumenwiese',
+              href: '/garden/meadow',
+            },
             beds: {
               label: 'Pflanzgruppen',
               href: '/docs/gardening/pflanzgruppen',
@@ -126,6 +147,14 @@ export default defineConfig({
     shipyardDocs({
       editUrl:
         'https://github.com/levino/levinkeller.de/edit/main/content/docs',
+      showLastUpdateTime: true,
+      showLastUpdateAuthor: true,
+    }),
+    shipyardDocs({
+      routeBasePath: 'garden',
+      collectionName: 'gardenDocs',
+      editUrl:
+        'https://github.com/levino/levinkeller.de/edit/main/content/gardenDocs',
       showLastUpdateTime: true,
       showLastUpdateAuthor: true,
     }),
