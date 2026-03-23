@@ -1,4 +1,5 @@
 name: "Pastinake"
+directSow: true
 sowingWindows:
   - from: 9
     until: 24

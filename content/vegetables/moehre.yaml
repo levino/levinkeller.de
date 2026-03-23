@@ -1,4 +1,5 @@
 name: "Möhre"
+directSow: true
 sowingWindows:
   - from: 12
     until: 18

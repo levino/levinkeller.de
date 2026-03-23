@@ -1,4 +1,5 @@
 name: "Radieschen"
+directSow: true
 sowingWindows:
   - from: 8
     until: 19
