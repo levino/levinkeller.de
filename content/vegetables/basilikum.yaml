@@ -1,4 +1,5 @@
 name: "Basilikum"
+skip: true
 sowingWindows:
   - from: 12
     until: 26
