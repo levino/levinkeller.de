@@ -8,6 +8,8 @@
     - vegetable: blumenkohl
     - vegetable: kopfsalat
       sorte: Lalita
+    - vegetable: petersilie
+      notiz: "glatte Petersilie"
 
 - saison: 2027-01-01
   samen:
