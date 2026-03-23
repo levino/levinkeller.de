@@ -97,7 +97,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
         <>
           {urgent.length > 0 && (
             <div class="print-section">
-              <p class="print-section-title">⚑ Letzte Chance – jetzt aussäen!</p>
+              <p class="print-section-title print-section-title-urgent">⚑ Letzte Chance – jetzt aussäen!</p>
               <div class="print-grid">
                 {urgent.map((entry) => (
                   <label class="print-item print-item-urgent">
@@ -416,15 +416,25 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
       padding-bottom: 0.1rem;
     }
 
-    /* Last-chance items: bold */
+    /* Last-chance items: bold + red */
     .print-item-urgent {
       font-weight: bold;
+      color: #c00;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
     }
     .print-item-urgent .print-note {
       font-weight: normal;
+      color: #c00;
     }
     .print-checkbox-urgent {
-      border: 2px solid black;
+      border: 2px solid #c00;
+    }
+    .print-section-title-urgent {
+      color: #c00;
+      border-bottom-color: #c00;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
     }
   }
 </style>
