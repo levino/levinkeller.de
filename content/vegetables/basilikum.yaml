@@ -1,7 +1,4 @@
 name: "Basilikum"
 sowingWindows:
   - from: 12
-    until: 16
-    note: "Vorkultur"
-  - from: 20
     until: 26
