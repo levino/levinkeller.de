@@ -8,6 +8,10 @@
     - vegetable: blumenkohl
     - vegetable: kopfsalat
       sorte: Lalita
+    - vegetable: petersilie
+      notiz: "glatte Petersilie"
+    - vegetable: markerbsen
+    - vegetable: zuckererbsen
 
 - saison: 2027-01-01
   samen:
@@ -17,3 +21,8 @@
       sorte: Hilari
     - vegetable: zwiebel
     - vegetable: knollenfenchel
+
+- saison: 2028-01-01
+  samen:
+    - vegetable: aubergine-lila
+      sorte: Blaukönigin

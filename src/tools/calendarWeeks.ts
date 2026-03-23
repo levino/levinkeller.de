@@ -21,6 +21,8 @@ export interface SowingCalendarEntry {
   succession: number
   underCover: boolean
   overwintering: boolean
+  /** Whether this vegetable is direct-sown (Direktsaat) rather than pre-cultivated in pots */
+  directSow: boolean
   note?: string
   /** Last calendar week where sowing is still possible in this window */
   lastPossibleWeek: number
@@ -80,6 +82,7 @@ export function buildTrackedCalendar(
     id: string
     data: {
       name: string
+      directSow: boolean
       sowingWindows: SowingWindowInput[]
     }
   }>,
@@ -134,6 +137,7 @@ export function buildTrackedCalendar(
           succession: i + 1,
           underCover,
           overwintering,
+          directSow: veg.data.directSow,
           note: window.note,
           lastPossibleWeek: lastWeek,
           status: 'done',
@@ -158,6 +162,7 @@ export function buildTrackedCalendar(
           succession: 1,
           underCover,
           overwintering,
+          directSow: veg.data.directSow,
           note: window.note,
           lastPossibleWeek: lastWeek,
           status,
@@ -180,6 +185,7 @@ export function buildTrackedCalendar(
             succession: windowLogs.length + 1,
             underCover,
             overwintering,
+            directSow: veg.data.directSow,
             note: window.note,
             lastPossibleWeek: lastWeek,
             status,
