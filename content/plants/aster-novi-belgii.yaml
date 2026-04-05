@@ -3,6 +3,7 @@ flowerColor:
   - violet
   - red
   - pink
+sowingDirection: SD1
 floweringSeason:
   - august
   - september
@@ -20,4 +21,7 @@ sunExposure:
   - full
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march

@@ -19,5 +19,10 @@ lifecycle: perennial
 hardiness: hardy
 spread: 60
 foliageColor: green
-sowingScheme: D
+sowingTime:
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD1
 supplier: saatgut-vielfalt

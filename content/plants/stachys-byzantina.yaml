@@ -13,11 +13,10 @@ flowerColor:
   - pink
 lifecycle: perennial
 sowingTime:
+  - february
   - march
   - april
-  - may
-  - june
-sowingScheme: C
+sowingDirection: SD15
 floweringSeason:
   - july
   - august

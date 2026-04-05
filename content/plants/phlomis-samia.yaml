@@ -18,4 +18,9 @@ floweringSeason:
   - august
   - september
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD5

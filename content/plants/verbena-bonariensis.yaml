@@ -12,11 +12,10 @@ flowerColor:
   - violet
 lifecycle: perennial
 sowingTime:
-  - february
-  - march
-  - april
-  - may
-sowingScheme: B
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august
@@ -24,4 +23,4 @@ floweringSeason:
   - october
 foliageColor: green
 supplier: saatgut-vielfalt
-toSow: true
+toSow: false

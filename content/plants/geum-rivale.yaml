@@ -3,6 +3,7 @@ name:
   latin: Geum rivale
   german: Bach-Nelkenwurz
 height: 30
+sowingDirection: SD1
 floweringSeason:
   - april
   - may
@@ -22,4 +23,7 @@ hardiness: hardy
 spread: 30
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: C
+sowingTime:
+  - january
+  - february
+  - march

@@ -11,9 +11,15 @@ hardiness: hardy
 flowerColor:
   - violet
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/PENSTEMON+smallii+Portion+s.html
+description: "Sehr schöne Staude. Keimrate war gering, aber die wenigen Pflanzen die durchkamen sind sehr dekorativ. Unbedingt mehr Samen nachbestellen."
 foliageColor: green
 lifecycle: perennial
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

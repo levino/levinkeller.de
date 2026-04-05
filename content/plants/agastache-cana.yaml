@@ -1,6 +1,7 @@
 flowerColor:
   - pink
   - red
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
@@ -17,4 +18,8 @@ spread: 50
 sunExposure:
   - full
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+  - april

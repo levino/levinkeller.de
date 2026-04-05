@@ -2,6 +2,7 @@ name:
   latin: Alchemilla mollis
   german: Weicher Frauenmantel
 height: 55
+sowingDirection: SD1
 floweringSeason:
   - june
   - july
@@ -21,4 +22,8 @@ flowerColor:
   - green
 toSow: false
 supplier: saatgut-vielfalt
-sowingScheme: A
+sowingTime:
+  - november
+  - december
+  - january
+  - february

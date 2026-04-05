@@ -15,9 +15,14 @@ flowerColor:
   - black
   - green
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/RUDBECKIA+occidentalis+Portion+s.html
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

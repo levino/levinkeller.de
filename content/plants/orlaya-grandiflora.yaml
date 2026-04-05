@@ -15,13 +15,11 @@ flowerColor:
 foliageColor: green
 lifecycle: annual
 sowingTime:
-  - february
-  - march
-  - april
-  - may
-  - september
   - october
-sowingScheme: C
+  - november
+  - december
+  - january
+sowingDirection: SD5
 floweringSeason:
   - june
   - july

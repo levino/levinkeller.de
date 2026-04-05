@@ -18,7 +18,10 @@ flowerColor:
 toSow: true
 foliageColor: green
 lifecycle: annual
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

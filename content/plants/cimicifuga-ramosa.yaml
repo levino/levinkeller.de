@@ -10,14 +10,15 @@ sunExposure:
 hardiness: hardy
 germination:
   dark: false
-  light: true
+  light: false
 flowerColor:
   - white
 foliageColor: red
 lifecycle: perennial
 sowingTime:
-  - august
-sowingScheme: A
+  - november
+  - december
+sowingDirection: SD6
 floweringSeason:
   - september
 supplier: jelitto

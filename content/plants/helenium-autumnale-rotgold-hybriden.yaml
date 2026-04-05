@@ -13,9 +13,17 @@ flowerColor:
   - red
   - yellow
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/HELENIUM+autumnale+Rotgold-Hybr+Portion+s.html
+germination:
+  dark: false
+  light: true
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD15
 floweringSeason:
   - august
   - september

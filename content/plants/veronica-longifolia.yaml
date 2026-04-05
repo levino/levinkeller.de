@@ -14,13 +14,14 @@ flowerColor:
   - blue
 lifecycle: perennial
 sowingTime:
+  - february
   - march
   - april
-sowingScheme: B
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
   - september
 foliageColor: green
 supplier: saatgut-vielfalt
-toSow: true
+toSow: false

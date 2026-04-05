@@ -14,7 +14,11 @@ flowerColor:
   - purple
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD9
 floweringSeason:
   - august
   - september

@@ -15,10 +15,14 @@ flowerColor:
   - red
   - pink
   - orange
-toSow: true
+toSow: false
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

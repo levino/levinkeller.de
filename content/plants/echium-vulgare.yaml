@@ -13,11 +13,10 @@ flowerColor:
   - blue
 lifecycle: biennial
 sowingTime:
-  - february
-  - march
-  - april
-  - may
-sowingScheme: B
+  - november
+  - december
+  - january
+sowingDirection: SD5
 floweringSeason:
   - june
   - july

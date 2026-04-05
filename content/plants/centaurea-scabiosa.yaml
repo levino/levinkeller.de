@@ -10,19 +10,19 @@ sunExposure:
   - full
 hardiness: hardy
 germination:
-  dark: false
-  light: true
+  dark: true
+  light: false
 flowerColor:
   - red
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/CENTAUREA+scabiosa+Portion+s.html
 foliageColor: green
 lifecycle: perennial
 sowingTime:
+  - february
   - march
   - april
-  - may
-  - june
-sowingScheme: D
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

@@ -10,10 +10,14 @@ sunExposure:
 hardiness: hardy
 flowerColor:
   - white
-toSow: true
+toSow: false
 foliageColor: red
 lifecycle: perennial
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
+sowingDirection: SD8
 floweringSeason:
   - july
   - august

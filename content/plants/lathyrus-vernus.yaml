@@ -12,9 +12,10 @@ flowerColor:
   - red
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-sowingScheme: C
+  - november
+  - december
+  - january
+sowingDirection: SD5
 floweringSeason:
   - march
   - april
