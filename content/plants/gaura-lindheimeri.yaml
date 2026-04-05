@@ -14,9 +14,15 @@ flowerColor:
   - pink
 toSow: true
 url: https://www.jelitto.com/Seed/Perennials/GAURA+lindheimeri+Portion+s.html
+germination:
+  dark: false
+  light: true
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
 floweringSeason:
   - may
   - june

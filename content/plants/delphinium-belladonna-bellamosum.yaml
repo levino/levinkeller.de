@@ -11,7 +11,7 @@ floweringSeason:
   - august
 foliageColor: green
 germination:
-  dark: false
+  dark: true
   light: false
 hardiness: hardy
 height: 150
@@ -22,7 +22,10 @@ name:
 soil:
   - normal
   - moist
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
 spread: 50
 sunExposure:
   - full

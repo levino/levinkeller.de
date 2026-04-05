@@ -19,10 +19,9 @@ url: https://www.jelitto.com/Seed/Perennials/CEPHALARIA+gigantea+Portion+s.html
 foliageColor: green
 lifecycle: perennial
 sowingTime:
+  - january
+  - february
   - march
-  - april
-  - may
-sowingScheme: C
 floweringSeason:
   - june
   - july

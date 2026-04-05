@@ -19,6 +19,9 @@ hardiness: hardy
 spread: 50
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
 toSow: true
 url: https://www.jelitto.com/Seed/POLEMONIUM+caeruleum+Portion+s+-.html
