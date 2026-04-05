@@ -20,4 +20,8 @@ spread: 35
 sunExposure:
   - full
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD15

@@ -18,7 +18,11 @@ toSow: false
 description: "Bildet häufig viele braune Blätter; insgesamt wenig attraktiver Wuchs. Nicht empfehlenswert für den Garten."
 foliageColor: green
 lifecycle: perennial
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - may
   - june

@@ -19,4 +19,9 @@ hardiness: hardy
 spread: 30
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: B
+sowingTime:
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD1

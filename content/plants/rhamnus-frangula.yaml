@@ -22,5 +22,8 @@ spread: 100
 foliageColor: green
 supplier: eggert
 sowingTime:
-  - march
-  - april
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD1

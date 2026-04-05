@@ -14,7 +14,12 @@ flowerColor:
   - pink
 foliageColor: green
 lifecycle: biennial
-sowingScheme: D
+sowingTime:
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

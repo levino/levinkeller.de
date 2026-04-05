@@ -14,9 +14,10 @@ flowerColor:
   - blue
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-sowingScheme: B
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

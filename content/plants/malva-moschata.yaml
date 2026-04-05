@@ -12,14 +12,11 @@ spread: 50
 flowerColor:
   - rose
 lifecycle: perennial
-germination:
-  dark: true
 sowingTime:
+  - february
   - march
   - april
-  - may
-  - june
-sowingScheme: C
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
