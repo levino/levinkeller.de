@@ -18,9 +18,9 @@ foliageColor: green
 lifecycle: perennial
 
 sowingTime:
-  - february
-  - march
-  - april
+  - november
+  - december
+  - january
 sowingDirection: SD5
 floweringSeason:
   - july
