@@ -60,6 +60,7 @@ export const plantSchema = ({ image }: SchemaContext) =>
         )
         .optional(),
       inStock: z.boolean().default(false),
+      url: z.string().url().optional(),
       supplier: reference('suppliers'),
     })
     .transform(({ sowingTime, sowingScheme, ...data }) => {
