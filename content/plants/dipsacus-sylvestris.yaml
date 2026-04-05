@@ -15,11 +15,10 @@ flowerColor:
 foliageColor: green
 lifecycle: biennial
 sowingTime:
-  - october
-  - november
-  - december
-  - january
-sowingDirection: SD1
+  - february
+  - march
+  - april
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
