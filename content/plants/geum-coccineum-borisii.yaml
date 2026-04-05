@@ -12,7 +12,8 @@ sunExposure:
 hardiness: hardy
 flowerColor:
   - orange
-toSow: true
+toSow: false
+description: "Kompakte, trupfig wachsende Staude – eher für den Steingarten geeignet. Blüten sind sehr klein, ganzjährig wenig spektakulär. Für größere Beete nicht wirkungsvoll genug."
 lifecycle: perennial
 sowingScheme: B
 foliageColor: green

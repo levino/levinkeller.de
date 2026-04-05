@@ -14,7 +14,8 @@ hardiness: hardy
 flowerColor:
   - blue
   - violet
-toSow: true
+toSow: false
+description: "Bildet häufig viele braune Blätter; insgesamt wenig attraktiver Wuchs. Nicht empfehlenswert für den Garten."
 foliageColor: green
 lifecycle: perennial
 sowingScheme: B
