@@ -14,7 +14,7 @@ germination:
   light: false
 flowerColor:
   - yellow
-toSow: true
+toSow: false
 foliageColor: green
 lifecycle: perennial
 sowingTime:

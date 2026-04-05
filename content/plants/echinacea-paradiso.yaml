@@ -15,7 +15,7 @@ flowerColor:
   - red
   - pink
   - orange
-toSow: true
+toSow: false
 foliageColor: green
 lifecycle: perennial
 sowingScheme: D
