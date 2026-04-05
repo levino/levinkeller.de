@@ -1,5 +1,6 @@
 flowerColor:
   - white
+sowingDirection: SD5
 floweringSeason:
   - june
   - july

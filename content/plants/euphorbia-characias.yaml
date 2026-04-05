@@ -3,6 +3,7 @@ name:
   latin: Euphorbia Characias
   german: Mediterrane Wolfsmilch
 height: 125
+sowingDirection: SD5
 floweringSeason:
   - april
   - may

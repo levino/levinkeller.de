@@ -17,6 +17,7 @@ lifecycle: annual
 sowingTime:
   - march
   - april
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

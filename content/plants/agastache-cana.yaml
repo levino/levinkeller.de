@@ -1,6 +1,7 @@
 flowerColor:
   - pink
   - red
+sowingDirection: SD15
 floweringSeason:
   - july
   - august

@@ -24,6 +24,7 @@ sowingTime:
 germination:
   dark: false
   light: true
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

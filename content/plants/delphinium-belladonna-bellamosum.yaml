@@ -5,6 +5,7 @@ description:
 flowerColor:
   - blue
   - violet
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

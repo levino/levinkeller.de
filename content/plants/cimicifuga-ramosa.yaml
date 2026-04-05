@@ -18,6 +18,7 @@ lifecycle: perennial
 sowingTime:
   - november
   - december
+sowingDirection: SD6
 floweringSeason:
   - september
 supplier: jelitto

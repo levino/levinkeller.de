@@ -1,5 +1,6 @@
 flowerColor:
   - white
+sowingDirection: SD15
 floweringSeason:
   - july
   - august

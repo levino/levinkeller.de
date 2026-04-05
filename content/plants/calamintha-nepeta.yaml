@@ -1,6 +1,7 @@
 flowerColor:
   - white
   - blue
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

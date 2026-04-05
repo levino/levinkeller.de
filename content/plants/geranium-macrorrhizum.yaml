@@ -18,6 +18,7 @@ sowingTime:
   - january
   - february
   - march
+sowingDirection: SD15
 floweringSeason:
   - april
   - may

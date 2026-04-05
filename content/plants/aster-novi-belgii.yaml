@@ -3,6 +3,7 @@ flowerColor:
   - violet
   - red
   - pink
+sowingDirection: SD1
 floweringSeason:
   - august
   - september

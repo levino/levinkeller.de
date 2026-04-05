@@ -1,5 +1,6 @@
 flowerColor:
   - purple
+sowingDirection: SD6
 floweringSeason:
   - march
 foliageColor: green

@@ -1,5 +1,6 @@
 flowerColor:
   - yellow
+sowingDirection: SD1
 floweringSeason:
   - may
   - june

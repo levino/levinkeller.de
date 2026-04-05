@@ -19,6 +19,7 @@ sowingTime:
   - january
   - february
   - march
+sowingDirection: SD1
 floweringSeason:
   - august
   - september

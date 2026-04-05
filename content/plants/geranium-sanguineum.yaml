@@ -3,6 +3,7 @@ name:
   latin: Geranium sanguineum
   german: Blut-Storchschnabel
 height: 30
+sowingDirection: SD5
 floweringSeason:
   - may
   - june

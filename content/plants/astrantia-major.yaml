@@ -2,6 +2,7 @@ name:
   latin: Astrantia major
   german: Große Sterndolde
 height: 85
+sowingDirection: SD1
 floweringSeason:
   - may
   - june

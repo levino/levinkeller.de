@@ -1,6 +1,7 @@
 flowerColor:
   - red
   - pink
+sowingDirection: SD1
 floweringSeason:
   - september
   - october

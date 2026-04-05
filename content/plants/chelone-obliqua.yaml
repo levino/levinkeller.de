@@ -22,6 +22,7 @@ lifecycle: perennial
 sowingTime:
   - december
   - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august

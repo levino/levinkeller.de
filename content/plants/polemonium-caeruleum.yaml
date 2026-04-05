@@ -3,6 +3,7 @@ name:
   latin: Polemonium caeruleum
   german: Jakobsleiter
 height: 85
+sowingDirection: SD1
 floweringSeason:
   - june
   - july
