@@ -13,7 +13,10 @@ flowerColor:
   - white
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - november
+  - december
+  - january
 floweringSeason:
   - june
   - july

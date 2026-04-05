@@ -32,11 +32,9 @@ toSow: true
 foliageColor: green
 lifecycle: annual
 sowingTime:
-  - february
   - march
   - april
   - may
-sowingScheme: B
 floweringSeason:
   - june
   - july

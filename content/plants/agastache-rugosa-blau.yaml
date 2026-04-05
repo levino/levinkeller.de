@@ -15,5 +15,9 @@ lifecycle: 'perennial'
 floweringSeason:
   - 'july'
   - 'august'
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+  - april
 supplier: saatgut-vielfalt

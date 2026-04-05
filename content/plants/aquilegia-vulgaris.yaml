@@ -13,11 +13,9 @@ flowerColor:
   - blue
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-  - may
-  - june
-sowingScheme: C
+  - november
+  - december
+  - january
 floweringSeason:
   - june
   - july

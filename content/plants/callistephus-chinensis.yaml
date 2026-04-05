@@ -17,10 +17,9 @@ toSow: true
 foliageColor: green
 lifecycle: perennial
 sowingTime:
+  - february
   - march
   - april
-  - may
-sowingScheme: D
 floweringSeason:
   - july
   - august

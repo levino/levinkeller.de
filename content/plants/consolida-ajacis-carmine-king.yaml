@@ -17,10 +17,10 @@ toSow: true
 foliageColor: green
 lifecycle: annual
 sowingTime:
+  - september
+  - october
   - february
   - march
-  - april
-  - may
 floweringSeason:
   - june
   - july

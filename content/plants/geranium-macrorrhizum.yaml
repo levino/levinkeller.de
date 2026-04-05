@@ -14,7 +14,10 @@ flowerColor:
 toSow: false
 foliageColor: green
 lifecycle: perennial
-sowingScheme: A
+sowingTime:
+  - january
+  - february
+  - march
 floweringSeason:
   - april
   - may

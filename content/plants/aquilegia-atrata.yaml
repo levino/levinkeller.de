@@ -13,7 +13,11 @@ name:
 soil:
   - normal
   - moist
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
+  - february
 spread: 35
 sunExposure:
   - full

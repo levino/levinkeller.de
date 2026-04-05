@@ -13,9 +13,11 @@ name:
 soil:
   - normal
 sowingTime:
-  - may
+  - january
+  - february
+  - march
+  - april
 spread: 80
 sunExposure:
   - full
 supplier: saatgut-vielfalt
-sowingScheme: D

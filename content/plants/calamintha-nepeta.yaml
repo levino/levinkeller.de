@@ -14,10 +14,10 @@ name:
   latin: Calamintha nepeta
 soil:
   - dry
-sowingScheme: C
 sowingTime:
+  - january
+  - february
   - march
-  - april
 spread: 35
 sunExposure:
   - full

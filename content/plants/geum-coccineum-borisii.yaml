@@ -15,7 +15,10 @@ flowerColor:
 toSow: false
 description: "Kompakte, struppig wachsende Staude – eher für den Steingarten geeignet. Blüten sind sehr klein, ganzjährig wenig spektakulär. Für größere Beete nicht wirkungsvoll genug."
 lifecycle: perennial
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
 foliageColor: green
 supplier: saatgut-vielfalt
 floweringSeason:

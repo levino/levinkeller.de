@@ -18,11 +18,9 @@ toSow: false
 foliageColor: green
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-  - may
-  - june
-sowingScheme: D
+  - november
+  - december
+  - january
 floweringSeason:
   - june
   - july

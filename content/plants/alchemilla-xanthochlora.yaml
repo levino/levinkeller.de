@@ -18,7 +18,11 @@ soil:
   - normal
   - moist
 toSow: false
-sowingScheme: A
+sowingTime:
+  - november
+  - december
+  - january
+  - february
 spread: 30
 sunExposure:
   - full

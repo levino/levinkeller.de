@@ -27,7 +27,8 @@ images:
   - src: './images/astrantiaMajor2.jpg'
     alt: Blüten der Sterndolde
 sowingTime:
-  - september
-  - october
   - november
+  - december
+  - january
+  - february
 supplier: saatgut-vielfalt

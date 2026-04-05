@@ -15,7 +15,10 @@ flowerColor:
   - violet
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - november
+  - december
+  - january
 floweringSeason:
   - june
   - july

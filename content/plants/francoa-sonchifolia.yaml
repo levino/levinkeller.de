@@ -17,8 +17,9 @@ flowerColor:
 foliageColor: green
 lifecycle: perennial
 sowingTime:
-  - august
-sowingScheme: D
+  - january
+  - february
+  - march
 floweringSeason:
   - july
   - august

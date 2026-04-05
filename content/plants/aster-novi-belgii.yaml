@@ -20,4 +20,7 @@ sunExposure:
   - full
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march

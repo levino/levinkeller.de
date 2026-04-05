@@ -21,4 +21,8 @@ flowerColor:
   - green
 toSow: false
 supplier: saatgut-vielfalt
-sowingScheme: A
+sowingTime:
+  - november
+  - december
+  - january
+  - february

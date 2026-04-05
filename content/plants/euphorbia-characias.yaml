@@ -20,4 +20,7 @@ flowerColor:
   - yellow
   - brown
 supplier: saatgut-vielfalt
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january

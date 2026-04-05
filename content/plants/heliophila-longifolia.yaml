@@ -14,7 +14,9 @@ flowerColor:
 toSow: true
 foliageColor: green
 lifecycle: annual
-sowingScheme: D
+sowingTime:
+  - march
+  - april
 floweringSeason:
   - june
   - july
