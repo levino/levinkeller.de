@@ -222,62 +222,57 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
           {sortByUrgency(currentWeekEntries).map((entry) => (
             <li
               class:list={[
-                'flex items-center gap-2 rounded px-3 py-2',
+                'rounded px-3 py-2',
                 entry.status === 'done' ? 'bg-success/10' : urgencyColor(entry),
               ]}
             >
-              {entry.status === 'done' && (
-                <span class="text-success" title="Erledigt">
-                  &#10003;
-                </span>
-              )}
-              <a
-                href={`./vegetables/${entry.id}`}
-                class:list={[
-                  'link link-hover',
-                  entry.status === 'done' && 'line-through opacity-60',
-                ]}
-              >
-                {entry.name}
-              </a>
-              {entry.type === 'plantOut' && (
-                <span class="badge badge-sm badge-primary">Pflanzen</span>
-              )}
-              {entry.succession > 1 && (
-                <span class="badge badge-sm badge-outline">
-                  {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
-                </span>
-              )}
-              {entry.type === 'sowing' && entry.directSow && (
-                <span class="badge badge-sm badge-accent">Direktsaat</span>
-              )}
-              {entry.underCover && (
-                <span class="badge badge-sm badge-info">geschützt</span>
-              )}
-              {entry.overwintering && (
-                <span class="badge badge-sm badge-warning">Überwinterung</span>
-              )}
-              {entry.note && (
-                <span class="badge badge-sm badge-ghost">{entry.note}</span>
-              )}
-              {spacingLabel(entry) && (
-                <span class="badge badge-sm badge-neutral opacity-70">{spacingLabel(entry)}</span>
-              )}
-              {entry.status === 'done' && entry.actualDate && (
-                <span class="text-xs opacity-50">
-                  (gesät {entry.actualDate}, KW {entry.actualWeek})
-                </span>
-              )}
-              {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek < 2 && (
-                <span class="text-xs font-medium text-warning">
-                  Letzte Chance
-                </span>
-              )}
-              {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek > 1 && (
-                <span class="text-xs opacity-50">
-                  (noch bis KW {entry.lastPossibleWeek})
-                </span>
-              )}
+              <div class="flex items-center gap-2">
+                {entry.status === 'done' && (
+                  <span class="flex-shrink-0 text-success" title="Erledigt">&#10003;</span>
+                )}
+                <a
+                  href={`./vegetables/${entry.id}`}
+                  class:list={[
+                    'link link-hover flex-shrink-0 font-medium',
+                    entry.status === 'done' && 'line-through opacity-60',
+                  ]}
+                >
+                  {entry.name}
+                </a>
+                {entry.status === 'done' && entry.actualDate && (
+                  <span class="text-xs opacity-50">
+                    (gesät {entry.actualDate}, KW {entry.actualWeek})
+                  </span>
+                )}
+                {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek < 2 && (
+                  <span class="text-xs font-medium text-warning">Letzte Chance</span>
+                )}
+                {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek > 1 && (
+                  <span class="text-xs opacity-50">(noch bis KW {entry.lastPossibleWeek})</span>
+                )}
+              </div>
+              <div class="mt-1 ml-0 flex flex-wrap gap-1">
+                {entry.type === 'plantOut' && (
+                  <span class="badge badge-sm badge-primary">Pflanzen</span>
+                )}
+                {entry.succession > 1 && (
+                  <span class="badge badge-sm badge-outline">
+                    {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
+                  </span>
+                )}
+                {entry.type === 'sowing' && entry.directSow && (
+                  <span class="badge badge-sm badge-accent">Direktsaat</span>
+                )}
+                {entry.underCover && (
+                  <span class="badge badge-sm badge-info">geschützt</span>
+                )}
+                {entry.overwintering && (
+                  <span class="badge badge-sm badge-warning">Überwinterung</span>
+                )}
+                {entry.note && (
+                  <span class="badge badge-sm badge-ghost">{entry.note}</span>
+                )}
+              </div>
             </li>
           ))}
         </ul>
@@ -374,52 +369,51 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                       {sortByUrgency(entries).map((entry) => (
                         <li
                           class:list={[
-                            'flex items-center gap-2 rounded px-2 py-1',
+                            'rounded px-2 py-1',
                             entry.status === 'done'
                               ? 'bg-success/10'
                               : urgencyColor(entry),
                           ]}
                         >
-                          {entry.status === 'done' && (
-                            <span class="text-success" title="Erledigt">&#10003;</span>
-                          )}
-                          <a
-                            href={`./vegetables/${entry.id}`}
-                            class:list={[
-                              'link link-hover',
-                              entry.status === 'done' && 'line-through opacity-60',
-                            ]}
-                          >
-                            {entry.name}
-                          </a>
-                          {entry.type === 'plantOut' && (
-                            <span class="badge badge-sm badge-primary">Pflanzen</span>
-                          )}
-                          {entry.succession > 1 && (
-                            <span class="badge badge-sm badge-outline">
-                              {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
-                            </span>
-                          )}
-                          {entry.type === 'sowing' && entry.directSow && (
-                            <span class="badge badge-sm badge-accent">Direktsaat</span>
-                          )}
-                          {entry.underCover && (
-                            <span class="badge badge-sm badge-info">geschützt</span>
-                          )}
-                          {entry.overwintering && (
-                            <span class="badge badge-sm badge-warning">Überwinterung</span>
-                          )}
-                          {entry.note && (
-                            <span class="badge badge-sm badge-ghost">{entry.note}</span>
-                          )}
-                          {spacingLabel(entry) && (
-                            <span class="badge badge-sm badge-neutral opacity-70">{spacingLabel(entry)}</span>
-                          )}
-                          {entry.status !== 'done' && (
-                            <span class="text-xs opacity-50">
-                              (noch bis KW {entry.lastPossibleWeek})
-                            </span>
-                          )}
+                          <div class="flex items-center gap-2">
+                            {entry.status === 'done' && (
+                              <span class="flex-shrink-0 text-success" title="Erledigt">&#10003;</span>
+                            )}
+                            <a
+                              href={`./vegetables/${entry.id}`}
+                              class:list={[
+                                'link link-hover flex-shrink-0 font-medium',
+                                entry.status === 'done' && 'line-through opacity-60',
+                              ]}
+                            >
+                              {entry.name}
+                            </a>
+                            {entry.status !== 'done' && (
+                              <span class="text-xs opacity-50">(noch bis KW {entry.lastPossibleWeek})</span>
+                            )}
+                          </div>
+                          <div class="mt-1 flex flex-wrap gap-1">
+                            {entry.type === 'plantOut' && (
+                              <span class="badge badge-sm badge-primary">Pflanzen</span>
+                            )}
+                            {entry.succession > 1 && (
+                              <span class="badge badge-sm badge-outline">
+                                {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
+                              </span>
+                            )}
+                            {entry.type === 'sowing' && entry.directSow && (
+                              <span class="badge badge-sm badge-accent">Direktsaat</span>
+                            )}
+                            {entry.underCover && (
+                              <span class="badge badge-sm badge-info">geschützt</span>
+                            )}
+                            {entry.overwintering && (
+                              <span class="badge badge-sm badge-warning">Überwinterung</span>
+                            )}
+                            {entry.note && (
+                              <span class="badge badge-sm badge-ghost">{entry.note}</span>
+                            )}
+                          </div>
                         </li>
                       ))}
                     </ul>

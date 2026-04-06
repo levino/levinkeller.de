@@ -1,4 +1,5 @@
 name: "Spinat"
+weeksToPlantOut: 4
 sowingWindows:
   - from: 8
     until: 15

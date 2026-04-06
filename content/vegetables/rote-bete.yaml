@@ -1,4 +1,5 @@
 name: "Rote Bete"
+weeksToPlantOut: 5
 sowingWindows:
   - from: 8
     until: 18

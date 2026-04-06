@@ -1,4 +1,5 @@
 name: "Kopfsalat"
+weeksToPlantOut: 4
 sowingWindows:
   - from: 8
     until: 33

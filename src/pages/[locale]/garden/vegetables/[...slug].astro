@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
+import { getISOWeek } from '@/tools/calendarWeeks'
 
 export const getStaticPaths = (async () => {
   const vegs = await getCollection('vegetables')
@@ -13,11 +14,84 @@ export const getStaticPaths = (async () => {
 
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
+
+// Load all sowing logs and find entries for this vegetable
+const sowingLogs = await getCollection('sowingLog')
+
+interface SowingRecord {
+  year: number
+  date: string
+  week: number
+  plannedPlantOutWeek?: number
+}
+
+const sowingHistory: SowingRecord[] = []
+for (const log of sowingLogs) {
+  const year = Number(log.id)
+  for (const entry of log.data.entries) {
+    const entryId =
+      typeof entry.vegetable === 'object' ? entry.vegetable.id : entry.vegetable
+    if (entryId === veg.id) {
+      const week = getISOWeek(new Date(entry.date))
+      const effectiveWeeksToPlantOut =
+        veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
+      sowingHistory.push({
+        year,
+        date: entry.date,
+        week,
+        plannedPlantOutWeek: effectiveWeeksToPlantOut
+          ? week + effectiveWeeksToPlantOut
+          : undefined,
+      })
+    }
+  }
+}
+
+// Group by year
+const byYear = new Map<number, SowingRecord[]>()
+for (const record of sowingHistory) {
+  const list = byYear.get(record.year) ?? []
+  list.push(record)
+  byYear.set(record.year, list)
+}
+const years = [...byYear.keys()].sort((a, b) => b - a)
 ---
 
 <Layout canonicalUrl={canonicalUrl} title={veg.data.name}>
   <div class="mx-auto max-w-3xl px-4 py-8">
     <h1 class="mb-6 text-2xl font-bold">{veg.data.name}</h1>
+
+    {/* Sowing history */}
+    {years.length > 0 && (
+      <div class="mb-8">
+        <h2 class="mb-3 text-lg font-semibold">Aussaaten</h2>
+        <div class="space-y-3">
+          {years.map((year) => {
+            const records = byYear.get(year)!
+            return (
+              <div class="rounded-lg border border-base-300 bg-base-100 p-3">
+                <span class="badge badge-neutral mr-3">{year}</span>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {records.map((r, i) => (
+                    <>
+                      <span class="badge badge-success badge-sm">
+                        {records.length > 1 ? `${i + 1}. ` : ''}Gesät KW {r.week} ({r.date})
+                      </span>
+                      {r.plannedPlantOutWeek && (
+                        <span class="badge badge-info badge-sm">
+                          Pflanzen KW {r.plannedPlantOutWeek} (geplant)
+                        </span>
+                      )}
+                    </>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )}
+
     <h2 class="mb-3 text-lg font-semibold">Aussaatfenster</h2>
     <table class="table">
       <thead>
@@ -55,6 +129,21 @@ const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
         }
       </tbody>
     </table>
+
+    {(veg.data.rowSpacingCm || veg.data.plantSpacingCm) && (
+      <div class="mt-6">
+        <h2 class="mb-3 text-lg font-semibold">Abstände</h2>
+        <div class="flex gap-4 text-sm">
+          {veg.data.rowSpacingCm && (
+            <span>Reihenabstand: <strong>{veg.data.rowSpacingCm} cm</strong></span>
+          )}
+          {veg.data.plantSpacingCm && (
+            <span>Pflanzabstand: <strong>{veg.data.plantSpacingCm} cm</strong></span>
+          )}
+        </div>
+      </div>
+    )}
+
     <div class="mt-6">
       <a href="../sowing-calendar" class="btn btn-outline btn-sm">
         ← Zurück zum Aussaatkalender

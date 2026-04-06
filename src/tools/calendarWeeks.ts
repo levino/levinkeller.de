@@ -128,7 +128,9 @@ export function buildTrackedCalendar(
 
     const rowSpacingCm = veg.data.rowSpacingCm
     const plantSpacingCm = veg.data.plantSpacingCm
-    const weeksToPlantOut = veg.data.weeksToPlantOut
+    // For Vorkultur plants without explicit weeksToPlantOut, default to 6 weeks
+    const weeksToPlantOut =
+      veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
 
     let hasAnyEntry = false
 
