@@ -76,6 +76,14 @@ const urgencyColor = (entry: SowingCalendarEntry): string => {
   return 'border-l-4 border-base-300 bg-base-200/50'
 }
 
+const spacingLabel = (entry: SowingCalendarEntry): string | undefined => {
+  if (entry.plantSpacingCm && entry.rowSpacingCm) {
+    return `${entry.rowSpacingCm} × ${entry.plantSpacingCm} cm`
+  }
+  if (entry.plantSpacingCm) return `${entry.plantSpacingCm} cm`
+  return undefined
+}
+
 // Split weeks into current, past, and future
 const currentWeekEntries = calendarWeekMap.get(currentWeek)
 const pastWeeks = sortedWeeks.filter((kw) => kw < currentWeek)
@@ -90,7 +98,9 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
     </h1>
 
     {currentWeekEntries && (() => {
-      const todo = sortByUrgency(currentWeekEntries).filter((e) => e.status !== 'done')
+      const sowingEntries = currentWeekEntries.filter((e) => e.type === 'sowing')
+      const plantOutEntries = currentWeekEntries.filter((e) => e.type === 'plantOut')
+      const todo = sortByUrgency(sowingEntries).filter((e) => e.status !== 'done')
       const urgent = todo.filter((e) => e.lastPossibleWeek - currentWeek <= 1)
       const normal = todo.filter((e) => e.lastPossibleWeek - currentWeek > 1)
       const urgentPots = urgent.filter((e) => !e.directSow)
@@ -106,12 +116,26 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
               <span class="print-name">{entry.name}</span>
               {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
               {entry.note && <span class="print-note"> [{entry.note}]</span>}
+              {spacingLabel(entry) && <span class="print-note"> {spacingLabel(entry)}</span>}
             </label>
           ))}
         </div>
       )
 
-      return todo.length > 0 && (
+      const renderPlantItems = (entries: SowingCalendarEntry[]) => (
+        <div class="print-grid">
+          {entries.map((entry) => (
+            <label class="print-item">
+              <input type="checkbox" class="print-checkbox" />
+              <span class="print-name">{entry.name}</span>
+              {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Pflanzung)</span>}
+              {spacingLabel(entry) && <span class="print-note"> {spacingLabel(entry)}</span>}
+            </label>
+          ))}
+        </div>
+      )
+
+      return (todo.length > 0 || plantOutEntries.length > 0) && (
         <>
           {urgentPots.length > 0 && (
             <div class="print-section">
@@ -135,6 +159,12 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
             <div class="print-section">
               <p class="print-section-title">Direktsaat</p>
               {renderItems(normalDirect, false)}
+            </div>
+          )}
+          {plantOutEntries.length > 0 && (
+            <div class="print-section">
+              <p class="print-section-title">Pflanzen</p>
+              {renderPlantItems(plantOutEntries)}
             </div>
           )}
         </>
@@ -210,12 +240,15 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
               >
                 {entry.name}
               </a>
+              {entry.type === 'plantOut' && (
+                <span class="badge badge-sm badge-primary">Pflanzen</span>
+              )}
               {entry.succession > 1 && (
                 <span class="badge badge-sm badge-outline">
-                  {entry.succession}. Aussaat
+                  {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
                 </span>
               )}
-              {entry.directSow && (
+              {entry.type === 'sowing' && entry.directSow && (
                 <span class="badge badge-sm badge-accent">Direktsaat</span>
               )}
               {entry.underCover && (
@@ -226,6 +259,9 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
               )}
               {entry.note && (
                 <span class="badge badge-sm badge-ghost">{entry.note}</span>
+              )}
+              {spacingLabel(entry) && (
+                <span class="badge badge-sm badge-neutral opacity-70">{spacingLabel(entry)}</span>
               )}
               {entry.status === 'done' && entry.actualDate && (
                 <span class="text-xs opacity-50">
@@ -272,7 +308,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                   <div class="collapse-title font-medium text-sm">
                     KW {kw}
                     <span class="ml-2 text-sm opacity-60">
-                      ({entries.length} Gemüse)
+                      ({entries.length} Einträge)
                     </span>
                   </div>
                   <div class="collapse-content">
@@ -286,6 +322,9 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                           >
                             {entry.name}
                           </a>
+                          {entry.type === 'plantOut' && (
+                            <span class="badge badge-sm badge-primary opacity-60">Pflanzen</span>
+                          )}
                           {entry.actualDate && (
                             <span class="text-xs opacity-50">
                               (gesät {entry.actualDate})
@@ -327,7 +366,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                   <div class="collapse-title font-medium text-sm">
                     KW {kw}
                     <span class="ml-2 text-sm opacity-60">
-                      ({entries.length} Gemüse)
+                      ({entries.length} Einträge)
                     </span>
                   </div>
                   <div class="collapse-content">
@@ -353,12 +392,15 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                           >
                             {entry.name}
                           </a>
+                          {entry.type === 'plantOut' && (
+                            <span class="badge badge-sm badge-primary">Pflanzen</span>
+                          )}
                           {entry.succession > 1 && (
                             <span class="badge badge-sm badge-outline">
-                              {entry.succession}. Aussaat
+                              {entry.type === 'plantOut' ? `${entry.succession}. Pflanzung` : `${entry.succession}. Aussaat`}
                             </span>
                           )}
-                          {entry.directSow && (
+                          {entry.type === 'sowing' && entry.directSow && (
                             <span class="badge badge-sm badge-accent">Direktsaat</span>
                           )}
                           {entry.underCover && (
@@ -369,6 +411,9 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                           )}
                           {entry.note && (
                             <span class="badge badge-sm badge-ghost">{entry.note}</span>
+                          )}
+                          {spacingLabel(entry) && (
+                            <span class="badge badge-sm badge-neutral opacity-70">{spacingLabel(entry)}</span>
                           )}
                           {entry.status !== 'done' && (
                             <span class="text-xs opacity-50">

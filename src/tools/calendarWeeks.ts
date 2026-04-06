@@ -32,6 +32,12 @@ export interface SowingCalendarEntry {
   actualDate?: string
   /** Actual week sown (from log), if done */
   actualWeek?: number
+  /** Whether this is a sowing or a plant-out reminder */
+  type: 'sowing' | 'plantOut'
+  /** Reihenabstand in cm */
+  rowSpacingCm?: number
+  /** Pflanzabstand in der Reihe in cm */
+  plantSpacingCm?: number
 }
 
 /** Raw log entry: vegetable ID + date string */
@@ -63,6 +69,18 @@ interface SowingWindowInput {
   note?: string
 }
 
+interface VegetableInput {
+  id: string
+  data: {
+    name: string
+    directSow: boolean
+    rowSpacingCm?: number
+    plantSpacingCm?: number
+    weeksToPlantOut?: number
+    sowingWindows: SowingWindowInput[]
+  }
+}
+
 /**
  * Build a calendar week map showing what to sow when.
  *
@@ -78,14 +96,7 @@ interface SowingWindowInput {
  * are returned in missedVegetables.
  */
 export function buildTrackedCalendar(
-  vegetables: Array<{
-    id: string
-    data: {
-      name: string
-      directSow: boolean
-      sowingWindows: SowingWindowInput[]
-    }
-  }>,
+  vegetables: Array<VegetableInput>,
   logEntries: SowingLogEntry[],
   currentWeek: number
 ): TrackedCalendarResult {
@@ -115,6 +126,10 @@ export function buildTrackedCalendar(
       (a, b) => a.week - b.week
     )
 
+    const rowSpacingCm = veg.data.rowSpacingCm
+    const plantSpacingCm = veg.data.plantSpacingCm
+    const weeksToPlantOut = veg.data.weeksToPlantOut
+
     let hasAnyEntry = false
 
     for (const window of veg.data.sowingWindows) {
@@ -128,7 +143,7 @@ export function buildTrackedCalendar(
         (l) => l.week >= firstWeek && l.week <= lastWeek
       )
 
-      // Add all done entries to the calendar
+      // Add all done sowing entries to the calendar
       for (let i = 0; i < windowLogs.length; i++) {
         hasAnyEntry = true
         addToMap(calendarWeekMap, windowLogs[i].week, {
@@ -143,7 +158,30 @@ export function buildTrackedCalendar(
           status: 'done',
           actualDate: windowLogs[i].date,
           actualWeek: windowLogs[i].week,
+          type: 'sowing',
+          rowSpacingCm,
+          plantSpacingCm,
         })
+
+        // For Vorkultur crops with weeksToPlantOut, add plant-out reminder
+        if (!veg.data.directSow && weeksToPlantOut) {
+          const plantOutWeek = windowLogs[i].week + weeksToPlantOut
+          const plantOutStatus: SowingCalendarEntry['status'] =
+            currentWeek >= plantOutWeek ? 'available' : 'upcoming'
+          addToMap(calendarWeekMap, plantOutWeek, {
+            name: veg.data.name,
+            id: veg.id,
+            succession: i + 1,
+            underCover: false,
+            overwintering: false,
+            directSow: false,
+            lastPossibleWeek: plantOutWeek + 2,
+            status: plantOutStatus,
+            type: 'plantOut',
+            rowSpacingCm,
+            plantSpacingCm,
+          })
+        }
       }
 
       // If the window has completely passed, no more entries needed
@@ -166,6 +204,9 @@ export function buildTrackedCalendar(
           note: window.note,
           lastPossibleWeek: lastWeek,
           status,
+          type: 'sowing',
+          rowSpacingCm,
+          plantSpacingCm,
         })
       } else if (window.successionIntervalWeeks) {
         // Has been sown, check if next succession is due
@@ -189,6 +230,9 @@ export function buildTrackedCalendar(
             note: window.note,
             lastPossibleWeek: lastWeek,
             status,
+            type: 'sowing',
+            rowSpacingCm,
+            plantSpacingCm,
           })
         }
       }
