@@ -1,0 +1,6 @@
+# Pflanz-Protokoll 2026
+# Hier werden tatsächliche Auspflanzungen eingetragen.
+# Format pro Eintrag:
+#   - vegetable: <id aus content/vegetables, z.B. "spinat">
+#     date: "YYYY-MM-DD"
+entries: []

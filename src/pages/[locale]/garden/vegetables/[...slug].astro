@@ -15,17 +15,20 @@ export const getStaticPaths = (async () => {
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
 
-// Load all sowing logs and find entries for this vegetable
 const sowingLogs = await getCollection('sowingLog')
+const plantingLogs = await getCollection('plantingLog')
 
-interface SowingRecord {
-  year: number
-  date: string
-  week: number
-  plannedPlantOutWeek?: number
+interface YearRecord {
+  sowings: Array<{ date: string; week: number; plannedPlantOutWeek?: number }>
+  plantings: Array<{ date: string; week: number }>
 }
 
-const sowingHistory: SowingRecord[] = []
+const effectiveWeeksToPlantOut =
+  veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
+
+// Collect sowing history
+const byYear = new Map<number, YearRecord>()
+
 for (const log of sowingLogs) {
   const year = Number(log.id)
   for (const entry of log.data.entries) {
@@ -33,27 +36,34 @@ for (const log of sowingLogs) {
       typeof entry.vegetable === 'object' ? entry.vegetable.id : entry.vegetable
     if (entryId === veg.id) {
       const week = getISOWeek(new Date(entry.date))
-      const effectiveWeeksToPlantOut =
-        veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
-      sowingHistory.push({
-        year,
+      const rec = byYear.get(year) ?? { sowings: [], plantings: [] }
+      rec.sowings.push({
         date: entry.date,
         week,
         plannedPlantOutWeek: effectiveWeeksToPlantOut
           ? week + effectiveWeeksToPlantOut
           : undefined,
       })
+      byYear.set(year, rec)
     }
   }
 }
 
-// Group by year
-const byYear = new Map<number, SowingRecord[]>()
-for (const record of sowingHistory) {
-  const list = byYear.get(record.year) ?? []
-  list.push(record)
-  byYear.set(record.year, list)
+// Collect planting history
+for (const log of plantingLogs) {
+  const year = Number(log.id)
+  for (const entry of log.data.entries) {
+    const entryId =
+      typeof entry.vegetable === 'object' ? entry.vegetable.id : entry.vegetable
+    if (entryId === veg.id) {
+      const week = getISOWeek(new Date(entry.date))
+      const rec = byYear.get(year) ?? { sowings: [], plantings: [] }
+      rec.plantings.push({ date: entry.date, week })
+      byYear.set(year, rec)
+    }
+  }
 }
+
 const years = [...byYear.keys()].sort((a, b) => b - a)
 ---
 
@@ -61,29 +71,36 @@ const years = [...byYear.keys()].sort((a, b) => b - a)
   <div class="mx-auto max-w-3xl px-4 py-8">
     <h1 class="mb-6 text-2xl font-bold">{veg.data.name}</h1>
 
-    {/* Sowing history */}
+    {/* History */}
     {years.length > 0 && (
       <div class="mb-8">
-        <h2 class="mb-3 text-lg font-semibold">Aussaaten</h2>
+        <h2 class="mb-3 text-lg font-semibold">Aussaaten & Pflanzungen</h2>
         <div class="space-y-3">
           {years.map((year) => {
-            const records = byYear.get(year)!
+            const { sowings, plantings } = byYear.get(year)!
             return (
               <div class="rounded-lg border border-base-300 bg-base-100 p-3">
-                <span class="badge badge-neutral mr-3">{year}</span>
+                <span class="badge badge-neutral mr-2">{year}</span>
                 <div class="mt-2 flex flex-wrap gap-2">
-                  {records.map((r, i) => (
-                    <>
-                      <span class="badge badge-success badge-sm">
-                        {records.length > 1 ? `${i + 1}. ` : ''}Gesät KW {r.week} ({r.date})
-                      </span>
-                      {r.plannedPlantOutWeek && (
-                        <span class="badge badge-info badge-sm">
-                          Pflanzen KW {r.plannedPlantOutWeek} (geplant)
+                  {sowings.map((s, i) => {
+                    const planting = plantings[i]
+                    return (
+                      <>
+                        <span class="badge badge-success badge-sm">
+                          {sowings.length > 1 ? `${i + 1}. ` : ''}Gesät KW {s.week} ({s.date})
                         </span>
-                      )}
-                    </>
-                  ))}
+                        {planting ? (
+                          <span class="badge badge-primary badge-sm">
+                            Gepflanzt KW {planting.week} ({planting.date})
+                          </span>
+                        ) : s.plannedPlantOutWeek ? (
+                          <span class="badge badge-info badge-sm badge-outline">
+                            Pflanzen KW {s.plannedPlantOutWeek} (ausstehend)
+                          </span>
+                        ) : null}
+                      </>
+                    )
+                  })}
                 </div>
               </div>
             )

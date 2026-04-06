@@ -27,17 +27,29 @@ const vegetables = (await getCollection('vegetables')).filter(
   (v) => !v.data.skip
 )
 const sowingLogs = await getCollection('sowingLog')
+const plantingLogs = await getCollection('plantingLog')
 
-// Find log for current year
-const yearLog = sowingLogs.find((log) => log.id === String(year))
-const logEntries: SowingLogEntry[] = (yearLog?.data.entries ?? []).map((e) => ({
+// Find logs for current year
+const yearSowingLog = sowingLogs.find((log) => log.id === String(year))
+const sowingEntries: SowingLogEntry[] = (yearSowingLog?.data.entries ?? []).map(
+  (e) => ({
+    vegetable: typeof e.vegetable === 'object' ? e.vegetable.id : e.vegetable,
+    date: e.date,
+  })
+)
+
+const yearPlantingLog = plantingLogs.find((log) => log.id === String(year))
+const plantingEntries: SowingLogEntry[] = (
+  yearPlantingLog?.data.entries ?? []
+).map((e) => ({
   vegetable: typeof e.vegetable === 'object' ? e.vegetable.id : e.vegetable,
   date: e.date,
 }))
 
 const { weekMap: calendarWeekMap, missedVegetables } = buildTrackedCalendar(
   vegetables,
-  logEntries,
+  sowingEntries,
+  plantingEntries,
   currentWeek
 )
 
@@ -241,13 +253,13 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                 </a>
                 {entry.status === 'done' && entry.actualDate && (
                   <span class="text-xs opacity-50">
-                    (gesät {entry.actualDate}, KW {entry.actualWeek})
+                    ({entry.type === 'plantOut' ? 'gepflanzt' : 'gesät'} {entry.actualDate}, KW {entry.actualWeek})
                   </span>
                 )}
-                {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek < 2 && (
+                {entry.status !== 'done' && entry.type !== 'plantOut' && entry.lastPossibleWeek - currentWeek < 2 && (
                   <span class="text-xs font-medium text-warning">Letzte Chance</span>
                 )}
-                {entry.status !== 'done' && entry.lastPossibleWeek - currentWeek > 1 && (
+                {entry.status !== 'done' && entry.type === 'sowing' && entry.lastPossibleWeek - currentWeek > 1 && (
                   <span class="text-xs opacity-50">(noch bis KW {entry.lastPossibleWeek})</span>
                 )}
               </div>
@@ -388,7 +400,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                             >
                               {entry.name}
                             </a>
-                            {entry.status !== 'done' && (
+                            {entry.status !== 'done' && entry.type === 'sowing' && (
                               <span class="text-xs opacity-50">(noch bis KW {entry.lastPossibleWeek})</span>
                             )}
                           </div>

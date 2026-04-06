@@ -1,6 +1,7 @@
 import { defineCollection, reference, z } from 'astro:content'
 import { file, glob } from 'astro/loaders'
 import { parse as parseYaml } from 'yaml'
+import { plantingLogSchema } from './plantingLogSchema'
 import { plantSchema } from './plantSchema'
 import { sowingLogSchema } from './sowingLogSchema'
 import { vegetablesSchema } from './vegetableSchema'
@@ -69,6 +70,13 @@ export const collections = {
       base: './content/sowingLog',
     }),
     schema: sowingLogSchema,
+  }),
+  plantingLog: defineCollection({
+    loader: glob({
+      pattern: '*.yaml',
+      base: './content/plantingLog',
+    }),
+    schema: plantingLogSchema,
   }),
   plantStock: defineCollection({
     schema: z.object({
