@@ -1,4 +1,6 @@
 name: "Spitzkohl"
+rowSpacingCm: 50
+plantSpacingCm: 50
 sowingWindows:
   - from: 8
     until: 18

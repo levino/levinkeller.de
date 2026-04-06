@@ -17,36 +17,35 @@ export function getISOWeek(date: Date): number {
 export interface SowingCalendarEntry {
   name: string
   id: string
-  /** Which sowing within the window (1 = first, 2 = second succession, etc.) */
   succession: number
   underCover: boolean
   overwintering: boolean
-  /** Whether this vegetable is direct-sown (Direktsaat) rather than pre-cultivated in pots */
   directSow: boolean
   note?: string
-  /** Last calendar week where sowing is still possible in this window */
   lastPossibleWeek: number
-  /** Status: 'done' | 'available' | 'upcoming' */
   status: 'done' | 'available' | 'upcoming'
-  /** Actual date sown (from log), if done */
   actualDate?: string
-  /** Actual week sown (from log), if done */
   actualWeek?: number
-  /** Whether this is a sowing or a plant-out reminder */
   type: 'sowing' | 'plantOut'
-  /** Reihenabstand in cm */
   rowSpacingCm?: number
-  /** Pflanzabstand in der Reihe in cm */
   plantSpacingCm?: number
 }
 
-/** Raw log entry: vegetable ID + date string */
 export interface SowingLogEntry {
+  /** Collection entry ID, format: YYYY-MM-DD-{vegetable-id} */
+  id: string
   vegetable: string
   date: string
 }
 
-/** A vegetable whose entire sowing window has passed without any sowing */
+export interface PlantingLogEntry {
+  id: string
+  vegetable: string
+  date: string
+  /** ID of the sowing log entry these plants came from (Vorkultur) */
+  sowingId?: string
+}
+
 export interface MissedVegetable {
   name: string
   id: string
@@ -88,9 +87,8 @@ interface VegetableInput {
  * Done entries always shown at their actual week.
  *
  * Plant-out entries: generated for every logged sowing of a Vorkultur crop.
- * Like sowing entries, they stay visible in the current week until logged as
- * planted (status 'done'). Unplanted entries whose planned week has passed
- * are shown in the current week as 'available'.
+ * Matched to plantings via sowingId reference. Unplanted entries whose
+ * planned week has passed stay in the current week until logged as planted.
  *
  * Vegetables whose every window has passed without a single sowing are
  * returned in missedVegetables.
@@ -98,53 +96,35 @@ interface VegetableInput {
 export function buildTrackedCalendar(
   vegetables: Array<VegetableInput>,
   sowingEntries: SowingLogEntry[],
-  plantingEntries: SowingLogEntry[],
+  plantingEntries: PlantingLogEntry[],
   currentWeek: number
 ): TrackedCalendarResult {
   const calendarWeekMap: CalendarWeekMap = new Map()
   const missedVegetables: MissedVegetable[] = []
 
-  // Group sowing log entries by vegetable, sorted by week
-  const sowingByVegetable = new Map<
-    string,
-    Array<{ date: string; week: number }>
-  >()
+  // Index sowing log by vegetable ID, sorted by date
+  const sowingsByVegetable = new Map<string, SowingLogEntry[]>()
   for (const entry of sowingEntries) {
-    const vegId =
-      typeof entry.vegetable === 'object'
-        ? (entry.vegetable as { id: string }).id
-        : entry.vegetable
-    const list = sowingByVegetable.get(vegId) ?? []
-    list.push({ date: entry.date, week: getISOWeek(new Date(entry.date)) })
-    sowingByVegetable.set(vegId, list)
+    const list = sowingsByVegetable.get(entry.vegetable) ?? []
+    list.push(entry)
+    sowingsByVegetable.set(entry.vegetable, list)
+  }
+  for (const list of sowingsByVegetable.values()) {
+    list.sort((a, b) => a.date.localeCompare(b.date))
   }
 
-  // Group planting log entries by vegetable, sorted by week
-  const plantingByVegetable = new Map<
-    string,
-    Array<{ date: string; week: number }>
-  >()
+  // Index plantings by sowingId for fast lookup
+  const plantingBySowingId = new Map<string, PlantingLogEntry>()
   for (const entry of plantingEntries) {
-    const vegId =
-      typeof entry.vegetable === 'object'
-        ? (entry.vegetable as { id: string }).id
-        : entry.vegetable
-    const list = plantingByVegetable.get(vegId) ?? []
-    list.push({ date: entry.date, week: getISOWeek(new Date(entry.date)) })
-    plantingByVegetable.set(vegId, list)
+    if (entry.sowingId) {
+      plantingBySowingId.set(entry.sowingId, entry)
+    }
   }
 
   for (const veg of vegetables) {
-    const vegSowings = (sowingByVegetable.get(veg.id) ?? []).sort(
-      (a, b) => a.week - b.week
-    )
-    const vegPlantings = (plantingByVegetable.get(veg.id) ?? []).sort(
-      (a, b) => a.week - b.week
-    )
-
+    const vegSowings = sowingsByVegetable.get(veg.id) ?? []
     const rowSpacingCm = veg.data.rowSpacingCm
     const plantSpacingCm = veg.data.plantSpacingCm
-    // For Vorkultur plants without explicit weeksToPlantOut, default to 6 weeks
     const weeksToPlantOut =
       veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
 
@@ -156,15 +136,17 @@ export function buildTrackedCalendar(
       const underCover = window.underCover ?? false
       const overwintering = window.overwintering ?? false
 
-      // Find sowing log entries within this window
-      const windowSowings = vegSowings.filter(
-        (l) => l.week >= firstWeek && l.week <= lastWeek
-      )
+      const windowSowings = vegSowings.filter((s) => {
+        const w = getISOWeek(new Date(s.date))
+        return w >= firstWeek && w <= lastWeek
+      })
 
-      // Add all done sowing entries to the calendar
       for (let i = 0; i < windowSowings.length; i++) {
+        const sowing = windowSowings[i]
+        const sowingWeek = getISOWeek(new Date(sowing.date))
         hasAnyEntry = true
-        addToMap(calendarWeekMap, windowSowings[i].week, {
+
+        addToMap(calendarWeekMap, sowingWeek, {
           name: veg.data.name,
           id: veg.id,
           succession: i + 1,
@@ -174,44 +156,41 @@ export function buildTrackedCalendar(
           note: window.note,
           lastPossibleWeek: lastWeek,
           status: 'done',
-          actualDate: windowSowings[i].date,
-          actualWeek: windowSowings[i].week,
+          actualDate: sowing.date,
+          actualWeek: sowingWeek,
           type: 'sowing',
           rowSpacingCm,
           plantSpacingCm,
         })
 
-        // For Vorkultur crops: add plant-out reminder
         if (!veg.data.directSow && weeksToPlantOut) {
-          const plannedPlantOutWeek = windowSowings[i].week + weeksToPlantOut
-          // Check if this succession has been planted
-          const plantingRecord = vegPlantings[i]
-          if (plantingRecord) {
-            // Already planted — show as done at actual planting week
-            addToMap(calendarWeekMap, plantingRecord.week, {
+          const plannedPlantOutWeek = sowingWeek + weeksToPlantOut
+          const planting = plantingBySowingId.get(sowing.id)
+
+          if (planting) {
+            const plantingWeek = getISOWeek(new Date(planting.date))
+            addToMap(calendarWeekMap, plantingWeek, {
               name: veg.data.name,
               id: veg.id,
               succession: i + 1,
               underCover: false,
               overwintering: false,
               directSow: false,
-              lastPossibleWeek: plantingRecord.week,
+              lastPossibleWeek: plantingWeek,
               status: 'done',
-              actualDate: plantingRecord.date,
-              actualWeek: plantingRecord.week,
+              actualDate: planting.date,
+              actualWeek: plantingWeek,
               type: 'plantOut',
               rowSpacingCm,
               plantSpacingCm,
             })
           } else {
-            // Not yet planted — show in current week if planned week passed, else future week
             const showInWeek =
               currentWeek >= plannedPlantOutWeek
                 ? currentWeek
                 : plannedPlantOutWeek
-            const plantOutStatus: SowingCalendarEntry['status'] =
+            const status: SowingCalendarEntry['status'] =
               currentWeek >= plannedPlantOutWeek ? 'available' : 'upcoming'
-            // lastPossibleWeek = far future so it never disappears until planted
             addToMap(calendarWeekMap, showInWeek, {
               name: veg.data.name,
               id: veg.id,
@@ -220,7 +199,7 @@ export function buildTrackedCalendar(
               overwintering: false,
               directSow: false,
               lastPossibleWeek: 99,
-              status: plantOutStatus,
+              status,
               type: 'plantOut',
               rowSpacingCm,
               plantSpacingCm,
@@ -229,16 +208,13 @@ export function buildTrackedCalendar(
         }
       }
 
-      // If the sowing window has completely passed, no more sowing entries needed
       if (currentWeek > lastWeek) continue
 
       if (windowSowings.length === 0) {
-        // Never sown in this window — show first sowing
         hasAnyEntry = true
         const showInWeek = currentWeek >= firstWeek ? currentWeek : firstWeek
         const status: SowingCalendarEntry['status'] =
           currentWeek >= firstWeek ? 'available' : 'upcoming'
-
         addToMap(calendarWeekMap, showInWeek, {
           name: veg.data.name,
           id: veg.id,
@@ -254,17 +230,16 @@ export function buildTrackedCalendar(
           plantSpacingCm,
         })
       } else if (window.successionIntervalWeeks) {
-        // Has been sown, check if next succession is due
-        const lastSownWeek = windowSowings[windowSowings.length - 1].week
+        const lastSownWeek = getISOWeek(
+          new Date(windowSowings[windowSowings.length - 1].date)
+        )
         const nextSowingWeek = lastSownWeek + window.successionIntervalWeeks
-
         if (nextSowingWeek <= lastWeek) {
           hasAnyEntry = true
           const showInWeek =
             currentWeek >= nextSowingWeek ? currentWeek : nextSowingWeek
           const status: SowingCalendarEntry['status'] =
             currentWeek >= nextSowingWeek ? 'available' : 'upcoming'
-
           addToMap(calendarWeekMap, showInWeek, {
             name: veg.data.name,
             id: veg.id,
@@ -283,7 +258,6 @@ export function buildTrackedCalendar(
       }
     }
 
-    // If no entries at all across all windows → missed
     if (!hasAnyEntry) {
       const overallLastWeek = Math.max(
         ...veg.data.sowingWindows.map((w) => w.until)

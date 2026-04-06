@@ -1,4 +1,6 @@
 name: "Gurke"
+rowSpacingCm: 60
+plantSpacingCm: 60
 sowingWindows:
   - from: 14
     until: 22

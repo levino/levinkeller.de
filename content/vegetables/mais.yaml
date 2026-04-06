@@ -1,4 +1,6 @@
 name: "Mais"
+rowSpacingCm: 30
+plantSpacingCm: 30
 sowingWindows:
   - from: 17
     until: 22

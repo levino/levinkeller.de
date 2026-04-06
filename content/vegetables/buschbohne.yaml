@@ -1,4 +1,6 @@
 name: "Buschbohne"
+rowSpacingCm: 30
+plantSpacingCm: 30
 sowingWindows:
   - from: 18
     until: 28

@@ -1,0 +1,8 @@
+# Pflanz-Protokoll (alle Jahre)
+# Format pro Eintrag:
+#   - id: "YYYY-MM-DD-{vegetable-id}"   ← generiert: Datum-Gemüse-ID
+#     vegetable: <id aus content/vegetables>
+#     date: "YYYY-MM-DD"
+#     sowing: "YYYY-MM-DD-{vegetable-id}"  ← Referenz auf Aussaat (bei Vorkultur angeben)
+
+[]

@@ -1,4 +1,6 @@
 name: "Palmkohl"
+rowSpacingCm: 45
+plantSpacingCm: 45
 sowingWindows:
   - from: 14
     until: 30

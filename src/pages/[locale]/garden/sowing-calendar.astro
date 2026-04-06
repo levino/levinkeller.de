@@ -6,6 +6,7 @@ import type { GetStaticPaths } from 'astro'
 import {
   buildTrackedCalendar,
   getISOWeek,
+  type PlantingLogEntry,
   type SowingCalendarEntry,
   type SowingLogEntry,
 } from '@/tools/calendarWeeks'
@@ -26,25 +27,31 @@ const currentWeek = getISOWeek(new Date())
 const vegetables = (await getCollection('vegetables')).filter(
   (v) => !v.data.skip
 )
-const sowingLogs = await getCollection('sowingLog')
-const plantingLogs = await getCollection('plantingLog')
 
-// Find logs for current year
-const yearSowingLog = sowingLogs.find((log) => log.id === String(year))
-const sowingEntries: SowingLogEntry[] = (yearSowingLog?.data.entries ?? []).map(
-  (e) => ({
-    vegetable: typeof e.vegetable === 'object' ? e.vegetable.id : e.vegetable,
-    date: e.date,
-  })
-)
+// Filter to current year for calendar display
+const sowingEntries: SowingLogEntry[] = (await getCollection('sowingLog'))
+  .filter((e) => e.data.date.startsWith(String(year)))
+  .map((e) => ({
+    id: e.id,
+    vegetable:
+      typeof e.data.vegetable === 'object'
+        ? e.data.vegetable.id
+        : e.data.vegetable,
+    date: e.data.date,
+  }))
 
-const yearPlantingLog = plantingLogs.find((log) => log.id === String(year))
-const plantingEntries: SowingLogEntry[] = (
-  yearPlantingLog?.data.entries ?? []
-).map((e) => ({
-  vegetable: typeof e.vegetable === 'object' ? e.vegetable.id : e.vegetable,
-  date: e.date,
-}))
+const plantingEntries: PlantingLogEntry[] = (await getCollection('plantingLog'))
+  .filter((e) => e.data.date.startsWith(String(year)))
+  .map((e) => ({
+    id: e.id,
+    vegetable:
+      typeof e.data.vegetable === 'object'
+        ? e.data.vegetable.id
+        : e.data.vegetable,
+    date: e.data.date,
+    sowingId:
+      typeof e.data.sowing === 'object' ? e.data.sowing.id : e.data.sowing,
+  }))
 
 const { weekMap: calendarWeekMap, missedVegetables } = buildTrackedCalendar(
   vegetables,

@@ -1,4 +1,6 @@
 name: "Zwiebel"
+rowSpacingCm: 30
+plantSpacingCm: 30
 weeksToPlantOut: 10
 sowingWindows:
   - from: 8

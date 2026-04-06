@@ -1,4 +1,6 @@
 name: "Radieschen"
+rowSpacingCm: 15
+plantSpacingCm: 15
 directSow: true
 sowingWindows:
   - from: 8
