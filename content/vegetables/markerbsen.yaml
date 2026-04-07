@@ -1,7 +1,7 @@
 name: "Markerbsen"
-rowSpacingCm: 22
-plantSpacingCm: 22
-directSow: true
+rowSpacingCm: 30
+plantSpacingCm: 15
+weeksToPlantOut: 3
 sowingWindows:
   - from: 9
     until: 26
