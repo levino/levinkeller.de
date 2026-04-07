@@ -99,6 +99,36 @@ npm run build
 - React components use `.tsx` extension
 - Configuration files are in the root directory
 
+## Content Log ID Schema
+
+Both `content/sowingLog.yaml` and `content/plantingLog.yaml` are flat YAML arrays
+where each entry has an explicit `id` field used by Astro as the collection entry ID.
+
+**ID format**: `YYYY-MM-DD-{vegetable-id}`
+
+Examples:
+- `2026-03-02-spinat` — spinat sown on 2026-03-02
+- `2026-04-15-tomate` — tomate sown on 2026-04-15
+
+**Collision rule**: If the same vegetable is sown twice on the same day, append
+`-2`, `-3`, etc. (e.g. `2026-03-02-spinat-2`).
+
+**Cross-reference**: The `sowing` field in `plantingLog.yaml` must be the exact
+`id` of the corresponding `sowingLog` entry (Vorkultur reference). Example:
+
+```yaml
+# sowingLog.yaml
+- id: "2026-03-15-tomate"
+  vegetable: tomate
+  date: "2026-03-15"
+
+# plantingLog.yaml
+- id: "2026-05-20-tomate"
+  vegetable: tomate
+  date: "2026-05-20"
+  sowing: "2026-03-15-tomate"
+```
+
 ## Sowing Calendar Notes
 
 - **No greenhouse cultivation**: The garden has a greenhouse but it is only used

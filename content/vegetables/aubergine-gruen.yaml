@@ -1,4 +1,5 @@
 name: "Aubergine grün"
+weeksToPlantOut: 10
 sowingWindows:
   - from: 8
     until: 14

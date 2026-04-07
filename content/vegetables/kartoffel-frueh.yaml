@@ -1,0 +1,7 @@
+name: "Kartoffel (früh)"
+directSow: true
+rowSpacingCm: 40
+plantSpacingCm: 40
+sowingWindows:
+  - from: 12
+    until: 16

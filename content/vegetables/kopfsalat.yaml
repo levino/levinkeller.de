@@ -1,4 +1,7 @@
 name: "Kopfsalat"
+rowSpacingCm: 22
+plantSpacingCm: 22
+weeksToPlantOut: 4
 sowingWindows:
   - from: 8
     until: 33
