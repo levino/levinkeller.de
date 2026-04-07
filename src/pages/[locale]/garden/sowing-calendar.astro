@@ -127,7 +127,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
       const normalPots = normal.filter((e) => !e.directSow)
       const normalDirect = normal.filter((e) => e.directSow)
 
-      const renderItems = (entries: typeof todo, isUrgent: boolean) => (
+      const renderItems = (entries: typeof todo, isUrgent: boolean, showSpacing = false) => (
         <div class="print-grid">
           {entries.map((entry) => (
             <label class:list={['print-item', isUrgent && 'print-item-urgent']}>
@@ -135,7 +135,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
               <span class="print-name">{entry.name}</span>
               {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
               {entry.note && <span class="print-note"> [{entry.note}]</span>}
-              {spacingLabel(entry) && <span class="print-note"> {spacingLabel(entry)}</span>}
+              {showSpacing && spacingLabel(entry) && <span class="print-note"> {spacingLabel(entry)}</span>}
             </label>
           ))}
         </div>
@@ -165,7 +165,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
           {urgentDirect.length > 0 && (
             <div class="print-section">
               <p class="print-section-title print-section-title-urgent">⚑ Letzte Chance – Direktsaat</p>
-              {renderItems(urgentDirect, true)}
+              {renderItems(urgentDirect, true, true)}
             </div>
           )}
           {normalPots.length > 0 && (
@@ -177,7 +177,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
           {normalDirect.length > 0 && (
             <div class="print-section">
               <p class="print-section-title">Direktsaat</p>
-              {renderItems(normalDirect, false)}
+              {renderItems(normalDirect, false, true)}
             </div>
           )}
           {plantOutEntries.length > 0 && (
