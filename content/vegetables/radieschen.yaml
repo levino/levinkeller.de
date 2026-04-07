@@ -1,7 +1,7 @@
 name: "Radieschen"
 rowSpacingCm: 15
 plantSpacingCm: 15
-directSow: true
+weeksToPlantOut: 3
 sowingWindows:
   - from: 8
     until: 19
