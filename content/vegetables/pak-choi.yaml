@@ -1,6 +1,6 @@
 name: "Pak Choi"
-rowSpacingCm: 22
-plantSpacingCm: 22
+rowSpacingCm: 25
+plantSpacingCm: 25
 weeksToPlantOut: 4
 sowingWindows:
   - from: 8
