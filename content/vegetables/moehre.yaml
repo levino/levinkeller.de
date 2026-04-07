@@ -1,5 +1,5 @@
 name: "Möhre"
-rowSpacingCm: 25
+rowSpacingCm: 15
 directSow: true
 sowingWindows:
   - from: 12
