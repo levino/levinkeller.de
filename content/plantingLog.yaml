@@ -5,4 +5,7 @@
 #     date: "YYYY-MM-DD"
 #     sowing: "YYYY-MM-DD-{vegetable-id}"  ← Referenz auf Aussaat (bei Vorkultur angeben)
 
-[]
+- id: "2026-03-30-erbsensprossen"
+  vegetable: erbsensprossen
+  date: "2026-03-30"
+  sowing: "2026-03-15-erbsensprossen"
