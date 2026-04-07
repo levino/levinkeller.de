@@ -19,5 +19,7 @@ export const vegetablesSchema = z.object({
   plantSpacingCm: z.number().int().positive().optional(),
   /** Wochen von Aussaat bis Auspflanzen (nur für Vorkultur-Gemüse) */
   weeksToPlantOut: z.number().int().positive().optional(),
+  /** Samen pro Zelle/Töpfchen (bei Multisaat > 1) */
+  seedsPerCell: z.number().int().positive().optional(),
   sowingWindows: z.array(sowingWindow),
 })

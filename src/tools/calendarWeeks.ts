@@ -29,6 +29,7 @@ export interface SowingCalendarEntry {
   type: 'sowing' | 'plantOut'
   rowSpacingCm?: number
   plantSpacingCm?: number
+  seedsPerCell?: number
 }
 
 export interface SowingLogEntry {
@@ -75,6 +76,7 @@ interface VegetableInput {
     directSow: boolean
     rowSpacingCm?: number
     plantSpacingCm?: number
+    seedsPerCell?: number
     weeksToPlantOut?: number
     sowingWindows: SowingWindowInput[]
   }
@@ -125,6 +127,7 @@ export function buildTrackedCalendar(
     const vegSowings = sowingsByVegetable.get(veg.id) ?? []
     const rowSpacingCm = veg.data.rowSpacingCm
     const plantSpacingCm = veg.data.plantSpacingCm
+    const seedsPerCell = veg.data.seedsPerCell
     const weeksToPlantOut =
       veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
 
@@ -161,6 +164,7 @@ export function buildTrackedCalendar(
           type: 'sowing',
           rowSpacingCm,
           plantSpacingCm,
+          seedsPerCell,
         })
 
         if (!veg.data.directSow && weeksToPlantOut) {
@@ -228,6 +232,7 @@ export function buildTrackedCalendar(
           type: 'sowing',
           rowSpacingCm,
           plantSpacingCm,
+          seedsPerCell,
         })
       } else if (window.successionIntervalWeeks) {
         const lastSownWeek = getISOWeek(

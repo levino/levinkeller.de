@@ -135,6 +135,7 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
               <span class="print-name">{entry.name}</span>
               {entry.succession > 1 && <span class="print-note"> ({entry.succession}. Aussaat)</span>}
               {entry.note && <span class="print-note"> [{entry.note}]</span>}
+              {entry.seedsPerCell && entry.seedsPerCell > 1 && <span class="print-note"> {entry.seedsPerCell}×/Topf</span>}
               {showSpacing && spacingLabel(entry) && <span class="print-note"> {spacingLabel(entry)}</span>}
             </label>
           ))}
@@ -290,6 +291,9 @@ const futureWeeks = sortedWeeks.filter((kw) => kw > currentWeek)
                 )}
                 {entry.note && (
                   <span class="badge badge-sm badge-ghost">{entry.note}</span>
+                )}
+                {entry.seedsPerCell && entry.seedsPerCell > 1 && (
+                  <span class="badge badge-sm badge-ghost">{entry.seedsPerCell}×/Topf</span>
                 )}
               </div>
             </li>
