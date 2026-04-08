@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel'
 import shipyard from '@levino/shipyard-base'
 import shipyardBlog from '@levino/shipyard-blog'
 import shipyardDocs from '@levino/shipyard-docs'
@@ -146,9 +145,4 @@ export default defineConfig({
     }),
   ],
 
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
 })
