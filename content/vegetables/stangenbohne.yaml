@@ -1,4 +1,6 @@
 name: "Stangenbohne"
+rowSpacingCm: 50
+plantSpacingCm: 30
 sowingWindows:
   - from: 20
     until: 24

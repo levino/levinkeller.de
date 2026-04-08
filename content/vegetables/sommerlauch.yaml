@@ -1,0 +1,6 @@
+name: "Sommerlauch"
+weeksToPlantOut: 10
+sowingWindows:
+  - from: 4
+    until: 10
+    note: "Hilari"

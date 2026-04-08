@@ -209,6 +209,59 @@ const title = 'Projekte & Portfolio'
       </p>
 
       <PortfolioCard
+        title="Family Todo"
+        href="https://docs.todos.levinkeller.de/de/"
+        imageUrl="/images/projects/todos-preview.png"
+      >
+        <Fragment slot="description">
+          Eine Aufgabenverwaltung für Familien nach dem Prinzip „Bring Your Own
+          LLM". Abhaken erledigt man ganz klassisch am Tablet – das ist der
+          einfache Teil. Das Schwierige ist das Anlegen: wiederkehrende
+          Aufgaben, verschiedene Tageszeiten, Zuweisungen. Dafür verbinden
+          Nutzer ihren eigenen KI-Assistenten (Claude, ChatGPT etc.) per
+          MCP-Server mit der App und sprechen einfach ins Telefon, was
+          passieren soll.
+        </Fragment>
+        <Fragment slot="motivation">
+          <p>
+            Dieses Projekt zeigt, dass Chat-LLMs die neuen Browser sind. Statt
+            User Interfaces für den Browser zu bauen, brauchen Apps in Zukunft
+            Machine Interfaces – Schnittstellen, die LLMs verstehen, inklusive
+            Authentifizierung und Datenoperationen.
+          </p>
+          <p>
+            Der Wandel beginnt bei den Schreiboperationen: Komplexe Formulare
+            für wiederkehrende Aufgaben, Tageszeiten und Zuweisungen sind teuer
+            zu bauen und zu pflegen. Ein MCP-Server ersetzt sie komplett – der
+            Nutzer beschreibt in natürlicher Sprache, was passieren soll, und
+            die eigene LLM übernimmt den Rest. Am Tablet bleibt nur noch das
+            einfache Abhaken übrig.
+          </p>
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="GitHub MCP"
+        href="https://github-mcp.levinkeller.de/"
+        imageUrl="/images/projects/github-mcp-preview.png"
+      >
+        <Fragment slot="description">
+          Ein Connector, der KI-Assistenten wie Claude, ChatGPT oder Perplexity
+          mit GitHub verbindet. Nutzer können Issues erstellen, Pull Requests
+          reviewen und Repositories verwalten - direkt aus dem Chat heraus. Ein
+          Klick genügt zur Einrichtung dank OAuth 2.1 mit PKCE.
+        </Fragment>
+        <Fragment slot="motivation">
+          Die Verwaltung von GitHub-Repositories über KI-Assistenten sollte so
+          einfach wie möglich sein. Mit diesem Tool entfällt das manuelle
+          Erstellen und Verwalten von Tokens - einfach URL einfügen,
+          autorisieren und loslegen. Das Projekt zeigt, wie das Model Context
+          Protocol (MCP) genutzt werden kann, um KI-Tools nahtlos mit
+          bestehenden Entwickler-Workflows zu verbinden.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
         title="Community Scheduler"
         href="https://community-scheduler-demo.levinkeller.de/"
         imageUrl="/images/projects/community-scheduler-preview.png"

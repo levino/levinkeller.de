@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel'
 import shipyard from '@levino/shipyard-base'
 import shipyardBlog from '@levino/shipyard-blog'
 import shipyardDocs from '@levino/shipyard-docs'
@@ -80,11 +79,12 @@ export default defineConfig({
           },
         },
         garden: {
-          label: 'Gartenplaner',
+          label: 'Garten',
+          href: '/garden/docs',
           subEntry: {
-            beds: {
-              label: 'Beetplaner',
-              href: '/garden/beds',
+            docs: {
+              label: 'Doku',
+              href: '/garden/docs',
             },
             plants: {
               label: 'Pflanzen',
@@ -108,6 +108,13 @@ export default defineConfig({
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
       brand: 'Levin Keller',
+      footer: {
+        links: [
+          { label: 'Impressum', to: '/imprint' },
+          { label: 'About', to: '/about' },
+        ],
+        copyright: `&copy; ${new Date().getFullYear()} Levin Keller`,
+      },
       scripts: [
         {
           src: 'https://analytics.levinkeller.de/js/script.js',
@@ -122,6 +129,14 @@ export default defineConfig({
       showLastUpdateTime: true,
       showLastUpdateAuthor: true,
     }),
+    shipyardDocs({
+      routeBasePath: 'garden',
+      collectionName: 'gardenDocs',
+      editUrl:
+        'https://github.com/levino/levinkeller.de/edit/main/content/gardenDocs',
+      showLastUpdateTime: true,
+      showLastUpdateAuthor: true,
+    }),
     shipyardBlog({
       editUrl:
         'https://github.com/levino/levinkeller.de/edit/main/content/blog',
@@ -129,10 +144,4 @@ export default defineConfig({
       showLastUpdateAuthor: true,
     }),
   ],
-
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
 })

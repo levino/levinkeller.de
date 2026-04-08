@@ -2,6 +2,7 @@ name:
   latin: Francoa sonchifolia
   german: Francoa sonchifolia
 height: 60
+spread: 45
 soil:
   - wet
 sunExposure:
@@ -16,8 +17,10 @@ flowerColor:
 foliageColor: green
 lifecycle: perennial
 sowingTime:
-  - august
-sowingScheme: D
+  - january
+  - february
+  - march
+sowingDirection: SD5
 floweringSeason:
   - july
   - august

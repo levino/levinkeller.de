@@ -1,4 +1,6 @@
 name: "Wirsing"
+rowSpacingCm: 60
+plantSpacingCm: 60
 sowingWindows:
   - from: 8
     until: 22

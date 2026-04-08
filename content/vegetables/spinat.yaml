@@ -1,6 +1,11 @@
 name: "Spinat"
+rowSpacingCm: 22
+plantSpacingCm: 22
+weeksToPlantOut: 4
 sowingWindows:
   - from: 8
     until: 15
+    successionIntervalWeeks: 3
   - from: 36
     until: 40
+    successionIntervalWeeks: 3

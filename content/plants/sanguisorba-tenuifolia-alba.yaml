@@ -2,6 +2,7 @@ name:
   latin: Sanguisorba tenuifolia Alba
   german: 'Weißer Wiesenknopf'
 height: 150
+spread: 60
 soil:
   - normal
   - moist
@@ -12,9 +13,13 @@ hardiness: hardy
 flowerColor:
   - white
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/SANGUISORBA+tenuifolia+var+tenuifolia+f+alba+Portion+s.html
 foliageColor: green
 lifecycle: perennial
-sowingScheme: C
+sowingTime:
+  - november
+  - december
+sowingDirection: SD1
 floweringSeason:
   - august
   - september

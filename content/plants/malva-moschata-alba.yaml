@@ -8,22 +8,18 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 35 # Estimated spread based on height
+spread: 50
 flowerColor:
   - white
 lifecycle: perennial
-germination:
-  dark: true
 sowingTime:
+  - february
   - march
   - april
-  - may
-  - june
-sowingScheme: C
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
   - september
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

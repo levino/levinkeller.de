@@ -1,4 +1,6 @@
 name: "Brokkoli"
+rowSpacingCm: 35
+plantSpacingCm: 35
 sowingWindows:
   - from: 8
     until: 14

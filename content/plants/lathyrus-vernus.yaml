@@ -7,18 +7,18 @@ soil:
 sunExposure:
   - semi-shade
 hardiness: hardy
-spread: 20 # Estimated spread based on height
+spread: 30
 flowerColor:
   - red
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-sowingScheme: C
+  - november
+  - december
+  - january
+sowingDirection: SD5
 floweringSeason:
   - march
   - april
   - may
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

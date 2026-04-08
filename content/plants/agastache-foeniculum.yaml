@@ -1,12 +1,12 @@
 flowerColor:
   - blue
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
 foliageColor: green
 hardiness: hardy
 height: 70
-inStock: true
 lifecycle: perennial
 name:
   german: Fenchel-Agastache
@@ -17,4 +17,8 @@ spread: 50
 sunExposure:
   - full
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+  - april

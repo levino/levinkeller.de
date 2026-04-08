@@ -1,6 +1,7 @@
 flowerColor:
   - white
   - blue
+sowingDirection: SD1
 floweringSeason:
   - july
   - august
@@ -8,17 +9,16 @@ floweringSeason:
 foliageColor: green
 hardiness: hardy
 height: 70
-inStock: true
 lifecycle: perennial
 name:
   german: Steinquendel
   latin: Calamintha nepeta
 soil:
   - dry
-sowingScheme: C
 sowingTime:
+  - january
+  - february
   - march
-  - april
 spread: 35
 sunExposure:
   - full

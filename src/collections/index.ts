@@ -1,6 +1,7 @@
 import { defineCollection, reference, z } from 'astro:content'
 import { file, glob } from 'astro/loaders'
 import { parse as parseYaml } from 'yaml'
+import { plantingLogSchema } from './plantingLogSchema'
 import { plantSchema } from './plantSchema'
 import { sowingLogSchema } from './sowingLogSchema'
 import { vegetablesSchema } from './vegetableSchema'
@@ -10,7 +11,29 @@ const supplierSchema = z.object({
   url: z.string(),
 })
 
+const seedItemSchema = z.object({
+  vegetable: reference('vegetables').optional(),
+  plant: reference('plants').optional(),
+  sorte: z.string().optional(),
+  notiz: z.string().optional(),
+})
+
+const seedsToBuySchema = z.object({
+  saison: z.coerce.date(),
+  samen: z.array(seedItemSchema),
+})
+
 export const collections = {
+  seedsToBuy: defineCollection({
+    schema: seedsToBuySchema,
+    loader: file('./content/seedsToBuy.yaml', {
+      parser: (text) =>
+        (parseYaml(text) as Record<string, unknown>[]).map((entry, index) => ({
+          ...entry,
+          id: String(index),
+        })),
+    }),
+  }),
   plants: defineCollection({
     loader: glob({
       pattern: '*.yaml',
@@ -41,12 +64,19 @@ export const collections = {
     }),
     schema: vegetablesSchema,
   }),
+  // Flat single-file collections — each entry is one sowing/planting event.
+  // IDs are generated as "YYYY-MM-DD-{vegetable-id}" (see CLAUDE.md).
   sowingLog: defineCollection({
-    loader: glob({
-      pattern: '*.yaml',
-      base: './content/sowingLog',
+    loader: file('./content/sowingLog.yaml', {
+      parser: (text) => parseYaml(text) as Record<string, unknown>[],
     }),
     schema: sowingLogSchema,
+  }),
+  plantingLog: defineCollection({
+    loader: file('./content/plantingLog.yaml', {
+      parser: (text) => parseYaml(text) as Record<string, unknown>[],
+    }),
+    schema: plantingLogSchema,
   }),
   plantStock: defineCollection({
     schema: z.object({

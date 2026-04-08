@@ -7,16 +7,17 @@ soil:
 sunExposure:
   - full
 hardiness: tender
-spread: 20 # Estimated spread based on height
+spread: 25
 flowerColor:
   - blue
   - white
   - pink
 lifecycle: annual
 sowingTime:
+  - february
   - march
   - april
-sowingScheme: B
+sowingDirection: SD15
 floweringSeason:
   - june
   - july
@@ -24,5 +25,4 @@ floweringSeason:
   - september
   - october
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

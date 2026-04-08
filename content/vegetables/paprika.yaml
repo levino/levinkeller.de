@@ -1,5 +1,5 @@
 name: "Paprika"
+skip: true
 sowingWindows:
   - from: 8
     until: 14
-    underCover: true

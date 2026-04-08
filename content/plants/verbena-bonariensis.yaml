@@ -7,22 +7,20 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 50 # Estimated spread based on plant height
+spread: 45
 flowerColor:
   - violet
 lifecycle: perennial
 sowingTime:
-  - february
-  - march
-  - april
-  - may
-sowingScheme: B
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - july
   - august
   - september
   - october
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt
-toSow: true
+toSow: false

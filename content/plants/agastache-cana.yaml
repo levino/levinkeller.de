@@ -1,13 +1,13 @@
 flowerColor:
   - pink
   - red
+sowingDirection: SD15
 floweringSeason:
   - july
   - august
 foliageColor: green
 hardiness: hardy
 height: 70
-inStock: false
 lifecycle: perennial
 name:
   german: Rosarote Bergminze
@@ -18,4 +18,8 @@ spread: 50
 sunExposure:
   - full
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+  - april

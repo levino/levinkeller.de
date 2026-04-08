@@ -12,9 +12,13 @@ flowerColor:
   - 'blue'
 foliageColor: 'green'
 lifecycle: 'perennial'
+sowingDirection: SD15
 floweringSeason:
   - 'july'
   - 'august'
-inStock: true
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+  - april
 supplier: saatgut-vielfalt

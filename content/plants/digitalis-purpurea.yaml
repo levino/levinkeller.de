@@ -16,7 +16,15 @@ flowerColor:
   - white
 foliageColor: green
 lifecycle: biennial
-sowingScheme: D
+sowingTime:
+  - march
+  - april
+  - may
+  - june
+germination:
+  dark: false
+  light: true
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

@@ -1,6 +1,7 @@
 flowerColor:
   - red
   - pink
+sowingDirection: SD1
 floweringSeason:
   - september
   - october
@@ -15,7 +16,9 @@ soil:
 spread: 50
 sunExposure:
   - full
-inStock: true
 foliageColor: green
 supplier: saatgut-vielfalt
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march

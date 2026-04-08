@@ -1,5 +1,7 @@
 name: "Tomate"
+rowSpacingCm: 50
+plantSpacingCm: 50
+weeksToPlantOut: 8
 sowingWindows:
   - from: 14
     until: 22
-    note: "April geschützt"

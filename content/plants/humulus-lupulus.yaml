@@ -15,4 +15,8 @@ floweringSeason:
   - july
   - august
 supplier: lubera
-sowingScheme: D
+sowingTime:
+  - november
+  - december
+  - january
+sowingDirection: SD1

@@ -2,6 +2,7 @@ name:
   latin: Echinops sphaerocephalus
   german: Kugeldistel
 height: 200
+spread: 70
 soil:
   - normal
 sunExposure:
@@ -11,9 +12,14 @@ flowerColor:
   - white
   - blue
 toSow: true
+url: https://www.jelitto.com/Jelitto+Perennial+Seeds/New+Varieties/New+Varieties+1990-1999/New+Varieties+1997/ECHINOPS+niveus+sphaerocephalus+hort+Arctic+Glow+Portion+s.html
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD15
 floweringSeason:
   - june
   - july

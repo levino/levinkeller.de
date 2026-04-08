@@ -7,7 +7,6 @@ floweringSeason:
 foliageColor: green
 hardiness: hardy
 height: 170
-inStock: false
 lifecycle: perennial
 name:
   german: Scheinaster
@@ -15,8 +14,10 @@ name:
 soil:
   - moist
 sowingTime:
+  - february
   - march
   - april
+sowingDirection: SD15
 spread: 70
 toSow: false
 sunExposure:

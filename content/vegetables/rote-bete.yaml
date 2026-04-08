@@ -1,4 +1,7 @@
 name: "Rote Bete"
+rowSpacingCm: 30
+plantSpacingCm: 30
+weeksToPlantOut: 5
 sowingWindows:
   - from: 8
     until: 18

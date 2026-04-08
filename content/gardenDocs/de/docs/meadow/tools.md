@@ -1,3 +1,9 @@
+---
+title: Material
+sidebar:
+  position: 2
+---
+
 # Material
 
 ## Sensen

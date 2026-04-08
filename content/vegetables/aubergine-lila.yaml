@@ -1,0 +1,6 @@
+name: "Aubergine lila"
+weeksToPlantOut: 10
+sowingWindows:
+  - from: 8
+    until: 14
+    note: "Blaukönigin"

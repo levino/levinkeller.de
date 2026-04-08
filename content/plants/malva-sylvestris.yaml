@@ -7,21 +7,20 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 75 # Estimated spread based on height and plant characteristics
+spread: 75
 flowerColor:
   - pink
 lifecycle: perennial
 sowingTime:
+  - february
   - march
   - april
-  - may
-sowingScheme: B # Assuming scheme B based on sowing time
+sowingDirection: SD15
 floweringSeason:
   - june
   - july
   - august
   - september
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt
-toSow: true
+toSow: false

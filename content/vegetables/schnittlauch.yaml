@@ -1,0 +1,5 @@
+name: "Schnittlauch"
+skip: true
+sowingWindows:
+  - from: 10
+    until: 26

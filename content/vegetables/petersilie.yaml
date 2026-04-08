@@ -1,0 +1,5 @@
+name: "Petersilie"
+sowingWindows:
+  - from: 10
+    until: 27
+    successionIntervalWeeks: 6

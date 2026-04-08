@@ -1,5 +1,6 @@
 flowerColor:
   - purple
+sowingDirection: SD6
 floweringSeason:
   - march
 foliageColor: green
@@ -15,8 +16,9 @@ name:
 soil:
   - normal
 sowingTime:
-  - march
-  - april
+  - june
+  - july
+  - august
 spread: 20
 sunExposure:
   - semi-shade

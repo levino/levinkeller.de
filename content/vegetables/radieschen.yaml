@@ -1,4 +1,8 @@
 name: "Radieschen"
+rowSpacingCm: 15
+plantSpacingCm: 15
+weeksToPlantOut: 3
+seedsPerCell: 5
 sowingWindows:
   - from: 8
     until: 19

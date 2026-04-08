@@ -14,7 +14,11 @@ flowerColor:
 toSow: false
 foliageColor: green
 lifecycle: perennial
-sowingScheme: A
+sowingTime:
+  - january
+  - february
+  - march
+sowingDirection: SD15
 floweringSeason:
   - april
   - may

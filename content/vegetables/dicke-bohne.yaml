@@ -1,4 +1,5 @@
 name: "Dicke Bohne"
+skip: true
 sowingWindows:
   - from: 8
     until: 18

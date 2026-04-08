@@ -3,6 +3,7 @@ name:
   latin: Geranium sanguineum
   german: Blut-Storchschnabel
 height: 30
+sowingDirection: SD5
 floweringSeason:
   - may
   - june
@@ -21,5 +22,7 @@ hardiness: hardy
 spread: 45
 foliageColor: green
 supplier: saatgut-vielfalt
-inStock: true
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january

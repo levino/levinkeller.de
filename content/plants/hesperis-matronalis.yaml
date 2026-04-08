@@ -23,12 +23,12 @@ toSow: true
 foliageColor: green
 lifecycle: biennial
 sowingTime:
+  - february
   - march
   - april
-sowingScheme: B
+sowingDirection: SD15
 floweringSeason:
   - may
   - june
   - july
-inStock: true
 supplier: saatgut-vielfalt

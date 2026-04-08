@@ -1,7 +1,8 @@
 name:
   latin: Gaura lindheimeri
   german: "Pr\xE4riekerze"
-height: 150
+height: 120
+spread: 75
 soil:
   - normal
   - dry
@@ -12,9 +13,17 @@ flowerColor:
   - white
   - pink
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/GAURA+lindheimeri+Portion+s.html
+germination:
+  dark: false
+  light: true
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD15
 floweringSeason:
   - may
   - june

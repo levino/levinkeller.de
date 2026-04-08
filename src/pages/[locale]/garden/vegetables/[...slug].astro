@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import Layout from '@levino/shipyard-base/layouts/Page.astro'
 import type { GetStaticPaths } from 'astro'
+import { getISOWeek } from '@/tools/calendarWeeks'
 
 export const getStaticPaths = (async () => {
   const vegs = await getCollection('vegetables')
@@ -13,11 +14,107 @@ export const getStaticPaths = (async () => {
 
 const { entry: veg } = Astro.props
 const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
+
+const effectiveWeeksToPlantOut =
+  veg.data.weeksToPlantOut ?? (!veg.data.directSow ? 6 : undefined)
+
+// Load all sowings for this vegetable (all years)
+const allSowings = (await getCollection('sowingLog'))
+  .filter((e) => {
+    const vegId =
+      typeof e.data.vegetable === 'object'
+        ? e.data.vegetable.id
+        : e.data.vegetable
+    return vegId === veg.id
+  })
+  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+
+// Load all plantings for this vegetable, indexed by sowingId
+const plantingBySowingId = new Map<string, { date: string; week: number }>()
+for (const e of await getCollection('plantingLog')) {
+  const vegId =
+    typeof e.data.vegetable === 'object'
+      ? e.data.vegetable.id
+      : e.data.vegetable
+  if (vegId === veg.id && e.data.sowing) {
+    const sowingId =
+      typeof e.data.sowing === 'object' ? e.data.sowing.id : e.data.sowing
+    plantingBySowingId.set(sowingId, {
+      date: e.data.date,
+      week: getISOWeek(new Date(e.data.date)),
+    })
+  }
+}
+
+interface YearRecord {
+  year: number
+  sowings: Array<{
+    id: string
+    date: string
+    week: number
+    plannedPlantOutWeek?: number
+    planting?: { date: string; week: number }
+  }>
+}
+
+// Group by year
+const byYear = new Map<number, YearRecord>()
+for (const sowing of allSowings) {
+  const year = Number(sowing.data.date.slice(0, 4))
+  const week = getISOWeek(new Date(sowing.data.date))
+  const rec = byYear.get(year) ?? { year, sowings: [] }
+  rec.sowings.push({
+    id: sowing.id,
+    date: sowing.data.date,
+    week,
+    plannedPlantOutWeek: effectiveWeeksToPlantOut
+      ? week + effectiveWeeksToPlantOut
+      : undefined,
+    planting: plantingBySowingId.get(sowing.id),
+  })
+  byYear.set(year, rec)
+}
+const years = [...byYear.keys()].sort((a, b) => b - a)
 ---
 
 <Layout canonicalUrl={canonicalUrl} title={veg.data.name}>
   <div class="mx-auto max-w-3xl px-4 py-8">
     <h1 class="mb-6 text-2xl font-bold">{veg.data.name}</h1>
+
+    {years.length > 0 && (
+      <div class="mb-8">
+        <h2 class="mb-3 text-lg font-semibold">Aussaaten & Pflanzungen</h2>
+        <div class="space-y-3">
+          {years.map((year) => {
+            const { sowings } = byYear.get(year)!
+            return (
+              <div class="rounded-lg border border-base-300 bg-base-100 p-3">
+                <span class="badge badge-neutral mr-2">{year}</span>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {sowings.map((s, i) => (
+                    <>
+                      <span class="badge badge-success badge-sm">
+                        {sowings.length > 1 ? `${i + 1}. ` : ''}Gesät KW {s.week} ({s.date})
+                      </span>
+                      {s.planting ? (
+                        <span class="badge badge-primary badge-sm">
+                          Gepflanzt KW {s.planting.week} ({s.planting.date})
+                        </span>
+                      ) : s.plannedPlantOutWeek ? (
+                        <span class="badge badge-info badge-sm badge-outline">
+                          Pflanzen KW {s.plannedPlantOutWeek} (ausstehend)
+                        </span>
+                      ) : null}
+                    </>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )}
+
     <h2 class="mb-3 text-lg font-semibold">Aussaatfenster</h2>
     <table class="table">
       <thead>
@@ -29,32 +126,45 @@ const canonicalUrl = `${Astro.site}de/garden/vegetables/${veg.id}/`
         </tr>
       </thead>
       <tbody>
-        {
-          veg.data.sowingWindows.map((w) => (
-            <tr>
-              <td>{w.from}</td>
-              <td>{w.until}</td>
-              <td>
-                {w.successionIntervalWeeks
-                  ? `alle ${w.successionIntervalWeeks} Wochen`
-                  : '–'}
-              </td>
-              <td class="flex flex-wrap gap-1">
-                {(w.underCover ?? false) && (
-                  <span class="badge badge-sm badge-info">geschützt</span>
-                )}
-                {(w.overwintering ?? false) && (
-                  <span class="badge badge-sm badge-warning">Überwinterung</span>
-                )}
-                {w.note && (
-                  <span class="badge badge-sm badge-ghost">{w.note}</span>
-                )}
-              </td>
-            </tr>
-          ))
-        }
+        {veg.data.sowingWindows.map((w) => (
+          <tr>
+            <td>{w.from}</td>
+            <td>{w.until}</td>
+            <td>
+              {w.successionIntervalWeeks
+                ? `alle ${w.successionIntervalWeeks} Wochen`
+                : '–'}
+            </td>
+            <td class="flex flex-wrap gap-1">
+              {(w.underCover ?? false) && (
+                <span class="badge badge-sm badge-info">geschützt</span>
+              )}
+              {(w.overwintering ?? false) && (
+                <span class="badge badge-sm badge-warning">Überwinterung</span>
+              )}
+              {w.note && (
+                <span class="badge badge-sm badge-ghost">{w.note}</span>
+              )}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
+
+    {(veg.data.rowSpacingCm || veg.data.plantSpacingCm) && (
+      <div class="mt-6">
+        <h2 class="mb-3 text-lg font-semibold">Abstände</h2>
+        <div class="flex gap-4 text-sm">
+          {veg.data.rowSpacingCm && (
+            <span>Reihenabstand: <strong>{veg.data.rowSpacingCm} cm</strong></span>
+          )}
+          {veg.data.plantSpacingCm && (
+            <span>Pflanzabstand: <strong>{veg.data.plantSpacingCm} cm</strong></span>
+          )}
+        </div>
+      </div>
+    )}
+
     <div class="mt-6">
       <a href="../sowing-calendar" class="btn btn-outline btn-sm">
         ← Zurück zum Aussaatkalender

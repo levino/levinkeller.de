@@ -1,0 +1,93 @@
+# Aussaat-Protokoll (alle Jahre)
+# Format pro Eintrag:
+#   - id: "YYYY-MM-DD-{vegetable-id}"   ← generiert: Datum-Gemüse-ID
+#     vegetable: <id aus content/vegetables>
+#     date: "YYYY-MM-DD"
+
+- id: "2026-01-03-knoblauch"
+  vegetable: knoblauch
+  date: "2026-01-03"
+
+- id: "2026-03-02-zwiebel"
+  vegetable: zwiebel
+  date: "2026-03-02"
+
+- id: "2026-03-02-blumenkohl"
+  vegetable: blumenkohl
+  date: "2026-03-02"
+
+- id: "2026-03-02-brokkoli"
+  vegetable: brokkoli
+  date: "2026-03-02"
+
+- id: "2026-03-02-sommerlauch"
+  vegetable: sommerlauch
+  date: "2026-03-02"
+
+- id: "2026-03-02-spitzkohl"
+  vegetable: spitzkohl
+  date: "2026-03-02"
+
+- id: "2026-03-02-fruehlingszwiebel"
+  vegetable: fruehlingszwiebel
+  date: "2026-03-02"
+
+- id: "2026-03-02-spinat"
+  vegetable: spinat
+  date: "2026-03-02"
+
+- id: "2026-03-02-kopfsalat"
+  vegetable: kopfsalat
+  date: "2026-03-02"
+
+- id: "2026-03-02-rotkohl"
+  vegetable: rotkohl
+  date: "2026-03-02"
+
+- id: "2026-03-15-erbsensprossen"
+  vegetable: erbsensprossen
+  date: "2026-03-15"
+
+- id: "2026-03-15-knollenfenchel"
+  vegetable: knollenfenchel
+  date: "2026-03-15"
+
+- id: "2026-03-15-kohlrabi"
+  vegetable: kohlrabi
+  date: "2026-03-15"
+
+- id: "2026-03-15-pak-choi"
+  vegetable: pak-choi
+  date: "2026-03-15"
+
+- id: "2026-03-15-rote-bete"
+  vegetable: rote-bete
+  date: "2026-03-15"
+
+- id: "2026-03-15-wirsing"
+  vegetable: wirsing
+  date: "2026-03-15"
+
+- id: "2026-03-23-spinat"
+  vegetable: spinat
+  date: "2026-03-23"
+
+- id: "2026-03-23-petersilie"
+  vegetable: petersilie
+  date: "2026-03-23"
+
+- id: "2026-03-23-aubergine-lila"
+  vegetable: aubergine-lila
+  date: "2026-03-23"
+
+- id: "2026-03-23-aubergine-gruen"
+  vegetable: aubergine-gruen
+  date: "2026-03-23"
+
+- id: "2026-03-23-basilikum"
+  vegetable: basilikum
+  date: "2026-03-23"
+
+- id: "2026-04-06-tomate"
+  vegetable: tomate
+  date: "2026-04-06"

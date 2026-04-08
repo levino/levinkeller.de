@@ -1,12 +1,12 @@
 flowerColor:
   - red
+sowingDirection: SD1
 floweringSeason:
   - june
   - july
 foliageColor: green
 hardiness: hardy
 height: 70
-inStock: true
 lifecycle: perennial
 name:
   german: Dunkle Akelei
@@ -14,7 +14,11 @@ name:
 soil:
   - normal
   - moist
-sowingScheme: B
+sowingTime:
+  - november
+  - december
+  - january
+  - february
 spread: 35
 sunExposure:
   - full

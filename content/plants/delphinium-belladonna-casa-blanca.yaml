@@ -6,17 +6,17 @@ description:
   ein gutes Gedeihen unerlässlich.
 flowerColor:
   - white
+sowingDirection: SD15
 floweringSeason:
   - june
   - july
   - august
 foliageColor: green
 germination:
-  dark: false
+  dark: true
   light: false
 hardiness: hardy
 height: 120
-inStock: false
 lifecycle: perennial
 name:
   german: Rittersporn weiß
@@ -24,9 +24,13 @@ name:
 soil:
   - normal
   - moist
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
 spread: 50
 sunExposure:
   - full
 supplier: saatgut-vielfalt
 toSow: true
+url: https://www.jelitto.com/Seed/Perennials/DELPHINIUM+Belladonna+Casa+Blanca+Portion+s.html

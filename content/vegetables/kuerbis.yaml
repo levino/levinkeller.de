@@ -1,4 +1,6 @@
 name: "Kürbis"
+rowSpacingCm: 90
+plantSpacingCm: 90
 sowingWindows:
   - from: 16
     until: 18

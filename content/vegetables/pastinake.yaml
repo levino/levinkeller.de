@@ -1,4 +1,7 @@
 name: "Pastinake"
+rowSpacingCm: 30
+plantSpacingCm: 8
+directSow: true
 sowingWindows:
   - from: 9
     until: 24

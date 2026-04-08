@@ -3,6 +3,7 @@ name:
   latin: Phlomis samia
 supplier: jelitto
 height: 150
+spread: 60
 soil:
   - dry
 sunExposure:
@@ -17,4 +18,9 @@ floweringSeason:
   - august
   - september
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD5

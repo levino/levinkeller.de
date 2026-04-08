@@ -1,5 +1,5 @@
 name: "Melone"
+skip: true
 sowingWindows:
   - from: 12
     until: 15
-    underCover: true

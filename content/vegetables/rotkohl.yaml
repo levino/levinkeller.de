@@ -1,4 +1,6 @@
 name: "Rotkohl"
+rowSpacingCm: 45
+plantSpacingCm: 45
 sowingWindows:
   - from: 8
     until: 22

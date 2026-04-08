@@ -3,6 +3,7 @@ name:
   german: Diamant-Reitgras
 height: 80
 spread: 50
+voleVulnerable: true
 soil:
   - normal
 sunExposure:
@@ -14,7 +15,11 @@ flowerColor:
   - white
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - january
+  - february
+  - march
+sowingDirection: SD1
 floweringSeason:
   - september
   - october

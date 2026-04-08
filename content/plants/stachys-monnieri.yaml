@@ -12,14 +12,14 @@ flowerColor:
   - pink
 lifecycle: perennial
 sowingTime:
-  - march
-  - april
-  - may
-sowingScheme: B
+  - october
+  - november
+  - december
+  - january
+sowingDirection: SD1
 floweringSeason:
   - june
   - july
   - august
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

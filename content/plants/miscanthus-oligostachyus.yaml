@@ -3,6 +3,7 @@ name:
   german: Breitblatt-Chinaschilf
 height: 120
 spread: 60
+voleVulnerable: true
 soil:
   - normal
 sunExposure:
@@ -13,7 +14,11 @@ flowerColor:
   - white
 foliageColor: green
 lifecycle: perennial
-sowingScheme: D
+sowingTime:
+  - february
+  - march
+  - april
+sowingDirection: SD9
 floweringSeason:
   - july
   - august

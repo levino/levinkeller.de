@@ -8,20 +8,18 @@ soil:
 sunExposure:
   - full
 hardiness: hardy
-spread: 40 # Estimated spread based on height
+spread: 40
 flowerColor:
   - blue
 lifecycle: biennial
 sowingTime:
-  - february
-  - march
-  - april
-  - may
-sowingScheme: B
+  - november
+  - december
+  - january
+sowingDirection: SD5
 floweringSeason:
   - june
   - july
   - august
 foliageColor: green
-inStock: true
 supplier: saatgut-vielfalt

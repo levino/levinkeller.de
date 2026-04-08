@@ -17,14 +17,14 @@ toSow: true
 foliageColor: green
 lifecycle: annual
 sowingTime:
+  - september
+  - october
   - february
   - march
-  - april
-  - may
+sowingDirection: SD15
 floweringSeason:
   - june
   - july
   - august
   - september
-inStock: true
 supplier: saatgut-vielfalt

@@ -4,9 +4,23 @@ import { MONTHS_EN } from '@levino/shipyard-base'
 
 const months = z.enum(MONTHS_EN)
 
-const SOWING_SCHEMAS = ['A', 'B', 'C', 'D'] as const
-
-type month = (typeof MONTHS_EN)[number]
+// Jelitto Sowing Directions (SD) — encode the full germination protocol:
+// SD1:  Classic cold germinator — warm 18–22°C 2–4 wks → cold −4/+4°C 4–6 wks → germinate 5–12°C
+// SD5:  Hard cold germinator   — sow at max 5°C outdoors, irregular germination over months
+// SD6:  Extreme germinator     — stratify in moist sand outdoors, can take 1+ year
+// SD8:  Variable cold germinator — cold stratification required, germination erratic over months
+// SD9:  Warm germinator, optional cold — germinates well at 18–20°C; cold pre-treatment optional
+// SD15: Warm germinator        — sow at ~20°C, germinates in days to 2–3 weeks
+// SD16: Warm germinator, slow  — sow at 20–22°C, germination slow or irregular
+const SOWING_DIRECTIONS = [
+  'SD1',
+  'SD5',
+  'SD6',
+  'SD8',
+  'SD9',
+  'SD15',
+  'SD16',
+] as const
 
 export const plantSchema = ({ image }: SchemaContext) =>
   z
@@ -20,6 +34,7 @@ export const plantSchema = ({ image }: SchemaContext) =>
       ),
       hardiness: z.enum(['hardy', 'tender']),
       spread: z.number().optional(),
+      voleVulnerable: z.boolean().optional(),
       germination: z
         .object({
           dark: z.boolean().default(false),
@@ -48,7 +63,7 @@ export const plantSchema = ({ image }: SchemaContext) =>
       foliageColor: z.enum(['green', 'red', 'silver', 'gold']),
       lifecycle: z.enum(['annual', 'perennial', 'biennial', 'shrub', 'tree']),
       sowingTime: z.array(months).optional(),
-      sowingScheme: z.enum(SOWING_SCHEMAS).optional(),
+      sowingDirection: z.enum(SOWING_DIRECTIONS).optional(),
       floweringSeason: z.array(months),
       images: z
         .array(
@@ -59,31 +74,12 @@ export const plantSchema = ({ image }: SchemaContext) =>
         )
         .optional(),
       inStock: z.boolean().default(false),
+      url: z.string().url().optional(),
       supplier: reference('suppliers'),
     })
-    .transform(({ sowingTime, sowingScheme, ...data }) => {
+    .transform(({ sowingTime, ...data }) => {
       if (sowingTime) {
         return { ...data, sowingTime }
       }
-      if (sowingScheme) {
-        return { ...data, sowingTime: sowingSchemeToSowingTime(sowingScheme) }
-      }
-      throw new Error(
-        'You need to either set a `sowingTime` or a `sowingScheme`.'
-      )
+      throw new Error('You need to set a `sowingTime`.')
     })
-
-const sowingSchemeToSowingTime = (
-  sowingScheme: (typeof SOWING_SCHEMAS)[number]
-): month[] => {
-  switch (sowingScheme) {
-    case 'A':
-      return ['september', 'october']
-    case 'B':
-      return ['february', 'march', 'april', 'may']
-    case 'C':
-      return ['march', 'april', 'may', 'june']
-    case 'D':
-      return ['april', 'may', 'june']
-  }
-}
