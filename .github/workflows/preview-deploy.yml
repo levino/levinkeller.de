@@ -144,7 +144,7 @@ jobs:
             name: levinkeller-de
             namespace: $PR_NAMESPACE
             annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-prod
+              cert-manager.io/cluster-issuer: letsencrypt
           spec:
             ingressClassName: traefik
             rules:
