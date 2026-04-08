@@ -22,8 +22,6 @@ const SOWING_DIRECTIONS = [
   'SD16',
 ] as const
 
-type month = (typeof MONTHS_EN)[number]
-
 export const plantSchema = ({ image }: SchemaContext) =>
   z
     .object({
