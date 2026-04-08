@@ -1,0 +1,44 @@
+name: Preview Image Cleanup
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete PR preview images older than 30 days
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
+
+            const { data: versions } = await github.rest.packages.getAllPackageVersionsForPackageOwnedByUser({
+              package_type: 'container',
+              package_name: 'levinkeller.de',
+              username: 'levino',
+              per_page: 100,
+            })
+
+            const toDelete = versions.filter(v => {
+              const isPrImage = v.metadata?.container?.tags?.some(t => t.startsWith('pr-'))
+              const isOld = new Date(v.created_at) < cutoff
+              return isPrImage && isOld
+            })
+
+            for (const v of toDelete) {
+              console.log(`Deleting version ${v.id} (tags: ${v.metadata?.container?.tags?.join(', ')}, created: ${v.created_at})`)
+              await github.rest.packages.deletePackageVersionForUser({
+                package_type: 'container',
+                package_name: 'levinkeller.de',
+                username: 'levino',
+                package_version_id: v.id,
+              })
+            }
+
+            console.log(`Deleted ${toDelete.length} versions.`)

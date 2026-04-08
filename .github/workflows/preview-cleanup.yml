@@ -27,8 +27,9 @@ jobs:
         env:
           KUBE_TOKEN: ${{ steps.oidc.outputs.token }}
         run: |
+          echo "$KUBE_CA" | base64 -d > /tmp/kube-ca.crt
           kubectl delete namespace "$PR_NAMESPACE" \
             --server="$KUBE_SERVER" \
             --token="$KUBE_TOKEN" \
-            --certificate-authority=<(echo "$KUBE_CA" | base64 -d) \
+            --certificate-authority=/tmp/kube-ca.crt \
             --ignore-not-found

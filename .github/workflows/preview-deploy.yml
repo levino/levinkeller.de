@@ -47,7 +47,8 @@ jobs:
         env:
           KUBE_TOKEN: ${{ steps.oidc.outputs.token }}
         run: |
-          KUBECTL="kubectl --server=$KUBE_SERVER --token=$KUBE_TOKEN --certificate-authority=<(echo $KUBE_CA | base64 -d)"
+          echo "$KUBE_CA" | base64 -d > /tmp/kube-ca.crt
+          KUBECTL="kubectl --server=$KUBE_SERVER --token=$KUBE_TOKEN --certificate-authority=/tmp/kube-ca.crt"
 
           $KUBECTL create namespace "$PR_NAMESPACE" --dry-run=client -o yaml | $KUBECTL apply -f -
 
@@ -119,7 +120,7 @@ jobs:
             -n "$PR_NAMESPACE" \
             --server="$KUBE_SERVER" \
             --token="$KUBE_TOKEN" \
-            --certificate-authority=<(echo "$KUBE_CA" | base64 -d) \
+            --certificate-authority=/tmp/kube-ca.crt \
             --timeout=5m
 
       - name: Comment preview URL on PR

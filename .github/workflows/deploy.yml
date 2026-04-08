@@ -46,12 +46,13 @@ jobs:
         env:
           KUBE_TOKEN: ${{ steps.oidc.outputs.token }}
         run: |
+          echo "$KUBE_CA" | base64 -d > /tmp/kube-ca.crt
           kubectl set image deployment/levinkeller-de \
             app=ghcr.io/levino/levinkeller.de:${{ github.sha }} \
             -n levinkeller-de \
             --server="$KUBE_SERVER" \
             --token="$KUBE_TOKEN" \
-            --certificate-authority=<(echo "$KUBE_CA" | base64 -d)
+            --certificate-authority=/tmp/kube-ca.crt
 
       - name: Wait for rollout
         env:
@@ -61,5 +62,5 @@ jobs:
             -n levinkeller-de \
             --server="$KUBE_SERVER" \
             --token="$KUBE_TOKEN" \
-            --certificate-authority=<(echo "$KUBE_CA" | base64 -d) \
+            --certificate-authority=/tmp/kube-ca.crt \
             --timeout=5m
