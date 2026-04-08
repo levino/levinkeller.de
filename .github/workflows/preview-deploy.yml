@@ -1,0 +1,156 @@
+name: Preview Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    env:
+      PR_NAMESPACE: pr-${{ github.event.pull_request.number }}
+      PREVIEW_HOST: pr-${{ github.event.pull_request.number }}.levinkeller.de
+      IMAGE: ghcr.io/levino/levinkeller.de:pr-${{ github.event.pull_request.number }}-${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE }}
+
+      - name: Get OIDC token
+        id: oidc
+        run: |
+          TOKEN=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=levinkeller-de" | jq -r '.value')
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy preview to k3s
+        env:
+          KUBE_TOKEN: ${{ steps.oidc.outputs.token }}
+          KUBE_SERVER: https://116.202.20.205:6443
+          KUBE_CA: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkakNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTnpVMk16ZzVNall3SGhjTk1qWXdOREE0TURnd01qQTJXaGNOTXpZd05EQTFNRGd3TWpBMgpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTnpVMk16ZzVNall3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSbmFxbG9MLys3RTNJOGh3SS8xcDF1Q1NKalczWmZxdUw2TTJYaEpOK0wKVFh6VkR3Q1RWekk5bjBHZFlwMHVhZ1lIVTFtTk5CaDQ3ZEw0L3h4aXE3YW9vMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVW5yc3NveDBMWVdDTlRSQkd1Nml2Cm1NM0ljczh3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnZlRnTzQ0K3JZck5lUWNDcGpyeXdUdXQ0bFY1TW8vbEMKYW9NczViWUZ4TUlDSUhtU1lIc3JnRW5qZTg3UWhrOG8vRG80ZTVqV3RxNEc5SEtWVCtDZnNtbW8KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        run: |
+          KUBECTL="kubectl --server=$KUBE_SERVER --token=$KUBE_TOKEN --certificate-authority=<(echo $KUBE_CA | base64 -d)"
+
+          # Create namespace if it doesn't exist
+          eval "$KUBECTL create namespace $PR_NAMESPACE --dry-run=client -o yaml | $KUBECTL apply -f -"
+
+          # Apply deployment, service, ingress
+          eval "$KUBECTL apply -f - <<EOF
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: levinkeller-de
+            namespace: $PR_NAMESPACE
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: levinkeller-de
+            template:
+              metadata:
+                labels:
+                  app: levinkeller-de
+              spec:
+                containers:
+                  - name: app
+                    image: $IMAGE
+                    ports:
+                      - containerPort: 80
+          ---
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: levinkeller-de
+            namespace: $PR_NAMESPACE
+          spec:
+            selector:
+              app: levinkeller-de
+            ports:
+              - port: 80
+                targetPort: 80
+          ---
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: levinkeller-de
+            namespace: $PR_NAMESPACE
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+          spec:
+            ingressClassName: traefik
+            rules:
+              - host: $PREVIEW_HOST
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: levinkeller-de
+                          port:
+                            number: 80
+            tls:
+              - hosts:
+                  - $PREVIEW_HOST
+                secretName: levinkeller-de-tls
+          EOF"
+
+      - name: Wait for rollout
+        env:
+          KUBE_TOKEN: ${{ steps.oidc.outputs.token }}
+          KUBE_SERVER: https://116.202.20.205:6443
+          KUBE_CA: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkakNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTnpVMk16ZzVNall3SGhjTk1qWXdOREE0TURnd01qQTJXaGNOTXpZd05EQTFNRGd3TWpBMgpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTnpVMk16ZzVNall3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSbmFxbG9MLys3RTNJOGh3SS8xcDF1Q1NKalczWmZxdUw2TTJYaEpOK0wKVFh6VkR3Q1RWekk5bjBHZFlwMHVhZ1lIVTFtTk5CaDQ3ZEw0L3h4aXE3YW9vMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVW5yc3NveDBMWVdDTlRSQkd1Nml2Cm1NM0ljczh3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnZlRnTzQ0K3JZck5lUWNDcGpyeXdUdXQ0bFY1TW8vbEMKYW9NczViWUZ4TUlDSUhtU1lIc3JnRW5qZTg3UWhrOG8vRG80ZTVqV3RxNEc5SEtWVCtDZnNtbW8KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        run: |
+          kubectl rollout status deployment/levinkeller-de \
+            -n "$PR_NAMESPACE" \
+            --server="$KUBE_SERVER" \
+            --token="$KUBE_TOKEN" \
+            --certificate-authority=<(echo "$KUBE_CA" | base64 -d) \
+            --timeout=5m
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            })
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('Preview deployment')
+            )
+            const body = `### Preview deployment\n\nhttps://${{ env.PREVIEW_HOST }}`
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body,
+              })
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              })
+            }
