@@ -98,6 +98,10 @@ export default defineConfig({
               label: 'Aussaatkalender',
               href: '/garden/sowing-calendar',
             },
+            pflanzgruppen: {
+              label: 'Pflanzgruppen',
+              href: '/garden/docs/pflanzgruppen',
+            },
           },
         },
         about: {
