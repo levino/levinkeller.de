@@ -31,6 +31,10 @@ const projects = [
     url: 'https://community-scheduler-demo.levinkeller.de/',
     name: 'community-scheduler-preview',
   },
+  {
+    url: 'https://mieten.xn--rssing-wxa.de/',
+    name: 'verleihplattform-roessing-preview',
+  },
 ]
 
 const OUTPUT_DIR = './public/images/projects'
