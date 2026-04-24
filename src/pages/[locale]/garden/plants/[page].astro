@@ -20,7 +20,7 @@ const { page } = Astro.props
   <div class="mt-8">
     <PlantTable caption="Stauden" plants={page.data} />
 
-    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+    {page.url.prev ? <a href={page.url.prev}>Zurück</a> : null}
+    {page.url.next ? <a href={page.url.next}>Weiter</a> : null}
   </div>
 </Layout>

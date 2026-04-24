@@ -1,11 +1,11 @@
 ---
-title: Über meine Homepage
+title: Über meine Website
 layout: '@levino/shipyard-base/layouts/Markdown.astro'
 ---
 
 # Über levinkeller.de
 
-Ich betreibe diese Homepage aus verschiedenen Gründen, die ich hier erläutern
+Ich betreibe diese Website aus verschiedenen Gründen, die ich hier erläutern
 möchte.
 
 ## Öffentliches Notiz- und Tagebuch
@@ -20,21 +20,21 @@ und [github](https://github.com/) erlaubt mir, die Informationen ansprechend und
 übersichtlich abzulegen und den Prozess und die Historie nachhaltig zu
 dokumentieren.
 
-## Showcase für meine Arbeit
+## Schaufenster für meine Arbeit
 
 Ich arbeite als selbstständiger Software-Entwickler und der Quellcode dieser
 Webseite, inklusive aller Inhalte, ist
 [öffentlich](https://github.com/levino/levinkeller.de) auf github zugänglich.
 Jede Person kann mich bei meiner Arbeit an dieser Webseite beobachten und mit
 genug Fachkenntnis die Qualität meiner Arbeit und sogar meine Arbeitsweise
-prüfen und bewerten. Normalerweise arbeite ich "über den Stack", was heißt, dass
-ich nicht nur Code schreibe, der die Darstellung des User-Interfaces betrifft
-(front end), sondern auch Code für den Server, die Datenbanken und alle anderen
+prüfen und bewerten. Normalerweise arbeite ich "über den gesamten Stack", was
+heißt, dass ich nicht nur Code für die Benutzeroberfläche (Frontend) schreibe,
+sondern auch für den Server, die Datenbanken und alle anderen
 Bereiche schreibe, die man für den Betrieb von großen Softwareprojekten
 benötigt. Meistens schreibe ich auch keinen Code, sondern koordiniere die Arbeit
 von Software-Entwickler:innen und konzipiere die Architektur. Die Technologien,
 die ich für das Erstellen dieser Webseite benötige, sind grundsätzlich dem
-Bereich front end zuzuordnen. Insofern erhält man durch diese Webseite nur einen
+Bereich Frontend zuzuordnen. Insofern erhält man durch diese Webseite nur einen
 Einblick in einen Teil meiner Arbeit, aber viele der Muster und Methoden sind
 auch auf die anderen Bereiche übertragbar.
 
@@ -44,14 +44,14 @@ Alle Inhalte dieser Webseite und auch der Quellcode unterliegen der
 [MIT-Lizenz](https://de.wikipedia.org/wiki/MIT-Lizenz) für geistiges Eigentum.
 Jede Person kann die Inhalte kopieren und für eigene Projekte nutzen, ohne jede
 Einschränkungen. Gratis. Selbst meine Urheberschaft muss nicht erwähnt werden.
-Ich mache das, weil ich überzeugt davon bin, dass wir mit Open-Source eine
+Ich mache das, weil ich überzeugt davon bin, dass wir mit Open Source eine
 bessere Welt erreichen können. Sollte ich Inhalte produzieren, die für andere
-für ihr Projekt nutzen können und im Idealfall weitere wertvolle Inhalte mit
+für ihr Projekt nützlich sind und im Idealfall weitere wertvolle Inhalte aus
 meinen Beiträgen generieren, haben alle gewonnen. Dafür ist es wichtig, dass die
-Unterlagen möglichst in Ihrer Reinform bzw. strukturiert vorliegen und
+Unterlagen möglichst in ihrer Rohform beziehungsweise strukturiert vorliegen und
 entsprechend einfach weiter verarbeitet werden können. Dies garantiert die
-Verwendung von [markdown](https://de.wikipedia.org/wiki/Markdown), git und
-github. Ich hoffe, dass es in Zukunft noch viel mehr Menschen gibt, die
+Verwendung von [Markdown](https://de.wikipedia.org/wiki/Markdown), Git und
+GitHub. Ich hoffe, dass es in Zukunft noch viel mehr Menschen gibt, die
 Internetseiten auf diese Art und Weise bauen, sodass ich mich auch bei Ihnen
 bedienen kann, um mithilfe Ihrer Arbeit meine Arbeit zu erleichtern und zu
 beschleunigen.
