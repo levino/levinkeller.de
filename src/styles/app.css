@@ -77,8 +77,9 @@
   text-decoration: none;
 }
 
-/* Constrain blog post prose width for readability (overrides shipyard max-w-none) */
-.prose {
+/* Constrain blog post prose width for readability (overrides shipyard max-w-none).
+   Add `prose-wide` to opt out (e.g. for pages with full-width cards). */
+.prose:not(.prose-wide) {
   max-width: 75ch;
   margin-left: auto;
   margin-right: auto;
