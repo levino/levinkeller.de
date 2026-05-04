@@ -37,14 +37,14 @@
   )
 }
 
-#let prompt(text) = {
+#let prompt(body) = {
   block(
     fill: rgb("#1e1e1e"),
     inset: 8pt,
     radius: 3pt,
     width: 100%,
     [#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb("#eee"))
-    #text],
+    #body],
   )
 }
 

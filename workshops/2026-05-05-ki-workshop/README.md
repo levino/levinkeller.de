@@ -7,48 +7,49 @@ Event: <https://xn--rssing-wxa.de/events/2026-05-05-ki-workshop-dorf/>
 
 ## Inhalt
 
-| Datei | Zweck | Format |
-|-------|-------|--------|
-| `drehbuch.typ` | Ablaufplan / Skript für mich (Levin) | Typst |
-| `handout.typ` | Druckbares Handout für Teilnehmende | Typst |
-| `slides/` | Präsentation für Beamer | Reveal.js (HTML + Markdown) |
+Quellen:
 
-## Bauen
+| Datei | Zweck |
+|-------|-------|
+| `drehbuch.typ` | Ablaufplan / Skript für mich (Levin) |
+| `handout.typ` | Druckbares Handout für Teilnehmende |
 
-### Typst (Drehbuch + Handout)
+Generierte Assets liegen unter `public/workshops/2026-05-05-ki-workshop/`
+und werden auf der Webseite unter `/workshops/2026-05-05-ki-workshop/`
+ausgeliefert. Die Slides (HTML + Markdown) leben direkt dort, weil sie
+keinen Build-Schritt brauchen.
+
+## PDFs aus den Typst-Quellen bauen
 
 ```bash
-typst compile drehbuch.typ
-typst compile handout.typ
+typst compile workshops/2026-05-05-ki-workshop/drehbuch.typ \
+  public/workshops/2026-05-05-ki-workshop/drehbuch.pdf
+
+typst compile workshops/2026-05-05-ki-workshop/handout.typ \
+  public/workshops/2026-05-05-ki-workshop/handout.pdf
 ```
 
 Live-Vorschau beim Bearbeiten:
 
 ```bash
-typst watch handout.typ
+typst watch workshops/2026-05-05-ki-workshop/handout.typ
 ```
 
-### Slides (Reveal.js)
+## Slides lokal anschauen
 
 Reveal.js wird über das CDN `unpkg.com` geladen, Version 4.6.1 (passend
-zur Dependency in `package.json`). Slides im Browser öffnen:
+zur Dependency in `package.json`).
 
 ```bash
-cd slides
+cd public/workshops/2026-05-05-ki-workshop/slides
 python3 -m http.server 8000
 # dann http://localhost:8000 öffnen
 ```
-
-Oder mit jedem anderen statischen Server. Die Folien sind in `slides.md`
-geschrieben und werden vom `index.html` zur Laufzeit geladen.
 
 **Speaker Notes** mit `s` öffnen, Vollbild mit `f`, Übersicht mit `o`.
 
 **Offline-Backup** für den Workshop-Abend: vor dem Termin einmal mit
 Internet öffnen — Browser-Cache hält dann die Reveal.js-Assets vor.
-Alternativ die unpkg-URLs in `index.html` durch Pfade in
-`../../../node_modules/reveal.js/` ersetzen und vom Repo-Root aus
-servieren.
 
 ## Vor dem Termin
 
