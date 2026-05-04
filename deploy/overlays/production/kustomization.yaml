@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+images:
+  - name: ghcr.io/levino/levinkeller.de
+    newTag: 09612ecda6a8b01ac3ce3cc73a38050d4a729971
