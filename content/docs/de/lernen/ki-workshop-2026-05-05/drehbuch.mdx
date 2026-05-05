@@ -1,0 +1,274 @@
+---
+title: 'Drehbuch — KI-Workshop am 5. Mai 2026'
+description:
+  Skizze des 90-minütigen Workshops „KI richtig nutzen" im
+  Dorfgemeinschaftshaus Rössing am 5. Mai 2026. Grundlage für Slides
+  und Handout.
+sidebar:
+  position: 2
+---
+
+Workshop · 5. Mai 2026 · 19:00–20:30 · Dorfgemeinschaftshaus Rössing
+
+Inhaltliche Skizze des Workshops. Quelle für Slides und Handout —
+gleichzeitig öffentlich lesbar für alle, die einen vergleichbaren
+Workshop selbst halten oder die Inhalte zum Nachlesen brauchen.
+
+## Ablauf
+
+### 19:00 · 5 min · Begrüßung
+
+- Vorstellung
+- Rahmen: KI als Werkzeug, in 90 Minuten vom Zuschauen ins Mitmachen
+- Ablauf-Übersicht: erst zeige ich, was heute schon geht, dann reden
+  wir über Anbieter und Kosten, dann Datenschutz und Mindset, dann
+  richten wir es bei den Teilnehmenden ein, am Ende Ideen für zu Hause
+
+### 19:05 · 15 min · Drei Live-Demos — was geht heute schon
+
+#### Rahmen: Bring Your Own AI
+
+- Idee: Leute installieren ihre eigene KI und „bringen sie mit", um Apps
+  wie meine zu bedienen
+- Ich baue meine Apps so, dass jede MCP-fähige KI sie ansprechen kann
+- Was jetzt kommt: drei Demos von meinem Handy via Chromecast — alles
+  live, alles mit einer normalen KI, die ihr euch nachher selbst holen könnt
+
+#### Architektur — warum das wichtig ist
+
+- **Klassischer Ansatz**: KI-eingebaute Apps. Die Inference läuft auf
+  dem Server des Anbieters. Alle Daten, die ihr in die App tippt,
+  landen dort. Ihr habt kaum Kontrolle, was mit dem Kontext passiert
+- **Bring Your Own AI**: die KI läuft auf eurem Konto (Claude, Le Chat).
+  Sie liest _lokal_, was sie braucht, und ruft Drittanbieter-Apps per
+  MCP nur mit dem ab, was wirklich raus muss
+- Konkretes Beispiel: eure KI sieht im Stundenplan des Kindes (lokal,
+  nur ihr und sie), dass Mittwoch Sport ist. Sie legt im Family-Todo
+  nur an _„Dienstag abends Sportzeug einpacken."_ Der Stundenplan
+  selbst geht nie an die Todo-App
+- Drei Vorteile: mehr Kontext für die KI, Datensparsamkeit gegenüber
+  Drittanbietern, Kontrolle bei euch
+- Caveat: Anthropic / Mistral sehen die Daten natürlich — aber sie haben
+  kein kommerzielles Interesse daran, sie sind das Werkzeug, nicht der
+  Auswerter
+
+#### Drei Demos mit Claude
+
+1. **Werkzeug mieten** — Claude bucht den Bohrhammer auf
+   [mieten.rössing.de](https://xn--rssing-wxa.de/) via Custom-MCP-Connector.
+   Buchungen sind tageweise. KI fragt zurück, was sie braucht, und
+   schickt die Buchung wirklich los.
+2. **Termin auf rössing.de eintragen** — Claude legt einen neuen
+   Veranstaltungstermin auf der Dorfwebseite an. Beispiel: „Trage das
+   Dorffest ein: 14. Juni, 15–22 Uhr, Bolzplatz." KI bedient also auch
+   Webseiten-Inhalte.
+3. **Aufgabe für die Kinder anlegen** — im Family-Todo per Stimme:
+   „Thomas soll jeden Mittwoch abends den Müll rausbringen." KI redet
+   mit der App, fertig. Formulare-Ausfüllen wird überflüssig.
+
+Botschaft: alles drei einfach eingesprochen, ohne sich durch Apps und
+Webseiten zu klicken. Voraussetzung: MCP-fähige KI plus App, die mitspielt.
+
+### 19:20 · 15 min · Anbieter, Tarife, Modelle
+
+#### Meta-Tipp vorweg: fragt die KI
+
+KI ist die erste App, die sich vollständig selbst erklärt. Wer wissen
+will, was ein Sprachmodell ist, was ein Token kostet oder was
+Halluzinationen sind, fragt die KI selbst — dort gibt es bessere
+Antworten als in jeder Folie. Das gilt für den Workshop genauso wie
+für jeden Folgetag.
+
+#### Hemmschwelle „für KI bezahlen" abräumen
+
+- Viele zögern — Internet ist „eigentlich kostenlos"
+- Vergleich Handy-Tarif: niemand erwartet Mobilfunk gratis. KI ist genauso
+  ein Werkzeug, das man mietet
+- Was man für 20 €/Monat bekommt: persönlicher Assistent rund um die Uhr,
+  Korrektor, Übersetzer, Erklärer, Recherche-Helfer
+- Verhältnis Preis/Leistung ist absurd günstig — solange die Anbieter
+  noch um Marktanteile kämpfen
+- Monatlich kündbar — überschaubares Risiko. Ruhig die 20 € in die Hand
+  nehmen, ernsthaft probieren, sonst kündigen
+
+#### Die drei Anbieter im Profil
+
+- **Anthropic** (San Francisco, USA) — Produkt: _Claude_. Fokus auf
+  Sicherheit, saubere Texte, lange Dokumente. Stark im Schreiben und in
+  komplexer Analyse.
+- **OpenAI** (San Francisco, USA) — Produkt: _ChatGPT_. Bekanntester
+  Anbieter, größte App-Reichweite, viele Zusatzfunktionen.
+- **Mistral** (Paris, FR) — Produkt: _Le Chat_. Europäischer Anbieter,
+  Server in der EU, datenschutzfreundlicher. Funktional schmaler, aber
+  für viele Aufgaben mehr als ausreichend.
+
+#### Tarife im Vergleich (Stand 5/2026)
+
+| Anbieter  | Frei                     | Mittlerer Tarif             | Power-Tarif                  |
+| --------- | ------------------------ | --------------------------- | ---------------------------- |
+| Anthropic | Claude Free (limitiert)  | Claude Pro · ~18 €/Monat    | Claude Max · 100–200 $/Monat |
+| OpenAI    | ChatGPT Free (limitiert) | ChatGPT Plus · ~23 €/Monat  | ChatGPT Pro · ~200 $/Monat   |
+| Mistral   | Le Chat Free (großzügig) | Le Chat Pro · 14,99 €/Monat | Le Chat Team · 24,99 €/User  |
+
+Alle drei monatlich kündbar. Bezahltarif schaltet die starken Modelle
+frei und hebt Tageslimits.
+
+#### Modelle: das Fuhrpark-Bild
+
+Jeder Anbieter hat drei Klassen — klein, mittel, groß. Beispiel Anthropic:
+
+- **Haiku** — _das Klappfahrrad._ Schnell, günstig, kurze Wege:
+  Mail-Entwurf, Übersetzung, schnelle Erklärung.
+- **Sonnet** — _der SUV._ Alltagsfahrzeug. Schreibt Briefe, fasst
+  zusammen, programmiert ordentlich. Reicht für 90 % der Fälle.
+- **Opus** — _der Flugzeugträger._ Teuer, langsam beim Starten, aber
+  überlegen bei komplexen Aufgaben: viele Dokumente gleichzeitig, lange
+  Recherchen, juristische Analysen mit vielen Querbezügen. Für
+  Alltagsfragen Overkill — für tiefe Arbeit unschlagbar.
+
+Analog: OpenAI _GPT-4o-mini · GPT-4o · o-Serie_; Mistral _Small · Large ·
+Large mit Reasoning_.
+
+Faustregel: erst Sonnet/Large nehmen. Wenn die Antwort dünn bleibt oder
+die Aufgabe wirklich komplex ist (10 PDFs auf einmal, Vertragsanalyse),
+auf Opus / Reasoning-Modell hochschalten.
+
+#### Was wir heute _nicht_ zeigen: ChatGPT
+
+- ChatGPT unterstützt Custom MCP-Connectors auf den normalen Tarifen
+  nicht — fürs Hands-on nicht praktikabel
+- Und ehrlich: persönliche Sache. Ich arbeite ausschließlich mit
+  Claude, ChatGPT mag ich nicht. Heute geht es ohne
+- Wer ChatGPT bereits abonniert hat, kann es selbst weiter nutzen — im
+  Workshop arbeiten wir mit Le Chat oder Claude
+
+### 19:35 · 10 min · Datenschutz nüchtern
+
+#### Grundhaltung: Daten sind sicher
+
+- Bei den großen Anbietern (Anthropic, OpenAI, Mistral) sind eure Daten
+  gut aufgehoben. Das sind große Firmen mit kommerziellem Interesse,
+  Daten zu schützen — sie wollen ihre Kundschaft nicht enttäuschen
+- US-Anbieter sind nicht der DSGVO unterworfen wie europäische
+  Unternehmen, gehen aber sorgfältig mit Daten um
+- Was ihr eintippt, ist vor Zugriff Dritter sicher
+- _Eigene_ persönliche Daten — auch Gesundheitsdaten, Finanzen,
+  medizinische Befunde mit Klarnamen — könnt ihr ohne Bedenken eingeben
+- Genau das ist die Voraussetzung für das Mindset gleich danach: nur mit
+  Durchgriff auf die eigenen Daten kann KI ganze Vorgänge übernehmen
+
+#### Drei Stellschrauben einmalig setzen
+
+- **Training mit eigenen Daten ausschalten** — bei allen Anbietern in
+  den Einstellungen
+- **Memory-Funktion ausschalten** — damit Inhalte aus einer Unterhaltung
+  nicht in andere wabern und der Kontext sauber bleibt
+- **Inkognito-/Temporär-Chat** kennen — für sensible Einzelfragen
+  (Gesundheit, Finanzen, Familienthemen) ohne Spuren im Verlauf
+
+#### Was passiert nach dem Löschen?
+
+- Bei allen drei Anbietern werden gelöschte Chats spätestens nach 30
+  Tagen von den Servern entfernt
+- Mistral Le Chat: gelöscht ist gelöscht, EU-Server, DSGVO-nativ
+- Anthropic Claude: 30 Tage — sofern nicht ins 5-Jahres-Trainings-
+  Programm eingewilligt (seit Sept 2025 Default für neue Accounts,
+  opt-out möglich)
+
+#### Echte Ausnahme: Daten Dritter
+
+- Persönliche Daten _anderer Menschen_ sind juristisch ein anderes
+  Kapitel — vor allem aus einer Rolle mit Verantwortung für andere
+  (Vereinsvorstand mit Mitgliederlisten, Vermieter mit Mietern,
+  freiberufliche Tätigkeit mit Kundendaten)
+- Privat-Account reicht _nicht_ — nötig ist Business-/Team-Account mit
+  **Auftragsverarbeitungsvereinbarung (AVV)** gegenüber dem Anbieter
+- Faustregel: eigene Daten ja, auch sensible — fremde Daten nur mit
+  DSGVO-Setup
+
+### 19:45 · 10 min · Mindset: KI ist Mitarbeiter, nicht Trainer
+
+- KI nicht als LehrerIn behandeln, der einen aufschlaut. KI ist
+  MitarbeiterIn — soll _die Arbeit erledigen_, nicht erklären, wie man
+  sie selbst erledigen würde
+- Anti-Pattern „Copy-Paste-Pingpong": fragen → Antwort kopieren → selbst
+  ausführen → zurückkopieren → wieder fragen. Wer so arbeitet, macht
+  weiter selbst die Arbeit
+- Richtig: KI Durchgriff auf alles geben, was zur Aufgabe gehört. Mehr
+  Kontext = umfassendere Arbeit
+- Bild: KI ist Sekretär. Einer Sekretärin reicht man nicht Halbsätze,
+  sondern den kompletten Vorgang mit „Erledigen Sie das" — und erwartet,
+  dass am Ende der Brief frankiert und eingetütet ist
+
+#### Leitbeispiel Finanzamt
+
+- **Falsch**: Halbsatz aus dem Brief greifen, fragen „Was macht man da?"
+  → KI erklärt das Vorgehen, man macht die Arbeit trotzdem selbst weiter.
+  Klassischer Trainer-Modus, klassisches Pingpong
+- **Richtig**: Ordner mit _allem_ Steuer-Material vorhalten und der KI
+  Durchgriff geben — alle Steuererklärungen, Schreiben aus Vorjahren,
+  Bescheide, Kontoauszüge, Lohnabrechnungen, Belege
+- Auftrag: Ordner + neuer Brief + „Schreib die Antwort" → fertige
+  Antwort, nur durchlesen und abschicken
+- Lücke aktuell: KI dockt noch nicht direkt an Elster an — kommt mit MCP
+
+### 19:55 · 25 min · Hands-on: Le Chat + Mietplattform
+
+Ziel: per KI eine echte Anfrage auf mieten.rössing.de auslösen.
+
+#### Welche KI
+
+- **Claude** ist klar besser — MCP-Connectors lassen sich dort
+  deutlich reibungsloser einbinden, und insgesamt ist Claude beim
+  Schreiben und bei komplexer Analyse spürbar stärker. Wer Claude Pro
+  zahlt: nimmt Claude
+- **Le Chat** ist ein Kompromiss — wir nehmen es heute, weil es gratis
+  ist und Custom-Connectors zumindest grundsätzlich funktionieren
+- ChatGPT bleibt außen vor (siehe Theorie-Block)
+
+#### Setup machen wir gemeinsam
+
+- App-Installation, Konto auf der Mietplattform, MCP-Connector
+  verbinden
+- Le Chat ist auf dem Handy gerade fummelig — wir gehen die Schritte
+  zusammen durch
+
+#### Erste Buchung
+
+- „Reserviere mir den Bohrhammer für Samstag" (tageweise)
+- Anschließend Verfügbarkeit prüfen, eigene Buchungen ansehen, Buchung
+  stornieren — alles im Chat
+
+### 20:20 · 10 min · Ausblick: Ideen, Folgetreffen, Verabschiedung
+
+#### Was damit alles geht — Anwendungsideen (5 min)
+
+- **Kochrezepte** — „Was kann ich aus Resten X, Y, Z machen?" mit
+  Kühlschrank-Foto
+- **Personalisierte Ausmalbilder** für die Kinder — „Ausmalbild mit
+  Dinosaurier im Weltall, schwarz-weiß Linien"
+- **E-Mails vorbereiten** — KI bekommt den ganzen Thread-Kontext und
+  schlägt eine Antwort vor
+- **Dokumente ausarbeiten** — Antrag, Bewerbung, Beschwerde
+- **Briefe und Druck-PDFs mit Typst** — KI erzeugt aus dem Inhalt eine
+  saubere PDF-Druckvorlage (Briefkopf, Layout)
+- **Datei-Stapel analysieren** — 30 PDFs in den Chat, eine Frage über alle
+
+#### Spracheingabe als Ausblick (1 min)
+
+- Dictate Keyboard (Whisper AI) auf Android — eigener OpenAI-/Groq-Key,
+  überall als System-Tastatur verfügbar
+- Alternative offline: WhisperInput (Open Source)
+- Heute kein Hands-on, weil API-Key nötig
+
+#### In Kontakt bleiben (1 min)
+
+- Frage in die Runde: wie wollen wir in Kontakt bleiben?
+- Mein Vorschlag: in ein paar Wochen wieder treffen — und reihum
+  vorstellen, was die einzelnen Teilnehmenden mit KI gemacht haben.
+  Daraus entsteht der Austausch, der in 90 Minuten nicht reinpasst
+
+#### Fragerunde + Verabschiedung (3 min)
+
+- Offene Fragerunde
+- Hinweis auf die Spendendose

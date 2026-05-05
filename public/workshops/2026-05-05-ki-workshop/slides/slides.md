@@ -1,405 +1,272 @@
 # KI richtig nutzen
 
-### Workshop am 5. Mai 2026
+Workshop am 5. Mai 2026
 
 <span class="muted">Dorfgemeinschaftshaus Rössing · Levin Keller</span>
 
-Notes:
-Begrüßen, locker bleiben. Warten bis es ruhig ist. Lächeln.
+---
+
+## Heute Abend
+
+| Zeit  | Phase                                       |
+| ----- | ------------------------------------------- |
+| 19:00 | Begrüßung                                   |
+| 19:05 | Drei Demos                                  |
+| 19:20 | Anbieter, Tarife, Modelle                   |
+| 19:35 | Datenschutz                                 |
+| 19:45 | Mindset                                     |
+| 19:55 | Hands-on                                    |
+| 20:20 | Ideen, Folgetreffen, Fragen                 |
+
+Levin Keller — Software-Entwickler aus Rössing, arbeitet seit Jahren
+intensiv mit KI.
 
 ---
 
-## Wer bin ich?
+## Bring Your Own AI
 
-- Levin Keller, Rössing
-- Software-Entwickler, freiberuflich
-- Engagiere mich in Rössing und Nordstemmen
-- Arbeite seit Jahren intensiv mit KI
-- Heute Abend: euer Sparringspartner
+Idee: Ihr installiert eure eigene KI und _bringt sie mit_, um Apps zu
+bedienen. Meine Apps sprechen mit jeder MCP-fähigen KI.
 
-Notes:
-Kurz und knapp. Nicht selbst zu wichtig nehmen.
+Was jetzt kommt: drei Demos vom Handy auf den Beamer.
 
----
-
-## Was wir heute machen
-
-| Zeit | Phase |
-|------|-------|
-| 19:00 | Begrüßung & Erwartungen |
-| 19:05 | Was ist KI? Welche gibt es? |
-| 19:25 | <span class="accent">Hands-on:</span> Konto + erste Prompts |
-| 19:50 | Datenschutz nüchtern |
-| 20:05 | Praxisbeispiele |
-| 20:20 | Fragen & Ausblick |
+- **Demo 1** — Werkzeug auf mieten.rössing.de mieten
+- **Demo 2** — neuen Termin auf rössing.de eintragen
+- **Demo 3** — Aufgabe für die Kinder im Family-Todo anlegen
 
 ---
 
-## Erwartungen?
+## Architektur: warum das wichtig ist
 
-<span class="accent">Was wollt ihr heute mitnehmen?</span>
+**Klassisch:** App → KI auf deren Server. Eure Daten landen dort.
 
-<span class="muted">Eine Sache pro Person, ein Satz reicht.</span>
+**Bring Your Own AI:** eure KI liest lokal, ruft Apps nur mit dem
+Nötigen auf.
 
-Notes:
-Kurze Runde. Auf Flipchart notieren.
-Häufige Antworten vorbereitet: „nicht abgehängt sein", „Datenschutz",
-„den Hype verstehen", „Job-Sorgen".
+<div style="display: flex; flex-direction: row; gap: 0.4em; align-items: center; font-size: 0.65em; margin-top: 1em; width: 100%;">
+  <div style="flex: 1; padding: 0.5em; border: 1px solid #888; border-radius: 4px; text-align: center;">
+    📁<br><strong>Lokale Daten</strong><br><span style="color: #888;">Stundenplan, Akten</span>
+  </div>
+  <div style="color: #2a4d6e; font-weight: 600;">→</div>
+  <div style="flex: 1; padding: 0.5em; border: 2px solid #2a4d6e; border-radius: 4px; background: #f5f5f5; text-align: center;">
+    🤖<br><strong>Eure KI</strong><br><span style="color: #888;">Claude, Le Chat</span>
+  </div>
+  <div style="color: #2a4d6e; font-weight: 600;">→</div>
+  <div style="flex: 1; padding: 0.5em; border: 1px solid #888; border-radius: 4px; text-align: center;">
+    🌐<br><strong>App</strong><br><span style="color: #888;">Todo, Mieten</span>
+  </div>
+</div>
+
+<div style="text-align: center; font-size: 0.65em; color: #888; margin-top: 0.4em;">
+  MCP-Call · nur das Abgeleitete
+</div>
 
 ---
 
-## Was ist eigentlich KI?
+## Warum das ein Unterschied ist
 
-> Ein Programm, das aus sehr vielen Texten gelernt hat, was als Antwort
-> auf eine Frage am wahrscheinlichsten folgt.
+> **Beispiel.** Eure KI liest lokal den Stundenplan, sieht Mittwoch Sport,
+> legt im Todo an: _„Dienstag abends Sportzeug einpacken."_
+
+Der Stundenplan selbst geht nie an die App.
+
+- **Mehr Kontext** — eure KI sieht, was hilft
+- **Datensparsamkeit** — App bekommt nur, was sie braucht
+- **Kontrolle** — ihr entscheidet, was rausgeht
+
+---
+
+## Drei Demos: was geht heute
+
+1. **Mieten:** „Reserviere mir den Bohrhammer für Samstag."
+2. **Termin:** „Trage das Dorffest ein: 14. Juni, 15–22 Uhr, Bolzplatz."
+3. **Aufgabe:** „Thomas soll jeden Mittwoch abends den Müll rausbringen."
+
+Alles drei: einfach eingesprochen — ohne sich durch Apps und Webseiten
+zu klicken.
+
+<span class="muted">Das ist nicht Zukunft. Das ist heute.</span>
+
+---
+
+## Wenn was unklar ist: fragt die KI
+
+KI ist die erste App, die sich **vollständig selbst erklärt**.
+
+- Wie funktioniert ein Sprachmodell? — fragt die KI
+- Was ist ein Token, ein Halluzinationsrisiko, ein Wissensstichtag? — fragt die KI
+- Wie schreibe ich einen besseren Prompt? — fragt die KI
+- Was kostet die nächste Anfrage? — fragt die KI
+
+<span class="muted">Heute Abend ebenso: was ihr nicht versteht, was ich
+zu schnell sage — fragt direkt euer Handy.</span>
+
+---
+
+## „Für KI bezahlen?"
+
+Vergleich: **Handy-Tarif.** Niemand erwartet, dass Mobilfunk gratis
+ist. KI ist genauso ein Werkzeug, das man mietet.
+
+Was ihr für 20 €/Monat bekommt: Assistent rund um die Uhr, Korrektor,
+Übersetzer, Erklärer.
+
+**Empfehlung:** _nicht_ kostenlos starten. Die guten Modelle hängen am
+Bezahltarif. Monatlich kündbar — eine Pizza weniger pro Monat.
+
+---
+
+## Drei Anbieter, drei Tarife
+
+| Anbieter      | Sitz      | Frei                | Pro                |
+| ------------- | --------- | ------------------- | ------------------ |
+| **Anthropic** Claude | SF, USA   | limitiert           | 18 €/Monat         |
+| **OpenAI** ChatGPT   | SF, USA   | limitiert           | 23 €/Monat         |
+| **Mistral** Le Chat  | Paris, FR | großzügig           | 14,99 €/Monat      |
+
+Power-Tarife jeweils 100–200 $/Monat. Alle drei monatlich kündbar.
+
+<span class="muted">Stand 5/2026.</span>
+
+---
+
+## Modelle: Fuhrpark
+
+Bei jedem Anbieter drei Klassen — beim Beispiel _Anthropic_:
+
+- **Haiku** — _Klappfahrrad._ Mail-Entwurf, Übersetzung, schnelle Erklärung
+- **Sonnet** — _SUV._ Briefe, Zusammenfassungen, Programmieren — reicht für 90 % der Fälle
+- **Opus** — _Flugzeugträger._ 10 PDFs auf einmal, Vertragsanalyse mit vielen Querbezügen, mehrstufige Recherche
+
+Faustregel: erst Sonnet/Large nehmen. Erst bei dünnen Antworten oder
+echten Brocken auf Opus / Reasoning-Modell hochschalten.
+
+---
+
+## ChatGPT zeigen wir heute nicht
+
+- Keine Custom Connectors auf den normalen Tarifen
+- Persönlich: ich arbeite mit **Claude**, ChatGPT mag ich nicht
+
+Heute nutzen wir **Le Chat** (Free) oder **Claude** (Pro). Wer ChatGPT
+bereits zahlt, kann es selbst weiter nutzen.
+
+---
+
+## Datenschutz: kein Grund für Paranoia
+
+Eure Daten sind bei Anthropic, OpenAI, Mistral gut aufgehoben.
+_Eigene_ Daten — auch Gesundheit, Finanzen, medizinische Befunde mit
+Klarnamen — könnt ihr eingeben. Gelöscht = nach 30 Tagen weg.
+
+**Drei Stellschrauben einmalig:**
+
+1. **Training aus**
+2. **Memory aus**
+3. **Inkognito-Chat** für sensible Einzelfragen
+
+---
+
+## Echte Ausnahme: Daten Dritter
+
+Persönliche Daten _anderer Menschen_ sind juristisch ein anderes
+Kapitel — vor allem aus einer Rolle mit Verantwortung für andere:
+Vereinsvorstand, Vermieter, freiberufliche Tätigkeit.
+
+- Privat-Account reicht **nicht**
+- Nötig: **Business-Account mit AVV** (Auftragsverarbeitungsvereinbarung)
+
+> Faustregel: eigene Daten ja, auch sensible — fremde Daten nur mit
+> DSGVO-Setup.
+
+---
+
+## Mindset: Mitarbeiter, nicht Trainer
+
+**Falsch verstanden.** KI als Coach, der einen aufschlaut. Pingpong:
+fragen → kopieren → selbst ausführen → zurückkopieren → wieder fragen.
+→ Wer so arbeitet, macht **weiter selbst die Arbeit**.
+
+**Richtig verstanden.** KI als Mitarbeiter / Sekretär. Kompletten Vorgang
+übergeben — _„Erledigen Sie das"_ — und erwarten, dass am Ende der
+Brief frankiert und eingetütet ist.
+
+Mehr Kontext = mehr Arbeit, die wirklich abgenommen wird.
+
+---
+
+## Leitbeispiel: Brief vom Finanzamt
+
+**Falsch:** _„Was macht man da normalerweise?"_ → KI erklärt das
+Vorgehen → du machst die Arbeit trotzdem selbst.
+
+**Richtig:** der KI _Durchgriff_ auf alles geben — neuer Brief plus alle
+Steuererklärungen, Schreiben aus Vorjahren, Bescheide, Kontoauszüge,
+Lohnabrechnungen, Belege. Auftrag: _„Schreib die Antwort."_ → fertige
+Antwort, nur durchlesen und abschicken.
+
+Was noch fehlt: KI dockt noch nicht direkt an Elster an — kommt mit MCP.
+
+---
+
+## Hands-on: Le Chat + Mietplattform
+
+Ziel: per KI eine echte Anfrage auf mieten.rössing.de auslösen.
+
+- **Claude** ist deutlich besser — wer Pro zahlt, nimmt Claude
+- **Le Chat** ist ein Kompromiss — heute, weil es gratis ist
+- Setup (App, Mietplattform-Konto, MCP-Connector) machen wir
+  zusammen — ist gerade auf dem Handy fummelig
+
+---
+
+## Erste Buchung
+
+```
+Reserviere mir den Bohrhammer für Samstag.
+```
+
+Buchungen sind tageweise. Danach: Verfügbarkeit prüfen, eigene
+Buchungen ansehen, Buchung stornieren — alles im Chat.
+
+---
+
+## Was ihr damit alles machen könnt
+
+- 🍳 **Kochrezepte** — Foto vom Kühlschrank, Frage stellen
+- 🎨 **Personalisierte Ausmalbilder** für die Kinder
+- ✉️ **E-Mails** mit ganzem Thread-Kontext beantworten
+- 📄 **Dokumente ausarbeiten** — Antrag, Bewerbung, Beschwerde
+- 🖨️ **Druck-PDFs mit Typst** — sauberes Layout, Briefkopf
+- 📚 **Datei-Stapel analysieren** — 30 PDFs, eine Frage über alle
+
+---
+
+## Spracheingabe
+
+Wer lieber spricht als tippt:
+
+- _Dictate Keyboard_ (Android, eigener API-Key) — als System-Tastatur
+  überall verfügbar
+- _WhisperInput_ (offline, Open Source) — funktioniert ohne
+  Internetverbindung
+
+<span class="muted">Heute kein Hands-on — die meisten dieser Tools
+brauchen einen eigenen API-Key.</span>
+
+---
+
+## In Kontakt bleiben
+
+**Wie wollen wir in Kontakt bleiben?** Eure Ideen sind willkommen.
+
+Mein Vorschlag: in ein paar Wochen wieder treffen — und reihum erzählen,
+was jeder mit KI gemacht hat. Daraus entsteht der Austausch, der in
+90 Minuten nicht reinpasst.
 
 <br>
 
-<span class="accent">Wie ein extrem belesener Praktikant:</span>
+📧 post@levinkeller.de · 🌐 levinkeller.de · 🏘️ rössing.de
 
-- schnell, höflich, oft brauchbar
-- gelegentlich überzeugend daneben
-- daher: <span class="accent">vertrauen, aber prüfen</span>
-
----
-
-## Was KI <em>nicht</em> ist
-
-- Kein Suchmotor (zitiert nicht zwingend Quellen)
-- Kein Allwissender (Wissensstand mit Stichtag)
-- Keine Maschine, die „denkt" wie wir
-- Kein Ersatz für Profis bei Medizin, Recht, Sicherheit
-
-Notes:
-Kurz Halluzination erklären — Beispiel: KI erfindet Buchtitel oder Paragraphen
-mit voller Überzeugung.
-
----
-
-## Vier wichtige Anbieter
-
-| Anbieter | Stärke | Frei? |
-|----------|--------|-------|
-| **ChatGPT** (OpenAI) | weit verbreitet, App, Bilder, Stimme | ✅ |
-| **Claude** (Anthropic) | Texte, lange Dokumente, sorgfältig | ✅ |
-| **Mistral Le Chat** (FR) | europäisch, schnell | ✅ |
-| **Gemini** (Google) | Google-Welt, Suche | ✅ |
-
-<span class="muted">Alle vier mit kostenlosem Tarif für den Einstieg.</span>
-
----
-
-## Was kostet das?
-
-| Anbieter | Frei | Bezahlt |
-|----------|------|---------|
-| ChatGPT | mit Tageslimit | 23 € / Monat |
-| Claude | mit Tageslimit | 18 € / Monat |
-| Mistral | großzügig | 14,99 € / Monat |
-| Gemini | mit Limits | über Google One |
-
-<br>
-
-<span class="accent">Empfehlung:</span> kostenlos starten, erst bei spürbarem
-Bedarf upgraden.
-
----
-
-## Welche soll ich nehmen?
-
-- <span class="accent">Im Browser ohne Aufwand:</span> ChatGPT
-- <span class="accent">Europa, Datenschutz wichtig:</span> Mistral
-- <span class="accent">Gut beim Schreiben/Denken:</span> Claude
-- <span class="accent">Schon im Google-Konto:</span> Gemini
-
-Notes:
-„Ihr könnt mehrere ausprobieren — ein Account bei jedem dauert keine
-fünf Minuten."
-
----
-
-## Wo läuft das?
-
-- 💻 **Browser** auf Laptop / PC — keine Installation
-- 📱 **App** auf Telefon / Tablet — bequemer
-- 🎙️ **Sprachmodus** — einfach reden statt tippen
-
-<br>
-
-<span class="muted">Live-Demo: ChatGPT-App, Sprachknopf, eine Frage stellen.</span>
-
-Notes:
-„Wie wird das Wetter morgen in Rössing?" oder „Erzähl mir einen Witz über
-Niedersachsen." Begeisterung im Raum nutzen.
-
----
-
-## Hands-on: Account anlegen
-
-### Phase 1 von 2
-
-1. <span class="accent">Anbieter wählen</span> (egal welcher)
-2. <span class="accent">App installieren oder Webseite öffnen</span>
-3. <span class="accent">E-Mail eingeben, Code bestätigen</span>
-4. Optional: mit Google- oder Apple-Konto
-5. Fertig — los geht's
-
-Notes:
-Helfer:innen durch die Reihen schicken. Geduld. Niemand wird
-zurückgelassen. Wer will, fragt den Sitznachbarn.
-
----
-
-## Häufige Stolperfallen
-
-- 📧 Bestätigungsmail im **Spam**?
-- 📞 **Telefonnummer** wird verlangt (ChatGPT) — einmalig
-- 🔞 **Altersangabe** — Mindestalter beachten
-- ⏱️ **Limit erreicht** — anderen Anbieter probieren
-
----
-
-## Erste Prompts gemeinsam
-
-### Phase 2 von 2
-
-Drei Prompts, die wir gemeinsam ausprobieren.
-
-<span class="muted">Tippt mit, oder kopiert von der Folie. Wer den Sprachmodus
-nutzt: einfach laut vorlesen.</span>
-
----
-
-### Prompt 1 — Erklären lassen
-
-```
-Erkläre mir in einfachen Worten, was eine
-Patientenverfügung ist und welche fünf Punkte
-ich vor dem Schreiben bedenken sollte.
-```
-
-<br>
-
-<span class="accent">Lernziel:</span> KI als geduldigen Erklärer erleben.
-
----
-
-### Prompt 2 — Brief schreiben
-
-```
-Schreibe einen freundlichen, aber bestimmten
-Brief an meine Vermieterin. Die Heizung in der
-Küche funktioniert seit drei Wochen nicht.
-Ich habe sie zweimal angerufen, ohne Erfolg.
-Bitte mit Frist von 14 Tagen.
-```
-
-<span class="accent">Lernziel:</span> KI als Schreibhilfe.
-
----
-
-### Prompt 3 — Bild analysieren
-
-📸 <span class="accent">Foto von einer Pflanze hochladen</span>
-
-```
-Was ist das auf dem Foto? Ist die Pflanze gesund?
-Was sollte ich tun?
-```
-
-<br>
-
-> ⚠️ Bei Pilzen, Medikamenten, Gesundheit:<br>
-> immer Profis fragen. KI ist Hilfe, nicht Ersatz.
-
----
-
-## Datenschutz nüchtern
-
-Drei Fragen, die jede:r sich stellen sollte:
-
-1. <span class="accent">Wo</span> wird verarbeitet? (USA / EU)
-2. Werden meine Eingaben zum <span class="accent">Training</span> genutzt?
-3. <span class="accent">Wer</span> könnte das später lesen?
-
----
-
-## Was ist okay?
-
-✅ Allgemeine Fragen, Erklärungen<br>
-✅ Eigene Texte umschreiben<br>
-✅ Behördenpost _verstehen_ lassen<br>
-✅ Übersetzungen<br>
-✅ Rezepte, Reisen, Hobby
-
----
-
-## Was bleibt draußen?
-
-❌ Passwörter, PINs, TANs<br>
-❌ Personalausweise, Steuer-IDs<br>
-❌ Medizinische Befunde mit Klarnamen<br>
-❌ Vertrauliche Geschäftsdokumente<br>
-❌ Daten Dritter, die nicht zugestimmt haben
-
----
-
-## Goldener Satz
-
-> Stell dir vor, deine Eingabe steht morgen
-> auf der Titelseite der Lokalzeitung.<br><br>
-> Wäre das okay? — <span class="accent">Wenn nein: nicht eingeben.</span>
-
----
-
-## Training abschalten
-
-In allen vier Apps in den **Einstellungen** möglich:
-
-- ChatGPT → Datenkontrolle → „Modell verbessern" aus
-- Claude → standardmäßig **kein** Training
-- Mistral → Privatsphäre → Training aus
-- Gemini → Activity-Einstellungen
-
-<span class="muted">Live-Demo bei ChatGPT.</span>
-
----
-
-## Praxisbeispiele
-
-### Was ich selbst mache
-
----
-
-### Behördenpost verstehen
-
-> Bauamt-Brief, drei Seiten Juristendeutsch.<br>
-> Foto rein, Frage: „Was wollen die von mir, in einfacher Sprache?"<br>
-> Antwort in 10 Sekunden. **Eine halbe Stunde Stirnrunzeln gespart.**
-
----
-
-### Texte aufsetzen
-
-Verleihplattform Rössing, Hilfetexte komplett mit KI entwickelt.
-
-```
-Ich beschreibe das Anliegen → KI liefert Entwurf → ich passe an
-```
-
-<span class="muted">mieten.rössing.de</span>
-
----
-
-### Übersetzungen
-
-> Polnische Verwandtschaft, Briefe in beide Richtungen.<br>
-> Besser als jeder Online-Übersetzer von vor fünf Jahren.
-
----
-
-### Recherche — aber richtig
-
-```
-Was sind die Voraussetzungen für eine PV-Anlage
-auf dem Dach in Niedersachsen?
-
-Bitte mit Quellen und Stand der Information.
-```
-
-<br>
-
-<span class="accent">→ Quellen anklicken!</span> Ohne diesen Schritt: Vorsicht.
-
----
-
-## Bonus: KI <em>spricht</em> mit Apps
-
-### Model Context Protocol (MCP)
-
-Statt klicken und tippen — <span class="accent">sprechen und delegieren</span>.
-
----
-
-### Family Todo
-
-> „Lege Lukas ab nächster Woche jeden Mittwoch die Aufgabe
-> _Müll rausbringen_ an, dafür gibt es 10 Punkte."
-
-KI redet mit der App. Fertig.
-
-<span class="muted">docs.todos.levinkeller.de</span>
-
-Notes:
-Live-Demo am Telefon: Sprachknopf in Claude/ChatGPT, MCP-Server vorab
-verbunden. Spontane Aufgabe anlegen.
-
----
-
-### Nordstemmen-Connector
-
-KI mit dem Ratsinformationssystem verbunden.
-
-> „Was wurde 2024 zum Thema Schulen beschlossen?"
-
-18 Jahre Gemeindedokumente. Antwort mit Quellenverweisen.
-
-<span class="muted">nordstemmen-mcp.levinkeller.de</span>
-
----
-
-### Verleihplattform Rössing
-
-Werkzeug ausleihen statt kaufen. Direkt aus dem KI-Chat heraus suchen,
-buchen, bestätigen.
-
-<span class="muted">mieten.rössing.de</span>
-
----
-
-## Was kommt?
-
-- KI in Apps, Autos, Haushaltsgeräten
-- KI als <span class="accent">Dolmetscher</span> zwischen Mensch und Software
-- Lokale, offline laufende Modelle (Datenschutz entspannt sich)
-- Bürger:innen bauen sich <span class="accent">eigene Werkzeuge</span>
-
----
-
-## Mitnehmen heute
-
-- ✅ Ein Konto bei einem Anbieter
-- ✅ Drei ausprobierte Prompts
-- ✅ Datenschutz-Faustregeln
-- ✅ Handout mit Beispielen
-- ✅ 7-Tage-Übungsplan
-
-<br>
-
-<span class="accent">Zeit zum Üben — eine Sache pro Tag reicht.</span>
-
----
-
-## Fragen?
-
-<br><br>
-
-<span class="muted">Falls keiner mag: was ist <em>das eine Ding</em>,
-das KI im Alltag erledigen sollte?</span>
-
-Notes:
-Mindestens 5 Minuten reservieren. Nicht zu früh schließen.
-
----
-
-## Vielen Dank
-
-<br>
-
-📧 post@levinkeller.de<br>
-🌐 levinkeller.de<br>
-🏘️ rössing.de
-
-<br>
-
-<span class="muted">Eine Spende für Saalmiete und Getränke ist willkommen.</span>
+<span class="muted">Eine Spende für Saalmiete und Getränke ist
+willkommen. — Danke fürs Mitmachen!</span>
