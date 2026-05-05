@@ -5,61 +5,55 @@
 // Druckhinweis: A4, beidseitig, Schwarz-Weiß-tauglich, keine flächigen Schwärzen
 
 #set document(title: "Handout — KI richtig nutzen", author: "Levin Keller")
-#set page(paper: "a4", margin: (x: 1.8cm, y: 1.5cm), numbering: "1 / 1")
+#set page(paper: "a4", margin: (x: 1.8cm, y: 1.4cm), numbering: "1 / 1")
 #set text(lang: "de", size: 10pt, font: "New Computer Modern")
-#set par(justify: true, leading: 0.65em)
+#set par(justify: true, leading: 0.55em)
 
 #show heading.where(level: 1): it => [
-  #set text(size: 16pt, weight: "bold")
-  #pad(top: 0.4em, bottom: 0.2em)[#it]
+  #set text(size: 14pt, weight: "bold")
+  #pad(top: 0.3em, bottom: 0.15em)[#it]
 ]
 #show heading.where(level: 2): it => [
-  #set text(size: 12pt, weight: "bold", fill: rgb("#2a4d6e"))
-  #pad(top: 0.5em, bottom: 0.1em)[#it]
+  #set text(size: 11pt, weight: "bold")
+  #pad(top: 0.35em, bottom: 0.05em)[#it]
 ]
 #show heading.where(level: 3): it => [
   #set text(size: 10pt, weight: "bold")
-  #pad(top: 0.3em, bottom: 0.05em)[#it]
+  #pad(top: 0.25em, bottom: 0.05em)[#it]
 ]
 
+// Kasten: dezenter Rahmen, keine Füllung — spart Druckerfarbe.
 #let kasten(title, body) = {
   block(
-    fill: rgb("#f5f5f5"),
-    stroke: 0.5pt + rgb("#ccc"),
-    inset: 8pt,
-    radius: 3pt,
+    stroke: 0.4pt + black,
+    inset: 6pt,
     width: 100%,
     [
       #text(weight: "bold")[#title]\
-      #v(0.2em)
+      #v(0.15em)
       #body
     ],
   )
 }
 
+// Prompt-Beispiel: kursiv, eingerückt, ohne Rahmen oder Füllung.
 #let prompt(body) = {
-  block(
-    fill: none,
-    stroke: 0.5pt + rgb("#888"),
-    inset: 8pt,
-    radius: 3pt,
-    width: 100%,
-    [#set text(font: "DejaVu Sans Mono", size: 9pt)
-    #body],
-  )
+  pad(left: 1em, right: 1em, top: 0.2em, bottom: 0.2em)[
+    #text(style: "italic")[„#body"]
+  ]
 }
 
 // Titel
 #align(center)[
-  #text(size: 22pt, weight: "bold")[KI richtig nutzen]\
-  #v(0.2em)
-  #text(size: 11pt)[Handout zum Workshop · 5. Mai 2026 · Dorfgemeinschaftshaus Rössing]\
-  #v(0.1em)
-  #text(size: 9pt, fill: gray)[Levin Keller · post\@levinkeller.de · levinkeller.de]
+  #text(size: 20pt, weight: "bold")[KI richtig nutzen]\
+  #v(0.15em)
+  #text(size: 10pt)[Handout zum Workshop · 5. Mai 2026 · Dorfgemeinschaftshaus Rössing]\
+  #v(0.05em)
+  #text(size: 9pt)[Levin Keller · post\@levinkeller.de · levinkeller.de]
 ]
 
-#v(0.5em)
-#line(length: 100%, stroke: 0.5pt + gray)
+#v(0.3em)
+#line(length: 100%, stroke: 0.4pt + black)
 
 = In aller Kürze
 
@@ -115,8 +109,8 @@ Auswerter.
 
 #table(
   columns: (auto, 1fr, auto),
-  stroke: 0.5pt + gray,
-  inset: 5pt,
+  stroke: 0.4pt + black,
+  inset: 4pt,
   [*Anbieter*], [*Profil*], [*Webseite*],
   [Anthropic _Claude_], [Sicher, saubere Texte, lange Dokumente. Stark im
     Schreiben und in komplexer Analyse.], [claude.ai],
@@ -138,15 +132,15 @@ Auswerter.
 
 #table(
   columns: (auto, 1fr, 1fr, 1fr),
-  stroke: 0.5pt + gray,
-  inset: 5pt,
+  stroke: 0.4pt + black,
+  inset: 4pt,
   [*Anbieter*], [*Frei*], [*Mittlerer Tarif*], [*Power-Tarif*],
   [Anthropic], [Claude Free, limitiert], [Claude Pro · ~18 €/Monat], [Claude Max · 100–200 \$/Monat],
   [OpenAI], [ChatGPT Free, limitiert], [Plus · ~23 €/Monat], [Pro · ~200 \$/Monat],
   [Mistral], [Le Chat Free, großzügig], [Pro · 14,99 €/Monat], [Team · 24,99 €/Platz],
 )
 
-#text(size: 9pt, fill: gray)[
+#text(size: 9pt)[
   Alle drei Anbieter sind monatlich kündbar. Der Bezahltarif schaltet die
   starken Modelle frei und hebt Tageslimits. Empfehlung: bei einem
   Anbieter ernsthaft probieren statt drei halb.
@@ -168,8 +162,6 @@ Anthropic:
 
 Faustregel: erst Sonnet/Large nehmen. Bleibt die Antwort dünn oder ist
 die Aufgabe wirklich komplex, auf Opus / Reasoning-Modell hochschalten.
-
-#pagebreak()
 
 = Welche KI für zu Hause
 
@@ -245,8 +237,6 @@ Auftragsverarbeitungsvereinbarung (AVV) gegenüber dem Anbieter.
 #kasten("Faustregel")[
   *Eigene Daten ja, auch sensible — fremde Daten nur mit DSGVO-Setup.*
 ]
-
-#pagebreak()
 
 = Was ihr damit alles machen könnt
 
@@ -328,12 +318,12 @@ entsteht ein Austausch, der über den heutigen Abend hinausgeht.
 - *Dorfwebseite Rössing:* rössing.de
 - *Kontakt:* post\@levinkeller.de
 
-#v(0.8em)
-#line(length: 100%, stroke: 0.5pt + gray)
-#v(0.3em)
+#v(0.5em)
+#line(length: 100%, stroke: 0.4pt + black)
+#v(0.2em)
 
 #align(center)[
-  #text(size: 9pt, fill: gray)[
+  #text(size: 9pt)[
     Wenn dir der Abend etwas gebracht hat: eine Spende für Saalmiete und
     Getränke ist willkommen. — Danke fürs Mitmachen!
   ]
