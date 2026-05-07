@@ -61,6 +61,10 @@ export default defineConfig({
           label: 'Blog',
           href: '/blog',
         },
+        kreistag: {
+          label: 'Kreistag',
+          href: 'https://kreistag.levinkeller.de',
+        },
         work: {
           label: 'Levin',
           subEntry: {
