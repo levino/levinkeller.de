@@ -8,6 +8,17 @@
     "silent": true
   },
   "buildCommand": "git fetch --unshallow || true && npm run build",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/", "destination": "/de", "permanent": false },
     {
