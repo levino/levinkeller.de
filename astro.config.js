@@ -112,6 +112,9 @@ export default defineConfig({
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
       brand: 'Levin Keller',
+      // Default social/Open Graph card (1200x630) used when a page sets no
+      // `image:` of its own, so links unfurl with a preview everywhere.
+      defaultImage: '/og-default.jpg',
       footer: {
         links: [
           { label: 'Impressum', to: '/imprint' },
