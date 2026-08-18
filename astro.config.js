@@ -47,7 +47,11 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.startsWith('https://levinkeller.de/private/') &&
-        !page.includes('/hidden/'),
+        !page.includes('/hidden/') &&
+        // /en/ hat keine eigenen Inhalte: die wenigen erzeugten Seiten zeigen
+        // denselben deutschen Text, alle uebrigen Routen leiten auf /de/ um.
+        // Beides gehoert nicht in die Sitemap.
+        !page.startsWith('https://levinkeller.de/en/'),
     }),
     mdx(),
     shipyard({
