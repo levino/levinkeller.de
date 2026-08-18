@@ -10,11 +10,19 @@ description:
 
 import { Card } from '@/components/Card'
 
+{/*
+  CDU-Farben aus dem CI Kit (cdu-nordstemmen/ci, tokens/ci.typ), gegen das
+  CD-Manual 2026 verifiziert: Rhöndorf-Blau #2d3c4b für Headline-Blöcke,
+  Cadenabbia-Türkis #52b7c1 als Hauptfarbe, Union-Gold #ffa600 als Akzent.
+  Bewusst feste Hexwerte statt der DaisyUI-Theme-Farben: das Theme dieser
+  Seite ist rosa, und ein rosa CDU-Banner geht nicht.
+*/}
+
 <a
   href="https://kreistag.levinkeller.de"
-  className="not-prose mb-12 block rounded-2xl bg-primary p-8 text-primary-content no-underline shadow-xl transition hover:shadow-2xl md:p-12"
+  className="not-prose mb-12 block rounded-2xl bg-[#2d3c4b] p-8 text-white no-underline shadow-xl transition hover:shadow-2xl md:p-12"
 >
-  <span className="block text-sm font-semibold tracking-widest uppercase opacity-80">
+  <span className="block text-sm font-semibold tracking-widest text-[#ffa600] uppercase">
     Kommunalwahl am 13. September 2026
   </span>
   <span className="mt-3 block text-3xl leading-tight font-bold md:text-5xl">
@@ -25,7 +33,9 @@ import { Card } from '@/components/Card'
     die Webseite zu meiner Kreistagskandidatur. Dort steht, wofür ich antrete,
     woran ich arbeite und wie Sie mich erreichen.
   </span>
-  <span className="btn btn-lg mt-8 no-underline">kreistag.levinkeller.de</span>
+  <span className="btn btn-lg mt-8 border-none bg-[#52b7c1] text-[#2d3c4b] no-underline hover:bg-[#a7d5dc]">
+    kreistag.levinkeller.de
+  </span>
 </a>
 
 
