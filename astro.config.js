@@ -52,7 +52,13 @@ export default defineConfig({
     mdx(),
     shipyard({
       css: fileURLToPath(new URL('./src/styles/app.css', import.meta.url)),
+      // Der Eintrag ist bewusst als `html` gesetzt: Shipyard stellt `href`-Werte
+      // aus der Navigation das Locale-Präfix voran (`/de…`), was einen externen
+      // Link zerschießen würde.
       navigation: {
+        kreistag: {
+          html: '<a href="https://kreistag.levinkeller.de">Kreistag 2026</a>',
+        },
         docs: {
           label: 'Wissen',
           href: '/docs',
@@ -108,6 +114,15 @@ export default defineConfig({
           label: 'About',
           href: '/about',
         },
+      },
+      // Farben aus dem CDU CI Kit (Cadenabbia-Türkis auf Rhöndorf-Blau), nicht
+      // aus dem DaisyUI-Theme dieser Seite — das ist rosa.
+      announcementBar: {
+        id: 'kreistag-2026',
+        content:
+          'Kommunalwahl am 13. September 2026: Ich kandidiere für den Kreistag Hildesheim. <a href="https://kreistag.levinkeller.de">Zur Seite meiner Kreistagskandidatur &rarr;</a>',
+        backgroundColor: '#52b7c1',
+        textColor: '#2d3c4b',
       },
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
