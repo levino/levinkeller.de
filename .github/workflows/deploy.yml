@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  # Manueller Re-Deploy des aktuellen main-Standes, ohne Leer-Commit.
+  workflow_dispatch:
 
 permissions:
   contents: read
