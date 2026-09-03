@@ -1,12 +1,46 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for more information:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-# https://containers.dev/guide/dependabot
-
+# Abhaengigkeiten automatisch aktualisieren. Patch- und Minor-Updates mergt
+# automerge.yml von selbst, sobald die Checks gruen sind; Major-Updates bleiben
+# als PR liegen (Label `major`). Kein Token ausserhalb von GitHub.
 version: 2
 updates:
-  - package-ecosystem: 'devcontainers'
-    directory: '/'
-    schedule:
-      interval: weekly
+- package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: daily
+    time: 04:00
+    timezone: Europe/Berlin
+  labels:
+  - dependencies
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: /
+  schedule:
+    interval: daily
+    time: 04:00
+    timezone: Europe/Berlin
+  labels:
+  - dependencies
+  open-pull-requests-limit: 10
+  groups:
+    minor-and-patch:
+      update-types:
+      - minor
+      - patch
+- package-ecosystem: docker
+  directory: /
+  schedule:
+    interval: daily
+    time: 04:00
+    timezone: Europe/Berlin
+  labels:
+  - dependencies
+  open-pull-requests-limit: 10
+- package-ecosystem: devcontainers
+  directory: /
+  schedule:
+    interval: daily
+    time: 04:00
+    timezone: Europe/Berlin
+  labels:
+  - dependencies
+  open-pull-requests-limit: 10
