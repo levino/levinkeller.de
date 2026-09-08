@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete PR preview images older than 30 days
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
