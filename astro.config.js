@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap'
 import shipyard from '@levino/shipyard-base'
 import shipyardBlog from '@levino/shipyard-blog'
 import shipyardDocs from '@levino/shipyard-docs'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
@@ -41,6 +42,14 @@ export default defineConfig({
   },
 
   site: 'https://levinkeller.de',
+
+  // Tailwind läuft als Vite-Plugin, nicht mehr über PostCSS: Astro 7 bringt
+  // Vite 8 mit, dessen CSS-Resolver `@import "tailwindcss"` als Dateipfad
+  // statt als Paketnamen behandelt. Der Build brach deshalb mit
+  // `[postcss] ENOENT … open '/app/tailwindcss'` ab.
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   integrations: [
     react(),
