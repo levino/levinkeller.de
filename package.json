@@ -67,7 +67,7 @@
     "yaml": "^2.7.0"
   },
   "devDependencies": {
-    "@anthropic-ai/claude-code": "^2.1.163",
+    "@anthropic-ai/claude-code": "^2.1.267",
     "@biomejs/biome": "2.4.1",
     "@types/eslint": "^8",
     "@types/prop-types": "^15",
