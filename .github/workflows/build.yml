@@ -1,0 +1,37 @@
+# Baut die Seite bei jedem Pull Request und bei jedem Push auf main.
+#
+# Warum es das gibt: der bestehende Workflow `CI` (checks.yml) prueft nur `lint`
+# und `test` - der Build laeuft erst im Deploy, also NACH dem Merge. Deshalb war
+# CI gruen, waehrend der Deploy auf main rot war: das Astro-7-Update brachte
+# Vite 8 mit, dessen CSS-Resolver `@import "tailwindcss"` als Dateipfad
+# behandelt, und der Docker-Build brach mit
+# `[postcss] ENOENT ... open '/app/tailwindcss'` ab - unbemerkt bis nach dem
+# Merge. Dieser Check faengt so etwas im PR ab.
+# ERST, wenn diese Datei auf main liegt.
+#
+# Angepasst gegenueber der hausbau-Vorlage:
+#   * kein `npm run typecheck` - das Script gibt es hier nicht; `npm run build`
+#     ist `astro check && astro build` und typprueft damit bereits selbst.
+#   * Node 22 wie in den bestehenden Workflows (checks.yml); das Repo hat kein
+#     `engines`-Feld und keine `.nvmrc`.
+name: Build
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
