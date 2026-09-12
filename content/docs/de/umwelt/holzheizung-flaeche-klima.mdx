@@ -1,0 +1,156 @@
+---
+title: Holz heizen in Nordstemmen? Flächenbilanz, CO₂-Bilanz und Realität
+authors:
+  - name: Levin Keller
+tags: [sustainability]
+hide_table_of_contents: false
+description: Eine überschlägige, quellenbasierte Rechnung zu Flächenbedarf, CO₂-Emissionen und Vorkettenaufwand von Holzheizungen im Vergleich zu Windstrom plus Wärmepumpe.
+date: 2026-02-07
+---
+
+# Holz heizen in Nordstemmen? Flächenbilanz, CO₂-Bilanz und Realität
+
+Ich werde häufiger mit dem Argument konfrontiert, Holzheizungen (z. B. Kaminöfen)
+seien „nachhaltig“, weil Holz ja nachwachse. Das klingt intuitiv plausibel – ist
+aber bei genauer Rechnung weder beim Flächenbedarf noch beim Klimaschutz
+überzeugend.
+
+Hier ist eine einfache Überschlagsrechnung mit **direkten Quellen-Links**.
+
+## 1) Annahmen
+
+### Nachhaltiger Holzzuwachs pro Fläche
+
+Für Deutschland wird in den Ergebnissen der 4. Bundeswaldinventur ein
+jährlicher Holzzuwachs in der Größenordnung von etwa **11 m³/ha·a** ausgewiesen.
+([Bundeswaldinventur, Ergebnisbroschüre (PDF)](https://www.bundeswaldinventur.de/fileadmin/Projekte/2024/bundeswaldinventur/Downloads/BWI-2022_Broschuere_bf-neu_01.pdf))
+
+- Annahme: **11,2 m³ Holz pro Hektar und Jahr**
+- Annahme Heizwert lufttrockenes Brennholz (grob): **2.000 kWh pro m³**
+  ([Brennholz-Grundlagen, StMELF Bayern](https://www.stmelf.bayern.de/wald/waldbesitzer_portal/brennholz/index.html))
+
+Daraus folgt der jährliche Energieertrag je Hektar:
+
+**11,2 × 2.000 = 22.400 kWh Holz pro ha·a**
+
+also:
+
+**2,24 kWh Holz pro m²·a**
+
+### Wirkungsgrad Holzofen
+
+Bei Einzelraumfeuerungen/Kaminöfen liegen technische Wirkungsgrade typischerweise
+im Bereich um **70–80 %** (geräte- und betriebsabhängig).
+([UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz))
+
+- Konservative Annahme: **70 % Nutzungsgrad**
+
+Damit nutzbare Wärme pro Fläche:
+
+**2,24 × 0,70 = 1,57 kWh Wärme pro m²·a**
+
+## 2) Vergleich mit Windstrom + Wärmepumpe
+
+In meiner Windkraft-Rechnung nutze ich für moderne Onshore-Anlagen eine
+Größenordnung von **3.000 kWh Strom pro m² versiegelter Fläche und Jahr**
+([eigene Herleitung hier](https://www.levinkeller.de/de/docs/umwelt/windkraft)).
+
+Mit Wärmepumpe und einer realistischen Jahresarbeitszahl (JAZ) von **3**
+werden daraus:
+
+**3.000 × 3 = 9.000 kWh Wärme pro m²·a**
+
+Das Verhältnis ist dann:
+
+**9.000 / 1,57 ≈ 5.700**
+
+**Windstrom + Wärmepumpe liefert pro beanspruchtem m² grob den Faktor 5.000+
+mehr nutzbare Wärme als nachhaltige Holzbereitstellung über Waldfläche.**
+
+## 3) Hochrechnung für Nordstemmen
+
+Für eine grobe kommunale Betrachtung nehme ich an:
+
+- Bevölkerung Nordstemmen: **rund 12.000 Personen**
+  ([Gemeindeprofil bei Destatis/Regionaldaten](https://www.destatis.de))
+- Durchschnittliche Heizwärme (Raumwärme + anteilig Warmwasser):
+  **ca. 7.000 kWh pro Kopf und Jahr** (überschlägiger Mittelwert auf Basis
+  nationaler Haushalts-Endenergie für Wärmeanwendungen).
+  ([Destatis Energie/Umwelt](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Umwelt/_inhalt.html))
+
+Gesamtwärmebedarf:
+
+**12.000 × 7.000 = 84.000.000 kWh/a = 84 GWh/a**
+
+Benötigte Waldfläche für nachhaltige Holzheizung:
+
+**84.000.000 / 1,57 ≈ 53.500.000 m²**
+
+also rund:
+
+- **5.350 ha**
+- **53,5 km²**
+
+Die Gemeinde Nordstemmen liegt insgesamt bei rund 60 km². Ergebnis:
+**Wenn alle mit Holz heizen wollten, bräuchte man fast die gesamte
+Gemeindefläche als dauerhafte Energieholzfläche.**
+
+## 4) CO₂: Holz vs. Erdgas pro kWh Wärme
+
+Die direkten CO₂-Faktoren aus der Verbrennung können über die
+IPCC-Defaultwerte hergeleitet werden.
+([IPCC 2006 Guidelines, Vol. 2, Ch. 2 (PDF)](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/2_Volume2/V2_2_Ch2_Stationary_Combustion.pdf))
+
+Grobe Standardfaktoren (als Näherung):
+
+- Erdgas: ca. **0,202 kg CO₂ / kWh Brennstoff**
+- Holz/Biomasse: ca. **0,39–0,40 kg CO₂ / kWh Brennstoff**
+
+Auf die **gelieferte Wärme** umgerechnet:
+
+- Gasheizung bei 90 % Kesselwirkungsgrad: **0,202 / 0,90 = 0,224 kg CO₂/kWh Wärme**
+- Holzofen bei 70 % Wirkungsgrad: **0,395 / 0,70 = 0,564 kg CO₂/kWh Wärme**
+
+Damit liegen die **direkten Emissionen am Schornstein bei Holz grob beim 2,5x
+von Gas** (pro gelieferter kWh Wärme).
+
+Wichtig: In Klimabilanzen wird Holz-CO₂ oft als „biogen“ separat bilanziert.
+Zur Einordnung der zeitlichen Klimawirkung siehe auch:
+[UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz).
+
+## 5) Zusätzliche Vorkettenemissionen bei Holz
+
+Zusätzlich zu den Schornsteinemissionen kommen bei Holz an:
+
+- Ernte (Maschinen)
+- Trocknung
+- Sägen/Hacken/Pelletierung
+- Lagerung
+- Transport
+
+Diese Prozesse verursachen zusätzliche Treibhausgasemissionen und
+Luftschadstoffe, die in der Praxis die Bilanz weiter verschlechtern.
+([UBA: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz))
+
+## 6) Fazit
+
+Wenn man Fläche, Wirkungsgrade und zeitnahe Klimawirkung ernst nimmt, ist
+„Heizen mit Holz“ keine sinnvolle Lösung für breite Gebäudewärmeversorgung.
+
+- Der **Flächenbedarf** ist extrem hoch.
+- Die **direkten CO₂-Emissionen pro kWh Wärme** sind höher als bei Gas.
+- Die **Vorkette** (Ernte, Verarbeitung, Transport) kommt zusätzlich oben drauf.
+
+Für dicht besiedelte Gemeinden ist der robuste Weg: **Elektrifizierung der
+Wärme (Wärmepumpe) plus Wind- und Solarstrom**, statt Holzverbrennung zu
+normalisieren.
+
+## Quellen (mit Links)
+
+- [Bundeswaldinventur (Startseite)](https://www.bundeswaldinventur.de/)
+- [Bundeswaldinventur 2022 – Ergebnisbroschüre (PDF)](https://www.bundeswaldinventur.de/fileadmin/Projekte/2024/bundeswaldinventur/Downloads/BWI-2022_Broschuere_bf-neu_01.pdf)
+- [StMELF Bayern: Brennholz – Grundinformationen](https://www.stmelf.bayern.de/wald/waldbesitzer_portal/brennholz/index.html)
+- [Umweltbundesamt: Heizen mit Holz](https://www.umweltbundesamt.de/themen/heizen-holz)
+- [IPCC 2006 Guidelines – Stationary Combustion (PDF)](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/2_Volume2/V2_2_Ch2_Stationary_Combustion.pdf)
+- [Destatis: Themenbereich Umwelt](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Umwelt/_inhalt.html)
+- [Destatis (Startseite für Regional-/Bevölkerungsdaten)](https://www.destatis.de/)
