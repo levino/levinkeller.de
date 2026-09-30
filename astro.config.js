@@ -69,8 +69,8 @@ export default defineConfig({
       // aus der Navigation das Locale-Präfix voran (`/de…`), was einen externen
       // Link zerschießen würde.
       navigation: {
-        kreistag: {
-          html: '<a href="https://kreistag.levinkeller.de">Kreistag 2026</a>',
+        waermenetz: {
+          html: '<a href="https://waermenetz-adensen.levinkeller.de">Wärmenetz Adensen</a>',
         },
         docs: {
           label: 'Wissen',
@@ -131,9 +131,9 @@ export default defineConfig({
       // Farben aus dem CDU CI Kit (Cadenabbia-Türkis auf Rhöndorf-Blau), nicht
       // aus dem DaisyUI-Theme dieser Seite — das ist rosa.
       announcementBar: {
-        id: 'kreistag-2026',
+        id: 'waermenetz-adensen',
         content:
-          'Kommunalwahl am 13. September 2026: Ich kandidiere für den Kreistag Hildesheim. <a href="https://kreistag.levinkeller.de">Zur Seite meiner Kreistagskandidatur &rarr;</a>',
+          'Wärmenetz Adensen-Hallerburg: Warum die Gemeinde Nordstemmen dafür keinen Kredit über 3,8 Mio. € aufnehmen sollte. <a href="https://waermenetz-adensen.levinkeller.de">Zu Akten, Video und Podcast &rarr;</a>',
         backgroundColor: '#52b7c1',
         textColor: '#2d3c4b',
       },
