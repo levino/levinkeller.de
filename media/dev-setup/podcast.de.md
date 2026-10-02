@@ -1,8 +1,11 @@
-# Podcast „Die Drohne ist die Sandbox“ – Levin Kellers Dev-Setup für KI-Agenten
+# Podcast „Miete die Maschine“ – Levin Kellers Dev-Setup für KI-Agenten
 
 Zwei Stimmen, beide KI-generiert, sprechen über das Setup, das unter
 https://levinkeller.de/de/docs/dev-setup/ beschrieben ist. Einzige Quelle sind diese Seiten
 und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_vertonen.py`.
+
+Bogen: erst wie es sich anfühlt (Rechenleistung, Sprache, Hatchery, Netz, Arbeitsalltag,
+Codespaces), dann warum es trotzdem sicher ist (zwei Kanäle), dann Randnotizen und Fazit.
 
 ## Begrüßung
 
@@ -14,35 +17,71 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **EXPERTIN:** Also eher Schichtleiter als Programmierer.
 
-**MODERATOR:** Genau. Und ich gebe zu, mein erster Gedanke war: Moment. Mehrere Agenten, die gleichzeitig auf meinem Rechner herumfuhrwerken, mit meinem GitHub-Account? Da wird mir ein bisschen anders.
+**MODERATOR:** Und ich habe beim Lesen gemerkt, dass da eigentlich zwei Fragen drinstecken. Erstens: Wie fühlt es sich an, mit fünf oder zehn Agenten gleichzeitig zu arbeiten, ohne dass einem der Rechner unter den Fingern wegschmilzt? Und zweitens: Wie lässt man die alle von der Leine, ohne ihnen den eigenen GitHub-Account zu schenken?
 
-**EXPERTIN:** Und genau das ist die Frage, um die sich das ganze Setup dreht. Wie gibt man Agenten möglichst viel Freiheit, ohne ihnen die eigene digitale Identität zu überlassen?
+**EXPERTIN:** Und beide Fragen sind gleich wichtig. Ein sicheres Setup, in dem man nicht gern arbeitet, benutzt man nicht. Und ein bequemes Setup, das den Agenten deine Identität gibt, willst du nicht benutzen. Wir fangen heute mit dem Bequemen an.
 
-## Kauf dir keinen starken Laptop
+**MODERATOR:** Sehr gut, ich bin nämlich ein bequemer Mensch.
 
-**MODERATOR:** Dann fangen wir mal beim Blech an. Worauf läuft das alles?
+## Miete die Maschine, kauf keinen fetten Laptop
 
-**EXPERTIN:** Auf einem einzigen Server im Rechenzentrum. Ein gebrauchter Rechner aus der Hetzner-Serverbörse, ein älterer Intel-Vierkerner mit 62 Gigabyte RAM.
+**MODERATOR:** Dann fangen wir mit der Frage an, die sich jeder irgendwann stellt: Welchen Rechner kaufe ich mir dafür?
 
-**MODERATOR:** Ein älterer Vierkerner. Für eine ganze Agentenarmee.
-
-**EXPERTIN:** Ja, und das ist der erste Aha-Moment. Agenten brauchen vor allem Arbeitsspeicher, nicht Rechenzeit. Jede Umgebung hält ihren Node-Prozess, ihren Language-Server, ihren Testrunner, manchmal noch einen Browser für End-to-End-Tests. Fünf bis zehn solcher Umgebungen gleichzeitig sind bei ihm normal.
-
-**MODERATOR:** Und der Laptop?
-
-**EXPERTIN:** Das ist die eigentliche Pointe, und so steht es da wörtlich: Kauf dir keinen starken Laptop.
+**EXPERTIN:** Und Levins Antwort steht da wörtlich: Kauf dir keinen starken Laptop.
 
 **MODERATOR:** Das sagt mir sonst nie jemand. Mir sagen alle immer: Nimm das Pro-Modell, nimm mehr RAM, du wirst es bereuen.
 
-**EXPERTIN:** Wenn die Arbeit auf dem Server passiert, ist der Laptop nur noch ein Terminal mit gutem Bildschirm. Levin arbeitet auf einem MacBook Neo. Leicht, lange Akkulaufzeit, schönes Display. Der wird nicht warm, wenn zehn Agenten gleichzeitig npm install ausführen. Weil das woanders passiert. Und die Agenten arbeiten weiter, wenn er zugeklappt ist.
+**EXPERTIN:** Halb stimmt das sogar. Agenten brauchen vor allem Arbeitsspeicher, nicht Rechenzeit. Jede Umgebung hält ihren Node-Prozess, ihren Language-Server, ihren Testrunner, manchmal noch einen Browser für End-to-End-Tests. Fünf bis zehn solcher Umgebungen gleichzeitig sind bei ihm normal.
+
+**MODERATOR:** Und das alles lokal …
+
+**EXPERTIN:** … geht, solange es ein oder zwei Agenten sind. Danach wird der Laptop laut, heiß und leer. Und jede Reise unterbricht die Arbeit, denn wenn du den Deckel zuklappst, hören die Agenten auf.
+
+**MODERATOR:** Und den Laptop mit richtig viel RAM, den man dafür bräuchte, den gibt es ja, der kostet dann halt ein paar tausend Euro. Und wird trotzdem heiß.
+
+**EXPERTIN:** Genau. Und deshalb dreht Levin das um: Er mietet die Maschine. Ein Bare-Metal-Server im Rechenzentrum, gebraucht aus der Hetzner-Serverbörse. Ein älterer Intel-Vierkerner mit 62 Gigabyte RAM.
+
+**MODERATOR:** Ein älterer Vierkerner. Für eine ganze Agentenarmee.
+
+**EXPERTIN:** Nichts Besonderes, sagt er selbst. Aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und kostet einen zweistelligen Eurobetrag im Monat. Ein gebrauchter dedizierter Server ist schlicht die billigste Art, viel RAM dauerhaft verfügbar zu haben.
+
+**MODERATOR:** Und wie viel RAM braucht man?
+
+**EXPERTIN:** Als Daumenregel: Sechzehn Gigabyte reichen für den Anfang, mit vierundsechzig muss man nicht mehr nachdenken. Viele Kerne helfen, wenn mehrere Agenten gleichzeitig bauen.
+
+**MODERATOR:** Warum nicht einfach eine Cloud-VM mit Stundenpreis?
+
+**EXPERTIN:** Flexibel, aber für eine Maschine, die ohnehin den ganzen Tag läuft, deutlich teurer als dedizierte Hardware.
+
+**MODERATOR:** Okay, und der Laptop?
+
+**EXPERTIN:** Wenn die Arbeit auf dem Server passiert, ist der Laptop nur noch ein Terminal mit gutem Bildschirm. Levin arbeitet auf einem MacBook Neo. Leicht, lange Akkulaufzeit, schönes Display. Der wird nicht warm, wenn zehn Agenten gleichzeitig npm install ausführen. Weil das woanders passiert.
 
 **MODERATOR:** Zehn parallele npm installs, und der Laptop zuckt nicht mal. Das ist eigentlich schon Wellness.
 
-**EXPERTIN:** Und noch ein Detail: Er tippt kaum noch. Er spricht. Mit einem Open-Source-Tool für Speech-to-Text namens Whispering erklärt er einem Agenten zwei Minuten lang, was er will. Das ist schneller und meistens präziser, weil man beim Sprechen mehr Kontext gibt.
+**EXPERTIN:** Und das Schönste: Die Agenten arbeiten weiter, wenn der Deckel zu ist. Er klappt zu, steigt in den Zug, und wenn er wieder aufklappt, haben die in der Zwischenzeit weitergemacht.
 
-## Hatchery und die Drohnen
+**MODERATOR:** Das ist der Teil, der mich am meisten überzeugt. Mein Laptop macht beim Zuklappen Feierabend. Seiner hat Mitarbeiter, die weiterarbeiten. Aber wenn der gemietete Server stirbt, ist doch alles weg.
 
-**MODERATOR:** Okay, ein Server. Und wie kommen die Agenten da drauf?
+**EXPERTIN:** Eben nicht.
+
+Für Entwicklungsumgebungen braucht er keine Hochverfügbarkeit. Der Code ist sowieso auf GitHub, und die Umgebungen lassen sich aus ihren devcontainer-Punkt-json-Dateien auf jedem anderen Rechner neu bauen. Der Server ist austauschbar. Versuch das mal mit dem teuren Laptop, wenn der Kaffee drüberläuft.
+
+## Reden statt tippen
+
+**MODERATOR:** Und was macht er dann mit dem leichten Laptop den ganzen Tag? Tippen?
+
+**EXPERTIN:** Kaum. Er spricht. Mit einem Open-Source-Tool für Speech-to-Text namens Whispering erklärt er einem Agenten zwei Minuten lang, was er will.
+
+**MODERATOR:** Zwei Minuten am Stück reden. Mit einem Programm.
+
+**EXPERTIN:** Klingt seltsam, ist aber schneller als Tippen und meistens präziser. Weil man beim Sprechen automatisch mehr Kontext gibt. Man sagt eben nicht nur „fix den Bug“, sondern erzählt, was man beobachtet hat und was auf keinen Fall kaputtgehen darf.
+
+**MODERATOR:** Also im Grunde das Briefing, das man einem Kollegen auch geben würde, wenn man nicht zu faul zum Tippen wäre.
+
+## Hatchery: spawn, und los
+
+**MODERATOR:** Okay, ein Server, ein leichter Laptop, ein Mikrofon. Wie kommen die Agenten denn jetzt auf den Server?
 
 **EXPERTIN:** Über ein kleines Open-Source-Werkzeug, das Levin dafür geschrieben hat: Hatchery. Es verwaltet Devcontainer auf dem Server, einen pro Repository. Und diese Container heißen bei Hatchery: Drohnen.
 
@@ -52,163 +91,159 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **MODERATOR:** Ich finde, jedes Infrastruktur-Tool sollte so heißen. Statt „Container stoppen“ einfach: eingraben.
 
-**EXPERTIN:** Spawn levino slash shipyard, und Hatchery klont das Repo auf den Host und startet mit der offiziellen Devcontainer-CLI einen Container. Und zwar mit der devcontainer-Punkt-json, die im Repository selbst liegt.
+**EXPERTIN:** Und die Bedienung ist genau ein Befehl: hatchery spawn levino slash shipyard. Hatchery klont das Repo auf den Host und startet mit der offiziellen Devcontainer-CLI einen Container. Und zwar mit der devcontainer-Punkt-json, die im Repository selbst liegt. Fertig ist die Umgebung.
 
-**MODERATOR:** Also kein eigenes Hatchery-Format.
+**MODERATOR:** Also kein eigenes Hatchery-Format, das ich erst lernen muss.
 
-**EXPERTIN:** Genau, das finde ich eine der elegantesten Entscheidungen. Das Repo braucht nichts Hatchery-spezifisches. Dieselbe Datei funktioniert unverändert in GitHub Codespaces oder lokal in VS Code. Hatchery schmuggelt nur ein paar Features dazu: einen SSH-Server, Tailscale, Claude Code, zellij und die Credential-Helfer. Auf Wunsch kommen noch Levins dotfiles mit.
+**EXPERTIN:** Genau, eine der elegantesten Entscheidungen. Das Repo braucht nichts Hatchery-spezifisches. Dieselbe Datei funktioniert unverändert in GitHub Codespaces oder lokal in VS Code. Hatchery ist austauschbar, die Repos bleiben portabel. Hatchery schmuggelt nur ein paar Features dazu: einen SSH-Server, Tailscale, die GitHub-CLI, Claude Code, zellij und die Credential-Helfer. Und auf Wunsch kommen Levins dotfiles mit: Shell-Konfiguration, Git-Einstellungen und Skills mit seinen Coding-Konventionen. Man fühlt sich also überall sofort zu Hause.
+
+**MODERATOR:** Und wie viele davon laufen gleichzeitig?
+
+**EXPERTIN:** Eine pro Repository, und davon so viele, wie der RAM hergibt. Fünf bis zehn sind normal. Jede mit eigener Toolchain, eigenem Dev-Server und eigenen Tests, ohne sich in die Quere zu kommen.
 
 **MODERATOR:** Und wenn ich eine Drohne wegwerfe, ist dann alles weg?
 
-**EXPERTIN:** Nein. Was überleben muss, liegt auf dem Host und wird hineingemountet. Der Code als Git-Worktree, und der Zustand von Claude Code: Login, Einstellungen, Gedächtnis, Verlauf. Man kann eine Drohne komplett neu bauen, und der Agent weiß danach noch, woran er gearbeitet hat.
+**EXPERTIN:** Nein, und das ist der zweite große Komfortpunkt. Was überleben muss, liegt auf dem Host und wird hineingemountet. Der Code als Git-Worktree, und der Zustand von Claude Code: Login, Einstellungen, Gedächtnis, Verlauf. Man kann die Drohne jederzeit komplett neu bauen, und der Agent weiß danach noch, woran er gearbeitet hat.
 
 **MODERATOR:** Das ist ja fast unheimlich. Die Drohne stirbt, aber die Erinnerung lebt weiter.
 
-**EXPERTIN:** Sehr Zerg. Und noch ein schönes Detail: Hatchery hat keine eigene Datenbank. Welche Drohnen es gibt, steht ausschließlich in den Labels der Docker-Container. Docker ist die einzige Wahrheit.
+**EXPERTIN:** Sehr Zerg. Neu einloggen bei Claude muss er sich nur einmal pro neuer Drohne.
 
-**MODERATOR:** Warum hat er das überhaupt selbst gebaut? Es gibt doch Codespaces, DevPod, Coder …
+## Jede Drohne ein eigener Rechner
 
-**EXPERTIN:** Hat er alles angeschaut. Codespaces ist bequem, aber nach Stunden und Kernen bezahlt, und zehn Umgebungen den ganzen Tag werden teuer. Bei DevPod weiß nur der Laptop, auf dem man die Umgebung angelegt hat, dass es sie gibt. Coder bringt gleich Kubernetes mit. Aber den Ausschlag gab etwas anderes.
+**MODERATOR:** Jetzt habe ich zehn Container mit zehn Dev-Servern. Da muss man sich doch Ports merken wie früher Telefonnummern. Drei-null-null-eins ist Projekt A, drei-null-null-zwei ist …
 
-**MODERATOR:** Lass mich raten: die Zugangsdaten.
+**EXPERTIN:** Eben nicht. Alle Geräte und alle Drohnen hängen in einem gemeinsamen privaten Netz, einem Tailnet auf Basis von WireGuard. Er betreibt dafür Headscale selbst, für den Einstieg reicht aber das kostenlose Tailscale genauso.
 
-**EXPERTIN:** Genau. Keine der Alternativen löst gut, wie ein Agent in der Umgebung an GitHub kommt, ohne dafür die volle Identität seines Menschen zu bekommen.
+**MODERATOR:** Und jede Drohne ist da drin ein eigener Rechner?
 
-## Das Herzstück: zwei Kanäle
+**EXPERTIN:** Genau. Mit eigenem Namen, etwa hatchery-levino-shipyard. Alle lauschen auf denselben Ports, sie unterscheiden sich nur im Namen. Will er den Dev-Server einer Drohne im Browser sehen, ruft er einfach ihren Namen mit Port auf. Vom Laptop oder vom Handy. Keine Portweiterleitungen, kein Port-Jonglieren, nichts im Internet offen.
 
-**MODERATOR:** Dann sind wir beim Herzstück.
+**MODERATOR:** Dann ist das Tailnet also auch gleich die Sicherheitsschicht.
 
-**EXPERTIN:** Ja. Die Frage ist: Was darf ein Agent, der in seiner Drohne alle Rechte hat, außerhalb dieser Drohne tun? Und die Antwort ist: Es gibt zwei getrennte Kanäle. Über den einen arbeitet der Agent, über den anderen der Mensch.
+**EXPERTIN:** Nein, und das betont er besonders: Das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Wer im Tailnet ist, braucht trotzdem seinen Schlüssel, um sich in eine Drohne einzuloggen. Und es gibt sogar absichtlich einen Notausgang: Der Server ist zusätzlich ganz normal per SSH aus dem Internet erreichbar. Falls das Tailnet mal klemmt, und das tut es gelegentlich.
+
+**MODERATOR:** Absichtlich?
+
+**EXPERTIN:** Sein Satz dazu: Ein Netz, das man nur über sich selbst reparieren kann, ist eine Falle.
+
+**MODERATOR:** Das sollte man sich über jeden Router kleben.
+
+## Der Arbeitsalltag
+
+**MODERATOR:** Wie sieht denn so ein Tag aus? Sitzt er vor zehn Terminals?
+
+**EXPERTIN:** Ziemlich genau. Er verbindet sich per SSH mit einer Drohne und startet dort zellij, einen Terminal-Multiplexer wie tmux, nur mit freundlicheren Voreinstellungen. In mehreren Fenstern arbeitet je ein Claude-Code-Agent, oft mit eigenen Sub-Agenten.
+
+**MODERATOR:** Und wenn das WLAN wackelt?
+
+**EXPERTIN:** Dann ist das egal. Die Sitzung lebt auf der Drohne weiter, wenn die Verbindung abreißt. Laptop zuklappen, Zug fährt in den Tunnel, egal. Beim nächsten Verbinden ist alles noch da, und die Agenten haben in der Zwischenzeit weitergearbeitet.
+
+**MODERATOR:** Und zwischen den Projekten?
+
+**EXPERTIN:** Meist hat er mehrere Drohnen gleichzeitig offen, eine pro Projekt. Und zwischen denen wechselt er, wie man zwischen Kollegen wechselt: Wer ist fertig, wer hat eine Frage, wer braucht eine Entscheidung?
+
+**MODERATOR:** Großraumbüro, nur dass alle Kollegen in Containern sitzen.
+
+**EXPERTIN:** Und keiner klaut einem den Joghurt aus dem Kühlschrank. Dazu kommt: Claude Code fragt normalerweise vor jedem Befehl um Erlaubnis. In der Drohne schaltet Levin das ab, mit dangerously skip permissions.
+
+**MODERATOR:** Moment. Da steht „dangerously“ im Namen!
+
+**EXPERTIN:** Steht es. Warum das trotzdem okay ist, klären wir gleich im Sicherheitsteil. Die Kurzfassung: Die Drohne ist die Sandbox. Und es gibt einen Satz in der Doku, den ich sehr mag: Ein Agent, der ständig um Erlaubnis fragt, ist kein Agent, sondern ein sehr langsamer Kollege.
+
+**MODERATOR:** Autsch. Aber stimmt. Und unterwegs, vom Handy? Da tippt er doch nicht in einem SSH-Terminal herum.
+
+**EXPERTIN:** Eben nicht. Ein Terminal auf dem Handy ist mühsam. Stattdessen nutzt er die Remote Control von Claude Code. Er schaltet sie in einer laufenden Sitzung ein und führt die dann in der Claude-App auf dem Handy weiter. Und Spracheingabe passt da wieder perfekt.
+
+**MODERATOR:** Also genau das, was man unterwegs eh macht: lesen, entscheiden, kurz was sagen.
+
+**EXPERTIN:** Ein Agent will gelesen und gelenkt werden, nicht bedient.
+
+## Warum nicht einfach Codespaces?
+
+**MODERATOR:** Jetzt muss ich die naheliegende Frage stellen. Das klingt alles ein bisschen wie GitHub Codespaces in selbstgebaut. Warum nicht einfach das?
+
+**EXPERTIN:** Hat er ausprobiert, und gescheitert ist es an der Arbeitsweise, nicht am Preis. In einen Codespace kommt man nicht einfach per SSH wie auf jeden anderen Rechner, nur über einen Tunnel. Also lief Claude Code bei ihm im Terminal von VS Code.
+
+**MODERATOR:** Und das war …
+
+**EXPERTIN:** … zäh. Darstellungsfehler, Trägheit, und immer wieder riss die Verbindung ab und die Sitzung war weg. Und dann hält Codespaces eine Umgebung an, sobald sie eine Weile nicht benutzt wird, standardmäßig nach dreißig Minuten Leerlauf.
+
+**MODERATOR:** Was für einen Menschen sinnvoll ist. Aber ein Agent, der drei Stunden im Hintergrund arbeitet, wirkt von außen ja wie Leerlauf.
+
+**EXPERTIN:** Genau, das passt nicht zusammen. Und zehn Umgebungen den ganzen Tag, nach Stunden und Kernen bezahlt, werden obendrein teuer. Eine Drohne dagegen ist ein ganz normaler Rechner im Tailnet: ssh drauf, zellij starten, die Sitzung überlebt jeden Abbruch. Angehalten wird nichts.
+
+**MODERATOR:** Und DevPod, Coder und Co.?
+
+**EXPERTIN:** Hat er sich auch angeschaut. Aber gegen alle zusammen sprach noch etwas: Keine der Alternativen löst gut, wie ein Agent in der Umgebung an GitHub kommt, ohne dafür die volle Identität seines Menschen zu bekommen. Und damit sind wir bei der zweiten Hälfte.
+
+## Die andere Hälfte: zwei Kanäle
+
+**MODERATOR:** Also: zehn Agenten, die ohne Rückfragen arbeiten. Was dürfen die außerhalb ihrer Drohne?
+
+**EXPERTIN:** Es gibt zwei getrennte Kanäle. Über den einen arbeitet der Agent, über den anderen der Mensch.
 
 **MODERATOR:** Fangen wir beim Agenten an. Der naive Weg wäre ja: In der Drohne einmal gh auth login, fertig.
 
-**EXPERTIN:** Und dann ist der Agent du. Der kann dann in jedes deiner Repos schreiben, in jeder Organisation, in der du Mitglied bist, Releases löschen, Einstellungen ändern. Eine präparierte README, und der Schaden ist nicht mehr auf das eine Repo begrenzt.
+**EXPERTIN:** Und dann ist der Agent du. Der kann in jedes deiner Repos schreiben, in jeder Organisation, Releases löschen, Einstellungen ändern. Eine präparierte README, und der Schaden ist nicht mehr auf das eine Repo begrenzt.
 
 **MODERATOR:** Okay, das will ich nicht. Was macht Levin stattdessen?
 
-**EXPERTIN:** Er hat eine eigene GitHub-App angelegt und in seinen Organisationen installiert. So eine App kann Installation-Tokens ausstellen, die sich auf einzelne Repositories beschränken lassen. Und sie gehören der App, nicht seinem Benutzerkonto.
-
-**MODERATOR:** Und wer hält den Schlüssel der App?
-
-**EXPERTIN:** Nur ein kleiner Dienst auf dem Host, der Credential-Service. Der beobachtet die Docker-Events und mountet jeder startenden Drohne einen Unix-Socket. Wer an diesem Socket fragt, bekommt einen frischen Token. Aber nur für die Repos, die für genau diese Drohne freigegeben sind. Fragt die Drohne nach einem anderen Repo, gibt es ein vierhundertdrei, inklusive Hinweis, wie man es freigeben könnte.
+**EXPERTIN:** Er hat eine eigene GitHub-App angelegt. Die kann Tokens ausstellen, die auf einzelne Repositories beschränkt sind und der App gehören, nicht seinem Benutzerkonto. Den Schlüssel der App kennt nur ein kleiner Dienst auf dem Host, und der mountet jeder Drohne einen eigenen Unix-Socket. Wer dort fragt, bekommt einen frischen Token. Aber nur für die Repos, die für genau diese Drohne freigegeben sind. Fragt sie nach einem anderen Repo, gibt es ein vierhundertdrei.
 
 **MODERATOR:** Höflich abgewiesen.
 
-**EXPERTIN:** Und jetzt kommt mein Lieblingssatz aus der ganzen Doku: Die Identität ist der Mount selbst. Es gibt keine Passwörter und keine Tokens auf der Platte der Drohne. Welche Drohne fragt, ergibt sich daraus, welcher Socket es ist. Und fälschen kann man das nicht, weil der Host den Socket anlegt, nicht der Container.
+**EXPERTIN:** Und jetzt kommt mein Lieblingssatz aus der ganzen Doku: Die Identität ist der Mount selbst. Keine Passwörter, keine Tokens auf der Platte der Drohne. Welche Drohne fragt, ergibt sich daraus, welcher Socket es ist. Und fälschen kann man das nicht, weil der Host den Socket anlegt, nicht der Container.
 
-**MODERATOR:** Das ist hübsch. Wie bei einer Rohrpost: Wer am Rohr hängt, ist automatisch der Absender.
+**MODERATOR:** Wie bei einer Rohrpost: Wer am Rohr hängt, ist automatisch der Absender.
 
-**EXPERTIN:** Schönes Bild. Für den Agenten fühlt sich das an wie ein ganz normal eingeloggtes System. Ein Git-Credential-Helper fragt bei jedem Zugriff am Socket nach einem frischen Token, ein Wrapper um gh macht dasselbe. git push und gh pr create funktionieren einfach. Und in jeder Drohne steht in der CLAUDE-Punkt-md: niemals gh auth login, niemals Tokens hart einbauen, und bei Authentifizierungsfehlern Bescheid sagen, statt drumherum zu bauen.
+**EXPERTIN:** Schönes Bild. Und für den Agenten fühlt sich das an wie ein ganz normal eingeloggtes System. Git und gh holen sich den Token im Hintergrund selbst, git push funktioniert einfach. Das ist übrigens wieder Usability: Der Agent merkt von der ganzen Sicherheit nichts.
 
-**MODERATOR:** Moment, bei jedem Zugriff ein neuer? Ich dachte, die laufen nach einer Stunde ab. Steht der Agent dann nach dem Mittagessen vor verschlossener Tür?
+**MODERATOR:** Moment, die Tokens laufen doch nach einer Stunde ab. Steht der Agent dann nach dem Mittagessen vor verschlossener Tür?
 
-**EXPERTIN:** Nein, das wird gern missverstanden. Solange die Drohne läuft, hat der Agent durchgehend Zugriff, er holt sich ja jedes Mal einen neuen. Die Grenze ist nicht die Uhr, sondern die Freigabeliste, und dass es Tokens nur aus diesem einen Socket gibt, der nur in dieser Drohne existiert. Die Stunde zählt erst, wenn doch mal einer leakt: Dann ist er nach spätestens einer Stunde wertlos und galt ohnehin nur für diese Repos. Ein Token aus gh auth login oder dein privater SSH-Schlüssel gilt dagegen überall, ohne Ablaufdatum.
+**EXPERTIN:** Nein, er holt sich ja jedes Mal einen neuen. Solange die Drohne läuft, hat er durchgehend Zugriff. Die Grenze ist nicht die Uhr, sondern die Freigabeliste und dieser eine Socket. Die Stunde zählt erst, wenn doch mal ein Token leakt: Dann ist er nach spätestens einer Stunde wertlos und galt ohnehin nur für diese Repos.
 
 **MODERATOR:** Und wenn der Agent ein zweites Repo braucht?
 
-**EXPERTIN:** Dann gibt Levin es mit hatchery repo connect frei. Das wirkt sofort, und das Zurücknehmen genauso: repo disconnect, oder er räumt die Drohne einfach ab. Und die Liste liegt außerhalb der Drohne, die kann ihre eigenen Rechte also nicht erweitern.
+**EXPERTIN:** hatchery repo connect, wirkt sofort. Zurücknehmen genauso: repo disconnect, oder die Drohne einfach abräumen. Und die Liste liegt außerhalb der Drohne, die kann ihre eigenen Rechte also nicht erweitern.
 
 **MODERATOR:** Und der zweite Kanal, der für den Menschen?
 
 **EXPERTIN:** Der läuft über SSH. Levins Schlüssel liegt im Secure Enclave seines Macs, verwaltet mit Secretive. Der lässt sich nicht exportieren, nicht kopieren, nicht auslesen. Und jede einzelne Signatur will eine Bestätigung per Touch ID.
 
-**MODERATOR:** Jede einzelne? Das stelle ich mir anstrengend vor.
+**MODERATOR:** Jede einzelne? Das ist jetzt aber nicht mehr bequem.
 
-**EXPERTIN:** Er schreibt selbst: Das ist ab und zu lästig, und genau so gewollt.
-
-**EXPERTIN:** Und das ist der Trick beim Agent-Forwarding. Levin verbindet sich oft mit ssh minus A. Damit kann die Drohne seinen Schlüssel benutzen, zum Beispiel, um auf einen anderen Server zu springen. Klassisch wäre das gefährlich. Mit Secretive poppt aber jede Benutzung auf dem Mac auf und will einen Finger. Ein Agent kann also nicht heimlich auf den Produktionsserver. Er kann höchstens fragen. Und dann sieht Levin, was er vorhat.
+**EXPERTIN:** Er schreibt selbst: Das ist ab und zu lästig, und genau so gewollt. Und das macht Agent-Forwarding harmlos. Levin verbindet sich oft mit ssh minus A, damit kann die Drohne seinen Schlüssel benutzen, etwa um auf einen anderen Server zu springen. Aber jede Benutzung poppt auf dem Mac auf und will einen Finger. Ein Agent kann also nicht heimlich auf den Produktionsserver, er kann höchstens fragen.
 
 **MODERATOR:** Agent-Forwarding mit Leine.
 
-**EXPERTIN:** So nennt er es. Und er ist ehrlich: Manchmal lockert er die Leine. Wenn ein Agent länger am Stück auf einem Server arbeiten soll, lässt er eine geteilte SSH-Verbindung offen, damit er nicht jede Minute bestätigen muss. Aber als bewusste Entscheidung auf Zeit, nicht als Dauerzustand.
+**EXPERTIN:** So nennt er es. Manchmal lockert er sie bewusst für eine Weile, wenn ein Agent länger auf einem Server arbeiten soll. Und das ist auch der Haken am Handy: Braucht der Agent den Schlüssel, muss Levin an den Mac. Stört aber selten, weil die eigentliche Arbeit über den Agenten-Kanal läuft.
+
+**MODERATOR:** Dann löse ich jetzt mal das Versprechen von vorhin ein. Warum ist dangerously skip permissions in der Drohne okay?
+
+**EXPERTIN:** Weil sie wegwerfbar ist und jederzeit neu baubar. Alles Wichtige geht über Pull Requests. Ihr Token reicht nur für die freigegebenen Repos. Und alles, was Levins Identität braucht, braucht seinen Finger. Das Schlimmste, was ein Agent anrichten kann, ist ein kaputter Branch in einem freigegebenen Repository. Auf dem eigenen Laptop wäre das gefährlich. In der Drohne: kaum. Die Sicherheit kommt aus der Umgebung, nicht aus den Rückfragen.
 
 **MODERATOR:** Wenn ich das zusammenfasse: Der Agenten-Kanal läuft ohne Levin, solange die Drohne lebt, aber nur für freigegebene Repos. Der Mensch-Kanal kann alles, was Levin darf, aber nur mit seinem Finger.
 
-**EXPERTIN:** Exakt. Ohne ihn läuft der eine, und der andere steht. Dieser Unterschied ist der Kern des ganzen Setups.
+**EXPERTIN:** Exakt. Ohne ihn läuft der eine, und der andere steht.
 
-## Die Drohne ist die Sandbox
+## Randnotizen: Apps und Deploy
 
-**MODERATOR:** Jetzt muss ich was beichten. In der Doku steht, dass die Agenten mit dangerously skip permissions laufen. Da steht „dangerously“ im Namen!
+**MODERATOR:** Zwei Randnotizen noch. Mobile Apps? Emulatoren in Containern klingt nach Schmerzen.
 
-**EXPERTIN:** Ja, Claude Code fragt normalerweise vor jedem Befehl und jeder Dateiänderung um Erlaubnis. In der Drohne schaltet Levin das ab. Und das klingt gefährlicher, als es ist, denn: Die Drohne ist die Sandbox.
-
-**MODERATOR:** Das musst du mir erklären.
-
-**EXPERTIN:** Sie ist wegwerfbar und jederzeit aus der devcontainer-json neu baubar. Der Code liegt in Git, alles Wichtige geht über Pull Requests. Ihr Token reicht nur für die freigegebenen Repos. Und alles, was seine Identität braucht, braucht seinen Finger. Das Schlimmste, was ein Agent anrichten kann, ist ein kaputter Branch in einem freigegebenen Repository.
-
-**MODERATOR:** Auf dem eigenen Laptop würde ich das trotzdem nicht machen.
-
-**EXPERTIN:** Er auch nicht. Auf dem Laptop: ja, gefährlich. In der Drohne: kaum. Und dazu gibt es einen Satz, den ich sehr mag: Ein Agent, der ständig um Erlaubnis fragt, ist kein Agent, sondern ein sehr langsamer Kollege.
-
-**MODERATOR:** Autsch. Aber stimmt.
-
-**EXPERTIN:** Die Sicherheit kommt aus der Umgebung, nicht aus den Rückfragen.
-
-## Das Netz: Erreichbarkeit, nicht Sicherheit
-
-**MODERATOR:** Wie erreicht er denn die ganzen Drohnen? Zehn Container, zehn Dev-Server, da muss man sich doch Ports merken wie früher Telefonnummern.
-
-**EXPERTIN:** Eben nicht. Alle Geräte und alle Drohnen hängen in einem gemeinsamen privaten Netz, einem Tailnet auf Basis von WireGuard. Als Client Tailscale, koordiniert von Headscale, der Open-Source-Variante des Kontrollservers, die er selbst betreibt. Für den Einstieg reicht aber das kostenlose Tailscale genauso.
-
-**MODERATOR:** Und jede Drohne ist da drin ein eigener Rechner?
-
-**EXPERTIN:** Genau. Mit eigenem Namen, etwa hatchery-levino-shipyard. Alle lauschen auf denselben Ports, sie unterscheiden sich nur im Namen. Will er den Dev-Server einer Drohne im Browser sehen, ruft er einfach ihren Namen mit Port auf. Vom Laptop oder vom Handy. Keine Portweiterleitungen, nichts im Internet offen.
-
-**MODERATOR:** Dann ist das Tailnet also die Sicherheitsschicht.
-
-**EXPERTIN:** Nein! Und das ist der Punkt, den er besonders betont: Das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Wer im Tailnet ist, braucht trotzdem seinen Schlüssel, um sich in eine Drohne einzuloggen, und damit seinen Finger. Passwort-Login ist aus.
-
-**MODERATOR:** Warum so misstrauisch gegenüber dem eigenen Netz?
-
-**EXPERTIN:** Weil Dinge passieren. Ein Netz ist mal falsch konfiguriert, ein Gerät geht verloren, eine Freigabe wird vergessen. Wenn die Sicherheit an einer einzigen Schicht hängt, ist das eine zu viel. Und es gibt sogar absichtlich eine Hintertür: Der Server ist zusätzlich ganz normal per SSH aus dem Internet erreichbar.
-
-**MODERATOR:** Absichtlich?
-
-**EXPERTIN:** Als Notausgang. Wenn das Tailnet klemmt, und das tut es gelegentlich, kommt er trotzdem drauf und kann es reparieren. Sein Satz dazu: Ein Netz, das man nur über sich selbst reparieren kann, ist eine Falle.
-
-**MODERATOR:** Das sollte man sich über jeden Router kleben.
-
-## Arbeitsplatz und Handy
-
-**MODERATOR:** Wie sieht denn der Alltag aus? Sitzt er vor zehn Terminals?
-
-**EXPERTIN:** Ziemlich genau. Er verbindet sich per SSH mit einer Drohne und startet dort zellij, einen Terminal-Multiplexer, ähnlich wie tmux, aber mit freundlicheren Voreinstellungen. In mehreren Fenstern arbeitet je ein Claude-Code-Agent, die bei Bedarf noch eigene Sub-Agenten für Recherche oder Reviews starten. Und die Sitzung lebt weiter, wenn die Verbindung abreißt. Zug fährt in den Tunnel, egal. Zwischen den Drohnen wechselt er wie zwischen Kollegen: Wer ist fertig, wer hat eine Frage, wer braucht eine Entscheidung?
-
-**MODERATOR:** Und vom Handy? Da tippt er doch nicht in einem SSH-Terminal herum.
-
-**EXPERTIN:** Eben nicht. Ein Terminal auf dem Handy ist mühsam, und der Schlüssel liegt ja ohnehin auf dem Mac. Stattdessen nutzt er die Remote Control von Claude Code. Er schaltet sie in einer laufenden Sitzung ein und führt die dann in der Claude-App auf dem Handy weiter.
-
-**MODERATOR:** Also genau das, was man unterwegs eh macht: lesen, entscheiden, kurz was sagen.
-
-**EXPERTIN:** Genau. Ein Agent will gelesen und gelenkt werden, nicht bedient. Der Haken: Braucht der Agent den SSH-Schlüssel, muss Levin an den Mac, Touch ID geht vom Handy aus nicht. Stört aber selten, weil die eigentliche Arbeit über den Agenten-Kanal läuft und ihn gar nicht braucht.
-
-**MODERATOR:** Da schließt sich der Kreis.
-
-## Native Apps und die Grenze zum Deploy
-
-**MODERATOR:** Zwei Randnotizen noch. Was ist mit mobilen Apps? Emulatoren in Containern klingt nach Schmerzen.
-
-**EXPERTIN:** Android geht erstaunlich gut. Hatchery kann auf Wunsch die Hardware-Virtualisierung in eine Drohne durchreichen, dann läuft der Emulator direkt darin, und der Agent testet die App wie jeden anderen Prozess. iOS dagegen braucht macOS, das ist Apples Regel. Dafür gibt es auf einem Mac Studio eine von Hand gebaute macOS-VM, in die ein Agent per SSH kommt. Eine Randnotiz.
+**EXPERTIN:** Android geht erstaunlich gut. Hatchery kann auf Wunsch die Hardware-Virtualisierung in eine Drohne durchreichen, dann läuft der Emulator direkt darin, und der Agent testet die App wie jeden anderen Prozess. Für iOS gibt es eine von Hand gebaute macOS-VM auf einem Mac Studio.
 
 **MODERATOR:** Und wo hört das Setup auf?
 
-**EXPERTIN:** Dort, wo der Code GitHub erreicht. Agenten pushen Branches und öffnen Pull Requests, dann übernimmt die CI. Nach dem Merge rollt Argo CD auf einem k3s-Cluster aus. Und ein Agent braucht dafür keinerlei Zugang zum Cluster. Nur sein Repository.
-
-**MODERATOR:** Und genau deshalb reicht das Token-Modell.
-
-**EXPERTIN:** Richtig. Wer doch direkt auf einen Produktionsserver muss, braucht Levins Schlüssel, also seinen Finger. Der Deploy-Stack selbst, mit k3s, Argo CD, ZITADEL und einer Vorlage namens agentops-community-stack, wird ein eigener zweiter Teil der Doku.
+**EXPERTIN:** Dort, wo der Code GitHub erreicht. Agenten pushen Branches und öffnen Pull Requests, dann übernimmt die CI, und nach dem Merge rollt Argo CD auf einem k3s-Cluster aus. Ein Agent braucht dafür keinerlei Zugang zum Cluster, nur sein Repository. Der Deploy-Stack, mit der Vorlage agentops-community-stack, wird ein eigener zweiter Teil.
 
 ## Fazit
 
 **MODERATOR:** Was nimmst du mit, wenn du nicht Levin heißt und kein Hatchery benutzen willst?
 
-**EXPERTIN:** Die Ideen funktionieren auch ohne Hatchery. Eine GitHub-App für Agenten-Tokens, die nur für freigegebene Repos gelten. Ein hardwaregebundener SSH-Schlüssel für den Menschen. Und Umgebungen, die man wegwerfen kann. Hatchery ist für genau seinen Fall gebaut: ein Mensch, ein Server, GitHub.
+**EXPERTIN:** Erstens: Miete die Maschine. Ein gebrauchter Server mit viel RAM für einen zweistelligen Betrag im Monat, und dazu ein leichter Laptop, der lange durchhält. Zweitens: Umgebungen aus der devcontainer-json, die man wegwerfen kann. Und drittens: Eine GitHub-App für Agenten-Tokens und ein hardwaregebundener SSH-Schlüssel für den Menschen. Der größte Kostenposten ist am Ende übrigens das Abo für die Agenten selbst.
 
-**MODERATOR:** Und was kostet der Spaß?
-
-**EXPERTIN:** Der Server einen zweistelligen Eurobetrag im Monat. Tailscale ist für Privatleute kostenlos, Headscale und Hatchery sind Open Source. Der größte Posten ist das Abo für die Agenten selbst.
-
-**MODERATOR:** Mein Fazit: Gib dem Agenten in seiner Drohne alle Freiheit, aber nicht deinen Ausweis. Und kauf dir keinen teuren Laptop.
+**MODERATOR:** Mein Fazit: Kauf dir keinen teuren Laptop, sondern miete dir einen Server, der nie zuklappt. Und gib dem Agenten in seiner Drohne alle Freiheit, aber nicht deinen Ausweis.
 
 **EXPERTIN:** Und wenn der Mac nach deinem Finger fragt: Das ist kein Bug, das ist die Architektur.
 
