@@ -10,23 +10,30 @@
 
 Levin Keller is a software developer. He hardly writes code by hand anymore:
 several Claude Code agents work in parallel on different repositories while he
-reads, steers and decides. The setup is designed to give agents a lot of freedom
-inside their environment without handing them his identity.
+reads, steers and decides. The setup has two equally important goals: working
+comfortably with many agents at once, from anywhere (laptop and phone), without
+buying an expensive machine; and giving agents a lot of freedom inside their
+environment without handing them his identity.
 
-## Three principles
+## Four principles
 
-1. Agents get only as much identity as they need: tokens limited to the repos
+1. Rent the machine, don't upgrade the laptop: a rented bare-metal server
+   provides lots of RAM around the clock for a two-digit euro amount per month.
+   The laptop stays light with long battery life. Sessions live on the server:
+   agents keep working with the lid closed, reachable from laptop and phone.
+2. Agents get only as much identity as they need: tokens limited to the repos
    of their environment, from a socket that exists only inside that
    environment, instead of his credentials.
-2. Environments are reproducible and disposable: built from the repo's
+3. Environments are reproducible and disposable: built from the repo's
    devcontainer.json; code and agent state live outside.
-3. Anything sensitive needs the human: his SSH key asks for his fingerprint on
+4. Anything sensitive needs the human: his SSH key asks for his fingerprint on
    every use.
 
 ## Building blocks
 
-- Compute: a used bare-metal server (Hetzner server auction, Intel quad-core,
-  62 GB RAM). Recommendation: 16–64 GB RAM, many cores. In exchange, a light
+- Compute, rent don't buy: a rented, used bare-metal server (Hetzner server
+  auction, Intel quad-core, 62 GB RAM, two-digit euro amount per month) instead
+  of a laptop with 64 GB RAM for several thousand euros. Recommendation: 16–64 GB RAM, many cores. In exchange, a light
   laptop (MacBook Neo) with long battery life and a good display. Input mostly via
   speech-to-text (Whispering) instead of typing.
 - Network: a Tailscale tailnet coordinated by self-hosted Headscale (open source;

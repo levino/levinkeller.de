@@ -1,19 +1,25 @@
 ---
-title: Rechenleistung
-description: 'Ein kräftiger Server im Rechenzentrum statt eines kräftigen Laptops.'
+title: 'Rechenleistung: mieten statt kaufen'
+description: 'Einen kräftigen Server im Rechenzentrum mieten statt einen kräftigen Laptop kaufen.'
 sidebar:
   position: 1
 ---
 
-# Rechenleistung: Server statt Laptop
+# Rechenleistung: mieten statt kaufen
 
 ## Was es ist
 
-Ein einzelner Bare-Metal-Server in einem Rechenzentrum, auf dem alle
+Ein einzelner gemieteter Bare-Metal-Server in einem Rechenzentrum, auf dem alle
 Entwicklungsumgebungen laufen. Bei mir ist das ein gebrauchter Rechner aus der
 Hetzner-Serverbörse: ein älterer Intel-Vierkerner mit 62 GB RAM. Nichts
-Besonderes, aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und ist
-gebraucht ziemlich günstig zu haben.
+Besonderes, aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und
+kostet einen zweistelligen Eurobetrag im Monat.
+
+**Mieten statt kaufen** ist dabei die wichtigste Entscheidung im ganzen Setup. Ein
+Laptop mit 64 GB RAM kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet
+und hat trotzdem nur einen Akku und einen Lüfter. Für das Geld läuft der gemietete
+Server jahrelang, und wenn er nicht mehr reicht, kündige ich ihn und miete einen
+größeren.
 
 ## Welche Rolle er spielt
 
@@ -27,7 +33,7 @@ Testrunner, manchmal einen Browser für End-to-End-Tests. 16 GB reichen für den
 Anfang, mit 64 GB muss man nicht mehr nachdenken. Viele Kerne helfen, wenn mehrere
 Agenten gleichzeitig bauen.
 
-## Was er bringt: Kauf dir keinen starken Laptop
+## Was er bringt: Miete die Maschine, kauf keinen starken Laptop
 
 Das ist die eigentliche Pointe. Wenn die Arbeit auf dem Server passiert, ist der
 Laptop nur noch ein Terminal mit gutem Bildschirm. Ich arbeite auf einem MacBook Neo:
@@ -57,7 +63,8 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
 
 ## Warum so
 
-Ein gebrauchter dedizierter Server ist die billigste Art, viel RAM dauerhaft
-verfügbar zu haben. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
+Ein gemieteter gebrauchter dedizierter Server ist die billigste Art, viel RAM dauerhaft
+verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen, aufrüsten oder
+mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen
 sich aus ihren `devcontainer.json`-Dateien auf jedem anderen Rechner neu bauen.

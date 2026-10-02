@@ -1,18 +1,23 @@
 ---
-title: Compute
-description: 'A powerful server in a data centre instead of a powerful laptop.'
+title: "Compute: rent, don't buy"
+description: 'Rent a powerful server in a data centre instead of buying a powerful laptop.'
 sidebar:
   position: 1
 ---
 
-# Compute: a server, not a laptop
+# Compute: rent, don't buy
 
 ## What it is
 
-A single bare-metal server in a data centre that runs all development environments.
-Mine is a second-hand machine from the Hetzner server auction: an older Intel quad-core
-with 62 GB of RAM. Nothing fancy, but it runs around the clock, sits on a fast line
-and is pretty cheap second-hand.
+A single rented bare-metal server in a data centre that runs all development
+environments. Mine is a second-hand machine from the Hetzner server auction: an older
+Intel quad-core with 62 GB of RAM. Nothing fancy, but it runs around the clock, sits on
+a fast line and costs a two-digit euro amount per month.
+
+**Rent, don't buy** is the most important decision in the whole setup. A laptop with
+64 GB of RAM costs several thousand euros, is outdated after a few years and still has
+only one battery and one fan. For that money the rented server runs for years, and if
+it's no longer enough, I cancel it and rent a bigger one.
 
 ## Its role
 
@@ -25,7 +30,7 @@ holds its Node process, its language server, its test runner, sometimes a browse
 end-to-end tests. 16 GB is enough to start with; with 64 GB you stop thinking about it.
 Many cores help when several agents build at once.
 
-## What it buys you: don't buy a powerful laptop
+## What it buys you: rent the machine, don't buy a powerful laptop
 
 That's the real punchline. When the work happens on the server, the laptop is just a
 terminal with a nice screen. I work on a MacBook Neo: light, long battery life, great
@@ -54,7 +59,8 @@ And the agents keep working when the laptop lid is closed.
 
 ## Why this way
 
-A used dedicated server is the cheapest way to have lots of RAM permanently available.
+A rented, used dedicated server is the cheapest way to have lots of RAM permanently
+available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their
 `devcontainer.json` files.

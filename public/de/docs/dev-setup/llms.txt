@@ -10,23 +10,32 @@
 
 Levin Keller ist Softwareentwickler. Er schreibt kaum noch Code von Hand:
 Mehrere Claude-Code-Agenten arbeiten parallel an verschiedenen Repositories, er
-liest, lenkt und entscheidet. Das Setup ist darauf ausgelegt, Agenten viel
-Freiheit in ihrer Umgebung zu geben, ohne ihnen seine Identität zu überlassen.
+liest, lenkt und entscheidet. Das Setup hat zwei gleichrangige Ziele: bequem
+mit vielen Agenten gleichzeitig arbeiten, von überall (Laptop und Handy), ohne
+einen teuren Rechner zu kaufen; und den Agenten dabei viel Freiheit in ihrer
+Umgebung geben, ohne ihnen seine Identität zu überlassen.
 
-## Drei Prinzipien
+## Vier Prinzipien
 
-1. Agenten bekommen nur so viel Identität wie nötig: auf die Repos ihrer
+1. Die Maschine mietet man, den Laptop rüstet man nicht auf: ein gemieteter
+   Bare-Metal-Server liefert viel RAM rund um die Uhr für einen zweistelligen
+   Eurobetrag im Monat. Der Laptop bleibt leicht mit langer Akkulaufzeit. Die
+   Sitzungen leben auf dem Server: Agenten arbeiten bei zugeklapptem Laptop
+   weiter, erreichbar vom Laptop und vom Handy.
+2. Agenten bekommen nur so viel Identität wie nötig: auf die Repos ihrer
    Umgebung beschränkte Tokens aus einem Socket, den es nur in dieser Umgebung
    gibt, statt seiner Zugangsdaten.
-2. Umgebungen sind reproduzierbar und wegwerfbar: gebaut aus der
+3. Umgebungen sind reproduzierbar und wegwerfbar: gebaut aus der
    devcontainer.json des Repos; Code und Agenten-Zustand liegen außerhalb.
-3. Was heikel ist, braucht den Menschen: sein SSH-Schlüssel verlangt bei jeder
+4. Was heikel ist, braucht den Menschen: sein SSH-Schlüssel verlangt bei jeder
    Benutzung seinen Fingerabdruck.
 
 ## Bausteine
 
-- Rechenleistung: ein gebrauchter Bare-Metal-Server (Hetzner-Serverbörse,
-  Intel-Vierkerner, 62 GB RAM). Empfehlung: 16–64 GB RAM, viele Kerne. Dafür ein
+- Rechenleistung, mieten statt kaufen: ein gemieteter gebrauchter
+  Bare-Metal-Server (Hetzner-Serverbörse, Intel-Vierkerner, 62 GB RAM,
+  zweistelliger Eurobetrag im Monat) statt eines Laptops mit 64 GB RAM für
+  mehrere tausend Euro. Empfehlung: 16–64 GB RAM, viele Kerne. Dafür ein
   leichter Laptop (MacBook Neo) mit langer Akkulaufzeit und gutem Display.
   Eingabe meist per Speech-to-Text (Whispering) statt Tippen.
 - Netz: Tailscale-Tailnet, koordiniert von selbst betriebenem Headscale (Open

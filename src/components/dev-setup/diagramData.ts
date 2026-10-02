@@ -119,8 +119,8 @@ export const nodes: DiagramNode[] = [
     label: { de: 'Laptop', en: 'Laptop' },
     sub: { de: 'leicht, kein Kraftpaket', en: 'light, not a powerhouse' },
     info: {
-      de: 'Nur ein Terminal mit gutem Bildschirm. Gerechnet wird auf dem Server, gesprochen wird per Speech-to-Text.',
-      en: 'Just a terminal with a good screen. The server does the work; I talk via speech-to-text.',
+      de: 'Nur ein Terminal mit gutem Bildschirm. Gerechnet wird auf dem gemieteten Server, gesprochen wird per Speech-to-Text. Klappe zu, die Agenten arbeiten weiter.',
+      en: 'Just a terminal with a good screen. The rented server does the work; I talk via speech-to-text. Lid closed, the agents keep working.',
     },
     page: page('compute'),
   },
