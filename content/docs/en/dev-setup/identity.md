@@ -1,6 +1,6 @@
 ---
 title: Identity and access
-description: 'Two separate channels: short-lived, narrowly scoped tokens for the agent and a fingerprint-guarded SSH key for the human.'
+description: 'Two separate channels: narrowly scoped tokens for the agent and a fingerprint-guarded SSH key for the human.'
 sidebar:
   position: 4
 ---
@@ -30,8 +30,8 @@ renewing them by hand per environment is tedious and error-prone.
 ### The solution
 
 I created my own **GitHub App** and installed it in my organisations. A GitHub App can
-issue **installation tokens**: tokens that expire after one hour and can be limited to
-single repositories. They don't belong to my user account but to the app.
+issue **installation tokens** that can be limited to single repositories. They don't
+belong to my user account but to the app.
 
 Only the credential service on the host knows the app's private key. It mounts a
 **Unix socket** into every drone. Whoever asks at that socket gets a fresh token, but
@@ -41,6 +41,13 @@ repo, it gets a `403` along with a hint on how I could grant it.
 There are no passwords and no tokens on the drone's disk. **The identity is the mount
 itself**: which drone is asking follows from which socket it is. That can't be faked,
 because the host creates the socket, not the container.
+
+So as long as the drone runs, the agent has continuous access to its repos: every
+access fetches a fresh token, and none is ever stored. That installation tokens expire
+after one hour isn't the boundary, just a safety net in case one does get out of the
+drone: then it's useless after an hour at most and only ever worked for those repos. A
+`gh auth login` token or my personal SSH key, by contrast, works everywhere and doesn't
+expire.
 
 ### How Git and `gh` find out
 
@@ -63,7 +70,11 @@ If an agent needs a second repository, I grant it:
 hatchery repo connect levino/shipyard levino/levinkeller.de
 ```
 
-That takes effect immediately, without a restart. The list of grants lives on the host
+That takes effect immediately, without a restart. Taking it back is just as quick:
+`hatchery repo disconnect` removes a repo from the grants, `hatchery slay` removes the
+drone along with its socket. I don't have to wait for any token to expire.
+
+The list of grants lives on the host
 **outside** the drone. So a drone can't widen its own rights, not even by editing a
 file and waiting for the next restart.
 
@@ -73,7 +84,7 @@ For repositories on my own [Forgejo](https://forgejo.org) instance, Hatchery goe
 step further: the drone doesn't get a real token at all, only a placeholder. Its Git
 traffic goes through a per-drone proxy that checks every request against the grant list
 and only then swaps in the real token. The agent never sees the secret. That's cleaner,
-but also more effort – for GitHub the one-hour token model is enough for me.
+but also more effort – for GitHub the token model is enough for me.
 
 ## The human channel: SSH with a fingerprint
 
@@ -111,7 +122,8 @@ The two channels cover different needs:
 | **Who** | the agent, any time | me, with my finger |
 | **For** | reading and pushing code, PRs, issues | logging in to drones, servers, anything sensitive |
 | **Reach** | only granted repos | everything I'm allowed to |
-| **Lifetime** | one hour per token | one signature |
+| **If it leaks** | token works for 1 hour at most, only for these repos | key never leaves the Mac, signing only with my finger |
+| **Revoke** | immediately via `repo disconnect` or `slay` | don't put my finger down |
 | **Without me** | runs | stops |
 
 The agent can do its work without me. Anything beyond that needs me physically. That

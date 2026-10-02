@@ -15,8 +15,9 @@ inside their environment without handing them his identity.
 
 ## Three principles
 
-1. Agents get only as much identity as they need: short-lived (1 h) tokens
-   limited to single repos instead of his credentials.
+1. Agents get only as much identity as they need: tokens limited to the repos
+   of their environment, from a socket that exists only inside that
+   environment, instead of his credentials.
 2. Environments are reproducible and disposable: built from the repo's
    devcontainer.json; code and agent state live outside.
 3. Anything sensitive needs the human: his SSH key asks for his fingerprint on
@@ -46,8 +47,11 @@ inside their environment without handing them his identity.
 - Identity and access (the heart), two channels:
   - Agent channel: a dedicated GitHub App. A credential service on the host holds
     its private key and mounts a Unix socket into every drone. Through it the drone
-    gets installation tokens, valid 1 h, only for the drone's granted repos; other
-    repos → 403. "The identity is the mount itself." A git credential helper (SSH
+    gets installation tokens only for the drone's granted repos; other repos → 403.
+    "The identity is the mount itself." Tokens are fetched fresh on every access
+    and never stored; the drone has continuous access as long as it runs. The 1 h
+    expiry only matters if a token leaks (then max. 1 h, only those repos). Access
+    is revoked immediately via `hatchery repo disconnect` or `slay`, not by expiry. A git credential helper (SSH
     URLs rewritten to HTTPS) and a gh wrapper fetch tokens automatically. No
     `gh auth login`, no SSH keys, no tokens on disk. Levin changes grants at runtime
     (`hatchery repo connect`); the list lives outside the drone, so the drone can't

@@ -1,6 +1,6 @@
 ---
 title: Identität und Zugriff
-description: 'Zwei getrennte Kanäle: kurzlebige, eng geschnittene Tokens für den Agenten und ein SSH-Schlüssel mit Fingerabdruck für den Menschen.'
+description: 'Zwei getrennte Kanäle: eng geschnittene Tokens für den Agenten und ein SSH-Schlüssel mit Fingerabdruck für den Menschen.'
 sidebar:
   position: 4
 ---
@@ -32,9 +32,9 @@ Umgebung anzulegen, zu befristen und zu erneuern ist mühsam und fehleranfällig
 ### Die Lösung
 
 Ich habe eine eigene **GitHub-App** angelegt und in meinen Organisationen
-installiert. Eine GitHub-App kann **Installation-Tokens** ausstellen: Tokens, die nach
-einer Stunde ablaufen und auf einzelne Repositories beschränkt werden können. Sie
-gehören nicht zu meinem Benutzerkonto, sondern zur App.
+installiert. Eine GitHub-App kann **Installation-Tokens** ausstellen, die auf
+einzelne Repositories beschränkt werden können. Sie gehören nicht zu meinem
+Benutzerkonto, sondern zur App.
 
 Den privaten Schlüssel der App kennt nur der Credential-Service auf dem Host. Jede
 Drohne bekommt von ihm einen **Unix-Socket** in den Container gemountet. Wer an
@@ -46,6 +46,13 @@ Es gibt keine Passwörter und keine Tokens auf der Festplatte der Drohne. **Die
 Identität ist der Mount selbst**: Welche Drohne fragt, ergibt sich daraus, welcher
 Socket es ist. Fälschen lässt sich das nicht, denn den Socket legt der Host an, nicht
 der Container.
+
+Solange die Drohne läuft, hat der Agent also durchgehend Zugriff auf seine Repos:
+Bei jedem Zugriff wird ein frischer Token geholt, gespeichert wird keiner. Dass
+Installation-Tokens nach einer Stunde ablaufen, ist nicht die Grenze, sondern nur
+ein Sicherheitsnetz, falls doch einmal einer aus der Drohne herausgelangt: Dann taugt
+er höchstens eine Stunde und nur für diese Repos. Ein Token aus `gh auth login` oder
+mein SSH-Schlüssel dagegen gilt überall und läuft nicht ab.
 
 ### Wie Git und `gh` davon erfahren
 
@@ -69,7 +76,11 @@ Braucht ein Agent ein zweites Repository, gebe ich es frei:
 hatchery repo connect levino/shipyard levino/levinkeller.de
 ```
 
-Das wirkt sofort, ohne Neustart. Die Liste der Freigaben liegt auf dem Host
+Das wirkt sofort, ohne Neustart. Genauso schnell geht es zurück:
+`hatchery repo disconnect` nimmt ein Repo aus der Freigabe, `hatchery slay` entfernt
+die Drohne samt Socket. Abwarten, bis ein Token abläuft, muss ich dafür nicht.
+
+Die Liste der Freigaben liegt auf dem Host
 **außerhalb** der Drohne. Eine Drohne kann ihre eigenen Rechte also nicht erweitern,
 auch nicht, indem sie eine Datei ändert und auf den nächsten Neustart wartet.
 
@@ -80,7 +91,7 @@ Hatchery noch einen Schritt weiter: Die Drohne bekommt gar keinen echten Token, 
 einen Platzhalter. Ihr Git-Verkehr läuft über einen Proxy pro Drohne, der jeden
 Request gegen die Freigabeliste prüft und erst dann den echten Token einsetzt. Der
 Agent sieht das Geheimnis nie. Das ist sauberer, aber auch mehr Aufwand – für GitHub
-reicht mir das Token-Modell mit einer Stunde Laufzeit.
+reicht mir das Token-Modell.
 
 ## Der Mensch-Kanal: SSH mit Fingerabdruck
 
@@ -121,7 +132,8 @@ Die beiden Kanäle decken unterschiedliche Bedürfnisse ab:
 | **Wer** | der Agent, jederzeit | ich, mit Finger |
 | **Wofür** | Code lesen und pushen, PRs, Issues | Login in Drohnen, Server, alles Heikle |
 | **Reichweite** | nur freigegebene Repos | alles, was ich darf |
-| **Lebensdauer** | eine Stunde pro Token | eine Signatur |
+| **Wenn es leakt** | Token taugt max. eine Stunde, nur für diese Repos | Schlüssel verlässt den Mac nicht, Signatur nur mit Finger |
+| **Entziehen** | sofort per `repo disconnect` oder `slay` | Finger nicht auflegen |
 | **Ohne mich** | läuft | steht |
 
 Der Agent kann seine Arbeit ohne mich erledigen. Alles, was darüber hinausgeht,

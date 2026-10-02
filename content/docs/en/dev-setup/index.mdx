@@ -49,8 +49,10 @@ Almost every decision in this setup follows from one of three principles.
 
 An agent working on repository A needs access to repository A. It doesn't need my
 GitHub account, my SSH keys or my access to the production server. So agents get
-**short-lived, narrowly scoped tokens** (valid for one hour, only for the repos of
-their environment) instead of my credentials.
+**narrowly scoped tokens** instead of my credentials: only for the repos of their
+environment, and only from a socket that exists solely inside that environment. As
+long as it runs, the agent has continuous access through it; I can revoke that
+immediately at any time.
 
 ### 2. Environments are reproducible and disposable
 

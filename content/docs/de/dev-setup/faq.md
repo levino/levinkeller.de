@@ -11,8 +11,9 @@ sidebar:
 
 Weil der Agent dann *ich* ist. Der Token aus `gh auth login` gilt für alle
 Repositories in allen Organisationen, auf die ich Zugriff habe, und er läuft nicht
-nach einer Stunde ab. Die Drohne bekommt stattdessen Tokens einer GitHub-App, die nur
-für ihre Repositories gelten. Mehr unter
+ab. Die Drohne holt sich stattdessen bei jedem Zugriff einen frischen Token einer
+GitHub-App, der nur für ihre Repositories gilt und, falls er doch einmal herausgelangt,
+nach spätestens einer Stunde wertlos ist. Mehr unter
 [Identität und Zugriff](/de/docs/dev-setup/identity).
 
 ## Warum keine SSH-Schlüssel in den Drohnen?

@@ -50,8 +50,10 @@ Fast jede Entscheidung in diesem Setup folgt aus einem von drei Grundsätzen.
 
 Ein Agent, der an Repository A arbeitet, braucht Zugriff auf Repository A. Er braucht
 nicht meinen GitHub-Account, nicht meine SSH-Schlüssel und nicht meinen Zugang zum
-Produktionsserver. Deshalb bekommen Agenten **kurzlebige, eng geschnittene Tokens**
-(eine Stunde gültig, nur für die Repos ihrer Umgebung) statt meiner Zugangsdaten.
+Produktionsserver. Deshalb bekommen Agenten **eng geschnittene Tokens** statt meiner
+Zugangsdaten: nur für die Repos ihrer Umgebung und nur aus einem Socket, den es
+ausschließlich in dieser Umgebung gibt. Solange sie läuft, hat der Agent darüber
+durchgehend Zugriff; entziehen kann ich ihn jederzeit sofort.
 
 ### 2. Umgebungen sind reproduzierbar und wegwerfbar
 

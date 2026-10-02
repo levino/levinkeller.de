@@ -39,8 +39,8 @@ export const flows: { id: FlowId; color: string; label: Text; info: Text }[] = [
     color: 'var(--color-info)',
     label: { de: 'Agenten-Kanal', en: 'Agent channel' },
     info: {
-      de: 'Der Agent holt sich am Socket seiner Drohne einen Token, der eine Stunde gilt und nur für die freigegebenen Repos taugt. Damit pusht er zu GitHub. Kein Mensch nötig.',
-      en: 'The agent asks its drone’s socket for a token that lives one hour and only works for the drone’s repos, then pushes to GitHub with it. No human needed.',
+      de: 'Der Agent holt sich bei jedem Zugriff am Socket seiner Drohne einen frischen Token, der nur für die freigegebenen Repos taugt. Damit pusht er zu GitHub. Kein Mensch nötig.',
+      en: 'On every access the agent asks its drone’s socket for a fresh token that only works for the drone’s repos, then pushes to GitHub with it. No human needed.',
     },
   },
   {
@@ -225,8 +225,8 @@ export const nodes: DiagramNode[] = [
     label: { de: 'Credential-Service', en: 'Credential service' },
     sub: { de: 'ein Socket pro Drohne', en: 'one socket per drone' },
     info: {
-      de: 'Kennt den Schlüssel der GitHub-App. Legt jeder Drohne einen Unix-Socket hinein und stellt darüber Ein-Stunden-Tokens aus – nur für die freigegebenen Repos.',
-      en: 'Holds the GitHub App key. Mounts a Unix socket into every drone and issues one-hour tokens through it – only for the granted repos.',
+      de: 'Kennt den Schlüssel der GitHub-App. Legt jeder Drohne einen Unix-Socket hinein und stellt darüber bei Bedarf frische Tokens aus – nur für die freigegebenen Repos.',
+      en: 'Holds the GitHub App key. Mounts a Unix socket into every drone and issues fresh tokens through it on demand – only for the granted repos.',
     },
     page: page('identity'),
   },
@@ -251,8 +251,8 @@ export const nodes: DiagramNode[] = [
     label: { de: 'GitHub', en: 'GitHub' },
     sub: { de: 'GitHub-App', en: 'GitHub App' },
     info: {
-      de: 'Hier liegt der Code. Die GitHub-App stellt Installation-Tokens aus, die nach einer Stunde ablaufen und auf einzelne Repos beschränkt sind.',
-      en: 'The code lives here. The GitHub App issues installation tokens that expire after one hour and are limited to single repos.',
+      de: 'Hier liegt der Code. Die GitHub-App stellt Installation-Tokens aus, die auf einzelne Repos beschränkt sind.',
+      en: 'The code lives here. The GitHub App issues installation tokens limited to single repos.',
     },
     page: page('identity'),
   },
@@ -316,7 +316,7 @@ export const edges: DiagramEdge[] = [
     target: 'github',
     flows: ['agent'],
     bend: 0,
-    label: { de: 'git push (1 h Token)', en: 'git push (1 h token)' },
+    label: { de: 'git push (frischer Token)', en: 'git push (fresh token)' },
   },
   // Unter dem Dev-Server hindurch: Handy und Claude reden ohne den Server.
   { source: 'phone', target: 'claude', flows: ['phone'], via: [450, 680] },

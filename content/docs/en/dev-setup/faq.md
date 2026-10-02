@@ -10,8 +10,9 @@ sidebar:
 ## Why not just `gh auth login` in the environment?
 
 Because then the agent *is* me. The token from `gh auth login` is valid for every
-repository in every organisation I have access to, and it doesn't expire after an hour.
-The drone gets tokens from a GitHub App instead, valid only for its repositories. More
+repository in every organisation I have access to, and it doesn't expire. Instead, the
+drone fetches a fresh GitHub App token on every access, valid only for its repositories
+and useless after an hour at most should it ever get out. More
 under [Identity and access](/en/docs/dev-setup/identity).
 
 ## Why no SSH keys in the drones?

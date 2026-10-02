@@ -15,8 +15,9 @@ Freiheit in ihrer Umgebung zu geben, ohne ihnen seine Identität zu überlassen.
 
 ## Drei Prinzipien
 
-1. Agenten bekommen nur so viel Identität wie nötig: kurzlebige (1 h), auf
-   einzelne Repos beschränkte Tokens statt seiner Zugangsdaten.
+1. Agenten bekommen nur so viel Identität wie nötig: auf die Repos ihrer
+   Umgebung beschränkte Tokens aus einem Socket, den es nur in dieser Umgebung
+   gibt, statt seiner Zugangsdaten.
 2. Umgebungen sind reproduzierbar und wegwerfbar: gebaut aus der
    devcontainer.json des Repos; Code und Agenten-Zustand liegen außerhalb.
 3. Was heikel ist, braucht den Menschen: sein SSH-Schlüssel verlangt bei jeder
@@ -46,8 +47,12 @@ Freiheit in ihrer Umgebung zu geben, ohne ihnen seine Identität zu überlassen.
 - Identität und Zugriff (das Herzstück), zwei Kanäle:
   - Agenten-Kanal: eine eigene GitHub-App. Ein Credential-Service auf dem Host
     kennt ihren privaten Schlüssel und mountet jeder Drohne einen Unix-Socket.
-    Darüber gibt es Installation-Tokens, 1 h gültig, nur für die freigegebenen
-    Repos der Drohne; andere Repos → 403. "Die Identität ist der Mount selbst."
+    Darüber gibt es Installation-Tokens nur für die freigegebenen Repos der
+    Drohne; andere Repos → 403. "Die Identität ist der Mount selbst." Tokens
+    werden bei jedem Zugriff frisch geholt und nie gespeichert; die Drohne hat
+    durchgehend Zugriff, solange sie läuft. Die 1-h-Gültigkeit zählt nur, falls
+    ein Token herausgelangt (dann max. 1 h, nur diese Repos). Entzogen wird
+    sofort per `hatchery repo disconnect` oder `slay`, nicht durch Ablauf.
     Git-Credential-Helper (SSH-URLs auf HTTPS umgeschrieben) und ein gh-Wrapper
     holen Tokens automatisch. Kein `gh auth login`, keine SSH-Schlüssel, keine
     Tokens auf der Platte. Freigaben ändert Levin zur Laufzeit
