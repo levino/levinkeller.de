@@ -86,7 +86,7 @@ https://levinkeller.de/en/docs/dev-setup/. The only sources are those pages and
 
 **HOST:** Okay, I don't want that. What does he do instead?
 
-**EXPERT:** He created his own GitHub App and installed it in his organizations. A GitHub App can issue installation tokens. They expire after one hour, they can be scoped down to individual repositories, and they belong to the app, not to his user account.
+**EXPERT:** He created his own GitHub App and installed it in his organizations. A GitHub App can issue installation tokens that can be scoped down to individual repositories, and they belong to the app, not to his user account.
 
 **HOST:** And who holds the app's private key?
 
@@ -98,11 +98,15 @@ https://levinkeller.de/en/docs/dev-setup/. The only sources are those pages and
 
 **HOST:** I like that. It's like a pneumatic tube system: whoever is attached to the tube is automatically the sender.
 
-**EXPERT:** Nice. For the agent it just feels like a normal logged-in machine: a git credential helper and a wrapper around gh fetch tokens from the socket, and git push just works. Every drone also gets a CLAUDE dot md with three rules: never run gh auth login, never hard-code tokens, and if authentication fails, say so instead of building a workaround.
+**EXPERT:** Nice. For the agent it just feels like a normal logged-in machine: a git credential helper and a wrapper around gh fetch a fresh token from the socket on every access, and git push just works. Every drone also gets a CLAUDE dot md with three rules: never run gh auth login, never hard-code tokens, and if authentication fails, say so instead of building a workaround.
+
+**HOST:** Wait, a fresh one every time? I thought those tokens expire after an hour. So the agent finds the door locked after lunch?
+
+**EXPERT:** No, and that's the part people get wrong. As long as the drone runs, the agent has continuous access, because it just fetches a new token every time. The boundary isn't the clock. It's the grant list, and the fact that tokens only come out of that one socket, which only exists inside that drone. The hour only matters if a token ever leaks: then it's useless within an hour at most, and it only ever worked for those repos. A gh auth login token or your personal SSH key works everywhere, with no expiry at all.
 
 **HOST:** What if the agent needs a second repo?
 
-**EXPERT:** Levin grants it with hatchery repo connect. It takes effect immediately. And the list lives outside the drone, so a drone can't widen its own permissions.
+**EXPERT:** Levin grants it with hatchery repo connect. It takes effect immediately, and so does taking it back: repo disconnect, or just remove the drone. And the list lives outside the drone, so a drone can't widen its own permissions.
 
 **HOST:** And the second channel, the human one?
 
@@ -116,9 +120,9 @@ https://levinkeller.de/en/docs/dev-setup/. The only sources are those pages and
 
 **HOST:** Agent forwarding on a leash.
 
-**EXPERT:** That's what he calls it. And he's honest that he sometimes loosens the leash. If an agent needs a server for an hour, he keeps a shared SSH connection open. But deliberately, and only for a while.
+**EXPERT:** That's what he calls it. And he's honest that he sometimes loosens the leash. If an agent needs a server for a longer stretch, he keeps a shared SSH connection open. But deliberately, and only for a while.
 
-**HOST:** So if I sum it up: the agent channel works without Levin, but only for granted repos, one hour per token. The human channel can do everything Levin can do, but only with his finger on the sensor.
+**HOST:** So if I sum it up: the agent channel works without Levin for as long as the drone runs, but only for granted repos. The human channel can do everything Levin can do, but only with his finger on the sensor.
 
 **EXPERT:** Exactly. Without him, one keeps running and the other stops. That difference is the core of the whole setup.
 
@@ -198,7 +202,7 @@ https://levinkeller.de/en/docs/dev-setup/. The only sources are those pages and
 
 **HOST:** So what do I take away if my name isn't Levin and I don't want to run Hatchery?
 
-**EXPERT:** The ideas work without it. A GitHub App for short-lived agent tokens. A hardware-bound SSH key for the human. And environments you can throw away. Hatchery is built for exactly his case: one human, one server, GitHub.
+**EXPERT:** The ideas work without it. A GitHub App for agent tokens that only work for granted repos. A hardware-bound SSH key for the human. And environments you can throw away. Hatchery is built for exactly his case: one human, one server, GitHub.
 
 **HOST:** And what does all this cost?
 

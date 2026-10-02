@@ -86,7 +86,7 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **MODERATOR:** Okay, das will ich nicht. Was macht Levin stattdessen?
 
-**EXPERTIN:** Er hat eine eigene GitHub-App angelegt und in seinen Organisationen installiert. So eine App kann Installation-Tokens ausstellen. Die laufen nach einer Stunde ab und lassen sich auf einzelne Repositories beschränken. Und sie gehören der App, nicht seinem Benutzerkonto.
+**EXPERTIN:** Er hat eine eigene GitHub-App angelegt und in seinen Organisationen installiert. So eine App kann Installation-Tokens ausstellen, die sich auf einzelne Repositories beschränken lassen. Und sie gehören der App, nicht seinem Benutzerkonto.
 
 **MODERATOR:** Und wer hält den Schlüssel der App?
 
@@ -98,11 +98,15 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **MODERATOR:** Das ist hübsch. Wie bei einer Rohrpost: Wer am Rohr hängt, ist automatisch der Absender.
 
-**EXPERTIN:** Schönes Bild. Für den Agenten fühlt sich das an wie ein ganz normal eingeloggtes System. Ein Git-Credential-Helper fragt bei jedem Zugriff am Socket nach einem Token, ein Wrapper um gh macht dasselbe. git push und gh pr create funktionieren einfach. Und in jeder Drohne steht in der CLAUDE-Punkt-md: niemals gh auth login, niemals Tokens hart einbauen, und bei Authentifizierungsfehlern Bescheid sagen, statt drumherum zu bauen.
+**EXPERTIN:** Schönes Bild. Für den Agenten fühlt sich das an wie ein ganz normal eingeloggtes System. Ein Git-Credential-Helper fragt bei jedem Zugriff am Socket nach einem frischen Token, ein Wrapper um gh macht dasselbe. git push und gh pr create funktionieren einfach. Und in jeder Drohne steht in der CLAUDE-Punkt-md: niemals gh auth login, niemals Tokens hart einbauen, und bei Authentifizierungsfehlern Bescheid sagen, statt drumherum zu bauen.
+
+**MODERATOR:** Moment, bei jedem Zugriff ein neuer? Ich dachte, die laufen nach einer Stunde ab. Steht der Agent dann nach dem Mittagessen vor verschlossener Tür?
+
+**EXPERTIN:** Nein, das wird gern missverstanden. Solange die Drohne läuft, hat der Agent durchgehend Zugriff, er holt sich ja jedes Mal einen neuen. Die Grenze ist nicht die Uhr, sondern die Freigabeliste, und dass es Tokens nur aus diesem einen Socket gibt, der nur in dieser Drohne existiert. Die Stunde zählt erst, wenn doch mal einer leakt: Dann ist er nach spätestens einer Stunde wertlos und galt ohnehin nur für diese Repos. Ein Token aus gh auth login oder dein privater SSH-Schlüssel gilt dagegen überall, ohne Ablaufdatum.
 
 **MODERATOR:** Und wenn der Agent ein zweites Repo braucht?
 
-**EXPERTIN:** Dann gibt Levin es mit hatchery repo connect frei. Das wirkt sofort. Und die Liste liegt außerhalb der Drohne, die kann ihre eigenen Rechte also nicht erweitern.
+**EXPERTIN:** Dann gibt Levin es mit hatchery repo connect frei. Das wirkt sofort, und das Zurücknehmen genauso: repo disconnect, oder er räumt die Drohne einfach ab. Und die Liste liegt außerhalb der Drohne, die kann ihre eigenen Rechte also nicht erweitern.
 
 **MODERATOR:** Und der zweite Kanal, der für den Menschen?
 
@@ -116,9 +120,9 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **MODERATOR:** Agent-Forwarding mit Leine.
 
-**EXPERTIN:** So nennt er es. Und er ist ehrlich: Manchmal lockert er die Leine. Wenn ein Agent eine Stunde lang auf einem Server arbeiten soll, lässt er eine geteilte SSH-Verbindung offen, damit er nicht jede Minute bestätigen muss. Aber als bewusste Entscheidung auf Zeit, nicht als Dauerzustand.
+**EXPERTIN:** So nennt er es. Und er ist ehrlich: Manchmal lockert er die Leine. Wenn ein Agent länger am Stück auf einem Server arbeiten soll, lässt er eine geteilte SSH-Verbindung offen, damit er nicht jede Minute bestätigen muss. Aber als bewusste Entscheidung auf Zeit, nicht als Dauerzustand.
 
-**MODERATOR:** Wenn ich das zusammenfasse: Der Agenten-Kanal läuft ohne Levin, aber nur für freigegebene Repos, eine Stunde pro Token. Der Mensch-Kanal kann alles, was Levin darf, aber nur mit seinem Finger.
+**MODERATOR:** Wenn ich das zusammenfasse: Der Agenten-Kanal läuft ohne Levin, solange die Drohne lebt, aber nur für freigegebene Repos. Der Mensch-Kanal kann alles, was Levin darf, aber nur mit seinem Finger.
 
 **EXPERTIN:** Exakt. Ohne ihn läuft der eine, und der andere steht. Dieser Unterschied ist der Kern des ganzen Setups.
 
@@ -198,7 +202,7 @@ und `public/de/docs/dev-setup/llms.txt`. Vertont mit `scripts/tts/podcast_verton
 
 **MODERATOR:** Was nimmst du mit, wenn du nicht Levin heißt und kein Hatchery benutzen willst?
 
-**EXPERTIN:** Die Ideen funktionieren auch ohne Hatchery. Eine GitHub-App für kurzlebige Agenten-Tokens. Ein hardwaregebundener SSH-Schlüssel für den Menschen. Und Umgebungen, die man wegwerfen kann. Hatchery ist für genau seinen Fall gebaut: ein Mensch, ein Server, GitHub.
+**EXPERTIN:** Die Ideen funktionieren auch ohne Hatchery. Eine GitHub-App für Agenten-Tokens, die nur für freigegebene Repos gelten. Ein hardwaregebundener SSH-Schlüssel für den Menschen. Und Umgebungen, die man wegwerfen kann. Hatchery ist für genau seinen Fall gebaut: ein Mensch, ein Server, GitHub.
 
 **MODERATOR:** Und was kostet der Spaß?
 
