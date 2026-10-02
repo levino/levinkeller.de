@@ -1,6 +1,6 @@
 {
   "stimme": "Charon",
-  "modell": "gemini-3.8-flash-tts",
+  "modell": "gemini-3.8-flash-lite-tts",
   "stilAnweisung": {
     "de": "Stil: Klarer, souveräner Erzähler eines Erklärvideos für Entwickler, deutsch. Zügiges, gesprächiges Tempo ohne lange Pausen, mit einem leisen Augenzwinkern.",
     "en": "Style: Clear, confident narrator of an explainer video for developers. Brisk, conversational pace without long pauses, with a quiet touch of dry wit."

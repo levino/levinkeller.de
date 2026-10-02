@@ -1,56 +1,98 @@
 [
   {
     "nummer": 1,
-    "titel": "Die Frage",
-    "text": "Ich schreibe kaum noch Code von Hand. Meistens arbeiten mehrere Claude-Code-Agenten gleichzeitig an verschiedenen Repositories, und ich lese, lenke und entscheide. Bleibt eine Frage: Wie gibt man Agenten so viel Freiheit, ohne ihnen die eigene digitale Identität auszuhändigen?",
-    "dauer": 16.686
+    "titel": "Viele Agenten, ein Arbeitsplatz",
+    "text": "Ich schreibe kaum noch Code von Hand. Mehrere Claude-Code-Agenten arbeiten gleichzeitig an verschiedenen Repositories, und ich lese, lenke und entscheide. Dafür braucht es einen Arbeitsplatz, der zwei Fragen beantwortet: Wo laufen all diese Agenten, bequem und von überall erreichbar? Und was dürfen sie, ohne meine Identität zu bekommen?",
+    "dauer": 21.326
   },
   {
     "nummer": 2,
-    "titel": "Server statt Laptop",
-    "text": "Es beginnt beim Blech. Alles läuft auf einem gebrauchten Bare-Metal-Server: ein älterer Vierkerner mit zweiundsechzig Gigabyte Arbeitsspeicher. Agenten brauchen vor allem Speicher, nicht Rechenleistung. Der Laptop ist damit nur noch ein Terminal mit gutem Bildschirm. Und die Agenten arbeiten weiter, wenn der Deckel zu ist.",
-    "dauer": 17.046
+    "titel": "Die Maschine mieten",
+    "text": "Die wichtigste Entscheidung im ganzen Setup: Die Maschine wird gemietet, nicht gekauft. Bei mir: ein gebrauchter Bare-Metal-Server aus der Hetzner-Serverbörse mit zweiundsechzig Gigabyte Arbeitsspeicher. Er läuft rund um die Uhr und kostet einen zweistelligen Eurobetrag im Monat. Fünf bis zehn Umgebungen laufen dort gleichzeitig, und knapp wird der Speicher, nicht die Rechenzeit.",
+    "dauer": 20.966
   },
   {
     "nummer": 3,
-    "titel": "Tailnet: Erreichbarkeit, nicht Sicherheit",
-    "text": "Jede Umgebung kommt als eigener Rechner, mit eigenem Namen, in ein privates WireGuard-Netz, ein Tailnet. Keine Ports merken, nichts ist zum Internet offen. Aber das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Hinein komme ich trotzdem nur mit meinem Schlüssel.",
-    "dauer": 18.846
+    "titel": "Kein fetter Laptop",
+    "text": "Die Alternative wäre ein Laptop mit vierundsechzig Gigabyte. Der kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet und hat nur einen Akku und einen Lüfter. Zehn Agenten mit npm install, und er wird laut, heiß und leer. Mein Laptop ist ein MacBook Neo: leicht, lange Akkulaufzeit, schönes Display. Er bleibt kühl, denn gerechnet wird woanders. Und klappe ich ihn zu, arbeiten die Agenten weiter.",
+    "dauer": 22.646
   },
   {
     "nummer": 4,
-    "titel": "Hatchery und Drohnen",
-    "text": "Verwaltet werden die Umgebungen von Hatchery, einem kleinen Open-Source-Werkzeug. Ein Devcontainer pro Repository, gebaut aus der devcontainer-Punkt-json des Repos selbst. Ganz im Stil der Zerg heißen sie Drohnen: Man spawnt sie, gräbt sie ein und erledigt sie. Eine Drohne ist wegwerfbar. Der Code und das Gedächtnis von Claude liegen auf dem Host.",
-    "dauer": 22.886
+    "titel": "Arbeiten von überall",
+    "text": "Weil die Arbeit auf dem Server lebt, ist egal, wo ich bin: am Schreibtisch, im Zug oder nur mit dem Handy. Reicht der Server nicht mehr, kündige ich ihn und miete einen größeren. Und fällt er aus, liegt der Code trotzdem auf GitHub. Jede Umgebung lässt sich aus ihrer devcontainer-Punkt-json auf einem anderen Rechner neu bauen.",
+    "dauer": 17.006
   },
   {
     "nummer": 5,
-    "titel": "Der Agenten-Kanal",
-    "text": "Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Bei jedem Zugriff holt sich git dort einen frischen Token, nur für die Repositories dieser Drohne. Alles andere: 403. Gespeichert wird nichts. Die Identität ist der Mount selbst. Und ein geleakter Token ist nach spätestens einer Stunde wertlos.",
-    "dauer": 26.606
+    "titel": "Sprechen statt tippen",
+    "text": "Getippt wird übrigens wenig. Ich spreche. Mit Whispering, einem Open-Source-Werkzeug für Speech-to-Text, erkläre ich einem Agenten zwei Minuten lang, was ich will. Das ist schneller als Tippen und meistens genauer, weil man beim Sprechen mehr Kontext gibt.",
+    "dauer": 13.526
   },
   {
     "nummer": 6,
-    "titel": "Der Mensch-Kanal",
-    "text": "Der Mensch-Kanal bin ich. Mein SSH-Schlüssel liegt im Secure Enclave meines Macs und lässt sich nicht exportieren. Jede einzelne Signatur will meinen Fingerabdruck. Selbst mit Agent-Forwarding kann ein Agent also nicht heimlich auf einen Produktionsserver springen. Er kann mich höchstens fragen.",
-    "dauer": 16.006
+    "titel": "Jede Umgebung ein Rechner",
+    "text": "Meine Geräte und alle Umgebungen hängen in einem privaten WireGuard-Netz, einem Tailnet. Jede Umgebung ist darin ein eigener Rechner mit eigenem Namen. Den Dev-Server einer Umgebung rufe ich einfach über ihren Namen auf, vom Laptop wie vom Handy. Keine Ports verteilen, nichts offen zum Internet. Aber: Das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Hinein komme ich nur mit meinem Schlüssel.",
+    "dauer": 22.726
   },
   {
     "nummer": 7,
-    "titel": "Der Arbeitsplatz",
-    "text": "Mein Arbeitsplatz ist ein Terminal: per SSH in eine Drohne, zellij, mehrere Agenten nebeneinander. Sie laufen ohne Rückfragen, denn die Drohne ist die Sandbox. Sie ist wegwerfbar, ihr Token ist begrenzt, und alles Heikle braucht meinen Finger. Unterwegs führe ich die Sitzung auf dem Handy weiter, über die Remote Control von Claude.",
-    "dauer": 17.846
+    "titel": "Hatchery: ein Befehl",
+    "text": "Die Umgebungen verwaltet Hatchery, ein kleines Open-Source-Werkzeug. Ein Befehl, hatchery spawn mit dem Namen des Repos, und Hatchery baut daraus einen Devcontainer, aus der devcontainer-Punkt-json im Repo selbst. Dazu steckt es hinein, was ich brauche: SSH-Server, Tailscale, GitHub-CLI, Claude Code und zellij. Eine Umgebung pro Repository, viele parallel.",
+    "dauer": 23.246
   },
   {
     "nummer": 8,
-    "titel": "Wo es endet",
-    "text": "Dieses Setup endet dort, wo der Code bei GitHub ankommt. Ab da übernehmen CI und Argo CD. Agenten pushen Branches und öffnen Pull Requests. Zugang zum Cluster brauchen sie dafür nicht.",
-    "dauer": 13.806
+    "titel": "Wegwerfbar, nicht vergesslich",
+    "text": "Im Stil der Zerg heißen sie Drohnen: Man spawnt sie, gräbt sie ein und erledigt sie. Eine Drohne ist wegwerfbar. Code und Claude-Zustand, also Login, Gedächtnis und Verlauf, liegen auf dem Host. Nach einem Neubau weiß der Agent noch, woran er war. Die Repos bleiben portabel, dieselbe Konfiguration läuft auch in Codespaces. Und meine dotfiles kommen in jede Drohne.",
+    "dauer": 21.406
   },
   {
     "nummer": 9,
+    "titel": "Der Arbeitsplatz",
+    "text": "Mein Arbeitsplatz ist ein Terminal: per SSH in eine Drohne, dort zellij, mehrere Agenten nebeneinander. Die Sitzung lebt weiter, wenn die Verbindung abreißt. Zug im Tunnel, egal: Beim nächsten Verbinden ist alles noch da, und die Agenten haben weitergearbeitet. Zwischen den Drohnen wechsle ich wie zwischen Kollegen: Wer ist fertig, wer hat eine Frage, wer braucht eine Entscheidung?",
+    "dauer": 21.246
+  },
+  {
+    "nummer": 10,
+    "titel": "Ohne Rückfragen",
+    "text": "Rückfragen schalte ich in der Drohne ab. Das klingt gefährlicher, als es ist, denn die Drohne ist die Sandbox: wegwerfbar, ihr Token reicht nur für ihre Repos, und alles, was meine Identität braucht, braucht meinen Finger. Ein Agent, der ständig fragt, ist kein Agent, sondern ein sehr langsamer Kollege.",
+    "dauer": 17.526
+  },
+  {
+    "nummer": 11,
+    "titel": "Warum nicht Codespaces?",
+    "text": "Warum nicht GitHub Codespaces? Per SSH komme ich dort nicht einfach hinein, nur durch einen Tunnel. Also lief Claude Code im Terminal von VS Code, mit Darstellungsfehlern und Sitzungen, die bei jedem Abbruch weg waren. Und nach dreißig Minuten Leerlauf hält Codespaces die Umgebung an. Für Agenten, die stundenlang arbeiten, ist das nutzlos. Eine Drohne ist ein normaler Rechner, und angehalten wird nichts.",
+    "dauer": 22.006
+  },
+  {
+    "nummer": 12,
+    "titel": "Vom Handy aus",
+    "text": "Vom Handy aus nutze ich kein SSH, sondern die Remote Control von Claude Code. Die laufende Sitzung führe ich in der Claude-App weiter: sehen, was der Agent tut, seine Fragen beantworten, die nächste Aufgabe geben, gern per Spracheingabe. Nur wenn er meinen SSH-Schlüssel braucht, muss ich an den Mac.",
+    "dauer": 16.166
+  },
+  {
+    "nummer": 13,
+    "titel": "Der Agenten-Kanal",
+    "text": "Bleibt die zweite Frage: Was dürfen die Agenten? Dafür gibt es zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host legt jeder Drohne einen Unix-Socket hinein. Bei jedem Zugriff holt sich git dort einen frischen Token, nur für die freigegebenen Repositories. Alles andere: 403. Gespeichert wird nichts, die Identität ist der Mount selbst. Freigaben ändere ich zur Laufzeit und entziehe sie sofort. Die eine Stunde Gültigkeit zählt nur, falls ein Token doch herausgelangt.",
+    "dauer": 31.006
+  },
+  {
+    "nummer": 14,
+    "titel": "Der Mensch-Kanal",
+    "text": "Der Mensch-Kanal bin ich. Mein SSH-Schlüssel liegt im Secure Enclave meines Macs und lässt sich nicht exportieren. Jede einzelne Signatur will meinen Fingerabdruck. Auch per Agent-Forwarding hängt er an der Leine: Ein Agent kann nicht heimlich auf einen Produktionsserver springen. Er kann mich höchstens fragen.",
+    "dauer": 17.206
+  },
+  {
+    "nummer": 15,
+    "titel": "Wo es endet",
+    "text": "Das Setup endet bei GitHub. Agenten pushen Branches und öffnen Pull Requests, ab da übernehmen CI und Argo CD. Zugang zum Cluster brauchen sie dafür nicht.",
+    "dauer": 10.286
+  },
+  {
+    "nummer": 16,
     "titel": "Mehr lesen",
     "text": "Die ganze Architektur, mit Begründungen und Alternativen, steht auf levinkeller Punkt de, unter Docs, Dev-Setup. Oder gib die llms Punkt txt deiner eigenen KI und quetsch sie aus.",
-    "dauer": 11.126
+    "dauer": 11.966
   }
 ]
