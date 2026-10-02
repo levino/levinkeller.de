@@ -38,8 +38,14 @@ das Tailnet klemmt. Siehe [Netz](/de/docs/dev-setup/network).
 
 ## Warum nicht GitHub Codespaces oder DevPod?
 
-Codespaces ist bequem, aber für viele dauerhaft laufende Umgebungen teuer und an
-GitHub gebunden. DevPod hält den Zustand auf dem Client, ich will aber von jedem Gerät
+Bei Codespaces war die Arbeitsweise das Problem. Per SSH wie auf jeden anderen
+Rechner komme ich nicht hinein, nur über den Tunnel `gh codespace ssh`. Claude Code
+lief deshalb im Terminal von VS Code, mit Darstellungsfehlern, Trägheit und
+abreißenden Sitzungen. Und nach einer Leerlaufzeit (Standard: 30 Minuten) hält
+Codespaces die Umgebung an, was zu Agenten, die stundenlang im Hintergrund arbeiten,
+nicht passt. Teuer bei vielen Dauer-Umgebungen und an GitHub gebunden ist es
+obendrein. Eine Drohne erreiche ich mit ganz normalem `ssh` über das Tailnet, die
+zellij-Sitzung überlebt Verbindungsabbrüche, und nichts geht in den Leerlauf. DevPod hält den Zustand auf dem Client, ich will aber von jedem Gerät
 dasselbe sehen. Und keine der beiden Lösungen beantwortet gut, wie der Agent an
 GitHub kommt, ohne meine Identität zu bekommen. Die Repositories bleiben aber
 kompatibel: Jede `devcontainer.json`, die Hatchery nutzt, funktioniert auch in

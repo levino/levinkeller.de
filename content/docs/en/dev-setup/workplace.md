@@ -17,6 +17,8 @@ spin up sub-agents of their own for research or reviews when needed.
 zellij has an important side effect: the session lives on in the drone when the
 connection drops. Close the laptop, the train enters a tunnel, whatever – next time I
 connect everything is still there, and the agents kept working in the meantime.
+That's exactly what I was missing with GitHub Codespaces: there Claude Code ran in the
+VS Code terminal, and when the connection dropped, the session was gone.
 
 Usually I have several drones open at once, one per project. I switch between them the
 way you switch between colleagues: who's done, who has a question, who needs a decision?

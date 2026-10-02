@@ -79,7 +79,12 @@ Freiheit in ihrer Umgebung zu geben, ohne ihnen seine Identität zu überlassen.
 
 - `gh auth login` / SSH-Key in der Umgebung: gibt Agenten die volle Identität.
 - Fine-grained PATs: mühsam pro Umgebung anzulegen und zu erneuern.
-- GitHub Codespaces: teuer bei vielen Dauer-Umgebungen, Anbieterbindung.
+- GitHub Codespaces: kein einfaches SSH wie auf jeden anderen Rechner (nur Tunnel
+  `gh codespace ssh`), daher Claude Code im VS-Code-Terminal mit Darstellungsfehlern,
+  Trägheit, abreißenden Sitzungen; Leerlauf-Timeout (Standard 30 min) hält Umgebungen
+  an, passt nicht zu stundenlang laufenden Agenten. Dazu teuer, Anbieterbindung.
+  Drohnen: normales SSH übers Tailnet, zellij überlebt Abbrüche, nichts geht in den
+  Leerlauf.
 - DevPod: Zustand liegt beim Client. Coder: bringt Plattform/Kubernetes mit.
 - Starker Laptop: unnötig, wenn der Server rechnet.
 

@@ -45,8 +45,9 @@ And the agents keep working when the laptop lid is closed.
   laptop gets loud, hot and drained, and every trip interrupts the work.
 - **Cloud VMs billed by the hour** (AWS, GCP, Hetzner Cloud). Flexible, but for a
   machine that runs all day anyway, much more expensive than dedicated hardware.
-- **Hosted environments** like GitHub Codespaces. Convenient, but billed per hour and
-  core, and you're tied to one vendor. More on that under
+- **Hosted environments** like GitHub Codespaces. No plain SSH access, environments get
+  stopped when idle, billed per hour and core, and you're tied to one vendor. More on
+  that under
   [Hatchery](/en/docs/dev-setup/hatchery).
 - **A machine at home.** Works, but depends on your home connection and your home
   power supply.

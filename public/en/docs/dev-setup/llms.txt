@@ -76,7 +76,11 @@ inside their environment without handing them his identity.
 
 - `gh auth login` / SSH key in the environment: gives agents the full identity.
 - Fine-grained PATs: tedious to create and renew per environment.
-- GitHub Codespaces: expensive for many always-on environments, vendor lock-in.
+- GitHub Codespaces: no plain SSH like to any other machine (only the
+  `gh codespace ssh` tunnel), so Claude Code ran in the VS Code terminal with rendering
+  glitches, sluggishness, dropped sessions; idle timeout (default 30 min) stops
+  environments, doesn't fit agents running for hours. Also expensive, vendor lock-in.
+  Drones: plain SSH over the tailnet, zellij survives disconnects, nothing idles out.
 - DevPod: state lives on the client. Coder: brings a platform/Kubernetes along.
 - Powerful laptop: unnecessary when the server does the work.
 

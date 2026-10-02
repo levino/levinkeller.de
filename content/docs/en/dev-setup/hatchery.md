@@ -68,9 +68,18 @@ starts. That's the interesting part and it has
 
 Before writing Hatchery I tried what exists:
 
-- **GitHub Codespaces.** Very convenient, but billed by hours and cores, tied to GitHub
-  and limited to fixed machine sizes. Ten environments running in parallel all day gets
-  expensive.
+- **GitHub Codespaces.** What killed it was the way of working, not the price. I can't
+  just SSH into a codespace like into any other machine. There's only
+  `gh codespace ssh`, a tunnel through the GitHub CLI that also needs an SSH server in
+  the image. So I ended up running Claude Code in the VS Code terminal (often VS Code in
+  the browser), and that was painful: rendering glitches, sluggishness, and again and
+  again the connection dropped and the session was gone. On top of that, Codespaces
+  stops an environment once it sits unused for a while (default: 30 minutes idle).
+  Agents working in the background for hours don't fit that model. Then there's the
+  money: billed by hours and cores, fixed machine sizes, tied to GitHub. Ten
+  environments running in parallel all day gets expensive. A drone, by contrast, is a
+  perfectly normal machine on the tailnet: `ssh` in, start zellij, and the session
+  survives every dropped connection. Nothing gets stopped.
 - **DevPod.** Good idea, but the state lives on the client: the laptop you created the
   environments on is the one that knows about them. I want to see the same thing from
   the phone, the laptop and the server.

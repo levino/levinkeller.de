@@ -48,8 +48,9 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
   wird der Laptop laut, heiß und leer, und jede Reise unterbricht die Arbeit.
 - **Cloud-VMs nach Stunden** (AWS, GCP, Hetzner Cloud). Flexibel, aber für eine
   Maschine, die ohnehin den ganzen Tag läuft, deutlich teurer als dedizierte Hardware.
-- **Gehostete Umgebungen** wie GitHub Codespaces. Bequem, aber pro Stunde und Kern
-  bezahlt, und man ist an einen Anbieter gebunden. Mehr dazu bei
+- **Gehostete Umgebungen** wie GitHub Codespaces. Kein normaler SSH-Zugang, Umgebungen
+  werden im Leerlauf angehalten, pro Stunde und Kern bezahlt, und man ist an einen
+  Anbieter gebunden. Mehr dazu bei
   [Hatchery](/de/docs/dev-setup/hatchery).
 - **Ein Rechner zu Hause.** Funktioniert, hängt aber an der heimischen Leitung und
   am heimischen Strom.

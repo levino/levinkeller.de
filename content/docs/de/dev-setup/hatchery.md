@@ -71,9 +71,19 @@ eine [eigene Seite](/de/docs/dev-setup/identity).
 
 Bevor ich Hatchery geschrieben habe, habe ich das Vorhandene ausprobiert:
 
-- **GitHub Codespaces.** Sehr bequem, aber bezahlt nach Stunden und Kernen, an GitHub
-  gebunden und mit festen Maschinengrößen. Für zehn parallel laufende Umgebungen den
-  ganzen Tag wird das teuer.
+- **GitHub Codespaces.** Gescheitert ist es an der Arbeitsweise, nicht am Preis. In
+  einen Codespace komme ich nicht einfach per SSH wie auf jeden anderen Rechner. Es
+  gibt nur `gh codespace ssh`, einen Tunnel über die GitHub-CLI, der dazu noch einen
+  SSH-Server im Image braucht. Also lief Claude Code bei mir im Terminal von VS Code
+  (oft VS Code im Browser), und das war zäh: Darstellungsfehler, Trägheit, und immer
+  wieder riss die Verbindung ab und die Sitzung war weg. Außerdem hält Codespaces eine
+  Umgebung an, sobald sie eine Weile nicht benutzt wird (Standard: 30 Minuten
+  Leerlauf). Agenten, die stundenlang im Hintergrund arbeiten, passen in dieses Modell
+  nicht. Dazu kommt das Geld: Abgerechnet wird nach Stunden und Kernen, mit festen
+  Maschinengrößen und fest an GitHub gebunden. Für zehn parallel laufende Umgebungen
+  den ganzen Tag wird das teuer. Eine Drohne dagegen ist ein ganz normaler Rechner im
+  Tailnet: `ssh` drauf, zellij starten, und die Sitzung überlebt jeden
+  Verbindungsabbruch. Angehalten wird nichts.
 - **DevPod.** Gute Idee, aber der Zustand liegt beim Client: Welche Umgebungen es
   gibt, weiß der Laptop, auf dem man sie angelegt hat. Ich will vom Handy, vom Laptop
   und vom Server aus dasselbe sehen.

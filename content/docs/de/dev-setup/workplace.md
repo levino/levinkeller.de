@@ -18,7 +18,8 @@ starten bei Bedarf eigene Sub-Agenten für Recherche oder Reviews.
 zellij hat einen wichtigen Nebeneffekt: Die Sitzung lebt auf der Drohne weiter, wenn
 die Verbindung abreißt. Laptop zuklappen, Zug fährt in den Tunnel, egal – beim
 nächsten Verbinden ist alles noch da, und die Agenten haben in der Zwischenzeit
-weitergearbeitet.
+weitergearbeitet. Genau das hat mir bei GitHub Codespaces gefehlt: Dort lief Claude
+Code im Terminal von VS Code, und wenn die Verbindung abriss, war die Sitzung weg.
 
 Meist habe ich mehrere Drohnen gleichzeitig offen, eine pro Projekt. Zwischen ihnen
 wechsle ich, wie man zwischen Kollegen wechselt: Wer ist fertig, wer hat eine Frage,

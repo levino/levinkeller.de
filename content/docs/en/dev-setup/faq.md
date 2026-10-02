@@ -36,8 +36,13 @@ tailnet too, as an emergency exit when the tailnet acts up. See
 
 ## Why not GitHub Codespaces or DevPod?
 
-Codespaces is convenient, but expensive for many permanently running environments and
-tied to GitHub. DevPod keeps the state on the client, and I want to see the same thing
+With Codespaces the way of working was the problem. I can't SSH into one like into any
+other machine, only through the `gh codespace ssh` tunnel. So Claude Code ran in the VS
+Code terminal, with rendering glitches, sluggishness and dropped sessions. And after an
+idle timeout (default: 30 minutes) Codespaces stops the environment, which doesn't fit
+agents working in the background for hours. It's also expensive for many always-on
+environments and tied to GitHub. A drone I reach with plain `ssh` over the tailnet, the
+zellij session survives dropped connections, and nothing idles out. DevPod keeps the state on the client, and I want to see the same thing
 from every device. And neither has a good answer to how the agent gets to GitHub without
 getting my identity. The repositories stay compatible though: every `devcontainer.json`
 Hatchery uses also works in Codespaces.
