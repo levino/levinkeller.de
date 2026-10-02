@@ -1,0 +1,12 @@
+{
+  "stimme": "Charon",
+  "modell": "gemini-3.8-flash-tts",
+  "stilAnweisung": {
+    "de": "Stil: Klarer, souveräner Erzähler eines Erklärvideos für Entwickler, deutsch. Zügiges, gesprächiges Tempo ohne lange Pausen, mit einem leisen Augenzwinkern.",
+    "en": "Style: Clear, confident narrator of an explainer video for developers. Brisk, conversational pace without long pauses, with a quiet touch of dry wit."
+  },
+  "_hinweis": "Die Stil-Anweisung wird in eckigen Klammern vor den Text gesetzt; ohne Klammern liest das Modell sie mit vor. Nach einem Stimmwechsel: python3 skripte/vertonen.py de en --alle",
+  "luftVorSzeneInSekunden": 0.35,
+  "luftNachSzeneInSekunden": 0.7,
+  "abspannHaltenInSekunden": 4
+}

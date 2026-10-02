@@ -1,0 +1,56 @@
+[
+  {
+    "nummer": 1,
+    "titel": "The question",
+    "text": "I hardly write code by hand anymore. Several Claude Code agents work on different repositories at once, and I read, steer and decide. Which raises one question: how do you give agents that much freedom without handing them your digital identity?",
+    "dauer": 14.806
+  },
+  {
+    "nummer": 2,
+    "titel": "A server, not a laptop",
+    "text": "It starts with the metal. Everything runs on one used bare-metal server: an older quad-core with sixty-two gigabytes of RAM. Agents need memory more than compute. So the laptop is just a terminal with a nice screen. And the agents keep working when the lid is closed.",
+    "dauer": 14.566
+  },
+  {
+    "nummer": 3,
+    "titel": "Tailnet: reachability, not security",
+    "text": "Every environment joins a private WireGuard network, a tailnet, as a machine of its own, with its own name. No port juggling, nothing open to the internet. But the tailnet is about reachability, not security. Getting into an environment still takes my key.",
+    "dauer": 23.126
+  },
+  {
+    "nummer": 4,
+    "titel": "Hatchery and drones",
+    "text": "The environments are managed by Hatchery, a small open-source tool. One devcontainer per repository, built from the repo's own devcontainer dot json. In proper Zerg fashion they are called drones: you spawn them, burrow them, and slay them. A drone is disposable. The code and Claude's memory live on the host.",
+    "dauer": 25.926
+  },
+  {
+    "nummer": 5,
+    "titel": "The agent channel",
+    "text": "Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. Ask the socket, and you get a token: valid for one hour, only for that drone's repositories. Anything else gets a 403. No passwords on disk. The identity is the mount itself.",
+    "dauer": 21.686
+  },
+  {
+    "nummer": 6,
+    "titel": "The human channel",
+    "text": "The human channel is me. My SSH key lives in the Secure Enclave of my Mac and cannot be exported. Every single signature wants my fingerprint. So even with agent forwarding, an agent can't quietly hop onto a production server. At most, it can ask me.",
+    "dauer": 24.326
+  },
+  {
+    "nummer": 7,
+    "titel": "The workplace",
+    "text": "My workplace is a terminal: SSH into a drone, zellij, several agents side by side. They run without permission prompts, because the drone is the sandbox. It's disposable, its token is scoped, and anything sensitive needs my finger. On the go, I pick up the session on my phone, through Claude's Remote Control.",
+    "dauer": 19.046
+  },
+  {
+    "nummer": 8,
+    "titel": "Where it ends",
+    "text": "This setup ends where code reaches GitHub. From there, CI and Argo CD take over. Agents push branches and open pull requests. They need no access to the cluster at all.",
+    "dauer": 10.686
+  },
+  {
+    "nummer": 9,
+    "titel": "Read more",
+    "text": "The full architecture, with the reasoning and the alternatives, is on levinkeller dot de, under docs, dev setup. Or hand the llms dot txt to your own AI, and grill it.",
+    "dauer": 19.286
+  }
+]

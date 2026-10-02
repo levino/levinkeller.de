@@ -1,0 +1,26 @@
+{
+  "name": "dev-setup-video",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Erklärvideo zum Dev-Setup für KI-Agenten auf levinkeller.de (Remotion, DE/EN)",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "vertonen": "python3 skripte/vertonen.py",
+    "render:de": "remotion render Video-de out/video.de.mp4",
+    "render:en": "remotion render Video-en out/video.en.mp4",
+    "pruefen": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@remotion/cli": "4.0.529",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}
