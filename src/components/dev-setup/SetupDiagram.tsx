@@ -13,37 +13,46 @@ import {
 } from './diagramData'
 
 const WIDTH = 900
-const HEIGHT = 540
+const HEIGHT = 580
 const NODE_W = 150
 const NODE_H = 52
+
+const nodeWidth = (node: DiagramNode) => node.w ?? NODE_W
 
 const nodeById = new Map(nodes.map((node) => [node.id, node]))
 
 const flowColor = (flow: FlowId | undefined) =>
   flows.find(({ id }) => id === flow)?.color ?? 'var(--color-base-content)'
 
-// Leicht gebogene Kante zwischen zwei Knotenmitten. Die Biegung macht parallele
-// Kanten (Tailnet → drei Drohnen) unterscheidbar.
-const edgePath = ({ source, target }: DiagramEdge) => {
+// Kontrollpunkt der quadratischen Kurve zwischen zwei Knotenmitten. Die leichte
+// Biegung macht parallele Kanten (Tailnet → drei Drohnen) unterscheidbar; lange
+// Kanten setzen `bend: 0` oder einen eigenen Kontrollpunkt (`via`), damit sie
+// nicht hinter fremden Knoten verlaufen.
+const controlPoint = ({ source, target, bend = 0.12, via }: DiagramEdge) => {
   const a = nodeById.get(source) as DiagramNode
   const b = nodeById.get(target) as DiagramNode
-  const mx = (a.x + b.x) / 2
-  const my = (a.y + b.y) / 2
-  const dx = b.x - a.x
-  const dy = b.y - a.y
-  const bend = 0.12
-  return `M${a.x},${a.y} Q${mx - dy * bend},${my + dx * bend} ${b.x},${b.y}`
-}
-
-const edgeLabelPosition = ({ source, target }: DiagramEdge) => {
-  const a = nodeById.get(source) as DiagramNode
-  const b = nodeById.get(target) as DiagramNode
-  // Punkt auf der quadratischen Kurve bei t = 0.5
+  if (via) return { a, b, cx: via[0], cy: via[1] }
   const dx = b.x - a.x
   const dy = b.y - a.y
   return {
-    x: (a.x + b.x) / 2 - dy * 0.06,
-    y: (a.y + b.y) / 2 + dx * 0.06,
+    a,
+    b,
+    cx: (a.x + b.x) / 2 - dy * bend,
+    cy: (a.y + b.y) / 2 + dx * bend,
+  }
+}
+
+const edgePath = (edge: DiagramEdge) => {
+  const { a, b, cx, cy } = controlPoint(edge)
+  return `M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`
+}
+
+// Punkt auf der quadratischen Kurve bei t = 0.5
+const edgeLabelPosition = (edge: DiagramEdge) => {
+  const { a, b, cx, cy } = controlPoint(edge)
+  return {
+    x: (a.x + 2 * cx + b.x) / 4,
+    y: (a.y + 2 * cy + b.y) / 4,
   }
 }
 
@@ -88,7 +97,7 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
           .attr('x', (d) => d.x + 12)
           .attr('y', (d) => d.y + 22)
           .attr('fill', 'var(--color-base-content)')
-          .attr('opacity', 0.6)
+          .attr('opacity', 0.7)
           .attr('font-size', 13)
           .attr('font-weight', 600)
           .text((d) => d.label[lang])
@@ -116,10 +125,12 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
       .attr('y', (d) => edgeLabelPosition(d).y)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('font-size', 11)
+      .attr('font-size', 12)
+      .attr('font-weight', 500)
       .attr('fill', 'var(--color-base-content)')
       .attr('stroke', 'var(--color-base-100)')
-      .attr('stroke-width', 4)
+      .attr('stroke-width', 7)
+      .attr('stroke-linejoin', 'round')
       .attr('paint-order', 'stroke')
       .text((d) => d.label?.[lang] ?? '')
 
@@ -132,7 +143,7 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
       .attr('class', 'node')
       .attr(
         'transform',
-        (d) => `translate(${d.x - NODE_W / 2},${d.y - NODE_H / 2})`
+        (d) => `translate(${d.x - nodeWidth(d) / 2},${d.y - NODE_H / 2})`
       )
       .attr('role', 'button')
       .attr('tabindex', 0)
@@ -150,18 +161,19 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
 
     nodeGroups
       .append('rect')
-      .attr('width', NODE_W)
+      .attr('width', nodeWidth)
       .attr('height', NODE_H)
-      .attr('rx', 10)
+      .attr('rx', (d) => (d.network ? NODE_H / 2 : 10))
       .attr('fill', 'var(--color-base-100)')
       .attr('stroke', 'var(--color-base-content)')
       .attr('stroke-opacity', 0.35)
       .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', (d) => (d.network ? '5 4' : null))
 
     nodeGroups
       .append('text')
-      .attr('x', NODE_W / 2)
-      .attr('y', 21)
+      .attr('x', (d) => nodeWidth(d) / 2)
+      .attr('y', 22)
       .attr('text-anchor', 'middle')
       .attr('font-size', 14)
       .attr('font-weight', 700)
@@ -170,12 +182,12 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
 
     nodeGroups
       .append('text')
-      .attr('x', NODE_W / 2)
-      .attr('y', 39)
+      .attr('x', (d) => nodeWidth(d) / 2)
+      .attr('y', 40)
       .attr('text-anchor', 'middle')
       .attr('font-size', 11)
       .attr('fill', 'var(--color-base-content)')
-      .attr('opacity', 0.7)
+      .attr('opacity', 0.8)
       .text((d) => d.sub?.[lang] ?? '')
   }, [lang])
 
@@ -212,11 +224,14 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
         !activeFlow || d.flows.includes(activeFlow) ? 1 : 0.1
       )
 
+    // Nur Schrift und Rahmen ausblenden, die Füllung bleibt deckend – sonst
+    // scheinen die gedimmten Kanten durch die Knoten hindurch.
+    const dimmed = (d: DiagramNode) => Boolean(active && !active.has(d.id))
     svg
-      .selectAll<SVGGElement, DiagramNode>('g.node')
+      .selectAll<SVGTextElement, DiagramNode>('g.node text')
       .transition()
       .duration(300)
-      .attr('opacity', (d) => (!active || active.has(d.id) ? 1 : 0.3))
+      .attr('fill-opacity', (d) => (dimmed(d) ? 0.3 : 1))
 
     svg
       .selectAll<SVGRectElement, DiagramNode>('g.node rect')
@@ -227,7 +242,9 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
           ? 'var(--color-primary)'
           : 'var(--color-base-content)'
       )
-      .attr('stroke-opacity', (d) => (d.id === selectedNode ? 1 : 0.35))
+      .attr('stroke-opacity', (d) =>
+        d.id === selectedNode ? 1 : dimmed(d) ? 0.12 : 0.35
+      )
       .attr('stroke-width', (d) => (d.id === selectedNode ? 3 : 1.5))
   }, [activeFlow, selectedNode])
 
@@ -245,10 +262,10 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
         .node:focus-visible rect { stroke: var(--color-primary); stroke-width: 3; }
         .node:focus { outline: none; }
       `}</style>
-      <div className="mb-3 flex flex-wrap gap-2">
+      <div className="mb-3 flex flex-wrap gap-1 sm:gap-2">
         <button
           type="button"
-          className={`btn btn-sm ${activeFlow === null ? 'btn-neutral' : 'btn-ghost'}`}
+          className={`btn btn-sm px-2 sm:px-3 ${activeFlow === null ? 'btn-neutral' : 'btn-ghost'}`}
           onClick={() => setActiveFlow(null)}
         >
           {ui.all[lang]}
@@ -257,7 +274,7 @@ export const SetupDiagram = ({ lang }: { lang: Lang }) => {
           <button
             key={id}
             type="button"
-            className={`btn btn-sm ${activeFlow === id ? 'btn-neutral' : 'btn-ghost'}`}
+            className={`btn btn-sm px-2 sm:px-3 ${activeFlow === id ? 'btn-neutral' : 'btn-ghost'}`}
             onClick={() =>
               setActiveFlow((current) => (current === id ? null : id))
             }

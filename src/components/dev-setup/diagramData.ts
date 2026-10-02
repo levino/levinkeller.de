@@ -15,6 +15,10 @@ export type DiagramNode = {
   sub?: Text
   info: Text
   page?: string
+  /** Abweichende Breite, z. B. für das schmale Tailnet zwischen den Zonen */
+  w?: number
+  /** Netz statt Rechner: gestrichelter Rahmen */
+  network?: boolean
 }
 
 export type DiagramEdge = {
@@ -23,6 +27,10 @@ export type DiagramEdge = {
   flows: FlowId[]
   label?: Text
   dashed?: boolean
+  /** Stärke der Biegung, Standard 0.12; 0 = gerade */
+  bend?: number
+  /** Eigener Kontrollpunkt der Kurve, um Knoten zu umgehen */
+  via?: [number, number]
 }
 
 export const flows: { id: FlowId; color: string; label: Text; info: Text }[] = [
@@ -46,7 +54,9 @@ export const flows: { id: FlowId; color: string; label: Text; info: Text }[] = [
   },
   {
     id: 'phone',
-    color: 'var(--color-accent)',
+    // Mischung aus Blau und Rot ergibt in beiden Themes ein Violett, das sich
+    // klar von Warnung (Mensch) und Erfolg (Deploy) abhebt.
+    color: 'color-mix(in oklch, var(--color-info) 50%, var(--color-error))',
     label: { de: 'Handy', en: 'Phone' },
     info: {
       de: 'Unterwegs kein SSH: Ich schalte in einer Claude-Code-Sitzung die Remote Control ein und führe sie in der Claude-App weiter.',
@@ -76,15 +86,15 @@ export const zones: {
     id: 'me',
     x: 10,
     y: 30,
-    w: 190,
+    w: 170,
     h: 500,
     label: { de: 'Bei mir', en: 'With me' },
   },
   {
     id: 'server',
-    x: 300,
+    x: 310,
     y: 30,
-    w: 360,
+    w: 355,
     h: 500,
     label: { de: 'Dev-Server (Bare Metal)', en: 'Dev server (bare metal)' },
   },
@@ -103,8 +113,8 @@ const page = (slug: string) => `/docs/dev-setup/${slug}`
 export const nodes: DiagramNode[] = [
   {
     id: 'laptop',
-    x: 105,
-    y: 120,
+    x: 95,
+    y: 115,
     zone: 'me',
     label: { de: 'Laptop', en: 'Laptop' },
     sub: { de: 'leicht, kein Kraftpaket', en: 'light, not a powerhouse' },
@@ -116,8 +126,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'secretive',
-    x: 105,
-    y: 230,
+    x: 95,
+    y: 225,
     zone: 'me',
     label: { de: 'SSH-Schlüssel', en: 'SSH key' },
     sub: { de: 'Secure Enclave, Touch ID', en: 'Secure Enclave, Touch ID' },
@@ -129,8 +139,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'phone',
-    x: 105,
-    y: 420,
+    x: 95,
+    y: 470,
     zone: 'me',
     label: { de: 'Handy', en: 'Phone' },
     sub: { de: 'Claude-App', en: 'Claude app' },
@@ -142,9 +152,11 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'tailnet',
-    x: 250,
-    y: 175,
+    x: 245,
+    y: 210,
     zone: 'me',
+    w: 120,
+    network: true,
     label: { de: 'Tailnet', en: 'Tailnet' },
     sub: { de: 'Erreichbarkeit', en: 'reachability' },
     info: {
@@ -155,8 +167,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'hatchery',
-    x: 390,
-    y: 90,
+    x: 575,
+    y: 475,
     zone: 'server',
     label: { de: 'hatchery', en: 'hatchery' },
     sub: { de: 'CLI', en: 'CLI' },
@@ -168,8 +180,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'drone1',
-    x: 570,
-    y: 160,
+    x: 400,
+    y: 410,
     zone: 'server',
     label: { de: 'Drohne', en: 'Drone' },
     sub: { de: 'levino/shipyard', en: 'levino/shipyard' },
@@ -181,8 +193,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'drone2',
-    x: 570,
-    y: 270,
+    x: 400,
+    y: 130,
     zone: 'server',
     label: { de: 'Drohne', en: 'Drone' },
     sub: { de: 'levino/levinkeller.de', en: 'levino/levinkeller.de' },
@@ -194,8 +206,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'drone3',
-    x: 570,
-    y: 380,
+    x: 400,
+    y: 270,
     zone: 'server',
     label: { de: 'Drohne', en: 'Drone' },
     sub: { de: '… mit --kvm', en: '… with --kvm' },
@@ -207,8 +219,8 @@ export const nodes: DiagramNode[] = [
   },
   {
     id: 'creds',
-    x: 400,
-    y: 450,
+    x: 575,
+    y: 230,
     zone: 'server',
     label: { de: 'Credential-Service', en: 'Credential service' },
     sub: { de: 'ein Socket pro Drohne', en: 'one socket per drone' },
@@ -221,7 +233,7 @@ export const nodes: DiagramNode[] = [
   {
     id: 'claude',
     x: 805,
-    y: 120,
+    y: 430,
     zone: 'outside',
     label: { de: 'Claude', en: 'Claude' },
     sub: { de: 'Remote Control', en: 'Remote Control' },
@@ -234,7 +246,7 @@ export const nodes: DiagramNode[] = [
   {
     id: 'github',
     x: 805,
-    y: 290,
+    y: 130,
     zone: 'outside',
     label: { de: 'GitHub', en: 'GitHub' },
     sub: { de: 'GitHub-App', en: 'GitHub App' },
@@ -247,7 +259,7 @@ export const nodes: DiagramNode[] = [
   {
     id: 'prod',
     x: 805,
-    y: 450,
+    y: 290,
     zone: 'outside',
     label: { de: 'Prod-Cluster', en: 'Prod cluster' },
     sub: { de: 'k3s, Argo CD (Teil 2)', en: 'k3s, Argo CD (part 2)' },
@@ -280,6 +292,7 @@ export const edges: DiagramEdge[] = [
     target: 'prod',
     flows: ['human'],
     dashed: true,
+    bend: 0,
     label: { de: 'nur mit Finger', en: 'finger only' },
   },
   { source: 'hatchery', target: 'drone1', flows: [] },
@@ -295,19 +308,23 @@ export const edges: DiagramEdge[] = [
     source: 'creds',
     target: 'github',
     flows: ['agent'],
+    bend: -0.12,
     label: { de: 'App-Schlüssel → Token', en: 'app key → token' },
   },
   {
     source: 'drone2',
     target: 'github',
     flows: ['agent'],
+    bend: 0,
     label: { de: 'git push (1 h Token)', en: 'git push (1 h token)' },
   },
-  { source: 'phone', target: 'claude', flows: ['phone'] },
+  // Unter dem Dev-Server hindurch: Handy und Claude reden ohne den Server.
+  { source: 'phone', target: 'claude', flows: ['phone'], via: [450, 680] },
   {
     source: 'claude',
     target: 'drone1',
     flows: ['phone'],
+    bend: 0,
     label: { de: 'Remote Control', en: 'Remote Control' },
   },
   {
