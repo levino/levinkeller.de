@@ -1,5 +1,5 @@
 import type React from 'react'
-import { Aussage, Erscheinen, Karte, Linie, Paket, einblenden, useSzene } from '../bausteine'
+import { Aussage, Erscheinen, Karte, Linie, Paket, useSzene } from '../bausteine'
 import { farben } from '../gestaltung'
 import { Drohne, Fingerabdruck, Kreuz, Laptop, Schloss, Schluessel, Server } from '../symbole'
 import { Kanallegende } from './Szene5Agent'
@@ -50,7 +50,7 @@ export const Szene6Mensch: React.FC = () => {
           <Fingerabdruck farbe={farben.mensch} groesse={100} />
         </div>
       </Erscheinen>
-      <Aussage x={460} y={810} ab={signaturAb + 10} ausrichtung="left" breite={420} groesse={34} farbe={farben.mensch}>
+      <Aussage x={460} y={810} ab={signaturAb + 10} ausrichtung="left" breite={640} groesse={34} farbe={farben.mensch}>
         {t({ de: 'jede Signatur: Touch ID', en: 'every signature: Touch ID' })}
       </Aussage>
 
@@ -92,8 +92,8 @@ export const Szene6Mensch: React.FC = () => {
       <Paket von={[1000, 520]} nach={[520, 840]} ab={fragenAb - 4} dauer={26} halten={70} farbe={farben.mensch}>
         {t({ de: 'Darf ich? Bitte bestätigen', en: 'May I? Please confirm' })}
       </Paket>
-      <div style={{ opacity: einblenden(bild, fragenAb + 30) }}>
-        <Aussage x={1250} y={700} ab={fragenAb + 30} breite={900} groesse={42}>
+      <div>
+        <Aussage x={1250} y={640} ab={fragenAb + 4} breite={900} groesse={42}>
           {t({ de: 'Der Agent fragt, ich entscheide', en: 'The agent asks, I decide' })}
         </Aussage>
       </div>

@@ -1,7 +1,7 @@
 import type React from 'react'
 import { Aussage, Erscheinen, Karte, Linie, Paket, Stempel, useSzene } from '../bausteine'
 import { farben, schriften } from '../gestaltung'
-import { Drohne, Schloss, Steckdose, Zweig } from '../symbole'
+import { Drohne, Schloss, Zweig } from '../symbole'
 
 export const Kanallegende: React.FC<{ ab: number; aktiv: 'agent' | 'mensch' }> = ({ ab, aktiv }) => {
   const { t } = useSzene()
@@ -42,12 +42,13 @@ export const Szene5Agent: React.FC = () => {
   const appAb = bei({ de: 'GitHub-App', en: 'GitHub App' })
   const credsAb = bei({ de: 'Credential-Service', en: 'credential service' })
   const socketAb = bei({ de: 'Unix-Socket', en: 'Unix socket' })
-  const fragtAb = bei({ de: 'Wer dort fragt', en: 'Ask the socket' })
-  const tokenAb = bei({ de: 'bekommt einen Token', en: 'you get a token' })
-  const nurAb = bei({ de: 'nur für die', en: 'only for' })
+  const fragtAb = bei({ de: 'Bei jedem Zugriff', en: 'On every access' })
+  const tokenAb = bei({ de: 'frischen Token', en: 'fresh token' })
+  const nurAb = bei({ de: 'nur für die', en: 'scoped to' })
   const andersAb = bei({ de: 'Alles andere', en: 'Anything else' })
-  const passwortAb = bei({ de: 'Keine Passwörter', en: 'No passwords' })
+  const passwortAb = bei({ de: 'Gespeichert wird nichts', en: 'Nothing is stored' })
   const mountAb = bei({ de: 'Die Identität', en: 'The identity' })
+  const leckAb = bei({ de: 'geleakter', en: 'leaked' })
   return (
     <>
       <Kanallegende ab={zweiAb} aktiv="agent" />
@@ -82,18 +83,15 @@ export const Szene5Agent: React.FC = () => {
         ab={credsAb + 10}
       />
       <Linie von={[605, 420]} nach={[760, 420]} farbe={farben.agent} ab={socketAb} pfeil={false} breite={10} />
-      <Erscheinen ab={socketAb + 6} art="skalieren" style={{ position: 'absolute', left: 646, top: 340 }}>
-        <Steckdose farbe={farben.agent} groesse={60} />
-      </Erscheinen>
       <Aussage x={682} y={490} ab={socketAb + 6} breite={300} groesse={28} farbe={farben.agent}>
         Unix-Socket
       </Aussage>
 
       <Paket von={[965, 300]} nach={[400, 300]} ab={fragtAb} dauer={22} halten={10} farbe={farben.text}>
-        GET /token
+        {t({ de: 'git: Token, bitte', en: 'git: token, please' })}
       </Paket>
       <Paket von={[400, 580]} nach={[965, 580]} ab={tokenAb} dauer={22} halten={nurAb - tokenAb + 40} farbe={farben.agent}>
-        {t({ de: 'Token · 1 h · nur levino/shipyard', en: 'token · 1 h · levino/shipyard only' })}
+        {t({ de: 'frischer Token · nur levino/shipyard', en: 'fresh token · levino/shipyard only' })}
       </Paket>
       <Linie
         von={[1170, 420]}
@@ -111,10 +109,13 @@ export const Szene5Agent: React.FC = () => {
         <div style={{ fontFamily: schriften.mono, fontWeight: 700, fontSize: 96, color: farben.fehler }}>403</div>
       </Erscheinen>
 
-      <Aussage x={960} y={820} ab={passwortAb} groesse={40} breite={1400} farbe={farben.gedaempft}>
-        {t({ de: 'Keine Passwörter, keine Tokens auf der Platte der Drohne', en: 'No passwords, no tokens on the drone’s disk' })}
+      <Aussage x={960} y={800} ab={passwortAb} bis={leckAb - 6} groesse={40} breite={1500} farbe={farben.gedaempft}>
+        {t({ de: 'Nichts gespeichert: der Socket existiert nur in dieser Drohne', en: 'Nothing stored: the socket only exists inside this drone' })}
       </Aussage>
-      <Stempel x={960} y={940} farbe={farben.agent} ab={mountAb} drehung={-3}>
+      <Aussage x={960} y={800} ab={leckAb} groesse={40} breite={1500} farbe={farben.gedaempft}>
+        {t({ de: 'Geleakter Token? Nach spätestens 1 h wertlos', en: 'Leaked token? Useless within the hour' })}
+      </Aussage>
+      <Stempel x={960} y={920} farbe={farben.agent} ab={mountAb} drehung={-3}>
         {t({ de: 'Die Identität ist der Mount', en: 'The identity is the mount' })}
       </Stempel>
     </>

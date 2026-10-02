@@ -91,7 +91,7 @@ export const Szene7Arbeitsplatz: React.FC = () => {
       ))}
       <Karte
         x={1620}
-        y={850}
+        y={810}
         w={440}
         titel={t({ de: 'Handy', en: 'Phone' })}
         unter={t({ de: 'Claude-App', en: 'Claude app' })}
@@ -99,8 +99,8 @@ export const Szene7Arbeitsplatz: React.FC = () => {
         farbe={farben.handy}
         ab={handyAb}
       />
-      <Linie von={[1345, 760]} nach={[1395, 850]} via={[1350, 850]} farbe={farben.handy} ab={remoteAb - 10} pfeil={false} breite={8} />
-      <Erscheinen ab={remoteAb} style={{ position: 'absolute', left: 1400, top: 950, width: 440, textAlign: 'center' }}>
+      <Linie von={[1345, 720]} nach={[1395, 810]} via={[1350, 810]} farbe={farben.handy} ab={remoteAb - 10} pfeil={false} breite={8} />
+      <Erscheinen ab={remoteAb} style={{ position: 'absolute', left: 1400, top: 905, width: 440, textAlign: 'center' }}>
         <div style={{ fontFamily: schriften.mono, fontWeight: 700, fontSize: 28, color: farben.handy }}>Remote Control</div>
       </Erscheinen>
     </>

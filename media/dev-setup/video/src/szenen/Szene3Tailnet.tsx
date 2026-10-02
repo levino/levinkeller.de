@@ -55,9 +55,9 @@ export const Szene3Tailnet: React.FC = () => {
           <div key={name}>
             <Linie von={[600, 420]} nach={[860, y]} farbe={farben.gedaempft} ab={namenAb + index * 10} breite={5} pfeil={false} />
             <Karte
-              x={1150}
+              x={1170}
               y={y}
-              w={620}
+              w={680}
               titel={t({ de: 'Drohne', en: 'Drone' })}
               unter={name}
               monoUnter
@@ -65,13 +65,13 @@ export const Szene3Tailnet: React.FC = () => {
               symbol={<Drohne farbe={farben.agent} />}
               ab={namenAb + index * 10}
             />
-            <Erscheinen ab={schluesselAb + index * 6} art="skalieren" style={{ position: 'absolute', left: 1395, top: y - 32 }}>
+            <Erscheinen ab={schluesselAb + index * 6} art="skalieren" style={{ position: 'absolute', left: 1432, top: y - 32 }}>
               <Schloss farbe={farben.mensch} groesse={64} />
             </Erscheinen>
           </div>
         )
       })}
-      <Erscheinen ab={portsAb} style={{ position: 'absolute', left: 170, top: 880, width: 900 }}>
+      <Erscheinen ab={portsAb} style={{ position: 'absolute', left: 170, top: 925, width: 1350 }}>
         <div style={{ fontFamily: schriften.mono, fontSize: 32, color: farben.text }}>
           {t({ de: 'Name statt Port: ', en: 'name, not port: ' })}
           <span style={{ color: farben.agent }}>hatchery-levino-shipyard:&lt;port&gt;</span>
@@ -91,7 +91,7 @@ export const Szene3Tailnet: React.FC = () => {
           <Kreuz farbe={farben.fehler} groesse={130} />
         </div>
       </Erscheinen>
-      <Stempel x={760} y={560} farbe={farben.mensch} ab={sicherheitAb}>
+      <Stempel x={500} y={560} farbe={farben.mensch} ab={sicherheitAb}>
         {t({ de: 'Erreichbarkeit ≠ Sicherheit', en: 'Reachability ≠ security' })}
       </Stempel>
     </>

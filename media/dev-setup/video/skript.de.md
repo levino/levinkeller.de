@@ -32,9 +32,9 @@ Verwaltet werden die Umgebungen von Hatchery, einem kleinen Open-Source-Werkzeug
 
 ## 5 · Der Agenten-Kanal
 
-> Credential-Service, Socket in die Drohne, Token „1 h, nur levino/shipyard“, Push zu GitHub. Anderes Repo: 403.
+> Credential-Service, Socket in die Drohne, bei jedem Zugriff ein frischer Token, nur levino/shipyard, Push zu GitHub. Anderes Repo: 403.
 
-Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Wer dort fragt, bekommt einen Token: eine Stunde gültig, nur für die Repositories dieser Drohne. Alles andere: 403. Keine Passwörter auf der Platte. Die Identität ist der Mount selbst.
+Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Bei jedem Zugriff holt sich git dort einen frischen Token, nur für die Repositories dieser Drohne. Alles andere: 403. Gespeichert wird nichts. Die Identität ist der Mount selbst. Und ein geleakter Token ist nach spätestens einer Stunde wertlos.
 
 ## 6 · Der Mensch-Kanal
 
@@ -58,4 +58,4 @@ Dieses Setup endet dort, wo der Code bei GitHub ankommt. Ab da übernehmen CI un
 
 > levinkeller.de/docs/dev-setup, llms.txt, Open-Source-Repos. „Stimme: KI-generiert“.
 
-Die ganze Architektur, mit Begründungen und Alternativen, steht auf levinkeller Punkt de, Schrägstrich docs, Schrägstrich dev-setup. Oder gib die llms Punkt txt deiner eigenen KI und quetsch sie aus.
+Die ganze Architektur, mit Begründungen und Alternativen, steht auf levinkeller Punkt de, unter Docs, Dev-Setup. Oder gib die llms Punkt txt deiner eigenen KI und quetsch sie aus.

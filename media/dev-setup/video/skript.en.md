@@ -32,9 +32,9 @@ The environments are managed by Hatchery, a small open-source tool. One devconta
 
 ## 5 · The agent channel
 
-> Credential service, socket into the drone, token "1 h, levino/shipyard only", push to GitHub. Another repo: 403.
+> Credential service, socket into the drone, fresh token on every access, levino/shipyard only, push to GitHub. Another repo: 403.
 
-Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. Ask the socket, and you get a token: valid for one hour, only for that drone's repositories. Anything else gets a 403. No passwords on disk. The identity is the mount itself.
+Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. On every access, git asks the socket for a fresh token, scoped to that drone's repositories. Anything else gets a 403. Nothing is stored on disk. The identity is the mount itself. And a leaked token is useless within the hour.
 
 ## 6 · The human channel
 
@@ -58,4 +58,4 @@ This setup ends where code reaches GitHub. From there, CI and Argo CD take over.
 
 > levinkeller.de/docs/dev-setup, llms.txt, open-source repos. "Voice: AI-generated".
 
-The full architecture, with the reasoning and the alternatives, is at levinkeller dot de, slash docs, slash dev-setup. Or hand the llms dot txt to your own AI, and grill it.
+The full architecture, with the reasoning and the alternatives, is on levinkeller dot de, under docs, dev setup. Or hand the llms dot txt to your own AI, and grill it.

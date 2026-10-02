@@ -59,7 +59,7 @@ export const Szene1Frage: React.FC = () => {
             y={270 + Math.floor(index / 2) * 330}
             w={470}
             h={300}
-            titel={`claude · ${repo}`}
+            titel={repo}
             ab={ab}
             farbe={farben.agent}
             schrift={27}
@@ -71,7 +71,7 @@ export const Szene1Frage: React.FC = () => {
           />
         )
       })}
-      <Erscheinen ab={bei({ de: 'ich lese', en: 'and I read' })} style={{ position: 'absolute', left: 90, top: 940, width: 970 }}>
+      <Erscheinen ab={bei({ de: 'ich lese', en: 'and I read' })} style={{ position: 'absolute', left: 90, top: 918, width: 970 }}>
         <div style={{ fontFamily: schriften.text, fontSize: 40, fontWeight: 700, color: farben.mensch, textAlign: 'center' }}>
           {t({ de: 'Ich: lesen · lenken · entscheiden', en: 'Me: read · steer · decide' })}
         </div>
@@ -105,8 +105,8 @@ export const Szene1Frage: React.FC = () => {
           ))}
         </div>
       </Erscheinen>
-      <Linie von={[1070, 560]} nach={[1225, 560]} farbe={farben.fehler} ab={ohneAb - 10} dauer={14} breite={8} />
-      <Erscheinen ab={ohneAb} art="skalieren" style={{ position: 'absolute', left: 1110, top: 600 }}>
+      <Linie von={[1070, 560]} nach={[1225, 560]} pfeil={false} farbe={farben.fehler} ab={ohneAb - 10} dauer={14} breite={8} />
+      <Erscheinen ab={ohneAb} art="skalieren" style={{ position: 'absolute', left: 1106, top: 518 }}>
         <Kreuz farbe={farben.fehler} groesse={84} />
       </Erscheinen>
     </>

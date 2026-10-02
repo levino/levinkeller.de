@@ -8,5 +8,10 @@
   "_hinweis": "Die Stil-Anweisung wird in eckigen Klammern vor den Text gesetzt; ohne Klammern liest das Modell sie mit vor. Nach einem Stimmwechsel: python3 skripte/vertonen.py de en --alle",
   "luftVorSzeneInSekunden": 0.35,
   "luftNachSzeneInSekunden": 0.7,
-  "abspannHaltenInSekunden": 4
+  "abspannHaltenInSekunden": 4,
+  "mindestWorteProSekunde": {
+    "de": 2.2,
+    "en": 2.5
+  },
+  "hoechstVersuche": 4
 }

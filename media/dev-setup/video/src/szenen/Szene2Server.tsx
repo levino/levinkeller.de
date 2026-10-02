@@ -4,7 +4,7 @@ import { Aussage, Erscheinen, Linie, einblenden, feder, useSzene } from '../baus
 import { farben, schriften } from '../gestaltung'
 import { Server } from '../symbole'
 
-const drohnen = ['shipyard', 'levinkeller.de', 'hatchery', 'dotfiles', 'devcontainer-template', '…']
+const drohnen = ['shipyard', 'levinkeller.de', 'hatchery', 'dotfiles', 'devcontainer-t…', '…']
 
 export const Szene2Server: React.FC = () => {
   const { bild, fps, t, bei } = useSzene()

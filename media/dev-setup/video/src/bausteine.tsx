@@ -320,7 +320,9 @@ export const Terminal: React.FC<{
           {['#ff5f57', '#febc2e', '#28c840'].map((punkt) => (
             <div key={punkt} style={{ width: 16, height: 16, borderRadius: 8, background: punkt }} />
           ))}
-          <div style={{ marginLeft: 12, fontFamily: schriften.mono, fontSize: 24, color: farben.gedaempft }}>{titel}</div>
+          <div style={{ marginLeft: 12, fontFamily: schriften.mono, fontSize: 24, color: farben.gedaempft, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {titel}
+          </div>
         </div>
         <div style={{ padding: '18px 24px', fontFamily: schriften.mono, fontSize: schrift, lineHeight: 1.5 }}>
           {zeilen.map((zeile) => {

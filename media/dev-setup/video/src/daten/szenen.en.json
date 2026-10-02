@@ -15,13 +15,13 @@
     "nummer": 3,
     "titel": "Tailnet: reachability, not security",
     "text": "Every environment joins a private WireGuard network, a tailnet, as a machine of its own, with its own name. No port juggling, nothing open to the internet. But the tailnet is about reachability, not security. Getting into an environment still takes my key.",
-    "dauer": 23.126
+    "dauer": 21.926
   },
   {
     "nummer": 4,
     "titel": "Hatchery and drones",
     "text": "The environments are managed by Hatchery, a small open-source tool. One devcontainer per repository, built from the repo's own devcontainer dot json. In proper Zerg fashion they are called drones: you spawn them, burrow them, and slay them. A drone is disposable. The code and Claude's memory live on the host.",
-    "dauer": 25.926
+    "dauer": 26.526
   },
   {
     "nummer": 5,
@@ -33,7 +33,7 @@
     "nummer": 6,
     "titel": "The human channel",
     "text": "The human channel is me. My SSH key lives in the Secure Enclave of my Mac and cannot be exported. Every single signature wants my fingerprint. So even with agent forwarding, an agent can't quietly hop onto a production server. At most, it can ask me.",
-    "dauer": 24.326
+    "dauer": 15.326
   },
   {
     "nummer": 7,
@@ -51,6 +51,6 @@
     "nummer": 9,
     "titel": "Read more",
     "text": "The full architecture, with the reasoning and the alternatives, is on levinkeller dot de, under docs, dev setup. Or hand the llms dot txt to your own AI, and grill it.",
-    "dauer": 19.286
+    "dauer": 10.326
   }
 ]

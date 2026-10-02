@@ -39,14 +39,28 @@ def konfiguration(stimmen: dict[str, str]) -> types.GenerateContentConfig:
 
 
 def dialog_vertonen(beitraege: list[tuple[str, str]], stimmen: dict[str, str], ausgabe: pathlib.Path) -> float:
-    """Vertont eine Folge von (Sprecher, Text), schreibt eine WAV (mono) und gibt die Dauer in Sekunden zurück.
-    Wiederholt bei Fehlern mit wachsender Wartezeit (Rate-Limits, 5xx, Netz)."""
-    client = client_bauen()
+    """Vertont eine Folge von (Sprecher, Text), schreibt eine WAV (mono) und gibt die Dauer in Sekunden zurück."""
     teile = [types.Part(text=text, speech_metadata=types.SpeechMetadata(speaker=sprecher)) for sprecher, text in beitraege]
+    return _vertonen(teile, konfiguration(stimmen), ausgabe)
+
+
+def text_vertonen(text: str, stimme: str, ausgabe: pathlib.Path) -> float:
+    """Vertont einen Text mit einer einzelnen Stimme (z. B. Sprechertext eines Erklärvideos), schreibt eine WAV
+    (mono) und gibt die Dauer in Sekunden zurück. Regie in eckigen Klammern am Anfang wird nicht mitgesprochen."""
+    config = types.GenerateContentConfig(
+        response_modalities=["AUDIO"],
+        speech_config=types.SpeechConfig(voice_config=types.VoiceConfig(
+            prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=stimme))))
+    return _vertonen([types.Part(text=text)], config, ausgabe)
+
+
+def _vertonen(teile: list[types.Part], config: types.GenerateContentConfig, ausgabe: pathlib.Path) -> float:
+    """Wiederholt bei Fehlern mit wachsender Wartezeit (Rate-Limits, 5xx, Netz)."""
+    client = client_bauen()
     for versuch in range(1, MAXIMALE_VERSUCHE + 1):
         try:
             antwort = client.models.generate_content(model=MODELL, contents=[types.Content(role="user", parts=teile)],
-                                                     config=konfiguration(stimmen))
+                                                     config=config)
             audio = antwort.candidates[0].content.parts[0].inline_data
             if not audio or not audio.data:
                 raise ValueError("Antwort ohne Audiodaten")

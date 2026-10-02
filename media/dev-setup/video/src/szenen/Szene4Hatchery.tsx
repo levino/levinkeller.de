@@ -101,7 +101,7 @@ export const Szene4Hatchery: React.FC = () => {
             background: 'rgba(21,29,51,0.6)',
           }}
         />
-        <div style={{ position: 'absolute', left: 30, top: 20, fontFamily: schriften.text, fontSize: 34, fontWeight: 800, color: farben.gedaempft }}>
+        <div style={{ position: 'absolute', left: 30, bottom: 18, fontFamily: schriften.text, fontSize: 34, fontWeight: 800, color: farben.gedaempft }}>
           {t({ de: 'Host (bleibt)', en: 'Host (stays)' })}
         </div>
       </Erscheinen>
@@ -114,7 +114,7 @@ export const Szene4Hatchery: React.FC = () => {
         unter={t({ de: 'Login, Gedächtnis, Verlauf', en: 'login, memory, history' })}
         ab={hostAb + 8}
       />
-      <Linie von={[1260, 770]} nach={[1330, 440]} farbe={farben.gedaempft} ab={hostAb + 14} breite={5} beschriftung="mount" beschriftungVersatz={[-70, 0]} />
+      <Linie von={[1260, 770]} nach={[1330, 440]} farbe={farben.gedaempft} ab={hostAb + 14} breite={5} beschriftung="mount" beschriftungVersatz={[-80, -40]} />
       <Linie von={[1640, 770]} nach={[1570, 440]} farbe={farben.gedaempft} ab={hostAb + 20} breite={5} />
     </>
   )

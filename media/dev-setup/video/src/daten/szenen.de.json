@@ -3,54 +3,54 @@
     "nummer": 1,
     "titel": "Die Frage",
     "text": "Ich schreibe kaum noch Code von Hand. Meistens arbeiten mehrere Claude-Code-Agenten gleichzeitig an verschiedenen Repositories, und ich lese, lenke und entscheide. Bleibt eine Frage: Wie gibt man Agenten so viel Freiheit, ohne ihnen die eigene digitale Identität auszuhändigen?",
-    "dauer": 20.206
+    "dauer": 16.686
   },
   {
     "nummer": 2,
     "titel": "Server statt Laptop",
     "text": "Es beginnt beim Blech. Alles läuft auf einem gebrauchten Bare-Metal-Server: ein älterer Vierkerner mit zweiundsechzig Gigabyte Arbeitsspeicher. Agenten brauchen vor allem Speicher, nicht Rechenleistung. Der Laptop ist damit nur noch ein Terminal mit gutem Bildschirm. Und die Agenten arbeiten weiter, wenn der Deckel zu ist.",
-    "dauer": 19.206
+    "dauer": 25.646
   },
   {
     "nummer": 3,
     "titel": "Tailnet: Erreichbarkeit, nicht Sicherheit",
     "text": "Jede Umgebung kommt als eigener Rechner, mit eigenem Namen, in ein privates WireGuard-Netz, ein Tailnet. Keine Ports merken, nichts ist zum Internet offen. Aber das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Hinein komme ich trotzdem nur mit meinem Schlüssel.",
-    "dauer": 25.846
+    "dauer": 26.206
   },
   {
     "nummer": 4,
     "titel": "Hatchery und Drohnen",
     "text": "Verwaltet werden die Umgebungen von Hatchery, einem kleinen Open-Source-Werkzeug. Ein Devcontainer pro Repository, gebaut aus der devcontainer-Punkt-json des Repos selbst. Ganz im Stil der Zerg heißen sie Drohnen: Man spawnt sie, gräbt sie ein und erledigt sie. Eine Drohne ist wegwerfbar. Der Code und das Gedächtnis von Claude liegen auf dem Host.",
-    "dauer": 23.486
+    "dauer": 22.886
   },
   {
     "nummer": 5,
     "titel": "Der Agenten-Kanal",
     "text": "Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Wer dort fragt, bekommt einen Token: eine Stunde gültig, nur für die Repositories dieser Drohne. Alles andere: 403. Keine Passwörter auf der Platte. Die Identität ist der Mount selbst.",
-    "dauer": 32.846
+    "dauer": 22.406
   },
   {
     "nummer": 6,
     "titel": "Der Mensch-Kanal",
     "text": "Der Mensch-Kanal bin ich. Mein SSH-Schlüssel liegt im Secure Enclave meines Macs und lässt sich nicht exportieren. Jede einzelne Signatur will meinen Fingerabdruck. Selbst mit Agent-Forwarding kann ein Agent also nicht heimlich auf einen Produktionsserver springen. Er kann mich höchstens fragen.",
-    "dauer": 18.846
+    "dauer": 16.006
   },
   {
     "nummer": 7,
     "titel": "Der Arbeitsplatz",
     "text": "Mein Arbeitsplatz ist ein Terminal: per SSH in eine Drohne, zellij, mehrere Agenten nebeneinander. Sie laufen ohne Rückfragen, denn die Drohne ist die Sandbox. Sie ist wegwerfbar, ihr Token ist begrenzt, und alles Heikle braucht meinen Finger. Unterwegs führe ich die Sitzung auf dem Handy weiter, über die Remote Control von Claude.",
-    "dauer": 21.486
+    "dauer": 28.006
   },
   {
     "nummer": 8,
     "titel": "Wo es endet",
     "text": "Dieses Setup endet dort, wo der Code bei GitHub ankommt. Ab da übernehmen CI und Argo CD. Agenten pushen Branches und öffnen Pull Requests. Zugang zum Cluster brauchen sie dafür nicht.",
-    "dauer": 12.926
+    "dauer": 13.806
   },
   {
     "nummer": 9,
     "titel": "Mehr lesen",
     "text": "Die ganze Architektur, mit Begründungen und Alternativen, steht auf levinkeller Punkt de, unter Docs, Dev-Setup. Oder gib die llms Punkt txt deiner eigenen KI und quetsch sie aus.",
-    "dauer": 22.486
+    "dauer": 11.126
   }
 ]
