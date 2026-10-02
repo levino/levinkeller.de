@@ -51,7 +51,7 @@ export const Szene8Grenze: React.FC = () => {
       <Erscheinen ab={zugangAb + 18} art="skalieren" style={{ position: 'absolute', left: 1140, top: 180 }}>
         <Kreuz farbe={farben.fehler} groesse={90} />
       </Erscheinen>
-      <Aussage x={1360} y={660} ab={zugangAb + 10} breite={1000} groesse={44}>
+      <Aussage x={1370} y={650} ab={zugangAb + 10} breite={940} groesse={42}>
         {t({ de: 'Agenten brauchen keinen Zugang zum Cluster', en: 'Agents need no access to the cluster' })}
       </Aussage>
     </>

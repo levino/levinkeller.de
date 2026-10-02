@@ -9,13 +9,13 @@
     "nummer": 2,
     "titel": "Server statt Laptop",
     "text": "Es beginnt beim Blech. Alles läuft auf einem gebrauchten Bare-Metal-Server: ein älterer Vierkerner mit zweiundsechzig Gigabyte Arbeitsspeicher. Agenten brauchen vor allem Speicher, nicht Rechenleistung. Der Laptop ist damit nur noch ein Terminal mit gutem Bildschirm. Und die Agenten arbeiten weiter, wenn der Deckel zu ist.",
-    "dauer": 25.646
+    "dauer": 17.046
   },
   {
     "nummer": 3,
     "titel": "Tailnet: Erreichbarkeit, nicht Sicherheit",
     "text": "Jede Umgebung kommt als eigener Rechner, mit eigenem Namen, in ein privates WireGuard-Netz, ein Tailnet. Keine Ports merken, nichts ist zum Internet offen. Aber das Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit. Hinein komme ich trotzdem nur mit meinem Schlüssel.",
-    "dauer": 26.206
+    "dauer": 18.846
   },
   {
     "nummer": 4,
@@ -26,8 +26,8 @@
   {
     "nummer": 5,
     "titel": "Der Agenten-Kanal",
-    "text": "Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Wer dort fragt, bekommt einen Token: eine Stunde gültig, nur für die Repositories dieser Drohne. Alles andere: 403. Keine Passwörter auf der Platte. Die Identität ist der Mount selbst.",
-    "dauer": 22.406
+    "text": "Jetzt das Herzstück: zwei getrennte Kanäle. Der Agenten-Kanal läuft über eine GitHub-App. Ein Credential-Service auf dem Host kennt den Schlüssel der App und legt jeder Drohne einen Unix-Socket hinein. Bei jedem Zugriff holt sich git dort einen frischen Token, nur für die Repositories dieser Drohne. Alles andere: 403. Gespeichert wird nichts. Die Identität ist der Mount selbst. Und ein geleakter Token ist nach spätestens einer Stunde wertlos.",
+    "dauer": 26.606
   },
   {
     "nummer": 6,
@@ -39,7 +39,7 @@
     "nummer": 7,
     "titel": "Der Arbeitsplatz",
     "text": "Mein Arbeitsplatz ist ein Terminal: per SSH in eine Drohne, zellij, mehrere Agenten nebeneinander. Sie laufen ohne Rückfragen, denn die Drohne ist die Sandbox. Sie ist wegwerfbar, ihr Token ist begrenzt, und alles Heikle braucht meinen Finger. Unterwegs führe ich die Sitzung auf dem Handy weiter, über die Remote Control von Claude.",
-    "dauer": 28.006
+    "dauer": 17.846
   },
   {
     "nummer": 8,

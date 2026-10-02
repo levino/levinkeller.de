@@ -62,9 +62,9 @@ export const Szene5Agent: React.FC = () => {
         ab={appAb}
       />
       <Karte
-        x={350}
+        x={330}
         y={420}
-        w={500}
+        w={540}
         titel={t({ de: 'Credential-Service', en: 'Credential service' })}
         unter={t({ de: 'kennt den App-Schlüssel', en: 'holds the app key' })}
         symbol={<Schloss farbe={farben.agent} />}

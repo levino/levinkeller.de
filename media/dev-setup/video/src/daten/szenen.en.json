@@ -26,8 +26,8 @@
   {
     "nummer": 5,
     "titel": "The agent channel",
-    "text": "Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. Ask the socket, and you get a token: valid for one hour, only for that drone's repositories. Anything else gets a 403. No passwords on disk. The identity is the mount itself.",
-    "dauer": 21.686
+    "text": "Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. On every access, git asks the socket for a fresh token, scoped to that drone's repositories. Anything else gets a 403. Nothing is stored on disk. The identity is the mount itself. And a leaked token is useless within the hour.",
+    "dauer": 26.686
   },
   {
     "nummer": 6,

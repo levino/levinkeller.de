@@ -89,7 +89,7 @@ export const Szene6Mensch: React.FC = () => {
       <Erscheinen ab={prodAb + 18} art="skalieren" style={{ position: 'absolute', left: 1585, top: 470 }}>
         <Schloss farbe={farben.mensch} groesse={70} />
       </Erscheinen>
-      <Paket von={[1000, 520]} nach={[520, 840]} ab={fragenAb - 4} dauer={26} halten={70} farbe={farben.mensch}>
+      <Paket von={[1000, 520]} nach={[760, 700]} ab={fragenAb - 4} dauer={26} halten={70} farbe={farben.mensch}>
         {t({ de: 'Darf ich? Bitte bestätigen', en: 'May I? Please confirm' })}
       </Paket>
       <div>
