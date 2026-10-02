@@ -1,61 +1,105 @@
-# Explainer video "The drone is the sandbox" (EN)
+# Explainer video "Many agents, one workplace" (EN)
 
 Narration for the video on https://levinkeller.de/en/docs/dev-setup/. One narrator, AI-generated
 voice (Gemini TTS, see `stimme.json`). Only sources: the dev-setup pages and `llms.txt`.
+Weighting: convenience and security count equally, convenience first (scenes 2–12), security
+compact at the end (scenes 13–15).
 
 Format: every `## <number>` heading is a scene. Lines starting with `>` describe the picture and are
 not spoken; everything else is narration. Voice it with `python3 skripte/vertonen.py en`.
 
-## 1 · The question
+## 1 · Many agents, one workplace
 
-> Title "The drone is the sandbox". Several agent cursors at work, an ID card that stays locked away.
+> Title. Four agent terminals at work in parallel. On the right two questions: "Where do they run?" (convenient) and "What may they do?" (secure).
 
-I hardly write code by hand anymore. Several Claude Code agents work on different repositories at once, and I read, steer and decide. Which raises one question: how do you give agents that much freedom without handing them your digital identity?
+I hardly write code by hand anymore. Several Claude Code agents work on different repositories at once, and I read, steer and decide. That takes a workplace that answers two questions. Where do all these agents run, comfortably and reachable from anywhere? And what are they allowed to do, without getting my identity?
 
-## 2 · A server, not a laptop
+## 2 · Rent the machine
 
-> Light laptop on the left, a big used server on the right, RAM filling up with drones.
+> Rented server from the Hetzner server auction: 62 GB of RAM, around the clock, a two-digit euro amount per month. The RAM fills up with drones.
 
-It starts with the metal. Everything runs on one used bare-metal server: an older quad-core with sixty-two gigabytes of RAM. Agents need memory more than compute. So the laptop is just a terminal with a nice screen. And the agents keep working when the lid is closed.
+The most important decision in the whole setup: the machine is rented, not bought. Mine is a second-hand bare-metal server from the Hetzner server auction with sixty-two gigabytes of RAM. It runs around the clock and costs a two-digit euro amount per month. Five to ten environments run there at once, and what runs out is memory, not CPU.
 
-## 3 · Tailnet: reachability, not security
+## 3 · No fat laptop
 
-> Drones as named machines in a dashed network. Stamp: "reachability ≠ security".
+> Left: the expensive 64 GB laptop, ten npm installs, temperature and fan climb, battery drains. Right: the MacBook Neo, light, cool, full battery. Lid closes, the agents keep working.
 
-Every environment joins a private WireGuard network, a tailnet, as a machine of its own, with its own name. No port juggling, nothing open to the internet. But the tailnet is about reachability, not security. Getting into an environment still takes my key.
+The alternative would be a laptop with sixty-four gigabytes. It costs several thousand euros, is outdated after a few years, and has only one battery and one fan. Ten agents running npm install, and it gets loud, hot and drained. My laptop is a MacBook Neo: light, long battery life, great display. It stays cool, because the work happens elsewhere. And when I close the lid, the agents keep working.
 
-## 4 · Hatchery and drones
+## 4 · Work from anywhere
 
-> Terminal: hatchery spawn levino/shipyard. A drone hatches; spawn, burrow, unburrow, slay. Code and Claude state stay on the host.
+> Server in the middle, around it a desk, a train and a phone. A bigger server. Then the server dies: the code is on GitHub, the drones are rebuilt from their devcontainer.json.
 
-The environments are managed by Hatchery, a small open-source tool. One devcontainer per repository, built from the repo's own devcontainer dot json. In proper Zerg fashion they are called drones: you spawn them, burrow them, and slay them. A drone is disposable. The code and Claude's memory live on the host.
+Because the work lives on the server, it doesn't matter where I am: at my desk, on a train, or with nothing but my phone. If the server is no longer enough, I cancel it and rent a bigger one. And if it dies, the code is still on GitHub. Every environment can be rebuilt on another machine from its devcontainer dot json.
 
-## 5 · The agent channel
+## 5 · Talk, don't type
 
-> Credential service, socket into the drone, fresh token on every access, levino/shipyard only, push to GitHub. Another repo: 403.
+> Microphone and waveform turning into text in an agent's prompt. Whispering, open source.
 
-Now the heart of it: two separate channels. The agent channel runs through a GitHub App. A credential service on the host holds the app's key and mounts a Unix socket into every drone. On every access, git asks the socket for a fresh token, scoped to that drone's repositories. Anything else gets a 403. Nothing is stored on disk. The identity is the mount itself. And a leaked token is useless within the hour.
+And I hardly type. I talk. With Whispering, an open-source speech-to-text tool, I spend two minutes explaining to an agent what I want. That's faster than typing and usually more precise, because when you talk, you give more context.
 
-## 6 · The human channel
+## 6 · Every environment a machine
 
-> SSH key in the Secure Enclave, Touch ID, ssh -A on a leash. Dashed line to prod: "finger only".
+> Tailnet: laptop and phone, drones with names. Address bar with a drone's name. Stamp "reachability ≠ security".
 
-The human channel is me. My SSH key lives in the Secure Enclave of my Mac and cannot be exported. Every single signature wants my fingerprint. So even with agent forwarding, an agent can't quietly hop onto a production server. At most, it can ask me.
+My devices and all environments sit in a private WireGuard network, a tailnet. In it, every environment is a machine of its own, with its own name. To see an environment's dev server, I just open it by name, from the laptop or from the phone. No port juggling, nothing open to the internet. But: the tailnet is about reachability, not security. Getting in still takes my key.
 
-## 7 · The workplace
+## 7 · Hatchery: one command
 
-> zellij with several agent panes. Badge "--dangerously-skip-permissions". Phone via Remote Control.
+> Terminal: hatchery spawn levino/shipyard. Features move into the drone: SSH server, Tailscale, GitHub CLI, Claude Code, zellij. More drones hatch next to it.
 
-My workplace is a terminal: SSH into a drone, zellij, several agents side by side. They run without permission prompts, because the drone is the sandbox. It's disposable, its token is scoped, and anything sensitive needs my finger. On the go, I pick up the session on my phone, through Claude's Remote Control.
+The environments are managed by Hatchery, a small open-source tool. One command, hatchery spawn with the repo's name, and Hatchery builds a devcontainer from the devcontainer dot json in the repo itself. It adds what I need: an SSH server, Tailscale, the GitHub CLI, Claude Code and zellij. One environment per repository, many in parallel.
 
-## 8 · Where it ends
+## 8 · Disposable, not forgetful
+
+> spawn, burrow, unburrow, slay. The drone is deleted and rebuilt, code and Claude state stay on the host. Next to it: works in Codespaces too, dotfiles in every drone.
+
+In true Zerg style they're called drones: you spawn them, burrow them and slay them. A drone is disposable. The code and Claude's state, meaning login, memory and history, live on the host. After a rebuild, the agent still knows what it was working on. The repos stay portable: the same configuration runs in Codespaces too. And my dotfiles go into every drone.
+
+## 9 · The workplace
+
+> zellij with several agents. The connection drops (tunnel), the agents keep working, on reconnect everything is there. Drones as colleagues: done, question, decision.
+
+My workplace is a terminal: SSH into a drone, start zellij, several agents side by side. The session lives on when the connection drops. Train in a tunnel, whatever: next time I connect, everything is still there, and the agents kept working. I switch between drones the way you switch between colleagues: who's done, who has a question, who needs a decision?
+
+## 10 · No permission prompts
+
+> Permission dialogs disappear. Badge "--dangerously-skip-permissions", next to it the reasons with check marks.
+
+Inside the drone, I turn the permission prompts off. That sounds more dangerous than it is, because the drone is the sandbox: it's disposable, its token only covers its own repos, and anything that needs my identity needs my finger. An agent that keeps asking isn't an agent, it's a very slow colleague.
+
+## 11 · Why not Codespaces?
+
+> Side by side: Codespaces and a drone. SSH, terminal, idle.
+
+Why not just use GitHub Codespaces? I can't simply SSH in there, only through a tunnel. So Claude Code ran in the VS Code terminal, with rendering glitches and sessions that were gone whenever the connection dropped. And after thirty minutes of idle time, Codespaces stops the environment. For agents that work for hours, that's useless. A drone is an ordinary machine, and nothing gets stopped.
+
+## 12 · From the phone
+
+> Phone with the Claude app, Remote Control into the running session. The agent asks, I answer by voice.
+
+From my phone I don't use SSH, I use Claude Code's Remote Control. I pick up the running session in the Claude app: see what the agent is doing, answer its questions, give it the next task, often by voice. Only when it needs my SSH key do I have to go to the Mac.
+
+## 13 · The agent channel
+
+> Credential service, socket into the drone, a fresh token on every access, levino/shipyard only, push to GitHub. Another repo: 403. repo connect and disconnect.
+
+Which leaves the second question: what are the agents allowed to do? Two separate channels. The agent channel runs through a GitHub App. A credential service on the host mounts a Unix socket into every drone. On every access, git fetches a fresh token there, scoped to the granted repositories. Anything else: 403. Nothing is stored; the identity is the mount itself. I change grants at runtime and revoke them instantly. The one-hour expiry only matters if a token ever leaks.
+
+## 14 · The human channel
+
+> SSH key in the Secure Enclave, Touch ID, ssh -A on a leash. Dashed line to the prod server: "finger only".
+
+The human channel is me. My SSH key lives in my Mac's Secure Enclave and cannot be exported. Every single signature wants my fingerprint. Even with agent forwarding it stays on a leash: an agent can't sneak onto a production server. At most, it can ask me.
+
+## 15 · Where it ends
 
 > GitHub, then CI and Argo CD to the cluster, in green. Agents stop at GitHub.
 
-This setup ends where code reaches GitHub. From there, CI and Argo CD take over. Agents push branches and open pull requests. They need no access to the cluster at all.
+The setup ends at GitHub. Agents push branches and open pull requests; from there, CI and Argo CD take over. They need no access to the cluster for that.
 
-## 9 · Read more
+## 16 · Read more
 
 > levinkeller.de/docs/dev-setup, llms.txt, open-source repos. "Voice: AI-generated".
 
-The full architecture, with the reasoning and the alternatives, is on levinkeller dot de, under docs, dev setup. Or hand the llms dot txt to your own AI, and grill it.
+The full architecture, with reasoning and alternatives, is on levinkeller dot de, under docs, dev setup. Or hand the llms dot txt to your own AI and grill it.
