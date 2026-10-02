@@ -1,12 +1,21 @@
 import type React from 'react'
 import { createContext, useContext } from 'react'
-import { Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion'
+import {
+  Easing,
+  interpolate,
+  spring,
+  useCurrentFrame,
+  useVideoConfig,
+} from 'remotion'
 import { farben, schriften } from './gestaltung'
 import type { Sprache, SzenenZeit } from './zeitplan'
 
 export type Text = Record<Sprache, string>
 
-const SzenenKontext = createContext<{ sprache: Sprache; szene: SzenenZeit } | null>(null)
+const SzenenKontext = createContext<{
+  sprache: Sprache
+  szene: SzenenZeit
+} | null>(null)
 export const SzenenAnbieter = SzenenKontext.Provider
 
 const klemmen = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const
@@ -22,7 +31,8 @@ export function useSzene() {
   const { sprache, szene } = kontext
   const bild = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const t = (text: Text | string) => (typeof text === 'string' ? text : text[sprache])
+  const t = (text: Text | string) =>
+    typeof text === 'string' ? text : text[sprache]
   const bei = (wort: Text | string, versatz = 0) => {
     const gesucht = t(wort).toLowerCase()
     const stelle = szene.text.toLowerCase().indexOf(gesucht)
@@ -30,13 +40,20 @@ export function useSzene() {
       console.warn(`Szene ${szene.nummer}: „${gesucht}“ nicht im Sprechertext`)
       return szene.audioBeginn + versatz
     }
-    return Math.round(szene.audioBeginn + (stelle / szene.text.length) * szene.audioBilder + versatz)
+    return Math.round(
+      szene.audioBeginn +
+        (stelle / szene.text.length) * szene.audioBilder +
+        versatz
+    )
   }
   return { sprache, szene, bild, fps, t, bei }
 }
 
 export const einblenden = (bild: number, ab: number, dauer = 12) =>
-  interpolate(bild, [ab, ab + dauer], [0, 1], { ...klemmen, easing: Easing.out(Easing.cubic) })
+  interpolate(bild, [ab, ab + dauer], [0, 1], {
+    ...klemmen,
+    easing: Easing.out(Easing.cubic),
+  })
 
 export const feder = (bild: number, ab: number, fps: number) =>
   spring({ frame: bild - ab, fps, config: { damping: 15, mass: 0.7 } })
@@ -53,9 +70,19 @@ export const Erscheinen: React.FC<{
   const f = feder(bild, ab, fps)
   const aus = bis === undefined ? 1 : 1 - einblenden(bild, bis, 10)
   const transform =
-    art === 'unten' ? `translateY(${(1 - f) * 30}px)` : art === 'skalieren' ? `scale(${0.6 + 0.4 * f})` : undefined
+    art === 'unten'
+      ? `translateY(${(1 - f) * 30}px)`
+      : art === 'skalieren'
+        ? `scale(${0.6 + 0.4 * f})`
+        : undefined
   return (
-    <div style={{ ...style, opacity: Math.min(1, f * 1.4) * aus, transform: [style?.transform, transform].filter(Boolean).join(' ') }}>
+    <div
+      style={{
+        ...style,
+        opacity: Math.min(1, f * 1.4) * aus,
+        transform: [style?.transform, transform].filter(Boolean).join(' '),
+      }}
+    >
       {children}
     </div>
   )
@@ -77,12 +104,34 @@ export const Karte: React.FC<{
   leuchten?: number
   monoUnter?: boolean
   stil?: React.CSSProperties
-}> = ({ x, y, w = 360, h, titel, unter, farbe = farben.rand, ab, bis, symbol, gestrichelt, leuchten = 0, monoUnter, stil }) => (
+}> = ({
+  x,
+  y,
+  w = 360,
+  h,
+  titel,
+  unter,
+  farbe = farben.rand,
+  ab,
+  bis,
+  symbol,
+  gestrichelt,
+  leuchten = 0,
+  monoUnter,
+  stil,
+}) => (
   <Erscheinen
     ab={ab}
     bis={bis}
     art="skalieren"
-    style={{ position: 'absolute', left: x - w / 2, top: h ? y - h / 2 : undefined, width: w, height: h, ...(h ? {} : { top: y, transform: 'translateY(-50%)' }) }}
+    style={{
+      position: 'absolute',
+      left: x - w / 2,
+      top: h ? y - h / 2 : undefined,
+      width: w,
+      height: h,
+      ...(h ? {} : { top: y, transform: 'translateY(-50%)' }),
+    }}
   >
     <div
       style={{
@@ -96,13 +145,26 @@ export const Karte: React.FC<{
         display: 'flex',
         alignItems: 'center',
         gap: 20,
-        boxShadow: leuchten > 0 ? `0 0 ${50 * leuchten}px ${farbe}` : '0 10px 30px rgba(0,0,0,0.35)',
+        boxShadow:
+          leuchten > 0
+            ? `0 0 ${50 * leuchten}px ${farbe}`
+            : '0 10px 30px rgba(0,0,0,0.35)',
         ...stil,
       }}
     >
       {symbol && <div style={{ flexShrink: 0, display: 'flex' }}>{symbol}</div>}
       <div style={{ minWidth: 0 }}>
-        <div style={{ fontFamily: schriften.text, fontWeight: 750, fontSize: 40, color: farben.text, lineHeight: 1.15 }}>{titel}</div>
+        <div
+          style={{
+            fontFamily: schriften.text,
+            fontWeight: 750,
+            fontSize: 40,
+            color: farben.text,
+            lineHeight: 1.15,
+          }}
+        >
+          {titel}
+        </div>
         {unter && (
           <div
             style={{
@@ -153,24 +215,61 @@ export const Linie: React.FC<{
   bis?: number
   beschriftung?: string
   beschriftungVersatz?: Punkt
-}> = ({ von, nach, via, farbe, ab, dauer = 18, breite = 7, gestrichelt, pfeil = true, bis, beschriftung, beschriftungVersatz = [0, -34] }) => {
+}> = ({
+  von,
+  nach,
+  via,
+  farbe,
+  ab,
+  dauer = 18,
+  breite = 7,
+  gestrichelt,
+  pfeil = true,
+  bis,
+  beschriftung,
+  beschriftungVersatz = [0, -34],
+}) => {
   const { bild } = useSzene()
-  const kontroll: Punkt = via ?? [(von[0] + nach[0]) / 2, (von[1] + nach[1]) / 2]
+  const kontroll: Punkt = via ?? [
+    (von[0] + nach[0]) / 2,
+    (von[1] + nach[1]) / 2,
+  ]
   const laenge = pfadLaenge(von, kontroll, nach)
-  const anteil = interpolate(bild, [ab, ab + dauer], [0, 1], { ...klemmen, easing: Easing.inOut(Easing.cubic) })
+  const anteil = interpolate(bild, [ab, ab + dauer], [0, 1], {
+    ...klemmen,
+    easing: Easing.inOut(Easing.cubic),
+  })
   const aus = bis === undefined ? 1 : 1 - einblenden(bild, bis, 10)
   if (anteil <= 0) return null
   const d = `M ${von[0]} ${von[1]} Q ${kontroll[0]} ${kontroll[1]} ${nach[0]} ${nach[1]}`
   const spitze = quadratisch(von, kontroll, nach, anteil)
   const davor = quadratisch(von, kontroll, nach, Math.max(0, anteil - 0.01))
-  const winkel = (Math.atan2(spitze[1] - davor[1], spitze[0] - davor[0]) * 180) / Math.PI
+  const winkel =
+    (Math.atan2(spitze[1] - davor[1], spitze[0] - davor[0]) * 180) / Math.PI
   const mitte = quadratisch(von, kontroll, nach, 0.5)
   const maskId = `m-${von.join('-')}-${nach.join('-')}-${ab}`
   return (
-    <svg style={{ position: 'absolute', inset: 0, opacity: aus, overflow: 'visible' }} width={1920} height={1080}>
+    <svg
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: aus,
+        overflow: 'visible',
+      }}
+      width={1920}
+      height={1080}
+    >
       <defs>
         <mask id={maskId} maskUnits="userSpaceOnUse">
-          <path d={d} stroke="white" strokeWidth={breite + 6} fill="none" strokeDasharray={laenge} strokeDashoffset={laenge * (1 - anteil)} />
+          <path
+            d={d}
+            stroke="white"
+            strokeWidth={breite + 6}
+            fill="none"
+            strokeDasharray={laenge}
+            strokeDashoffset={laenge * (1 - anteil)}
+          />
         </mask>
       </defs>
       <path
@@ -183,7 +282,11 @@ export const Linie: React.FC<{
         mask={`url(#${maskId})`}
       />
       {pfeil && (
-        <polygon points="-8,-13 16,0 -8,13" fill={farbe} transform={`translate(${spitze[0]} ${spitze[1]}) rotate(${winkel})`} />
+        <polygon
+          points="-8,-13 16,0 -8,13"
+          fill={farbe}
+          transform={`translate(${spitze[0]} ${spitze[1]}) rotate(${winkel})`}
+        />
       )}
       {beschriftung && (
         <text
@@ -195,7 +298,11 @@ export const Linie: React.FC<{
           fontSize={28}
           textAnchor="middle"
           opacity={einblenden(bild, ab + dauer * 0.6, 10)}
-          style={{ paintOrder: 'stroke', stroke: farben.grund, strokeWidth: 10 }}
+          style={{
+            paintOrder: 'stroke',
+            stroke: farben.grund,
+            strokeWidth: 10,
+          }}
         >
           {beschriftung}
         </text>
@@ -216,8 +323,12 @@ export const Paket: React.FC<{
 }> = ({ von, nach, ab, dauer = 24, halten = 30, farbe, children }) => {
   const { bild } = useSzene()
   if (bild < ab || bild > ab + dauer + halten + 10) return null
-  const s = interpolate(bild, [ab, ab + dauer], [0, 1], { ...klemmen, easing: Easing.inOut(Easing.cubic) })
-  const deckkraft = einblenden(bild, ab, 6) * (1 - einblenden(bild, ab + dauer + halten, 10))
+  const s = interpolate(bild, [ab, ab + dauer], [0, 1], {
+    ...klemmen,
+    easing: Easing.inOut(Easing.cubic),
+  })
+  const deckkraft =
+    einblenden(bild, ab, 6) * (1 - einblenden(bild, ab + dauer + halten, 10))
   return (
     <div
       style={{
@@ -243,14 +354,14 @@ export const Paket: React.FC<{
 }
 
 /** Schräger Stempel für die Kernaussage einer Szene */
-export const Stempel: React.FC<{ x: number; y: number; farbe: string; ab: number; drehung?: number; children: React.ReactNode }> = ({
-  x,
-  y,
-  farbe,
-  ab,
-  drehung = -6,
-  children,
-}) => {
+export const Stempel: React.FC<{
+  x: number
+  y: number
+  farbe: string
+  ab: number
+  drehung?: number
+  children: React.ReactNode
+}> = ({ x, y, farbe, ab, drehung = -6, children }) => {
   const { bild, fps } = useSzene()
   const f = feder(bild, ab, fps)
   if (bild < ab) return null
@@ -293,7 +404,11 @@ export const Terminal: React.FC<{
 }> = ({ x, y, w, h, titel, ab, farbe = farben.rand, zeilen, schrift = 30 }) => {
   const { bild } = useSzene()
   return (
-    <Erscheinen ab={ab} art="skalieren" style={{ position: 'absolute', left: x, top: y, width: w, height: h }}>
+    <Erscheinen
+      ab={ab}
+      art="skalieren"
+      style={{ position: 'absolute', left: x, top: y, width: w, height: h }}
+    >
       <div
         style={{
           width: '100%',
@@ -318,22 +433,57 @@ export const Terminal: React.FC<{
           }}
         >
           {['#ff5f57', '#febc2e', '#28c840'].map((punkt) => (
-            <div key={punkt} style={{ width: 16, height: 16, borderRadius: 8, background: punkt }} />
+            <div
+              key={punkt}
+              style={{
+                width: 16,
+                height: 16,
+                borderRadius: 8,
+                background: punkt,
+              }}
+            />
           ))}
-          <div style={{ marginLeft: 12, fontFamily: schriften.mono, fontSize: 24, color: farben.gedaempft, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <div
+            style={{
+              marginLeft: 12,
+              fontFamily: schriften.mono,
+              fontSize: 24,
+              color: farben.gedaempft,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
             {titel}
           </div>
         </div>
-        <div style={{ padding: '18px 24px', fontFamily: schriften.mono, fontSize: schrift, lineHeight: 1.5 }}>
+        <div
+          style={{
+            padding: '18px 24px',
+            fontFamily: schriften.mono,
+            fontSize: schrift,
+            lineHeight: 1.5,
+          }}
+        >
           {zeilen.map((zeile) => {
             if (bild < zeile.ab) return null
-            const zeichen = zeile.tippen === false ? zeile.text.length : Math.floor((bild - zeile.ab) * 1.6)
+            const zeichen =
+              zeile.tippen === false
+                ? zeile.text.length
+                : Math.floor((bild - zeile.ab) * 1.6)
             const sichtbar = zeile.text.slice(0, zeichen)
             const tippt = zeichen < zeile.text.length
             return (
-              <div key={`${zeile.ab}-${zeile.text}`} style={{ color: zeile.farbe ?? farben.text, whiteSpace: 'pre' }}>
+              <div
+                key={`${zeile.ab}-${zeile.text}`}
+                style={{ color: zeile.farbe ?? farben.text, whiteSpace: 'pre' }}
+              >
                 {sichtbar}
-                {tippt && <span style={{ background: farben.text, color: farben.text }}>▌</span>}
+                {tippt && (
+                  <span style={{ background: farben.text, color: farben.text }}>
+                    ▌
+                  </span>
+                )}
               </div>
             )
           })}
@@ -354,7 +504,17 @@ export const Aussage: React.FC<{
   breite?: number
   ausrichtung?: 'left' | 'center'
   children: React.ReactNode
-}> = ({ x, y, ab, bis, farbe = farben.text, groesse = 46, breite = 900, ausrichtung = 'center', children }) => (
+}> = ({
+  x,
+  y,
+  ab,
+  bis,
+  farbe = farben.text,
+  groesse = 46,
+  breite = 900,
+  ausrichtung = 'center',
+  children,
+}) => (
   <Erscheinen
     ab={ab}
     bis={bis}

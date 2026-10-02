@@ -19,4 +19,3 @@ export const Wurzel: React.FC = () => (
     ))}
   </>
 )
-

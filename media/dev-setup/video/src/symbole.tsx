@@ -2,8 +2,13 @@ import type React from 'react'
 
 type Eigenschaften = { farbe: string; groesse?: number }
 
-const Rahmen: React.FC<Eigenschaften & { children: React.ReactNode }> = ({ farbe, groesse = 56, children }) => (
+const Rahmen: React.FC<Eigenschaften & { children: React.ReactNode }> = ({
+  farbe,
+  groesse = 56,
+  children,
+}) => (
   <svg
+    aria-hidden="true"
     width={groesse}
     height={groesse}
     viewBox="0 0 24 24"

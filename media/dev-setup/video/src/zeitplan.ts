@@ -5,7 +5,12 @@ import szenenEn from './daten/szenen.en.json'
 export type Sprache = 'de' | 'en'
 export const bilderProSekunde = 30
 
-type SzenenDaten = { nummer: number; titel: string; text: string; dauer: number | null }
+type SzenenDaten = {
+  nummer: number
+  titel: string
+  text: string
+  dauer: number | null
+}
 
 export type SzenenZeit = SzenenDaten & {
   /** Bild innerhalb der Szene, an dem die Stimme einsetzt */
@@ -27,9 +32,14 @@ export function szenenZeiten(sprache: Sprache): SzenenZeit[] {
   let beginn = 0
   return szenen.map((szene, index) => {
     const sprechdauer = szene.dauer ?? geschaetzteDauer(szene.text)
-    const abspann = index === szenen.length - 1 ? stimme.abspannHaltenInSekunden : 0
+    const abspann =
+      index === szenen.length - 1 ? stimme.abspannHaltenInSekunden : 0
     const dauerInBildern = Math.ceil(
-      (stimme.luftVorSzeneInSekunden + sprechdauer + stimme.luftNachSzeneInSekunden + abspann) * bilderProSekunde
+      (stimme.luftVorSzeneInSekunden +
+        sprechdauer +
+        stimme.luftNachSzeneInSekunden +
+        abspann) *
+        bilderProSekunde
     )
     const zeit: SzenenZeit = {
       ...szene,
@@ -45,4 +55,7 @@ export function szenenZeiten(sprache: Sprache): SzenenZeit[] {
 }
 
 export const gesamtdauer = (sprache: Sprache) =>
-  szenenZeiten(sprache).reduce((summe, szene) => summe + szene.dauerInBildern, 0)
+  szenenZeiten(sprache).reduce(
+    (summe, szene) => summe + szene.dauerInBildern,
+    0
+  )

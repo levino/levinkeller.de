@@ -1,10 +1,22 @@
 import type React from 'react'
 import { interpolate } from 'remotion'
-import { Erscheinen, Linie, Terminal, einblenden, feder, useSzene } from '../bausteine'
+import {
+  Erscheinen,
+  einblenden,
+  feder,
+  Linie,
+  Terminal,
+  useSzene,
+} from '../bausteine'
 import { farben, schriften } from '../gestaltung'
 import { Kreuz, Schloss } from '../symbole'
 
-const repos = ['levino/shipyard', 'levino/levinkeller.de', 'levino/hatchery', 'levino/dotfiles']
+const repos = [
+  'levino/shipyard',
+  'levino/levinkeller.de',
+  'levino/hatchery',
+  'levino/dotfiles',
+]
 const zeilen = [
   ['● Read src/app.ts', '● Edit tests', '✓ 14 passed'],
   ['● Edit content/docs', '● npm run build', '✓ build ok'],
@@ -30,11 +42,30 @@ export const Szene1Frage: React.FC = () => {
           fontFamily: schriften.text,
         }}
       >
-        <div style={{ fontSize: interpolate(hoch, [0, 1], [118, 64]), fontWeight: 850, color: farben.text, letterSpacing: -2 }}>
-          {t({ de: 'Die Drohne ist die Sandbox', en: 'The drone is the sandbox' })}
+        <div
+          style={{
+            fontSize: interpolate(hoch, [0, 1], [118, 64]),
+            fontWeight: 850,
+            color: farben.text,
+            letterSpacing: -2,
+          }}
+        >
+          {t({
+            de: 'Die Drohne ist die Sandbox',
+            en: 'The drone is the sandbox',
+          })}
         </div>
-        <div style={{ fontSize: interpolate(hoch, [0, 1], [48, 34]), color: farben.gedaempft, marginTop: 14 }}>
-          {t({ de: 'Mein Dev-Setup für KI-Agenten', en: 'My dev setup for AI agents' })}
+        <div
+          style={{
+            fontSize: interpolate(hoch, [0, 1], [48, 34]),
+            color: farben.gedaempft,
+            marginTop: 14,
+          }}
+        >
+          {t({
+            de: 'Mein Dev-Setup für KI-Agenten',
+            en: 'My dev setup for AI agents',
+          })}
         </div>
       </div>
       <div
@@ -71,12 +102,30 @@ export const Szene1Frage: React.FC = () => {
           />
         )
       })}
-      <Erscheinen ab={bei({ de: 'ich lese', en: 'and I read' })} style={{ position: 'absolute', left: 90, top: 918, width: 970 }}>
-        <div style={{ fontFamily: schriften.text, fontSize: 40, fontWeight: 700, color: farben.mensch, textAlign: 'center' }}>
-          {t({ de: 'Ich: lesen · lenken · entscheiden', en: 'Me: read · steer · decide' })}
+      <Erscheinen
+        ab={bei({ de: 'ich lese', en: 'and I read' })}
+        style={{ position: 'absolute', left: 90, top: 918, width: 970 }}
+      >
+        <div
+          style={{
+            fontFamily: schriften.text,
+            fontSize: 40,
+            fontWeight: 700,
+            color: farben.mensch,
+            textAlign: 'center',
+          }}
+        >
+          {t({
+            de: 'Ich: lesen · lenken · entscheiden',
+            en: 'Me: read · steer · decide',
+          })}
         </div>
       </Erscheinen>
-      <Erscheinen ab={identitaetAb} art="skalieren" style={{ position: 'absolute', left: 1240, top: 330, width: 590 }}>
+      <Erscheinen
+        ab={identitaetAb}
+        art="skalieren"
+        style={{ position: 'absolute', left: 1240, top: 330, width: 590 }}
+      >
         <div
           style={{
             background: farben.flaeche,
@@ -89,24 +138,46 @@ export const Szene1Frage: React.FC = () => {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <Schloss farbe={farben.mensch} groesse={64} />
-            <div style={{ fontSize: 46, fontWeight: 800 }}>{t({ de: 'Meine Identität', en: 'My identity' })}</div>
+            <div style={{ fontSize: 46, fontWeight: 800 }}>
+              {t({ de: 'Meine Identität', en: 'My identity' })}
+            </div>
           </div>
           {[
-            { de: 'GitHub-Account, alle Orgs', en: 'GitHub account, every org' },
+            {
+              de: 'GitHub-Account, alle Orgs',
+              en: 'GitHub account, every org',
+            },
             { de: 'SSH-Schlüssel', en: 'SSH key' },
             { de: 'Zugang zu Prod-Servern', en: 'Access to prod servers' },
           ].map((zeile, index) => (
             <div
               key={zeile.en}
-              style={{ fontSize: 34, color: farben.gedaempft, marginTop: index === 0 ? 26 : 12, opacity: einblenden(bild, identitaetAb + 10 + index * 8) }}
+              style={{
+                fontSize: 34,
+                color: farben.gedaempft,
+                marginTop: index === 0 ? 26 : 12,
+                opacity: einblenden(bild, identitaetAb + 10 + index * 8),
+              }}
             >
               · {t(zeile)}
             </div>
           ))}
         </div>
       </Erscheinen>
-      <Linie von={[1070, 560]} nach={[1225, 560]} pfeil={false} farbe={farben.fehler} ab={ohneAb - 10} dauer={14} breite={8} />
-      <Erscheinen ab={ohneAb} art="skalieren" style={{ position: 'absolute', left: 1106, top: 518 }}>
+      <Linie
+        von={[1070, 560]}
+        nach={[1225, 560]}
+        pfeil={false}
+        farbe={farben.fehler}
+        ab={ohneAb - 10}
+        dauer={14}
+        breite={8}
+      />
+      <Erscheinen
+        ab={ohneAb}
+        art="skalieren"
+        style={{ position: 'absolute', left: 1106, top: 518 }}
+      >
         <Kreuz farbe={farben.fehler} groesse={84} />
       </Erscheinen>
     </>

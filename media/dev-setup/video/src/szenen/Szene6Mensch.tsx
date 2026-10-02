@@ -1,7 +1,22 @@
 import type React from 'react'
-import { Aussage, Erscheinen, Karte, Linie, Paket, useSzene } from '../bausteine'
+import {
+  Aussage,
+  Erscheinen,
+  Karte,
+  Linie,
+  Paket,
+  useSzene,
+} from '../bausteine'
 import { farben } from '../gestaltung'
-import { Drohne, Fingerabdruck, Kreuz, Laptop, Schloss, Schluessel, Server } from '../symbole'
+import {
+  Drohne,
+  Fingerabdruck,
+  Kreuz,
+  Laptop,
+  Schloss,
+  Schluessel,
+  Server,
+} from '../symbole'
 import { Kanallegende } from './Szene5Agent'
 
 export const Szene6Mensch: React.FC = () => {
@@ -15,11 +30,25 @@ export const Szene6Mensch: React.FC = () => {
   const fragenAb = bei({ de: 'höchstens fragen', en: 'ask me' })
   // Der Finger leuchtet bei jeder Signatur auf
   const signaturen = [fingerAb, fragenAb + 24]
-  const leuchten = Math.max(0, ...signaturen.map((ab) => (bild >= ab ? Math.max(0, 1 - (bild - ab) / 25) : 0)))
+  const leuchten = Math.max(
+    0,
+    ...signaturen.map((ab) =>
+      bild >= ab ? Math.max(0, 1 - (bild - ab) / 25) : 0
+    )
+  )
   return (
     <>
       <Kanallegende ab={0} aktiv="mensch" />
-      <Karte x={330} y={330} w={460} titel="Mac" unter="Secretive" symbol={<Laptop farbe={farben.mensch} />} farbe={farben.mensch} ab={6} />
+      <Karte
+        x={330}
+        y={330}
+        w={460}
+        titel="Mac"
+        unter="Secretive"
+        symbol={<Laptop farbe={farben.mensch} />}
+        farbe={farben.mensch}
+        ab={6}
+      />
       <Karte
         x={330}
         y={570}
@@ -30,10 +59,21 @@ export const Szene6Mensch: React.FC = () => {
         farbe={farben.mensch}
         ab={enclaveAb}
       />
-      <Aussage x={330} y={670} ab={exportAb} breite={460} groesse={32} farbe={farben.gedaempft}>
+      <Aussage
+        x={330}
+        y={670}
+        ab={exportAb}
+        breite={460}
+        groesse={32}
+        farbe={farben.gedaempft}
+      >
         {t({ de: 'nicht exportierbar', en: 'cannot be exported' })}
       </Aussage>
-      <Erscheinen ab={signaturAb} art="skalieren" style={{ position: 'absolute', left: 250, top: 760 }}>
+      <Erscheinen
+        ab={signaturAb}
+        art="skalieren"
+        style={{ position: 'absolute', left: 250, top: 760 }}
+      >
         <div
           style={{
             width: 160,
@@ -50,7 +90,15 @@ export const Szene6Mensch: React.FC = () => {
           <Fingerabdruck farbe={farben.mensch} groesse={100} />
         </div>
       </Erscheinen>
-      <Aussage x={460} y={810} ab={signaturAb + 10} ausrichtung="left" breite={640} groesse={34} farbe={farben.mensch}>
+      <Aussage
+        x={460}
+        y={810}
+        ab={signaturAb + 10}
+        ausrichtung="left"
+        breite={640}
+        groesse={34}
+        farbe={farben.mensch}
+      >
         {t({ de: 'jede Signatur: Touch ID', en: 'every signature: Touch ID' })}
       </Aussage>
 
@@ -64,7 +112,13 @@ export const Szene6Mensch: React.FC = () => {
         farbe={farben.agent}
         ab={forwardingAb - 14}
       />
-      <Linie von={[565, 330]} nach={[780, 330]} farbe={farben.mensch} ab={forwardingAb} beschriftung="ssh -A" />
+      <Linie
+        von={[565, 330]}
+        nach={[780, 330]}
+        farbe={farben.mensch}
+        ab={forwardingAb}
+        beschriftung="ssh -A"
+      />
       <Karte
         x={1620}
         y={330}
@@ -83,18 +137,36 @@ export const Szene6Mensch: React.FC = () => {
         ab={prodAb}
         beschriftung={t({ de: 'nur mit Finger', en: 'finger only' })}
       />
-      <Erscheinen ab={prodAb + 18} art="skalieren" style={{ position: 'absolute', left: 1268, top: 352 }}>
+      <Erscheinen
+        ab={prodAb + 18}
+        art="skalieren"
+        style={{ position: 'absolute', left: 1268, top: 352 }}
+      >
         <Kreuz farbe={farben.fehler} groesse={90} />
       </Erscheinen>
-      <Erscheinen ab={prodAb + 18} art="skalieren" style={{ position: 'absolute', left: 1585, top: 470 }}>
+      <Erscheinen
+        ab={prodAb + 18}
+        art="skalieren"
+        style={{ position: 'absolute', left: 1585, top: 470 }}
+      >
         <Schloss farbe={farben.mensch} groesse={70} />
       </Erscheinen>
-      <Paket von={[1000, 520]} nach={[760, 700]} ab={fragenAb - 4} dauer={26} halten={70} farbe={farben.mensch}>
+      <Paket
+        von={[1000, 520]}
+        nach={[760, 700]}
+        ab={fragenAb - 4}
+        dauer={26}
+        halten={70}
+        farbe={farben.mensch}
+      >
         {t({ de: 'Darf ich? Bitte bestätigen', en: 'May I? Please confirm' })}
       </Paket>
       <div>
         <Aussage x={1250} y={640} ab={fragenAb + 4} breite={900} groesse={42}>
-          {t({ de: 'Der Agent fragt, ich entscheide', en: 'The agent asks, I decide' })}
+          {t({
+            de: 'Der Agent fragt, ich entscheide',
+            en: 'The agent asks, I decide',
+          })}
         </Aussage>
       </div>
     </>

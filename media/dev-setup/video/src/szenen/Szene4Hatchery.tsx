@@ -1,6 +1,14 @@
 import type React from 'react'
 import { interpolate } from 'remotion'
-import { Aussage, Erscheinen, Karte, Linie, Terminal, einblenden, useSzene } from '../bausteine'
+import {
+  Aussage,
+  Erscheinen,
+  einblenden,
+  Karte,
+  Linie,
+  Terminal,
+  useSzene,
+} from '../bausteine'
 import { farben, schriften } from '../gestaltung'
 import { Drohne } from '../symbole'
 
@@ -19,10 +27,15 @@ export const Szene4Hatchery: React.FC = () => {
   const wegwerfAb = bei({ de: 'wegwerfbar', en: 'disposable' })
   const hostAb = bei({ de: 'Der Code', en: 'The code' })
   // Drohne verschwindet kurz und wird neu gebaut – Code und Claude-Zustand bleiben auf dem Host
-  const weg = interpolate(bild, [wegwerfAb, wegwerfAb + 10, hostAb + 30, hostAb + 45], [1, 0.12, 0.12, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  })
+  const weg = interpolate(
+    bild,
+    [wegwerfAb, wegwerfAb + 10, hostAb + 30, hostAb + 45],
+    [1, 0.12, 0.12, 1],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    }
+  )
   return (
     <>
       <Terminal
@@ -33,16 +46,46 @@ export const Szene4Hatchery: React.FC = () => {
         titel="levin@dev-server"
         ab={hatcheryAb}
         zeilen={[
-          { text: '$ hatchery spawn levino/shipyard', ab: hatcheryAb + 8, farbe: farben.mensch },
-          { text: '→ git clone levino/shipyard', ab: devcontainerAb, farbe: farben.gedaempft },
-          { text: '→ devcontainer up', ab: jsonAb - 10, farbe: farben.gedaempft },
-          { text: '  (.devcontainer/devcontainer.json)', ab: jsonAb, farbe: farben.gedaempft },
-          { text: '✓ hatchery-levino-shipyard', ab: jsonAb + 30, farbe: farben.agent },
+          {
+            text: '$ hatchery spawn levino/shipyard',
+            ab: hatcheryAb + 8,
+            farbe: farben.mensch,
+          },
+          {
+            text: '→ git clone levino/shipyard',
+            ab: devcontainerAb,
+            farbe: farben.gedaempft,
+          },
+          {
+            text: '→ devcontainer up',
+            ab: jsonAb - 10,
+            farbe: farben.gedaempft,
+          },
+          {
+            text: '  (.devcontainer/devcontainer.json)',
+            ab: jsonAb,
+            farbe: farben.gedaempft,
+          },
+          {
+            text: '✓ hatchery-levino-shipyard',
+            ab: jsonAb + 30,
+            farbe: farben.agent,
+          },
         ]}
       />
-      <div style={{ position: 'absolute', left: 80, top: 640, display: 'flex', gap: 22 }}>
+      <div
+        style={{
+          position: 'absolute',
+          left: 80,
+          top: 640,
+          display: 'flex',
+          gap: 22,
+        }}
+      >
         {befehle.map((befehl, index) => {
-          const an = einblenden(bild, befehl.ab, 6) * (1 - einblenden(bild, (befehle[index + 1]?.ab ?? wegwerfAb) + 4, 8))
+          const an =
+            einblenden(bild, befehl.ab, 6) *
+            (1 - einblenden(bild, (befehle[index + 1]?.ab ?? wegwerfAb) + 4, 8))
           return (
             <Erscheinen key={befehl.name} ab={zergAb + index * 5}>
               <div
@@ -64,8 +107,19 @@ export const Szene4Hatchery: React.FC = () => {
           )
         })}
       </div>
-      <Aussage x={80} y={760} ab={zergAb} ausrichtung="left" breite={900} groesse={36} farbe={farben.gedaempft}>
-        {t({ de: 'Benannt im Stil der Zerg aus StarCraft', en: 'Named in StarCraft Zerg style' })}
+      <Aussage
+        x={80}
+        y={760}
+        ab={zergAb}
+        ausrichtung="left"
+        breite={900}
+        groesse={36}
+        farbe={farben.gedaempft}
+      >
+        {t({
+          de: 'Benannt im Stil der Zerg aus StarCraft',
+          en: 'Named in StarCraft Zerg style',
+        })}
       </Aussage>
 
       <div style={{ opacity: weg }}>
@@ -77,7 +131,12 @@ export const Szene4Hatchery: React.FC = () => {
           unter={
             <>
               <div style={{ fontFamily: schriften.mono }}>levino/shipyard</div>
-              <div>{t({ de: 'Devcontainer aus dem Repo', en: 'devcontainer from the repo' })}</div>
+              <div>
+                {t({
+                  de: 'Devcontainer aus dem Repo',
+                  en: 'devcontainer from the repo',
+                })}
+              </div>
             </>
           }
           farbe={farben.agent}
@@ -86,11 +145,32 @@ export const Szene4Hatchery: React.FC = () => {
           leuchten={0.3}
         />
       </div>
-      <Aussage x={1450} y={470} ab={wegwerfAb} bis={hostAb + 30} groesse={40} breite={700} farbe={farben.fehler}>
-        {t({ de: 'wegwerfbar: weg und neu gebaut', en: 'disposable: deleted and rebuilt' })}
+      <Aussage
+        x={1450}
+        y={470}
+        ab={wegwerfAb}
+        bis={hostAb + 30}
+        groesse={40}
+        breite={700}
+        farbe={farben.fehler}
+      >
+        {t({
+          de: 'wegwerfbar: weg und neu gebaut',
+          en: 'disposable: deleted and rebuilt',
+        })}
       </Aussage>
 
-      <Erscheinen ab={hostAb - 10} art="blenden" style={{ position: 'absolute', left: 1060, top: 610, width: 780, height: 400 }}>
+      <Erscheinen
+        ab={hostAb - 10}
+        art="blenden"
+        style={{
+          position: 'absolute',
+          left: 1060,
+          top: 610,
+          width: 780,
+          height: 400,
+        }}
+      >
         <div
           style={{
             width: '100%',
@@ -101,21 +181,56 @@ export const Szene4Hatchery: React.FC = () => {
             background: 'rgba(21,29,51,0.6)',
           }}
         />
-        <div style={{ position: 'absolute', left: 30, bottom: 18, fontFamily: schriften.text, fontSize: 34, fontWeight: 800, color: farben.gedaempft }}>
+        <div
+          style={{
+            position: 'absolute',
+            left: 30,
+            bottom: 18,
+            fontFamily: schriften.text,
+            fontSize: 34,
+            fontWeight: 800,
+            color: farben.gedaempft,
+          }}
+        >
           {t({ de: 'Host (bleibt)', en: 'Host (stays)' })}
         </div>
       </Erscheinen>
-      <Karte x={1260} y={850} w={340} titel="Code" unter="Git-Worktree" monoUnter ab={hostAb} />
+      <Karte
+        x={1260}
+        y={850}
+        w={340}
+        titel="Code"
+        unter="Git-Worktree"
+        monoUnter
+        ab={hostAb}
+      />
       <Karte
         x={1640}
         y={850}
         w={340}
         titel="Claude"
-        unter={t({ de: 'Login, Gedächtnis, Verlauf', en: 'login, memory, history' })}
+        unter={t({
+          de: 'Login, Gedächtnis, Verlauf',
+          en: 'login, memory, history',
+        })}
         ab={hostAb + 8}
       />
-      <Linie von={[1260, 770]} nach={[1330, 440]} farbe={farben.gedaempft} ab={hostAb + 14} breite={5} beschriftung="mount" beschriftungVersatz={[-80, -40]} />
-      <Linie von={[1640, 770]} nach={[1570, 440]} farbe={farben.gedaempft} ab={hostAb + 20} breite={5} />
+      <Linie
+        von={[1260, 770]}
+        nach={[1330, 440]}
+        farbe={farben.gedaempft}
+        ab={hostAb + 14}
+        breite={5}
+        beschriftung="mount"
+        beschriftungVersatz={[-80, -40]}
+      />
+      <Linie
+        von={[1640, 770]}
+        nach={[1570, 440]}
+        farbe={farben.gedaempft}
+        ab={hostAb + 20}
+        breite={5}
+      />
     </>
   )
 }
