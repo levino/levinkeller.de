@@ -42,8 +42,10 @@ Code terminal, with rendering glitches, sluggishness and dropped sessions. And a
 idle timeout (default: 30 minutes) Codespaces stops the environment, which doesn't fit
 agents working in the background for hours. It's also expensive for many always-on
 environments and tied to GitHub. A drone I reach with plain `ssh` over the tailnet, the
-zellij session survives dropped connections, and nothing idles out. DevPod keeps the state on the client, and I want to see the same thing
-from every device. And neither has a good answer to how the agent gets to GitHub without
+zellij session survives dropped connections, and nothing idles out.
+
+DevPod keeps the state on the client, and I want to see the same thing from every
+device. And neither has a good answer to how the agent gets to GitHub without
 getting my identity. The repositories stay compatible though: every `devcontainer.json`
 Hatchery uses also works in Codespaces.
 

@@ -71,8 +71,8 @@ Before writing Hatchery I tried what exists:
 - **GitHub Codespaces.** What killed it was the way of working, not the price. I can't
   just SSH into a codespace like into any other machine. There's only
   `gh codespace ssh`, a tunnel through the GitHub CLI that also needs an SSH server in
-  the image. So I ended up running Claude Code in the VS Code terminal (often VS Code in
-  the browser), and that was painful: rendering glitches, sluggishness, and again and
+  the image. So I ended up running Claude Code in the VS Code terminal, and that was
+  painful: rendering glitches, sluggishness, and again and
   again the connection dropped and the session was gone. On top of that, Codespaces
   stops an environment once it sits unused for a while (default: 30 minutes idle).
   Agents working in the background for hours don't fit that model. Then there's the
@@ -88,5 +88,5 @@ Before writing Hatchery I tried what exists:
 - **Plain Docker by hand.** Works, but then you keep rebuilding by hand exactly what
   Hatchery automates: joining the tailnet, SSH keys, tokens.
 
-In the end credentials tipped the scales: none of the alternatives has a good answer to
+And one thing spoke against all of them: none of the alternatives has a good answer to
 how an agent in the environment gets to GitHub without getting my full identity.
