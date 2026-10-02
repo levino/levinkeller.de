@@ -37,13 +37,13 @@ Codespaces), dann warum es trotzdem sicher ist (zwei Kanäle), dann Randnotizen 
 
 **EXPERTIN:** … geht, solange es ein oder zwei Agenten sind. Danach wird der Laptop laut, heiß und leer. Und jede Reise unterbricht die Arbeit, denn wenn du den Deckel zuklappst, hören die Agenten auf.
 
-**MODERATOR:** Und den Laptop mit richtig viel RAM, den man dafür bräuchte, den gibt es ja, der kostet dann halt ein paar tausend Euro. Und wird trotzdem heiß.
+**MODERATOR:** Und den Laptop mit vierundsechzig Gigabyte, den man dafür bräuchte, den gibt es ja. Der kostet dann halt mehrere tausend Euro, ist nach ein paar Jahren veraltet und hat trotzdem nur einen Akku und einen Lüfter.
 
 **EXPERTIN:** Genau. Und deshalb dreht Levin das um: Er mietet die Maschine. Ein Bare-Metal-Server im Rechenzentrum, gebraucht aus der Hetzner-Serverbörse. Ein älterer Intel-Vierkerner mit 62 Gigabyte RAM.
 
 **MODERATOR:** Ein älterer Vierkerner. Für eine ganze Agentenarmee.
 
-**EXPERTIN:** Nichts Besonderes, sagt er selbst. Aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und kostet einen zweistelligen Eurobetrag im Monat. Ein gebrauchter dedizierter Server ist schlicht die billigste Art, viel RAM dauerhaft verfügbar zu haben.
+**EXPERTIN:** Nichts Besonderes, sagt er selbst. Aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und kostet einen zweistelligen Eurobetrag im Monat. Ein gebrauchter dedizierter Server ist schlicht die billigste Art, viel RAM dauerhaft verfügbar zu haben. Und reicht er nicht mehr, kündigt er ihn und mietet einen größeren.
 
 **MODERATOR:** Und wie viel RAM braucht man?
 

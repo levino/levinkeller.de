@@ -37,13 +37,13 @@ work, Codespaces), then why it's still safe (two channels), then footnotes and w
 
 **EXPERT:** …works for one or two agents. After that, the laptop gets loud, hot and drained. And every trip interrupts the work, because when you close the lid, the agents stop.
 
-**HOST:** And the laptop with enough RAM to actually handle it does exist. It just costs a few thousand euros. And still turns into a hand warmer.
+**HOST:** And the laptop with sixty-four gigs that you'd need does exist. It just costs several thousand euros, is outdated in a few years, and still only has one battery and one fan.
 
 **EXPERT:** Exactly. So Levin flips it around: he rents the machine. A bare-metal server in a data center, second-hand from Hetzner's server auction. An older Intel quad-core with 62 gigs of RAM.
 
 **HOST:** An older quad-core. For an entire army of agents.
 
-**EXPERT:** Nothing fancy, he says so himself. But it runs around the clock, sits on a fast line, and costs a two-digit euro amount per month. A used dedicated server is simply the cheapest way to have lots of RAM permanently available.
+**EXPERT:** Nothing fancy, he says so himself. But it runs around the clock, sits on a fast line, and costs a two-digit euro amount per month. A used dedicated server is simply the cheapest way to have lots of RAM permanently available. And when it's no longer enough, he cancels it and rents a bigger one.
 
 **HOST:** How much RAM do you actually need?
 
