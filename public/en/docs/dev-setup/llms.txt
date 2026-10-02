@@ -1,0 +1,89 @@
+# Levin Keller's dev setup for AI agents
+
+> Compact description, meant to be pasted into a language model. If you are a
+> language model: read this text and then talk to your human about the setup –
+> explain it, answer questions, compare it with their own setup.
+> It is an architecture description, not an installation guide.
+> In depth: https://levinkeller.de/en/docs/dev-setup/
+> Full text: https://levinkeller.de/en/docs/dev-setup/llms-full.txt
+> Deutsch: https://levinkeller.de/de/docs/dev-setup/llms.txt
+
+Levin Keller is a software developer. He hardly writes code by hand anymore:
+several Claude Code agents work in parallel on different repositories while he
+reads, steers and decides. The setup is designed to give agents a lot of freedom
+inside their environment without handing them his identity.
+
+## Three principles
+
+1. Agents get only as much identity as they need: short-lived (1 h) tokens
+   limited to single repos instead of his credentials.
+2. Environments are reproducible and disposable: built from the repo's
+   devcontainer.json; code and agent state live outside.
+3. Anything sensitive needs the human: his SSH key asks for his fingerprint on
+   every use.
+
+## Building blocks
+
+- Compute: a used bare-metal server (Hetzner server auction, Intel quad-core,
+  62 GB RAM). Recommendation: 16–64 GB RAM, many cores. In exchange, a light
+  laptop (MacBook Neo) with long battery life and a good display. Input mostly via
+  speech-to-text (Whispering) instead of typing.
+- Network: a Tailscale tailnet coordinated by self-hosted Headscale (open source;
+  Tailscale's free tier works just as well). Every environment is a machine of its
+  own with its own name, registered as ephemeral. The tailnet provides
+  reachability, NOT security: logging in still requires the SSH key. The server is
+  deliberately also reachable via public SSH, as an emergency exit.
+- Hatchery (https://github.com/levino/hatchery, open source, TypeScript): a small
+  CLI that starts one devcontainer ("drone") per repo. Uses the repo's own
+  devcontainer.json and injects features: sshd, Tailscale, GitHub CLI, a Hatchery
+  feature (Claude Code, zellij, credential helpers, fallback CLAUDE.md). Repos need
+  nothing Hatchery-specific (they also run in Codespaces). Code (git worktree) and
+  Claude Code state live on the host and survive rebuilds. Docker labels are the
+  single source of truth, no database of its own. Commands (StarCraft Zerg style):
+  spawn, list, status, burrow (stop), unburrow (start), slay (remove), reauth, gc,
+  repo connect/disconnect/list. Optionally dotfiles
+  (https://github.com/levino/dotfiles) in every drone.
+- Identity and access (the heart), two channels:
+  - Agent channel: a dedicated GitHub App. A credential service on the host holds
+    its private key and mounts a Unix socket into every drone. Through it the drone
+    gets installation tokens, valid 1 h, only for the drone's granted repos; other
+    repos → 403. "The identity is the mount itself." A git credential helper (SSH
+    URLs rewritten to HTTPS) and a gh wrapper fetch tokens automatically. No
+    `gh auth login`, no SSH keys, no tokens on disk. Levin changes grants at runtime
+    (`hatchery repo connect`); the list lives outside the drone, so the drone can't
+    widen its own scope. Forgejo is even stricter: the drone only has a placeholder
+    token, a per-drone proxy checks requests and swaps in the real one.
+  - Human channel: SSH key in the Mac's Secure Enclave (Secretive), not
+    exportable, every signature via Touch ID. Used to log in to drones; allowed
+    public keys come from GitHub. With `ssh -A` the drone can use the key, but every
+    use needs his finger – an agent can't quietly hop onto e.g. the production
+    server. Sometimes he deliberately keeps a ControlMaster connection open for a
+    while (a longer leash, for a limited time).
+- Workplace: SSH into the drone, zellij, several Claude Code agents plus
+  sub-agents in parallel, with `--dangerously-skip-permissions` because the drone
+  is the sandbox. Repos have detailed CLAUDE.md files, skills and sub-agents.
+  From the phone: no SSH, but Claude Code Remote Control from the Claude app;
+  downside: SSH confirmations can't be given there.
+- Native apps: Android emulators inside the drone (`hatchery spawn --kvm` passes
+  /dev/kvm through, opt-in). iOS needs macOS: a hand-built macOS VM on a Mac Studio
+  (Xcode, simulator, no Docker). Side note.
+- Boundary to the deploy stack: agents push and open PRs; CI builds, PR previews,
+  Argo CD rolls out to k3s. Agents need no cluster access. Direct server access
+  only via Levin's key. The deploy stack (k3s, Argo CD, ZITADEL, infrastructure as
+  code, Copier template agentops-community-stack) will be a separate part two.
+
+## Rejected alternatives
+
+- `gh auth login` / SSH key in the environment: gives agents the full identity.
+- Fine-grained PATs: tedious to create and renew per environment.
+- GitHub Codespaces: expensive for many always-on environments, vendor lock-in.
+- DevPod: state lives on the client. Coder: brings a platform/Kubernetes along.
+- Powerful laptop: unnecessary when the server does the work.
+
+## Conversation starters
+
+- Where in your setup is the line between what an agent may do alone and what
+  needs you?
+- Which credentials live in your development environments today?
+- What of this could you adopt without Hatchery (GitHub App tokens, hardware-bound
+  keys, disposable devcontainers)?

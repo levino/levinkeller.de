@@ -1,0 +1,78 @@
+---
+title: Mein Dev-Setup für KI-Agenten
+description: 'Wie ich mit vielen parallelen Coding-Agenten arbeite: Architektur, Bausteine und die Gründe dahinter.'
+sidebar:
+  position: 1
+  label: Dev-Setup für KI-Agenten
+---
+
+import { SetupDiagram } from '@/components/dev-setup/SetupDiagram'
+
+# Mein Dev-Setup für KI-Agenten
+
+Ich schreibe kaum noch Code von Hand. Meistens arbeiten mehrere Claude-Code-Agenten
+gleichzeitig an verschiedenen Repositories, und ich lese, lenke und entscheide. Damit
+das funktioniert, ohne dass ich den Agenten meine komplette digitale Identität
+überlasse, habe ich mir eine Umgebung gebaut. Diese Seiten beschreiben sie.
+
+Das hier ist **keine Installationsanleitung**. Anleitungen veralten schneller, als man
+sie schreiben kann. Beschrieben wird die Zielarchitektur: welche Bausteine es gibt,
+welche Rolle sie spielen, was sie bringen, welche Alternativen es gibt und warum ich
+mich so entschieden habe. Wo Kommandos auftauchen, sind sie Illustration.
+
+<div class="not-prose alert alert-info my-6">
+  <div>
+    <strong>Für deine KI:</strong> Unter{' '}
+    <a class="link" href="/de/docs/dev-setup/llms.txt">/de/docs/dev-setup/llms.txt</a>{' '}
+    liegt eine kompakte Fassung dieser Doku. Gib den Link deinem Sprachmodell
+    („Lies das, dann lass uns über das Setup reden“) und frag es aus. Den vollen Text
+    gibt es unter{' '}
+    <a class="link" href="/de/docs/dev-setup/llms-full.txt">llms-full.txt</a>.
+  </div>
+</div>
+
+## Das Bild
+
+<SetupDiagram lang="de" client:visible />
+
+## Drei tragende Prinzipien
+
+Fast jede Entscheidung in diesem Setup folgt aus einem von drei Grundsätzen.
+
+### 1. Agenten bekommen nur so viel Identität wie nötig
+
+Ein Agent, der an Repository A arbeitet, braucht Zugriff auf Repository A. Er braucht
+nicht meinen GitHub-Account, nicht meine SSH-Schlüssel und nicht meinen Zugang zum
+Produktionsserver. Deshalb bekommen Agenten **kurzlebige, eng geschnittene Tokens**
+(eine Stunde gültig, nur für die Repos ihrer Umgebung) statt meiner Zugangsdaten.
+
+### 2. Umgebungen sind reproduzierbar und wegwerfbar
+
+Jede Arbeitsumgebung entsteht aus der `devcontainer.json` des jeweiligen Repositories.
+Sie kann jederzeit gelöscht und neu gebaut werden. Was überleben muss (der Code, der
+Login bei Claude, das Gedächtnis des Agenten), liegt außerhalb des Containers auf dem
+Host. Dadurch darf ein Agent in seiner Umgebung alles: Sie *ist* die Sandbox.
+
+### 3. Was heikel ist, braucht den Menschen
+
+Mein SSH-Schlüssel liegt im Secure Enclave meines Macs und verlangt bei jeder
+Benutzung eine Bestätigung per Fingerabdruck. Ein Agent kann also nichts heimlich mit
+meiner Identität tun: Er kann mich höchstens fragen. Das ist ab und zu lästig und
+genau so gewollt.
+
+## Die Bausteine
+
+1. [Rechenleistung](/de/docs/dev-setup/compute): ein kräftiger Server statt eines kräftigen Laptops.
+2. [Netz](/de/docs/dev-setup/network): ein Tailnet sorgt für Erreichbarkeit, nicht für Sicherheit.
+3. [Hatchery und Drohnen](/de/docs/dev-setup/hatchery): ein Container pro Repository, verwaltet von einem kleinen Werkzeug.
+4. [Identität und Zugriff](/de/docs/dev-setup/identity): zwei getrennte Kanäle für Agent und Mensch. Das Herzstück.
+5. [Arbeitsplatz](/de/docs/dev-setup/workplace): SSH, zellij, viele Agenten parallel, Steuerung vom Handy.
+6. [Native Apps](/de/docs/dev-setup/native-apps): Android auf dem Server, iOS als Randnotiz.
+7. [Grenze zum Deploy-Stack](/de/docs/dev-setup/deploy-boundary): wo dieses Setup aufhört.
+8. [FAQ](/de/docs/dev-setup/faq)
+
+Alle erwähnten Werkzeuge, die von mir sind, sind Open Source:
+[hatchery](https://github.com/levino/hatchery),
+[dotfiles](https://github.com/levino/dotfiles),
+[devcontainer-template](https://github.com/levino/devcontainer-template) und
+[diese Website](https://github.com/levino/levinkeller.de) selbst.

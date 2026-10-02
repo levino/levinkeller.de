@@ -9,6 +9,7 @@ natürlich für alle, die daran interessiert sind.
 
 ## Themenbereiche
 
+- [Dev-Setup für KI-Agenten](/de/docs/dev-setup) – wie ich mit vielen parallelen Coding-Agenten arbeite.
 - [Umwelt & Energie](/de/docs/umwelt) – Energiewende, Wärmeplanung und ökologische Fragen.
 - [Studien & Analysen](/de/docs/studies) – ausführlichere Recherchen und Auswertungen.
 - [Software](/de/docs/software) – Notizen und Prinzipien aus der Softwareentwicklung.
