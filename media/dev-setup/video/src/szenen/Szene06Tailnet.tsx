@@ -16,14 +16,17 @@ const namen = [
   'hatchery-levino-dotfiles',
 ]
 
-export const Szene3Tailnet: React.FC = () => {
+export const Szene06Tailnet: React.FC = () => {
   const { bild, t, bei } = useSzene()
-  const netzAb = bei({ de: 'privates', en: 'private' })
+  const netzAb = bei({ de: 'privaten', en: 'private' })
   const namenAb = bei({ de: 'eigener Rechner', en: 'machine of its own' })
+  const devAb = bei({ de: 'Dev-Server', en: 'dev server' })
+  const handyAb = bei({ de: 'vom Handy', en: 'from the phone' })
   const portsAb = bei({ de: 'Keine Ports', en: 'No port' })
   const internetAb = bei({ de: 'Internet', en: 'internet' })
   const sicherheitAb = bei({ de: 'nicht für Sicherheit', en: 'not security' })
   const schluesselAb = bei({ de: 'Schlüssel', en: 'my key' })
+  const ziel = 340 + 240
   return (
     <>
       <Erscheinen
@@ -110,20 +113,61 @@ export const Szene3Tailnet: React.FC = () => {
           </div>
         )
       })}
+      {/* Dev-Server über den Namen, vom Laptop wie vom Handy */}
+      <Linie
+        von={[600, 420]}
+        nach={[825, ziel]}
+        farbe={farben.mensch}
+        ab={devAb}
+        breite={7}
+      />
+      <Linie
+        von={[600, 700]}
+        nach={[825, ziel + 20]}
+        farbe={farben.handy}
+        ab={handyAb}
+        breite={7}
+      />
       <Erscheinen
-        ab={portsAb}
-        style={{ position: 'absolute', left: 170, top: 925, width: 1350 }}
+        ab={devAb + 6}
+        style={{ position: 'absolute', left: 130, top: 905, width: 1400 }}
       >
         <div
           style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            background: farben.flaeche,
+            border: `3px solid ${farben.rand}`,
+            borderRadius: 999,
+            padding: '12px 30px',
             fontFamily: schriften.mono,
-            fontSize: 32,
+            fontSize: 30,
             color: farben.text,
+            whiteSpace: 'nowrap',
           }}
         >
-          {t({ de: 'Name statt Port: ', en: 'name, not port: ' })}
-          <span style={{ color: farben.agent }}>
-            hatchery-levino-shipyard:&lt;port&gt;
+          <span style={{ color: farben.deploy }}>●</span>
+          <span>
+            http://
+            <span style={{ color: farben.agent, fontWeight: 700 }}>
+              hatchery-levino-levinkeller-de
+            </span>
+            :4321
+          </span>
+          <span
+            style={{
+              marginLeft: 'auto',
+              fontFamily: schriften.text,
+              fontSize: 28,
+              color: farben.gedaempft,
+              opacity: einblenden(bild, portsAb),
+            }}
+          >
+            {t({
+              de: 'Name statt Port',
+              en: 'name, not port',
+            })}
           </span>
         </div>
       </Erscheinen>

@@ -3,7 +3,7 @@ import { Aussage, Erscheinen, Karte, Linie, useSzene } from '../bausteine'
 import { farben, schriften } from '../gestaltung'
 import { Drohne, Kreuz, Server, Zweig } from '../symbole'
 
-export const Szene8Grenze: React.FC = () => {
+export const Szene15Grenze: React.FC = () => {
   const { t, bei } = useSzene()
   const githubAb = bei('GitHub', -10)
   const abDaAb = bei({ de: 'Ab da', en: 'From there' })

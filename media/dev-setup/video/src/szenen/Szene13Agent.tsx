@@ -2,6 +2,7 @@ import type React from 'react'
 import {
   Aussage,
   Erscheinen,
+  einblenden,
   Karte,
   Linie,
   Paket,
@@ -63,9 +64,10 @@ export const Kanallegende: React.FC<{
   )
 }
 
-export const Szene5Agent: React.FC = () => {
-  const { t, bei } = useSzene()
-  const zweiAb = bei({ de: 'zwei getrennte', en: 'two separate' })
+export const Szene13Agent: React.FC = () => {
+  const { bild, t, bei } = useSzene()
+  const frageAb = bei({ de: 'Was dürfen', en: 'what are' })
+  const zweiAb = bei({ de: 'zwei getrennte', en: 'Two separate' })
   const appAb = bei({ de: 'GitHub-App', en: 'GitHub App' })
   const credsAb = bei({ de: 'Credential-Service', en: 'credential service' })
   const socketAb = bei({ de: 'Unix-Socket', en: 'Unix socket' })
@@ -77,11 +79,23 @@ export const Szene5Agent: React.FC = () => {
     de: 'Gespeichert wird nichts',
     en: 'Nothing is stored',
   })
-  const mountAb = bei({ de: 'Die Identität', en: 'The identity' })
-  const leckAb = bei({ de: 'geleakter', en: 'leaked' })
+  const mountAb = bei({ de: 'die Identität', en: 'the identity' })
+  const laufzeitAb = bei({ de: 'zur Laufzeit', en: 'at runtime' })
+  const sofortAb = bei({ de: 'entziehe', en: 'revoke' })
+  const leckAb = bei({ de: 'eine Stunde', en: 'one-hour' })
   return (
     <>
       <Kanallegende ab={zweiAb} aktiv="agent" />
+      <Aussage
+        x={960}
+        y={200}
+        ab={frageAb}
+        groesse={48}
+        breite={1200}
+        farbe={farben.mensch}
+      >
+        {t({ de: 'Was dürfen die Agenten?', en: 'What may the agents do?' })}
+      </Aussage>
       <Karte
         x={1590}
         y={420}
@@ -194,7 +208,7 @@ export const Szene5Agent: React.FC = () => {
         x={960}
         y={800}
         ab={passwortAb}
-        bis={leckAb - 6}
+        bis={mountAb - 4}
         groesse={40}
         breite={1500}
         farbe={farben.gedaempft}
@@ -213,8 +227,8 @@ export const Szene5Agent: React.FC = () => {
         farbe={farben.gedaempft}
       >
         {t({
-          de: 'Geleakter Token? Nach spätestens 1 h wertlos',
-          en: 'Leaked token? Useless within the hour',
+          de: '1 h Gültigkeit: nur das Netz, falls ein Token leakt',
+          en: '1 h expiry: only a safety net if a token leaks',
         })}
       </Aussage>
       <Stempel x={960} y={920} farbe={farben.agent} ab={mountAb} drehung={-3}>
@@ -223,6 +237,45 @@ export const Szene5Agent: React.FC = () => {
           en: 'The identity is the mount',
         })}
       </Stempel>
+      <Erscheinen
+        ab={laufzeitAb}
+        style={{ position: 'absolute', left: 1190, top: 560, width: 650 }}
+      >
+        <div
+          style={{
+            background: '#090e1b',
+            border: `3px solid ${farben.agent}`,
+            borderRadius: 18,
+            padding: '16px 22px',
+            fontFamily: schriften.mono,
+            fontSize: 26,
+            lineHeight: 1.6,
+            color: farben.text,
+          }}
+        >
+          <div>
+            <span style={{ color: farben.deploy }}>+</span> hatchery repo
+            connect …
+          </div>
+          <div style={{ opacity: einblenden(bild, sofortAb) }}>
+            <span style={{ color: farben.fehler }}>−</span> hatchery repo
+            disconnect …
+          </div>
+          <div
+            style={{
+              fontFamily: schriften.text,
+              color: farben.agent,
+              fontWeight: 700,
+              opacity: einblenden(bild, sofortAb + 10),
+            }}
+          >
+            {t({
+              de: 'wirkt sofort, ohne Neustart',
+              en: 'instant, no restart',
+            })}
+          </div>
+        </div>
+      </Erscheinen>
     </>
   )
 }

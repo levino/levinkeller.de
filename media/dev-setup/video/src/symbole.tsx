@@ -111,3 +111,36 @@ export const Steckdose: React.FC<Eigenschaften> = (p) => (
     <path d="M9.5 9.5v3M14.5 9.5v3M10 16h4" />
   </Rahmen>
 )
+
+export const Zug: React.FC<Eigenschaften> = (p) => (
+  <Rahmen {...p}>
+    <rect x="5" y="3" width="14" height="14" rx="3" />
+    <path d="M5 10h14M9 13.5h.01M15 13.5h.01M8 21l2-4M16 21l-2-4" />
+  </Rahmen>
+)
+
+export const Mikrofon: React.FC<Eigenschaften> = (p) => (
+  <Rahmen {...p}>
+    <rect x="9" y="2.5" width="6" height="11" rx="3" />
+    <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4M8.5 21.5h7" />
+  </Rahmen>
+)
+
+export const Schreibtisch: React.FC<Eigenschaften> = (p) => (
+  <Rahmen {...p}>
+    <rect x="5" y="3.5" width="14" height="9" rx="1.2" />
+    <path d="M12 12.5v3M2.5 15.5h19M5 15.5v5M19 15.5v5" />
+  </Rahmen>
+)
+
+export const Thermometer: React.FC<Eigenschaften> = (p) => (
+  <Rahmen {...p}>
+    <path d="M14 14.8V4.5a2 2 0 0 0-4 0v10.3a4 4 0 1 0 4 0Z" />
+  </Rahmen>
+)
+
+export const Blitz: React.FC<Eigenschaften> = (p) => (
+  <Rahmen {...p}>
+    <path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12Z" />
+  </Rahmen>
+)

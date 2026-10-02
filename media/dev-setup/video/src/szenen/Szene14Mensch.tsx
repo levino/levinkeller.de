@@ -17,9 +17,9 @@ import {
   Schluessel,
   Server,
 } from '../symbole'
-import { Kanallegende } from './Szene5Agent'
+import { Kanallegende } from './Szene13Agent'
 
-export const Szene6Mensch: React.FC = () => {
+export const Szene14Mensch: React.FC = () => {
   const { bild, t, bei } = useSzene()
   const enclaveAb = bei('Secure Enclave')
   const exportAb = bei({ de: 'nicht exportieren', en: 'cannot be exported' })

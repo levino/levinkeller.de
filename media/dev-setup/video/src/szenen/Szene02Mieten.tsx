@@ -1,13 +1,5 @@
 import type React from 'react'
-import { interpolate } from 'remotion'
-import {
-  Aussage,
-  Erscheinen,
-  einblenden,
-  feder,
-  Linie,
-  useSzene,
-} from '../bausteine'
+import { Erscheinen, einblenden, feder, Stempel, useSzene } from '../bausteine'
 import { farben, schriften } from '../gestaltung'
 import { Server } from '../symbole'
 
@@ -20,15 +12,39 @@ const drohnen = [
   '…',
 ]
 
-export const Szene2Server: React.FC = () => {
+export const Szene02Mieten: React.FC = () => {
   const { bild, fps, t, bei } = useSzene()
-  const serverAb = bei({ de: 'Alles läuft', en: 'Everything runs' })
+  const mietenAb = bei({ de: 'gemietet', en: 'rented' })
+  const serverAb = bei('Hetzner', -14)
   const ramAb = bei({ de: 'zweiundsechzig', en: 'sixty-two' })
-  const speicherAb = bei({ de: 'Agenten brauchen', en: 'Agents need' })
-  const laptopAb = bei({ de: 'Der Laptop', en: 'So the laptop' })
-  const deckelAb = bei({ de: 'wenn der Deckel', en: 'when the lid' })
-  const deckel = feder(bild, deckelAb, fps)
-  const puls = 0.75 + 0.25 * Math.sin(bild / 6)
+  const uhrAb = bei({ de: 'rund um die Uhr', en: 'around the clock' })
+  const speicherAb = bei({ de: 'Fünf bis zehn', en: 'Five to ten' })
+  const knappAb = bei({ de: 'knapp wird', en: 'what runs out' })
+  const puls = bild > uhrAb ? 0.8 + 0.2 * Math.sin(bild / 6) : 1
+  const fakten = [
+    {
+      ab: bei('Hetzner'),
+      zeichen: '↺',
+      text: {
+        de: 'gebraucht, Hetzner-Serverbörse',
+        en: 'second-hand, Hetzner auction',
+      },
+    },
+    { ab: ramAb, zeichen: 'GB', text: { de: '62 GB RAM', en: '62 GB of RAM' } },
+    {
+      ab: uhrAb,
+      zeichen: '24h',
+      text: { de: 'läuft rund um die Uhr', en: 'runs around the clock' },
+    },
+    {
+      ab: bei({ de: 'zweistelligen', en: 'two-digit' }),
+      zeichen: '€',
+      text: {
+        de: 'zweistelliger Eurobetrag / Monat',
+        en: 'two-digit euros a month',
+      },
+    },
+  ]
   return (
     <>
       {/* Server */}
@@ -64,8 +80,8 @@ export const Szene2Server: React.FC = () => {
               </div>
               <div style={{ fontSize: 30, color: farben.gedaempft }}>
                 {t({
-                  de: 'Bare Metal, gebraucht',
-                  en: 'bare metal, second-hand',
+                  de: 'Bare Metal, gemietet',
+                  en: 'bare metal, rented',
                 })}
               </div>
             </div>
@@ -132,7 +148,7 @@ export const Szene2Server: React.FC = () => {
                       transform: `scaleY(${f})`,
                       transformOrigin: 'bottom',
                       background: farben.agent,
-                      opacity: f * (bild > deckelAb ? puls : 1),
+                      opacity: f * puls,
                       borderRadius: 10,
                       display: 'flex',
                       alignItems: 'flex-end',
@@ -162,84 +178,62 @@ export const Szene2Server: React.FC = () => {
                 fontSize: 30,
                 color: farben.agent,
                 marginTop: 16,
-                opacity: einblenden(bild, speicherAb + 20),
+                opacity: einblenden(bild, knappAb),
               }}
             >
               {t({
-                de: 'Speicher ist knapp, nicht Rechenzeit',
-                en: 'Memory is the scarce resource, not CPU',
+                de: 'Knapp wird der Speicher, nicht die Rechenzeit',
+                en: 'Memory runs out, not CPU',
               })}
             </div>
           </div>
         </div>
       </Erscheinen>
 
-      {/* Laptop */}
-      <Erscheinen
-        ab={laptopAb - 12}
-        art="skalieren"
-        style={{ position: 'absolute', left: 110, top: 330, width: 620 }}
-      >
-        <div style={{ position: 'relative', height: 360 }}>
+      {/* Mieten statt kaufen */}
+      <Stempel x={430} y={250} farbe={farben.deploy} ab={mietenAb} drehung={-4}>
+        {t({ de: 'Mieten statt kaufen', en: 'Rent, don’t buy' })}
+      </Stempel>
+      {fakten.map((fakt, index) => (
+        <Erscheinen
+          key={fakt.text.en}
+          ab={fakt.ab}
+          style={{
+            position: 'absolute',
+            left: 90,
+            top: 380 + index * 140,
+            width: 720,
+          }}
+        >
           <div
             style={{
-              position: 'absolute',
-              left: 50,
-              right: 50,
-              bottom: 0,
-              height: 340,
-              transform: `scaleY(${interpolate(deckel, [0, 1], [1, 0.04])})`,
-              transformOrigin: 'bottom',
-              background: '#090e1b',
-              border: `6px solid ${farben.gedaempft}`,
-              borderRadius: '18px 18px 4px 4px',
-              padding: 24,
-              boxSizing: 'border-box',
-              fontFamily: schriften.mono,
-              fontSize: 28,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 22,
+              background: farben.flaeche,
+              border: `3px solid ${farben.rand}`,
+              borderRadius: 20,
+              padding: '18px 26px',
+              fontFamily: schriften.text,
+              fontSize: 38,
+              fontWeight: 700,
               color: farben.text,
             }}
           >
-            <div style={{ color: farben.mensch }}>$ ssh hatchery-…</div>
-            <div style={{ color: farben.gedaempft, marginTop: 8 }}>
-              zellij attach
-            </div>
+            <span
+              style={{
+                fontFamily: schriften.mono,
+                color: farben.deploy,
+                minWidth: 60,
+                textAlign: 'center',
+              }}
+            >
+              {fakt.zeichen}
+            </span>
+            {t(fakt.text)}
           </div>
-        </div>
-        <div
-          style={{
-            height: 22,
-            background: farben.gedaempft,
-            borderRadius: '0 0 16px 16px',
-          }}
-        />
-      </Erscheinen>
-      <Aussage x={420} y={760} ab={laptopAb} breite={640} groesse={40}>
-        {t({
-          de: 'Laptop: nur ein Terminal mit gutem Bildschirm',
-          en: 'Laptop: just a terminal with a nice screen',
-        })}
-      </Aussage>
-      <Linie
-        von={[700, 520]}
-        nach={[890, 520]}
-        farbe={farben.mensch}
-        ab={laptopAb + 10}
-        beschriftung="ssh"
-      />
-      <Aussage
-        x={420}
-        y={900}
-        ab={deckelAb + 6}
-        breite={700}
-        groesse={38}
-        farbe={farben.agent}
-      >
-        {t({
-          de: 'Deckel zu – die Agenten arbeiten weiter',
-          en: 'Lid closed – the agents keep working',
-        })}
-      </Aussage>
+        </Erscheinen>
+      ))}
     </>
   )
 }

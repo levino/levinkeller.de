@@ -6,30 +6,30 @@ import {
   einblenden,
   Karte,
   Linie,
-  Terminal,
   useSzene,
 } from '../bausteine'
 import { farben, schriften } from '../gestaltung'
-import { Drohne } from '../symbole'
+import { Drohne, Haken } from '../symbole'
 
-export const Szene4Hatchery: React.FC = () => {
+export const Szene08Wegwerfbar: React.FC = () => {
   const { bild, t, bei } = useSzene()
-  const hatcheryAb = bei({ de: 'von Hatchery', en: 'by Hatchery' }, -6)
-  const devcontainerAb = bei({ de: 'Ein Devcontainer', en: 'One devcontainer' })
-  const jsonAb = bei({ de: 'devcontainer-Punkt', en: 'devcontainer dot' })
-  const zergAb = bei('Zerg')
+  const zergAb = bei('Zerg', -10)
+  const devcontainerAb = 6
   const befehle = [
     { name: 'spawn', ab: bei({ de: 'spawnt', en: 'spawn them' }) },
     { name: 'burrow', ab: bei({ de: 'gräbt', en: 'burrow' }) },
-    { name: 'unburrow', ab: bei({ de: 'gräbt', en: 'burrow' }, 12) },
+    { name: 'unburrow', ab: bei({ de: 'gräbt', en: 'burrow' }, 14) },
     { name: 'slay', ab: bei({ de: 'erledigt', en: 'slay' }) },
   ]
   const wegwerfAb = bei({ de: 'wegwerfbar', en: 'disposable' })
-  const hostAb = bei({ de: 'Der Code', en: 'The code' })
+  const hostAb = bei({ de: 'Code und Claude', en: 'The code' })
+  const neubauAb = bei({ de: 'Nach einem Neubau', en: 'After a rebuild' })
+  const portabelAb = bei({ de: 'portabel', en: 'portable' })
+  const dotfilesAb = bei('dotfiles')
   // Drohne verschwindet kurz und wird neu gebaut – Code und Claude-Zustand bleiben auf dem Host
   const weg = interpolate(
     bild,
-    [wegwerfAb, wegwerfAb + 10, hostAb + 30, hostAb + 45],
+    [wegwerfAb, wegwerfAb + 10, neubauAb - 10, neubauAb + 5],
     [1, 0.12, 0.12, 1],
     {
       extrapolateLeft: 'clamp',
@@ -38,46 +38,11 @@ export const Szene4Hatchery: React.FC = () => {
   )
   return (
     <>
-      <Terminal
-        x={80}
-        y={190}
-        w={940}
-        h={400}
-        titel="levin@dev-server"
-        ab={hatcheryAb}
-        zeilen={[
-          {
-            text: '$ hatchery spawn levino/shipyard',
-            ab: hatcheryAb + 8,
-            farbe: farben.mensch,
-          },
-          {
-            text: '→ git clone levino/shipyard',
-            ab: devcontainerAb,
-            farbe: farben.gedaempft,
-          },
-          {
-            text: '→ devcontainer up',
-            ab: jsonAb - 10,
-            farbe: farben.gedaempft,
-          },
-          {
-            text: '  (.devcontainer/devcontainer.json)',
-            ab: jsonAb,
-            farbe: farben.gedaempft,
-          },
-          {
-            text: '✓ hatchery-levino-shipyard',
-            ab: jsonAb + 30,
-            farbe: farben.agent,
-          },
-        ]}
-      />
       <div
         style={{
           position: 'absolute',
           left: 80,
-          top: 640,
+          top: 200,
           display: 'flex',
           gap: 22,
         }}
@@ -109,7 +74,7 @@ export const Szene4Hatchery: React.FC = () => {
       </div>
       <Aussage
         x={80}
-        y={760}
+        y={310}
         ab={zergAb}
         ausrichtung="left"
         breite={900}
@@ -149,15 +114,23 @@ export const Szene4Hatchery: React.FC = () => {
         x={1450}
         y={470}
         ab={wegwerfAb}
-        bis={hostAb + 30}
+        bis={neubauAb - 10}
         groesse={40}
         breite={700}
         farbe={farben.fehler}
       >
-        {t({
-          de: 'wegwerfbar: weg und neu gebaut',
-          en: 'disposable: deleted and rebuilt',
-        })}
+        <span
+          style={{
+            background: farben.grund,
+            padding: '4px 14px',
+            borderRadius: 12,
+          }}
+        >
+          {t({
+            de: 'wegwerfbar: weg und neu gebaut',
+            en: 'disposable: deleted and rebuilt',
+          })}
+        </span>
       </Aussage>
 
       <Erscheinen
@@ -230,6 +203,58 @@ export const Szene4Hatchery: React.FC = () => {
         farbe={farben.gedaempft}
         ab={hostAb + 20}
         breite={5}
+      />
+      <Aussage
+        x={1450}
+        y={470}
+        ab={neubauAb + 6}
+        groesse={36}
+        breite={760}
+        farbe={farben.deploy}
+      >
+        <span
+          style={{
+            background: farben.grund,
+            padding: '4px 14px',
+            borderRadius: 12,
+          }}
+        >
+          {t({
+            de: 'neu gebaut – der Agent weiß noch, woran er war',
+            en: 'rebuilt – the agent still knows what it was doing',
+          })}
+        </span>
+      </Aussage>
+
+      {/* Repos bleiben portabel, dotfiles kommen mit */}
+      <Karte
+        x={510}
+        y={520}
+        w={860}
+        titel={t({ de: 'Repos bleiben portabel', en: 'Repos stay portable' })}
+        unter={t({
+          de: 'dieselbe devcontainer.json: Hatchery, Codespaces, VS Code lokal',
+          en: 'same devcontainer.json: Hatchery, Codespaces, local VS Code',
+        })}
+        symbol={<Haken farbe={farben.deploy} groesse={60} />}
+        farbe={farben.deploy}
+        ab={portabelAb}
+      />
+      <Karte
+        x={510}
+        y={760}
+        w={860}
+        titel={t({
+          de: 'dotfiles in jeder Drohne',
+          en: 'dotfiles in every drone',
+        })}
+        unter={t({
+          de: 'Shell, Git, globale CLAUDE.md, Skills',
+          en: 'shell, git, global CLAUDE.md, skills',
+        })}
+        symbol={<Drohne farbe={farben.agent} groesse={60} />}
+        farbe={farben.agent}
+        ab={dotfilesAb}
       />
     </>
   )

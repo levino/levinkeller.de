@@ -1,15 +1,8 @@
 import type React from 'react'
 import { interpolate } from 'remotion'
-import {
-  Erscheinen,
-  einblenden,
-  feder,
-  Linie,
-  Terminal,
-  useSzene,
-} from '../bausteine'
+import { Erscheinen, einblenden, feder, Terminal, useSzene } from '../bausteine'
 import { farben, schriften } from '../gestaltung'
-import { Kreuz, Schloss } from '../symbole'
+import { Schloss, Server } from '../symbole'
 
 const repos = [
   'levino/shipyard',
@@ -24,12 +17,32 @@ const zeilen = [
   ['● Read README', '● Edit zshrc', '✓ done'],
 ]
 
-export const Szene1Frage: React.FC = () => {
+export const Szene01Start: React.FC = () => {
   const { bild, fps, t, bei } = useSzene()
-  const agentenAb = bei({ de: 'mehrere', en: 'several' }, -8)
+  const agentenAb = bei({ de: 'Mehrere', en: 'Several' }, -8)
   const hoch = feder(bild, agentenAb - 6, fps)
-  const identitaetAb = bei({ de: 'Bleibt eine Frage', en: 'Which raises' })
-  const ohneAb = bei({ de: 'ohne ihnen', en: 'without' })
+  const fragen = [
+    {
+      ab: bei({ de: 'Wo laufen', en: 'Where do' }),
+      titel: { de: 'Wo laufen sie?', en: 'Where do they run?' },
+      unter: {
+        de: 'bequem · von überall erreichbar',
+        en: 'comfortably · reachable from anywhere',
+      },
+      farbe: farben.agent,
+      symbol: <Server farbe={farben.agent} groesse={64} />,
+    },
+    {
+      ab: bei({ de: 'Und was dürfen', en: 'And what are' }),
+      titel: { de: 'Was dürfen sie?', en: 'What may they do?' },
+      unter: {
+        de: 'ohne meine Identität',
+        en: 'without my identity',
+      },
+      farbe: farben.mensch,
+      symbol: <Schloss farbe={farben.mensch} groesse={64} />,
+    },
+  ]
   return (
     <>
       <div
@@ -51,8 +64,8 @@ export const Szene1Frage: React.FC = () => {
           }}
         >
           {t({
-            de: 'Die Drohne ist die Sandbox',
-            en: 'The drone is the sandbox',
+            de: 'Viele Agenten, ein Arbeitsplatz',
+            en: 'Many agents, one workplace',
           })}
         </div>
         <div
@@ -121,65 +134,48 @@ export const Szene1Frage: React.FC = () => {
           })}
         </div>
       </Erscheinen>
-      <Erscheinen
-        ab={identitaetAb}
-        art="skalieren"
-        style={{ position: 'absolute', left: 1240, top: 330, width: 590 }}
-      >
-        <div
+      {fragen.map((frage, index) => (
+        <Erscheinen
+          key={frage.titel.en}
+          ab={frage.ab}
+          art="skalieren"
           style={{
-            background: farben.flaeche,
-            border: `4px solid ${farben.mensch}`,
-            borderRadius: 28,
-            padding: '34px 40px',
-            fontFamily: schriften.text,
-            color: farben.text,
+            position: 'absolute',
+            left: 1150,
+            top: 290 + index * 330,
+            width: 690,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <Schloss farbe={farben.mensch} groesse={64} />
-            <div style={{ fontSize: 46, fontWeight: 800 }}>
-              {t({ de: 'Meine Identität', en: 'My identity' })}
+          <div
+            style={{
+              background: farben.flaeche,
+              border: `4px solid ${frage.farbe}`,
+              borderRadius: 28,
+              padding: '30px 38px',
+              fontFamily: schriften.text,
+              color: farben.text,
+              boxShadow: `0 0 ${30 * einblenden(bild, frage.ab, 20)}px ${frage.farbe}55`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+              {frage.symbol}
+              <div style={{ fontSize: 50, fontWeight: 800 }}>
+                {t(frage.titel)}
+              </div>
             </div>
-          </div>
-          {[
-            {
-              de: 'GitHub-Account, alle Orgs',
-              en: 'GitHub account, every org',
-            },
-            { de: 'SSH-Schlüssel', en: 'SSH key' },
-            { de: 'Zugang zu Prod-Servern', en: 'Access to prod servers' },
-          ].map((zeile, index) => (
             <div
-              key={zeile.en}
               style={{
                 fontSize: 34,
-                color: farben.gedaempft,
-                marginTop: index === 0 ? 26 : 12,
-                opacity: einblenden(bild, identitaetAb + 10 + index * 8),
+                color: frage.farbe,
+                marginTop: 16,
+                fontWeight: 700,
               }}
             >
-              · {t(zeile)}
+              {t(frage.unter)}
             </div>
-          ))}
-        </div>
-      </Erscheinen>
-      <Linie
-        von={[1070, 560]}
-        nach={[1225, 560]}
-        pfeil={false}
-        farbe={farben.fehler}
-        ab={ohneAb - 10}
-        dauer={14}
-        breite={8}
-      />
-      <Erscheinen
-        ab={ohneAb}
-        art="skalieren"
-        style={{ position: 'absolute', left: 1106, top: 518 }}
-      >
-        <Kreuz farbe={farben.fehler} groesse={84} />
-      </Erscheinen>
+          </div>
+        </Erscheinen>
+      ))}
     </>
   )
 }

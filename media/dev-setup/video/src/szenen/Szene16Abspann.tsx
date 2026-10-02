@@ -9,7 +9,7 @@ const repos = [
   'levinkeller.de',
 ]
 
-export const Szene9Abspann: React.FC = () => {
+export const Szene16Abspann: React.FC = () => {
   const { sprache, t, bei } = useSzene()
   const urlAb = bei({ de: 'levinkeller Punkt', en: 'levinkeller dot' }, -10)
   const llmsAb = bei({ de: 'llms Punkt', en: 'llms dot' }, -6)
