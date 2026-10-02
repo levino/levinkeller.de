@@ -369,8 +369,8 @@ export const Szene03Laptop: React.FC = () => {
         </div>
       </Erscheinen>
       <Aussage
-        x={1425}
-        y={960}
+        x={1400}
+        y={945}
         ab={deckelAb + 8}
         breite={830}
         groesse={38}

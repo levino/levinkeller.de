@@ -110,28 +110,6 @@ export const Szene08Wegwerfbar: React.FC = () => {
           leuchten={0.3}
         />
       </div>
-      <Aussage
-        x={1450}
-        y={470}
-        ab={wegwerfAb}
-        bis={neubauAb - 10}
-        groesse={40}
-        breite={700}
-        farbe={farben.fehler}
-      >
-        <span
-          style={{
-            background: farben.grund,
-            padding: '4px 14px',
-            borderRadius: 12,
-          }}
-        >
-          {t({
-            de: 'wegwerfbar: weg und neu gebaut',
-            en: 'disposable: deleted and rebuilt',
-          })}
-        </span>
-      </Aussage>
 
       <Erscheinen
         ab={hostAb - 10}
@@ -204,27 +182,6 @@ export const Szene08Wegwerfbar: React.FC = () => {
         ab={hostAb + 20}
         breite={5}
       />
-      <Aussage
-        x={1450}
-        y={470}
-        ab={neubauAb + 6}
-        groesse={36}
-        breite={760}
-        farbe={farben.deploy}
-      >
-        <span
-          style={{
-            background: farben.grund,
-            padding: '4px 14px',
-            borderRadius: 12,
-          }}
-        >
-          {t({
-            de: 'neu gebaut – der Agent weiß noch, woran er war',
-            en: 'rebuilt – the agent still knows what it was doing',
-          })}
-        </span>
-      </Aussage>
 
       {/* Repos bleiben portabel, dotfiles kommen mit */}
       <Karte
@@ -256,6 +213,49 @@ export const Szene08Wegwerfbar: React.FC = () => {
         farbe={farben.agent}
         ab={dotfilesAb}
       />
+      <Aussage
+        x={1450}
+        y={470}
+        ab={wegwerfAb}
+        bis={neubauAb - 10}
+        groesse={40}
+        breite={700}
+        farbe={farben.fehler}
+      >
+        <span
+          style={{
+            background: farben.grund,
+            padding: '4px 14px',
+            borderRadius: 12,
+          }}
+        >
+          {t({
+            de: 'wegwerfbar: weg und neu gebaut',
+            en: 'disposable: deleted and rebuilt',
+          })}
+        </span>
+      </Aussage>
+      <Aussage
+        x={1450}
+        y={470}
+        ab={neubauAb + 6}
+        groesse={36}
+        breite={760}
+        farbe={farben.deploy}
+      >
+        <span
+          style={{
+            background: farben.grund,
+            padding: '4px 14px',
+            borderRadius: 12,
+          }}
+        >
+          {t({
+            de: 'neu gebaut – der Agent weiß noch, woran er war',
+            en: 'rebuilt – the agent still knows what it was doing',
+          })}
+        </span>
+      </Aussage>
     </>
   )
 }

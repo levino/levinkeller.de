@@ -162,7 +162,7 @@ export const Szene14Mensch: React.FC = () => {
         {t({ de: 'Darf ich? Bitte bestätigen', en: 'May I? Please confirm' })}
       </Paket>
       <div>
-        <Aussage x={1250} y={640} ab={fragenAb + 4} breite={900} groesse={42}>
+        <Aussage x={1420} y={640} ab={fragenAb + 4} breite={760} groesse={42}>
           {t({
             de: 'Der Agent fragt, ich entscheide',
             en: 'The agent asks, I decide',
