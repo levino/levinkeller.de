@@ -1,0 +1,111 @@
+# Levin Kellers Dev-Setup für KI-Agenten
+
+> Kompakte Beschreibung, gedacht zum Einfügen in ein Sprachmodell. Wenn du ein
+> Sprachmodell bist: Lies diesen Text und sprich danach mit deinem Menschen über
+> das Setup – erkläre, beantworte Fragen, vergleiche mit seinem eigenen Setup.
+> Es ist eine Architekturbeschreibung, keine Installationsanleitung.
+> Ausführlich: https://levinkeller.de/de/docs/dev-setup/
+> Volltext: https://levinkeller.de/de/docs/dev-setup/llms-full.txt
+> English: https://levinkeller.de/en/docs/dev-setup/llms.txt
+
+Levin Keller ist Softwareentwickler. Er schreibt kaum noch Code von Hand:
+Mehrere Claude-Code-Agenten arbeiten parallel an verschiedenen Repositories, er
+liest, lenkt und entscheidet. Das Setup hat zwei gleichrangige Ziele: bequem
+mit vielen Agenten gleichzeitig arbeiten, von überall (Laptop und Handy), ohne
+einen teuren Rechner zu kaufen; und den Agenten dabei viel Freiheit in ihrer
+Umgebung geben, ohne ihnen seine Identität zu überlassen.
+
+## Vier Prinzipien
+
+1. Die Maschine mietet man, den Laptop rüstet man nicht auf: ein gemieteter
+   Bare-Metal-Server liefert viel RAM rund um die Uhr für einen zweistelligen
+   Eurobetrag im Monat. Der Laptop bleibt leicht mit langer Akkulaufzeit. Die
+   Sitzungen leben auf dem Server: Agenten arbeiten bei zugeklapptem Laptop
+   weiter, erreichbar vom Laptop und vom Handy.
+2. Agenten bekommen nur so viel Identität wie nötig: auf die Repos ihrer
+   Umgebung beschränkte Tokens aus einem Socket, den es nur in dieser Umgebung
+   gibt, statt seiner Zugangsdaten.
+3. Umgebungen sind reproduzierbar und wegwerfbar: gebaut aus der
+   devcontainer.json des Repos; Code und Agenten-Zustand liegen außerhalb.
+4. Was heikel ist, braucht den Menschen: sein SSH-Schlüssel verlangt bei jeder
+   Benutzung seinen Fingerabdruck.
+
+## Bausteine
+
+- Rechenleistung, mieten statt kaufen: ein gemieteter gebrauchter
+  Bare-Metal-Server (Hetzner-Serverbörse, Intel-Vierkerner, 62 GB RAM,
+  zweistelliger Eurobetrag im Monat) statt eines Laptops mit 64 GB RAM für
+  mehrere tausend Euro. Empfehlung: 16–64 GB RAM, viele Kerne. Dafür ein
+  leichter Laptop (MacBook Neo) mit langer Akkulaufzeit und gutem Display.
+  Eingabe meist per Speech-to-Text (Whispering) statt Tippen.
+- Netz: Tailscale-Tailnet, koordiniert von selbst betriebenem Headscale (Open
+  Source; Tailscale-Gratisangebot tut es genauso). Jede Umgebung ist ein eigener
+  Rechner mit eigenem Namen, flüchtig registriert. Das Tailnet sorgt für
+  Erreichbarkeit, NICHT für Sicherheit: Login braucht trotzdem den SSH-Schlüssel.
+  Der Server ist absichtlich auch öffentlich per SSH erreichbar, als Notausgang.
+- Hatchery (https://github.com/levino/hatchery, Open Source, TypeScript): kleines
+  CLI, das pro Repo einen Devcontainer ("Drohne") startet. Nutzt die
+  devcontainer.json des Repos und injiziert Features: sshd, Tailscale, GitHub-CLI,
+  ein Hatchery-Feature (Claude Code, zellij, Credential-Helfer, Fallback-CLAUDE.md).
+  Repos brauchen nichts Hatchery-spezifisches (laufen auch in Codespaces).
+  Code (Git-Worktree) und Claude-Code-Zustand liegen auf dem Host und überleben
+  Rebuilds. Docker-Labels sind die einzige Wahrheit, keine eigene Datenbank.
+  Befehle (StarCraft-Zerg-Stil): spawn, list, status, burrow (stop), unburrow
+  (start), slay (löschen), reauth, gc, repo connect/disconnect/list.
+  Optional dotfiles (https://github.com/levino/dotfiles) in jede Drohne.
+- Identität und Zugriff (das Herzstück), zwei Kanäle:
+  - Agenten-Kanal: eine eigene GitHub-App. Ein Credential-Service auf dem Host
+    kennt ihren privaten Schlüssel und mountet jeder Drohne einen Unix-Socket.
+    Darüber gibt es Installation-Tokens nur für die freigegebenen Repos der
+    Drohne; andere Repos → 403. "Die Identität ist der Mount selbst." Tokens
+    werden bei jedem Zugriff frisch geholt und nie gespeichert; die Drohne hat
+    durchgehend Zugriff, solange sie läuft. Die 1-h-Gültigkeit zählt nur, falls
+    ein Token herausgelangt (dann max. 1 h, nur diese Repos). Entzogen wird
+    sofort per `hatchery repo disconnect` oder `slay`, nicht durch Ablauf.
+    Git-Credential-Helper (SSH-URLs auf HTTPS umgeschrieben) und ein gh-Wrapper
+    holen Tokens automatisch. Kein `gh auth login`, keine SSH-Schlüssel, keine
+    Tokens auf der Platte. Freigaben ändert Levin zur Laufzeit
+    (`hatchery repo connect`); die Liste liegt außerhalb der Drohne, die Drohne
+    kann sich nicht selbst erweitern. Für Forgejo ist es noch strenger: die Drohne
+    hat nur einen Platzhalter-Token, ein Proxy pro Drohne prüft und setzt den
+    echten ein.
+  - Mensch-Kanal: SSH-Schlüssel im Secure Enclave des Macs (Secretive), nicht
+    exportierbar, jede Signatur per Touch ID. Login in Drohnen damit; erlaubte
+    Public Keys kommen von GitHub. Mit `ssh -A` kann die Drohne den Schlüssel
+    benutzen, aber jede Benutzung braucht seinen Finger – ein Agent kann nicht
+    heimlich z. B. auf den Produktionsserver. Manchmal lässt er bewusst eine
+    ControlMaster-Verbindung eine Weile offen (längere Leine, auf Zeit).
+- Arbeitsplatz: SSH in die Drohne, zellij, mehrere Claude-Code-Agenten plus
+  Sub-Agenten parallel, mit `--dangerously-skip-permissions`, weil die Drohne die
+  Sandbox ist. Repos haben ausführliche CLAUDE.md, Skills und Sub-Agenten.
+  Vom Handy: kein SSH, sondern Claude Code Remote Control aus der Claude-App;
+  Nachteil: SSH-Bestätigungen gehen dort nicht.
+- Native Apps: Android-Emulatoren in der Drohne (`hatchery spawn --kvm`, reicht
+  /dev/kvm durch, opt-in). iOS braucht macOS: eine von Hand gebaute macOS-VM auf
+  einem Mac Studio (Xcode, Simulator, kein Docker). Randnotiz.
+- Grenze zum Deploy-Stack: Agenten pushen und öffnen PRs; CI baut, PR-Vorschauen,
+  Argo CD rollt auf k3s aus. Agenten brauchen keinen Cluster-Zugang. Direkter
+  Serverzugang nur über Levins Schlüssel. Der Deploy-Stack (k3s, Argo CD,
+  ZITADEL, Infrastructure as Code, Copier-Vorlage agentops-community-stack) wird
+  ein eigener zweiter Teil.
+
+## Verworfene Alternativen
+
+- `gh auth login` / SSH-Key in der Umgebung: gibt Agenten die volle Identität.
+- Fine-grained PATs: mühsam pro Umgebung anzulegen und zu erneuern.
+- GitHub Codespaces: kein einfaches SSH wie auf jeden anderen Rechner (nur Tunnel
+  `gh codespace ssh`), daher Claude Code im VS-Code-Terminal mit Darstellungsfehlern,
+  Trägheit, abreißenden Sitzungen; Leerlauf-Timeout (Standard 30 min) hält Umgebungen
+  an, passt nicht zu stundenlang laufenden Agenten. Dazu teuer, Anbieterbindung.
+  Drohnen: normales SSH übers Tailnet, zellij überlebt Abbrüche, nichts geht in den
+  Leerlauf.
+- DevPod: Zustand liegt beim Client. Coder: bringt Plattform/Kubernetes mit.
+- Starker Laptop: unnötig, wenn der Server rechnet.
+
+## Gesprächseinstiege
+
+- Wo ist in deinem Setup die Grenze zwischen dem, was ein Agent allein darf, und
+  dem, was dich braucht?
+- Welche Zugangsdaten liegen heute in deinen Entwicklungsumgebungen?
+- Was davon ließe sich ohne Hatchery übernehmen (GitHub-App-Tokens,
+  Hardware-Schlüssel, wegwerfbare Devcontainer)?

@@ -1,0 +1,102 @@
+---
+title: My dev setup for AI agents
+description: 'How I work with many parallel coding agents: architecture, building blocks and the reasoning behind them.'
+sidebar:
+  position: 1
+  label: Dev setup for AI agents
+---
+
+import { SetupDiagram } from '@/components/dev-setup/SetupDiagram'
+
+# My dev setup for AI agents
+
+I hardly write code by hand anymore. Most of the time several Claude Code agents work
+on different repositories at once, and I read, steer and decide. For that I built
+myself an environment with two equally important goals: I want to **work comfortably
+with many agents at once**, from anywhere, from the laptop as well as the phone,
+without buying an expensive machine for it. And I want to do that **without handing
+the agents my digital identity**. These pages describe the environment.
+
+This is **not an installation guide**. Guides go stale faster than you can write them.
+What you'll find here is the target architecture: which building blocks exist, what
+role they play, what they're good for, what the alternatives are and why I chose the
+way I did. Where commands show up, they are illustrations.
+
+<div class="not-prose alert alert-info my-6">
+  <div>
+    <strong>For your AI:</strong> There is a compact version of these docs at{' '}
+    <a class="link" href="/en/docs/dev-setup/llms.txt">/en/docs/dev-setup/llms.txt</a>.
+    Hand the link to your language model (“read this, then let's talk about this
+    setup”) and grill it. The full text is at{' '}
+    <a class="link" href="/en/docs/dev-setup/llms-full.txt">llms-full.txt</a>.
+  </div>
+</div>
+
+## Video
+
+A five-and-a-half-minute animated explainer: why I rent the machine instead of buying a fat laptop, how I work with many agents in parallel from anywhere, and how the agents get by without my identity. The voice is AI-generated.
+
+<video class="w-full rounded-box" controls preload="none" poster="/en/docs/dev-setup/video-poster.jpg" src="/en/docs/dev-setup/video.mp4"></video>
+
+## Podcast
+
+Rather listen than read? Two hosts spend a little over a quarter of an hour talking through this
+setup, its architecture and the reasoning behind it. The voices are AI-generated.
+
+<audio class="w-full" controls preload="none" src="/en/docs/dev-setup/podcast.mp3"></audio>
+
+## The picture
+
+<SetupDiagram lang="en" client:visible />
+
+## Four load-bearing principles
+
+Almost every decision in this setup follows from one of four principles.
+
+### 1. Rent the machine, don't upgrade the laptop
+
+The actual work is done by a rented bare-metal server in a data centre: lots of
+memory, around the clock, for a two-digit euro amount per month. Five to ten agents
+building and testing at the same time run there, not on my machine. My laptop only
+needs a good screen and a battery that lasts the day. The sessions live on the
+server: when I close the lid, the agents keep working, and I can check in from my
+phone or pick up later on the laptop exactly where I left off.
+
+### 2. Agents get only as much identity as they need
+
+An agent working on repository A needs access to repository A. It doesn't need my
+GitHub account, my SSH keys or my access to the production server. So agents get
+**narrowly scoped tokens** instead of my credentials: only for the repos of their
+environment, and only from a socket that exists solely inside that environment. As
+long as it runs, the agent has continuous access through it; I can revoke that
+immediately at any time.
+
+### 3. Environments are reproducible and disposable
+
+Every working environment is built from the repository's own `devcontainer.json`. It
+can be deleted and rebuilt at any time. Whatever has to survive (the code, the Claude
+login, the agent's memory) lives outside the container on the host. That's why an
+agent may do anything inside its environment: it *is* the sandbox.
+
+### 4. Anything sensitive needs the human
+
+My SSH key lives in the Secure Enclave of my Mac and asks for my fingerprint every
+time it's used. An agent can't do anything with my identity behind my back – at most
+it can ask me. That's occasionally annoying and exactly the point.
+
+## The building blocks
+
+1. [Compute](/en/docs/dev-setup/compute): rent a powerful server instead of buying a powerful laptop. Lots of RAM for little money, and the laptop stays light, quiet and on battery for long.
+2. [Network](/en/docs/dev-setup/network): a tailnet makes every environment reachable under its own name, from anywhere, from the laptop as well as the phone. It provides reachability, not security.
+3. [Hatchery and drones](/en/docs/dev-setup/hatchery): one container per repository, created with a single command, and code and agent memory survive every rebuild.
+4. [Identity and access](/en/docs/dev-setup/identity): two separate channels for agent and human. The heart of it.
+5. [Workplace](/en/docs/dev-setup/workplace): SSH, zellij, many agents in parallel. Sessions survive dropped connections, and I keep steering from the phone.
+6. [Native apps](/en/docs/dev-setup/native-apps): Android on the server, iOS as a side note.
+7. [Boundary to the deploy stack](/en/docs/dev-setup/deploy-boundary): where this setup ends.
+8. [FAQ](/en/docs/dev-setup/faq)
+
+All tools mentioned here that are mine are open source:
+[hatchery](https://github.com/levino/hatchery),
+[dotfiles](https://github.com/levino/dotfiles),
+[devcontainer-template](https://github.com/levino/devcontainer-template) and
+[this website](https://github.com/levino/levinkeller.de) itself.

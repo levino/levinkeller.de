@@ -1,0 +1,105 @@
+---
+title: Mein Dev-Setup für KI-Agenten
+description: 'Wie ich mit vielen parallelen Coding-Agenten arbeite: Architektur, Bausteine und die Gründe dahinter.'
+sidebar:
+  position: 1
+  label: Dev-Setup für KI-Agenten
+---
+
+import { SetupDiagram } from '@/components/dev-setup/SetupDiagram'
+
+# Mein Dev-Setup für KI-Agenten
+
+Ich schreibe kaum noch Code von Hand. Meistens arbeiten mehrere Claude-Code-Agenten
+gleichzeitig an verschiedenen Repositories, und ich lese, lenke und entscheide. Dafür
+habe ich mir eine Umgebung gebaut, die zwei gleichrangige Ziele hat: Ich will
+**bequem mit vielen Agenten gleichzeitig arbeiten**, von überall, vom Laptop wie vom
+Handy, ohne dafür einen teuren Rechner zu kaufen. Und ich will den Agenten dabei
+**nicht meine digitale Identität überlassen**. Diese Seiten beschreiben die Umgebung.
+
+Das hier ist **keine Installationsanleitung**. Anleitungen veralten schneller, als man
+sie schreiben kann. Beschrieben wird die Zielarchitektur: welche Bausteine es gibt,
+welche Rolle sie spielen, was sie bringen, welche Alternativen es gibt und warum ich
+mich so entschieden habe. Wo Kommandos auftauchen, sind sie Illustration.
+
+<div class="not-prose alert alert-info my-6">
+  <div>
+    <strong>Für deine KI:</strong> Unter{' '}
+    <a class="link" href="/de/docs/dev-setup/llms.txt">/de/docs/dev-setup/llms.txt</a>{' '}
+    liegt eine kompakte Fassung dieser Doku. Gib den Link deinem Sprachmodell
+    („Lies das, dann lass uns über das Setup reden“) und frag es aus. Den vollen Text
+    gibt es unter{' '}
+    <a class="link" href="/de/docs/dev-setup/llms-full.txt">llms-full.txt</a>.
+  </div>
+</div>
+
+## Video
+
+Fünfeinhalb Minuten Überblick als animiertes Erklärvideo: warum ich die Maschine miete statt einen fetten Laptop zu kaufen, wie ich von überall mit vielen Agenten parallel arbeite und wie die Agenten dabei ohne meine Identität auskommen. Die Stimme ist KI-generiert.
+
+<video class="w-full rounded-box" controls preload="none" poster="/de/docs/dev-setup/video-poster.jpg" src="/de/docs/dev-setup/video.mp4"></video>
+
+## Podcast
+
+Lieber hören als lesen? Zwei Stimmen unterhalten sich gut eine Viertelstunde lang über dieses
+Setup, die Architektur und die Gründe dahinter. Die Stimmen sind KI-generiert.
+
+<audio class="w-full" controls preload="none" src="/de/docs/dev-setup/podcast.mp3"></audio>
+
+## Das Bild
+
+<SetupDiagram lang="de" client:visible />
+
+## Vier tragende Prinzipien
+
+Fast jede Entscheidung in diesem Setup folgt aus einem von vier Grundsätzen.
+
+### 1. Die Maschine mietet man, den Laptop rüstet man nicht auf
+
+Die eigentliche Arbeit macht ein gemieteter Bare-Metal-Server im Rechenzentrum: viel
+Arbeitsspeicher, rund um die Uhr, für einen zweistelligen Eurobetrag im Monat. Fünf
+bis zehn Agenten, die gleichzeitig bauen und testen, laufen dort, nicht bei mir. Mein
+Laptop muss nur noch einen guten Bildschirm und einen Akku haben, der den Tag
+übersteht. Die Sitzungen leben auf dem Server: Klappe ich den Laptop zu, arbeiten die
+Agenten weiter, und ich kann vom Handy aus nachsehen oder später am Laptop genau dort
+weitermachen, wo ich aufgehört habe.
+
+### 2. Agenten bekommen nur so viel Identität wie nötig
+
+Ein Agent, der an Repository A arbeitet, braucht Zugriff auf Repository A. Er braucht
+nicht meinen GitHub-Account, nicht meine SSH-Schlüssel und nicht meinen Zugang zum
+Produktionsserver. Deshalb bekommen Agenten **eng geschnittene Tokens** statt meiner
+Zugangsdaten: nur für die Repos ihrer Umgebung und nur aus einem Socket, den es
+ausschließlich in dieser Umgebung gibt. Solange sie läuft, hat der Agent darüber
+durchgehend Zugriff; entziehen kann ich ihn jederzeit sofort.
+
+### 3. Umgebungen sind reproduzierbar und wegwerfbar
+
+Jede Arbeitsumgebung entsteht aus der `devcontainer.json` des jeweiligen Repositories.
+Sie kann jederzeit gelöscht und neu gebaut werden. Was überleben muss (der Code, der
+Login bei Claude, das Gedächtnis des Agenten), liegt außerhalb des Containers auf dem
+Host. Dadurch darf ein Agent in seiner Umgebung alles: Sie *ist* die Sandbox.
+
+### 4. Was heikel ist, braucht den Menschen
+
+Mein SSH-Schlüssel liegt im Secure Enclave meines Macs und verlangt bei jeder
+Benutzung eine Bestätigung per Fingerabdruck. Ein Agent kann also nichts heimlich mit
+meiner Identität tun: Er kann mich höchstens fragen. Das ist ab und zu lästig und
+genau so gewollt.
+
+## Die Bausteine
+
+1. [Rechenleistung](/de/docs/dev-setup/compute): einen kräftigen Server mieten statt einen kräftigen Laptop kaufen. Viel RAM für wenig Geld, und der Laptop bleibt leicht, leise und lange am Akku.
+2. [Netz](/de/docs/dev-setup/network): ein Tailnet macht jede Umgebung unter eigenem Namen erreichbar, von überall, vom Laptop wie vom Handy. Es sorgt für Erreichbarkeit, nicht für Sicherheit.
+3. [Hatchery und Drohnen](/de/docs/dev-setup/hatchery): ein Container pro Repository, mit einem Befehl angelegt, und Code wie Agenten-Gedächtnis überleben jeden Neubau.
+4. [Identität und Zugriff](/de/docs/dev-setup/identity): zwei getrennte Kanäle für Agent und Mensch. Das Herzstück.
+5. [Arbeitsplatz](/de/docs/dev-setup/workplace): SSH, zellij, viele Agenten parallel. Sitzungen überleben Verbindungsabbrüche, und vom Handy aus lenke ich weiter.
+6. [Native Apps](/de/docs/dev-setup/native-apps): Android auf dem Server, iOS als Randnotiz.
+7. [Grenze zum Deploy-Stack](/de/docs/dev-setup/deploy-boundary): wo dieses Setup aufhört.
+8. [FAQ](/de/docs/dev-setup/faq)
+
+Alle erwähnten Werkzeuge, die von mir sind, sind Open Source:
+[hatchery](https://github.com/levino/hatchery),
+[dotfiles](https://github.com/levino/dotfiles),
+[devcontainer-template](https://github.com/levino/devcontainer-template) und
+[diese Website](https://github.com/levino/levinkeller.de) selbst.

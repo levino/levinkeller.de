@@ -59,8 +59,10 @@ export default defineConfig({
         !page.includes('/hidden/') &&
         // /en/ hat keine eigenen Inhalte: die wenigen erzeugten Seiten zeigen
         // denselben deutschen Text, alle uebrigen Routen leiten auf /de/ um.
-        // Beides gehoert nicht in die Sitemap.
-        !page.startsWith('https://levinkeller.de/en/'),
+        // Beides gehoert nicht in die Sitemap. Ausnahme: die Dev-Setup-Doku,
+        // die es wirklich auf Englisch gibt.
+        (!page.startsWith('https://levinkeller.de/en/') ||
+          page.startsWith('https://levinkeller.de/en/docs/dev-setup/')),
     }),
     mdx(),
     shipyard({
@@ -90,6 +92,10 @@ export default defineConfig({
             techStack: {
               label: 'Tech Stack',
               href: '/levin/tech-stack',
+            },
+            devSetup: {
+              label: 'Dev-Setup',
+              href: '/docs/dev-setup',
             },
             mindset: {
               label: 'Arbeitsweise',
