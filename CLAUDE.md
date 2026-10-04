@@ -145,3 +145,9 @@ Examples:
 Even if you comment or generally write in German, you need to use English for
 magic github words like (closes, fix, fixes, etc.). "Schließt" will not close
 issues.
+
+## Rätselblock (`raetselblock/`)
+
+Eigenständiges Python/Typst-Projekt für einen druckbaren Kinder-Rätselblock, unabhängig vom
+Astro-Teil (kein npm, kein Biome-relevanter Code). Anweisungen stehen in
+[`raetselblock/CLAUDE.md`](raetselblock/CLAUDE.md).
