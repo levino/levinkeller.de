@@ -8,7 +8,7 @@
 ]
 #let tip = [Suche eine Zeile, Spalte oder einen Kasten, in dem nur noch wenige Zahlen fehlen.
   Oder frage: „Wo in diesem Kasten kann die 3 überhaupt noch hin?“]
-#let layout = (per-page: 2, width: 104mm, example-width: 62mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 50mm, solution-width: 40mm)
 
 #let render(p, width: 104mm, solution: false) = {
   let d = p.data

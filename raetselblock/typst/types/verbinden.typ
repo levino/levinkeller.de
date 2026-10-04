@@ -7,7 +7,7 @@
   Am Ende ist *jedes* Kästchen benutzt.
 ]
 #let tip = [Fang an Ecken und Rändern an – dort gibt es oft nur einen Weg.]
-#let layout = (per-page: 2, width: 112mm, example-width: 62mm, solution-width: 40mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 52mm, solution-width: 36mm)
 
 #let render(p, width: 112mm, solution: false) = {
   let d = p.data

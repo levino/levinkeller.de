@@ -38,10 +38,13 @@
 
 #let puzzle-block(ch, p, width) = block(breakable: false, width: width, {
   grid(columns: (auto, 1fr, auto), align: horizon, column-gutter: 6pt,
-    num-badge(ch, p.number), [], difficulty(p.level, s: 13pt))
-  v(3mm)
+    num-badge(ch, p.number, size: 18pt), [], difficulty(p.level, s: 11pt))
+  v(2mm)
   align(center, registry.at(ch.type).render(p, width: width, solution: false))
 })
+
+// Wie viele Rätsel schon auf der Erklärseite stehen (eine Reihe, wenn mehrere pro Seite passen)
+#let opener-take(m) = if m.layout.per-page >= 4 { 2 } else { 0 }
 
 #let puzzle-pages(ch) = {
   let m = registry.at(ch.type)
@@ -49,7 +52,7 @@
   let per = L.per-page
   let cols = if per <= 2 { 1 } else { 2 }
   let rows = calc.ceil(per / cols)
-  for chunk in ch.puzzles.chunks(per) {
+  for chunk in ch.puzzles.slice(calc.min(opener-take(m), ch.puzzles.len())).chunks(per) {
     pagebreak(weak: true)
     block(height: 100%, width: 100%,
       grid(columns: (1fr,) * cols, rows: (1fr,) * rows, align: center + horizon,
@@ -60,22 +63,23 @@
 #let opener(ch) = {
   let m = registry.at(ch.type)
   let col = ccolor(ch)
-  pagebreak(weak: true)
   current.update(none)
-  block(width: 100%, fill: col, radius: 8pt, inset: (x: 16pt, y: 14pt), {
-    grid(columns: (auto, 1fr), align: horizon, column-gutter: 14pt,
-      box(fill: white, radius: 50%, width: 46pt, height: 46pt,
-        align(center + horizon, text(26pt, weight: "black", fill: col, str(ch.index)))),
-      text(30pt, weight: "black", fill: white, m.title))
+  pagebreak(weak: true)
+  block(width: 100%, fill: col, radius: 6pt, inset: (x: 12pt, y: 9pt), {
+    grid(columns: (auto, 1fr), align: horizon, column-gutter: 10pt,
+      box(fill: white, radius: 50%, width: 32pt, height: 32pt,
+        align(center + horizon, text(18pt, weight: "black", fill: col, str(ch.index)))),
+      text(22pt, weight: "black", fill: white, m.title))
   })
-  v(6mm)
-  block(width: 100%, fill: luma(246), radius: 6pt, inset: 12pt, {
-    text(9pt, weight: "bold", fill: luma(110), upper[Zum Vorlesen])
-    v(1mm)
+  v(3mm)
+  block(width: 100%, fill: luma(246), radius: 6pt, inset: 10pt, {
+    set text(10pt)
+    text(8pt, weight: "bold", fill: luma(110), upper[Zum Vorlesen])
+    v(0.5mm)
     m.rules
     if "tip" in dictionary(m) {
-      v(1mm)
-      text(10pt, fill: luma(80))[*Tipp:* #m.tip]
+      v(0.5mm)
+      text(9pt, fill: luma(80))[*Tipp:* #m.tip]
     }
   })
   v(1fr)
@@ -86,6 +90,14 @@
     block(breakable: false, { align(center, text(10pt, weight: "bold", fill: col, upper[Lösung])); v(2mm); m.render(ch.example, width: w, solution: true) }),
   ))
   v(1fr)
+  let take = calc.min(opener-take(m), ch.puzzles.len())
+  if take > 0 {
+    line(length: 100%, stroke: (paint: luma(200), dash: "dashed"))
+    v(1fr)
+    grid(columns: (1fr, 1fr), align: center + horizon,
+      ..ch.puzzles.slice(0, take).map(p => puzzle-block(ch, p, m.layout.width)))
+    v(1fr)
+  }
   current.update(ch)
 }
 
@@ -138,8 +150,8 @@
 }
 
 // ---------------------------------------------------------------- Lösungen
-#pagebreak()
 #current.update(none)
+#pagebreak()
 #text(26pt, weight: "black")[Lösungen]
 #v(4mm)
 #for ch in chapters {

@@ -8,7 +8,7 @@
 ]
 #let tip = [Mit einem Kreuz markieren, wo keine Krone hin kann. Kleine Gebiete zuerst anschauen –
   liegt ein Gebiet ganz in einer Reihe, ist der Rest dieser Reihe kronenfrei.]
-#let layout = (per-page: 2, width: 106mm, example-width: 62mm, solution-width: 40mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 52mm, solution-width: 36mm)
 
 #let render(p, width: 106mm, solution: false) = {
   let d = p.data

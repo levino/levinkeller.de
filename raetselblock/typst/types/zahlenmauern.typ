@@ -9,7 +9,7 @@
 #let tip = [Suche immer ein Dreieck aus drei Steinen, bei dem schon zwei Zahlen stehen. Bei
   den schweren Mauern hilft: Bei einer Plus-Mauer mit 3 Reihen ist die Spitze = links + 2 × Mitte + rechts
   der untersten Reihe.]
-#let layout = (per-page: 6, width: 80mm, example-width: 64mm, solution-width: 50mm)
+#let layout = (per-page: 8, width: 72mm, example-width: 56mm, solution-width: 40mm)
 
 #let plus-color = rgb("#e36414")
 #let mal-color = rgb("#1d4ed8")

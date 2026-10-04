@@ -8,7 +8,7 @@
 ]
 #let tip = [Beginne bei Reihen mit nur einem leeren Kästchen oder mit Mal und Geteilt – dort
   passen oft nur wenige Zahlen. Streiche oben am Rand die Zahlen weg, die schon benutzt sind.]
-#let layout = (per-page: 2, width: 100mm, example-width: 64mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 56mm, solution-width: 40mm)
 
 #let op-sym(o) = if o == "+" { "+" } else if o == "-" { "−" } else if o == "*" { "×" } else { "÷" }
 

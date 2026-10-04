@@ -48,7 +48,7 @@ pdftoppm -r 50 -png pdf/raetselblock.pdf /tmp/p    # PNGs dann mit dem Read-Tool
 
 ## Stand und offene Ideen
 
-Erledigt: 14 Rätselarten, 108 Rätsel + 14 Beispiele, 76 Seiten (Seed 2026), alle verifiziert.
+Erledigt: 14 Rätselarten, 108 Rätsel + 14 Beispiele, 50 Seiten (Seed 2026), alle verifiziert.
 
 Bekannte Schwächen / nächste Schritte:
 - **Zahlenpfad mittel** unterscheidet sich von leicht vor allem durch Größe, kaum durch neue Logik.

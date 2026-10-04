@@ -10,7 +10,7 @@
 ]
 #let tip = [Eine Zahl, auf die eine Spitze zeigt, kann nie die größte sein; eine Zahl an der
   offenen Seite nie die 1. Ketten wie 1 < 2 < 3 helfen besonders.]
-#let layout = (per-page: 2, width: 100mm, example-width: 62mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 76mm, example-width: 52mm, solution-width: 40mm)
 
 #let gap-ratio = 0.42
 

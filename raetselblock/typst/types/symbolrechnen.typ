@@ -9,7 +9,7 @@
 #let tip = [Gerechnet wird in jeder Zeile von links nach rechts. Beginne mit einer Zeile, in der
   nur eine Form vorkommt. Bei den schweren Rätseln muss man zwei Zeilen zusammen ansehen,
   z. B. „Herz + Stern = 10“ und „Herz − Stern = 4“: probiere Paare, die 10 ergeben.]
-#let layout = (per-page: 4, width: 84mm, example-width: 66mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 56mm, solution-width: 40mm)
 
 // Herz lokal gezeichnet (klassische Herzform), alle anderen Formen aus style.typ
 #let heart2(s, fill: rgb("#d63384")) = box(width: s, height: s, {

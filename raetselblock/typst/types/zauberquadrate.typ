@@ -10,7 +10,7 @@
 #let tip = [Zuerst eine Linie suchen, in der nur ein Kästchen fehlt. Fehlen zwei, überlege, welche
   zwei der übrigen Zahlen zusammen passen. Unten benutzte Zahlen durchstreichen. Beim 3×3-Quadrat
   steht in der Mitte immer ein Drittel der Zauberzahl.]
-#let layout = (per-page: 4, width: 80mm, example-width: 64mm, solution-width: 50mm)
+#let layout = (per-page: 6, width: 70mm, example-width: 56mm, solution-width: 40mm)
 
 #let magic-color = rgb("#6d28d9")
 

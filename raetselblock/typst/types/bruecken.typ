@@ -9,7 +9,7 @@
 ]
 #let tip = [Inseln mit großen Zahlen und wenigen Nachbarn zuerst: Eine 4 in der Ecke braucht zwei
   Doppelbrücken. Nie eine kleine Inselgruppe abschließen, die nicht mehr mit dem Rest verbunden ist.]
-#let layout = (per-page: 2, width: 104mm, example-width: 62mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 52mm, solution-width: 42mm)
 
 #let render(p, width: 104mm, solution: false) = {
   let d = p.data

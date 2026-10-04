@@ -8,7 +8,7 @@
 ]
 #let tip = [Ecken und Felder an Wänden haben nur wenige Nachbarn – dort ist der Weg oft schon
   festgelegt. Die Linie darf keine Ecke „vergessen“, sonst ist sie dort in einer Sackgasse.]
-#let layout = (per-page: 2, width: 100mm, example-width: 60mm, solution-width: 40mm)
+#let layout = (per-page: 4, width: 78mm, example-width: 50mm, solution-width: 36mm)
 
 #let render(p, width: 100mm, solution: false) = {
   let d = p.data

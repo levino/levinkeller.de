@@ -9,7 +9,7 @@
 ]
 #let tip = [Mit großen Zahlen anfangen: Eine 8 in einer Zeile mit 10 Kästchen macht die mittleren
   6 Kästchen sicher schwarz. Sichere weiße Kästchen mit einem kleinen Punkt markieren.]
-#let layout = (per-page: 1, width: 172mm, example-width: 62mm, solution-width: 40mm)
+#let layout = (per-page: 2, width: 118mm, example-width: 52mm, solution-width: 36mm)
 
 #let render(p, width: 172mm, solution: false) = {
   let d = p.data

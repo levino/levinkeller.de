@@ -12,7 +12,7 @@
 #let tip = [Fang mit Käfigen an, für die es nur eine Möglichkeit gibt (z. B. „3+“ aus zwei
   Kästchen ist immer 1 und 2). Im Käfig darf eine Zahl doppelt vorkommen, wenn die beiden
   Kästchen nicht in derselben Zeile oder Spalte liegen.]
-#let layout = (per-page: 2, width: 100mm, example-width: 60mm, solution-width: 50mm)
+#let layout = (per-page: 4, width: 80mm, example-width: 50mm, solution-width: 40mm)
 
 #let render(p, width: 100mm, solution: false) = {
   let d = p.data

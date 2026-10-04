@@ -9,7 +9,7 @@
 #let tip = [Zwei gleiche nebeneinander? Dann muss daneben das andere Zeichen stehen. Eine Lücke
   zwischen zwei gleichen wird mit dem anderen gefüllt. Ist eine Reihe zur Hälfte voll mit einem Zeichen,
   ist der Rest das andere.]
-#let layout = (per-page: 2, width: 96mm, example-width: 60mm, solution-width: 40mm)
+#let layout = (per-page: 4, width: 76mm, example-width: 50mm, solution-width: 34mm)
 
 #let sign-mark(s, cs) = {
   let d = cs * 0.36

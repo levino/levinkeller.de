@@ -3,7 +3,7 @@
 Ein druckbarer A4-Rätselblock für Kinder, komplett generiert: Python erzeugt die Rätsel
 (jedes per Solver auf **genau eine Lösung** geprüft und ohne Raten lösbar), Typst setzt sie als PDF.
 
-Aktueller Stand: 14 Rätselarten, 108 Rätsel plus je ein Beispiel, 76 Seiten mit Lösungsteil.
+Aktueller Stand: 14 Rätselarten, 108 Rätsel plus je ein Beispiel, 50 Seiten mit Lösungsteil.
 Fertiges PDF: [`pdf/raetselblock.pdf`](pdf/raetselblock.pdf)
 
 ## Rätselarten

@@ -8,7 +8,7 @@
 ]
 #let tip = [Fang mit kleinen oder großen Summen an: 3 geht nur als 1 + 2, 4 nur als 1 + 3,
   17 in zwei Kästchen nur als 8 + 9. Wo sich zwei solche Streifen kreuzen, steht oft sofort die Zahl fest.]
-#let layout = (per-page: 2, width: 98mm, example-width: 58mm, solution-width: 64mm)
+#let layout = (per-page: 4, width: 78mm, example-width: 50mm, solution-width: 40mm)
 
 #let clue-fill = luma(85)
 
