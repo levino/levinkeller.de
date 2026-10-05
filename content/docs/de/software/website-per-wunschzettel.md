@@ -34,7 +34,7 @@ Das Hosting statischer Seiten ist praktisch kostenlos. Die KI kostet pro Änderu
 
 ## Was ich gelernt habe
 
-Ich betreibe solche Seiten seit einiger Zeit für Vereine und Ortsverbände. Die Technik trägt. Wer einmal angefangen hat, bekommt Änderungen meist in einer halben Stunde online, oft ohne Rückfrage. Die Hürde ist eine andere: GitHub ist für die meisten Menschen fremd, und viele fangen gar nicht erst an. Deshalb arbeite ich daran, dass man GitHub dafür gar nicht mehr sehen muss.
+Ich betreibe solche Seiten seit einiger Zeit für Vereine und Ortsverbände. Die Technik trägt. Wer einmal angefangen hat, bekommt Änderungen meist in einer halben Stunde online, oft ohne Rückfrage. Die eigentliche Hürde ist der Anfang: GitHub wirkt zuerst fremd. Man braucht ein Konto und muss sich einmal zurechtfinden. Das ist nicht zu viel verlangt. Wer sich daran gewöhnt hat, spart jedes Mal die Agentur, und eine Anleitung für den Einstieg gibt es [hier](/de/docs/github/get-started).
 
 ## Selbst machen
 
