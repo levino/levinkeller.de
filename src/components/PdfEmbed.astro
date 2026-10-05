@@ -1,0 +1,40 @@
+---
+// Zeigt ein PDF direkt auf der Seite an, damit man es nicht erst
+// herunterladen muss. Darunter zwei Links: in neuem Tab öffnen und
+// herunterladen. Browser ohne eingebauten PDF-Viewer (z. B. Chrome auf
+// Android) zeigen statt der Vorschau den Fallback-Text mit Link.
+interface Props {
+  src: string
+  title: string
+  /** CSS-Höhe der Vorschau, Standard: 80 % der Fensterhöhe */
+  height?: string
+}
+
+const { src, title, height = '80vh' } = Astro.props
+const filename = src.split('/').pop()
+---
+
+<figure class="not-prose my-6">
+  <object
+    data={src}
+    type="application/pdf"
+    title={title}
+    class="w-full rounded-box border border-base-300 bg-base-200"
+    style={{ height }}
+  >
+    <p class="p-4">
+      Dein Browser kann das PDF hier nicht direkt anzeigen.
+      <a class="link" href={src} target="_blank" rel="noopener">
+        {title} öffnen
+      </a>
+    </p>
+  </object>
+  <figcaption class="mt-2 flex flex-wrap gap-2">
+    <a class="btn btn-sm btn-primary" href={src} target="_blank" rel="noopener">
+      Im Browser öffnen
+    </a>
+    <a class="btn btn-sm btn-ghost" href={src} download={filename}>
+      Herunterladen
+    </a>
+  </figcaption>
+</figure>

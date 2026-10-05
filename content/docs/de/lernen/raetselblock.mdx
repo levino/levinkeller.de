@@ -1,0 +1,55 @@
+---
+title: 'Rätselblock für Kinder'
+description:
+  Druckbarer A4-Rätselblock mit 108 Logik- und Rechenrätseln für Kinder, die
+  gut rechnen, aber noch nicht lesen können — komplett generiert und jedes
+  Rätsel auf genau eine Lösung geprüft.
+sidebar:
+  position: 2
+---
+
+import PdfEmbed from '@/components/PdfEmbed.astro'
+
+Ursprünglich für meine Tochter gebaut: ein Rätselblock zum Ausdrucken für
+Kinder, die sicher rechnen (auch Einmaleins und Teilen), aber noch nicht lesen
+können. Die Rätsel kommen deshalb ganz ohne Text aus — nur Zahlen,
+Rechenzeichen, Formen und Farben. Jedes Kapitel beginnt mit einer Erklärseite:
+Die Regeln liest ein Erwachsener vor, daneben steht ein gelöstes Beispiel.
+
+<PdfEmbed src="/raetselblock/raetselblock.pdf" title="Rätselblock (PDF, 50 Seiten)" />
+
+## Was drin ist
+
+14 Rätselarten mit je drei Schwierigkeitsstufen (1–3 Sterne), zusammen 108
+Rätsel auf 50 Seiten, hinten ein Lösungsteil:
+
+| Kapitel        | Prinzip                                                    |
+| -------------- | ---------------------------------------------------------- |
+| Zahlenmauern   | Jeder Stein ist Summe oder Produkt der zwei darunter       |
+| Verbinden      | Gleiche Zahlen verbinden, alle Felder nutzen (Numberlink)  |
+| Rechenkäfige   | KenKen mit + − × ÷                                         |
+| Kronen         | Queens/Star Battle                                         |
+| Symbolrätsel   | Formen stehen für Zahlen                                   |
+| Zahlenpfad     | Ein Weg durch alle Felder, Zahlen in Reihenfolge           |
+| Kreuzrechnen   | 3×3-Gleichungsgitter mit den Ziffern 1–9                   |
+| Sonne & Mond   | Binairo/Tango                                              |
+| Sudoku         | 6×6 bis 9×9                                                |
+| Zauberquadrate | Magische Quadrate                                          |
+| Größer–Kleiner | Futoshiki                                                  |
+| Kreuzsummen    | Kakuro                                                     |
+| Brücken        | Hashi                                                      |
+| Bilderrätsel   | Nonogramme mit Motiv                                       |
+
+Alles ist schwarz-weiß druckbar, die Kästchen sind groß genug zum
+Hineinschreiben.
+
+## Wie er entsteht
+
+Der Block ist vollständig generiert: Ein Python-Programm erzeugt die Rätsel,
+ein Solver prüft jedes einzelne auf **genau eine Lösung**, und ein Logiklöser
+stellt sicher, dass man ohne Raten ans Ziel kommt und bestimmt daraus die
+Stufe. Gesetzt wird das PDF mit [Typst](https://typst.app/). Mit einem anderen
+Startwert entsteht ein komplett neuer Block mit gleicher Struktur.
+
+Der Quellcode liegt im
+[Repository dieser Webseite](https://github.com/levino/levinkeller.de/tree/main/raetselblock).

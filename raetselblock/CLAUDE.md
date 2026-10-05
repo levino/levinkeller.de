@@ -30,7 +30,7 @@ python3 build.py && python3 verify.py
 Zum visuellen Prüfen (unbedingt machen nach Layout-Änderungen):
 
 ```bash
-pdftoppm -r 50 -png pdf/raetselblock.pdf /tmp/p    # PNGs dann mit dem Read-Tool ansehen
+pdftoppm -r 50 -png ../public/raetselblock/raetselblock.pdf /tmp/p    # PNGs dann mit dem Read-Tool ansehen
 ```
 
 ## Arbeitsweise
@@ -42,7 +42,8 @@ pdftoppm -r 50 -png pdf/raetselblock.pdf /tmp/p    # PNGs dann mit dem Read-Tool
 - Alles ist deterministisch über `--seed` (Standard 2026). Generatoren dürfen nur den übergebenen
   `rng` nutzen.
 - Nach jeder Generator-Änderung: `python3 verify.py` muss 100 % eindeutig melden.
-- Das eingecheckte `pdf/raetselblock.pdf` ist die aktuelle Druckversion – nach Änderungen neu bauen
+- Das eingecheckte `public/raetselblock/raetselblock.pdf` (Repo-Root) ist die aktuelle Druckversion und wird auf
+  `/de/docs/lernen/raetselblock/` eingebettet – nach Änderungen neu bauen
   und mit committen. Test-PDFs mit `--out out/…` bauen, `out/` wird nicht committet.
 - Python-Stil: einfache Module, Standardbibliothek + pysat. Typst-Version 0.15 (`curve`, `sys.inputs`).
 
@@ -57,7 +58,7 @@ Bekannte Schwächen / nächste Schritte:
   Seeds wiederholen sich Motive. Neue Motive müssen der Line-Solver vollständig lösen können.
 - **Rechenkäfige**: Stufen nach nötigen Techniken, nicht von Hand durchgelöst – ggf. Feinschliff.
 - Ideen: „Mach die 24“, Zahlendreiecke, ein zweiter Block mit anderem Seed, ein Wochenblatt-Modus
-  (jede Seite ein Mix), Einbindung als Download-Seite auf levinkeller.de.
+  (jede Seite ein Mix).
 - Rückmeldung der Tochter einarbeiten: welche Arten machen Spaß, wo ist es zu leicht/zu schwer?
   Die Anzahlen je Stufe stehen in `CHAPTERS` in `build.py`.
 

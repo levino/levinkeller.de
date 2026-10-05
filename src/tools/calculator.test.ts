@@ -29,7 +29,8 @@ describe('Financial helper functions', () => {
         annuity,
         interestRates,
       }).amount
-    ).toBeCloseTo(expected, 5))
+    ).toBeCloseTo(expected, 5)
+  )
 
   test('totalInterest', () =>
     expect(

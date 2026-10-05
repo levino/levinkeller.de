@@ -4,7 +4,7 @@ Ein druckbarer A4-Rätselblock für Kinder, komplett generiert: Python erzeugt d
 (jedes per Solver auf **genau eine Lösung** geprüft und ohne Raten lösbar), Typst setzt sie als PDF.
 
 Aktueller Stand: 14 Rätselarten, 108 Rätsel plus je ein Beispiel, 50 Seiten mit Lösungsteil.
-Fertiges PDF: [`pdf/raetselblock.pdf`](pdf/raetselblock.pdf)
+Fertiges PDF: [`public/raetselblock/raetselblock.pdf`](../public/raetselblock/raetselblock.pdf), auf der Webseite eingebettet unter [levinkeller.de/de/docs/lernen/raetselblock](https://levinkeller.de/de/docs/lernen/raetselblock/)
 
 ## Rätselarten
 
@@ -34,7 +34,7 @@ Die Schwierigkeit steht als 1–3 Sterne an jedem Rätsel; vorne gibt es eine �
 ```bash
 cd raetselblock
 pip install -r requirements.txt     # python-sat, typst
-python3 build.py                    # -> pdf/raetselblock.pdf
+python3 build.py                    # -> ../public/raetselblock/raetselblock.pdf
 python3 verify.py                   # prüft alle Rätsel unabhängig auf Eindeutigkeit
 ```
 
@@ -42,7 +42,7 @@ python3 verify.py                   # prüft alle Rätsel unabhängig auf Eindeu
 - `python3 build.py --only sudoku kronen --tag test --out out/test.pdf` baut nur einzelne Kapitel.
 - Schrift: [Inter](https://rsms.me/inter/) (sonst Fallback auf Helvetica/Arial/DejaVu Sans). Eigene Fonts können in `fonts/` liegen.
 - Alternativ mit der Typst-CLI, nachdem `build.py --no-pdf` die Daten erzeugt hat:
-  `typst compile typst/block.typ pdf/raetselblock.pdf --root .`
+  `typst compile typst/block.typ ../public/raetselblock/raetselblock.pdf --root .`
 
 ## Aufbau
 

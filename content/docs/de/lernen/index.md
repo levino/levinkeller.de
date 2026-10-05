@@ -7,6 +7,12 @@ sidebar:
 Hier findest Du Ressourcen zum Lernen und zur Bildung, besonders auch für Kinder
 und Jugendliche.
 
+## Rätselblock zum Ausdrucken
+
+Ein selbst generierter [Rätselblock](/de/docs/lernen/raetselblock/) mit 108
+Logik- und Rechenrätseln für Kinder, die rechnen, aber noch nicht lesen
+können — direkt im Browser ansehen oder ausdrucken.
+
 ## Elektronik & Basteln für Kinder
 
 ### Lötbausätze und Elektronik-Kits

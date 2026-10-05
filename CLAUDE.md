@@ -92,6 +92,42 @@ npm run build
    `src/content.config.ts` and `src/collections/index.ts`. If new content is
    needed, create a new content collection with a proper schema.
 
+## Repository-Inhalt: keine Ablage
+
+Dieses Repository ist keine Müllhalde für Dateien, die man „später vielleicht
+nochmal braucht“. Alles, was hier liegt, muss in Bezug zu dem stehen, was auf
+levinkeller.de gezeigt wird:
+
+- **Erlaubt:** Quellcode und Inhalte der Webseite, Quellen/Generatoren für
+  Dinge, die auf der Webseite erscheinen (z. B. `raetselblock/`, `workshops/`,
+  `media/`), sowie strategische Dokumente und Anweisungen für KI-Agenten
+  (`CLAUDE.md`, Skills, Konzeptpapiere).
+- **Nicht erlaubt:** Inhalte, die auf der Webseite nicht abrufbar sind — PDFs,
+  Bilder, Texte oder Exporte, die nirgends verlinkt oder eingebettet werden.
+- Wer neue Inhalte (PDFs, Bilder, Medien) hinzufügt, bindet sie im selben PR an
+  einer sinnvollen Stelle der Webseite ein. Gibt es keine passende Stelle, wird
+  eine angelegt — oder die Datei gehört nicht ins Repo.
+
+## PDFs auf der Webseite
+
+- Ausgelieferte PDFs liegen unter `public/` (sonst sind sie nicht abrufbar).
+- PDFs, die selbst der Inhalt sind (Handouts, Rätselblock, Broschüren), werden
+  mit `src/components/PdfEmbed.astro` direkt auf der Seite eingebettet, damit
+  man sie ansehen kann, ohne sie herunterzuladen. Die Komponente bringt die
+  Links „Im Browser öffnen“ (neuer Tab) und „Herunterladen“ mit:
+
+  ```mdx
+  import PdfEmbed from '@/components/PdfEmbed.astro'
+
+  <PdfEmbed src="/pfad/datei.pdf" title="Titel (PDF, 4 Seiten)" />
+  ```
+
+- Ein Klick auf ein PDF darf nie stumm einen Download auslösen. Normale
+  Markdown-Links auf `.pdf` öffnen dank `src/plugins/rehypePdfLinks.ts`
+  automatisch in einem neuen Tab im PDF-Viewer des Browsers. Einen reinen
+  Download-Link (`download`-Attribut) nur zusätzlich zu einem Öffnen-Link
+  anbieten.
+
 ## File Structure Notes
 
 - Source code is in `src/`
