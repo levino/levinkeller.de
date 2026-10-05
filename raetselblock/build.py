@@ -1,4 +1,4 @@
-"""Baut den Rätselblock: Rätsel erzeugen -> data/block.json -> Typst -> pdf/raetselblock.pdf
+"""Baut den Rätselblock: Rätsel erzeugen -> data/block.json -> Typst -> public/raetselblock/raetselblock.pdf (Repo-Root)
 
     python3 build.py                  # ganzer Block
     python3 build.py --seed 7         # anderer Block, gleiche Struktur
@@ -82,7 +82,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=2026)
     ap.add_argument("--only", nargs="*")
-    ap.add_argument("--out", default="pdf/raetselblock.pdf")
+    ap.add_argument("--out", default="../public/raetselblock/raetselblock.pdf")
     ap.add_argument("--no-pdf", action="store_true")
     ap.add_argument("--tag", default="", help="separate data/registry files, e.g. for parallel tests")
     args = ap.parse_args()
@@ -94,7 +94,7 @@ def main():
     write_registry(sorted({c["type"] for c in data["chapters"]}), f"registry{tag}.typ")
     if not args.no_pdf:
         out = ROOT / args.out
-        out.parent.mkdir(exist_ok=True)
+        out.parent.mkdir(parents=True, exist_ok=True)
         compile_pdf(out, tag)
         print("PDF:", out)
 
