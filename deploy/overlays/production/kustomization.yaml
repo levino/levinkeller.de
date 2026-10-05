@@ -5,4 +5,4 @@ resources:
 images:
 - name: ghcr.io/levino/levinkeller.de
   newName: ghcr.io/levino/levinkeller.de
-  newTag: 954a5bf9e394af92ac598bc829fe561bf1a44cf2
+  newTag: 4d376b84ee1f15759350f75b4621be6582f81663
