@@ -9,6 +9,18 @@ Ich baue Websites deshalb so, dass man sie ändert, indem man aufschreibt, was s
 
 ## So funktioniert es
 
+<video
+  src="https://cdn.levinkeller.de/videos/website-per-wunschzettel-entwurf-9x16.mp4"
+  controls
+  playsinline
+  preload="metadata"
+  style="display:block;width:100%;max-width:360px;margin:0 auto 1.5rem;border-radius:12px"
+>
+  Dein Browser kann dieses Video nicht abspielen.
+  <a href="https://cdn.levinkeller.de/videos/website-per-wunschzettel-entwurf-9x16.mp4">Video herunterladen</a>.
+</video>
+
+
 1. **Wunsch aufschreiben.** Zum Beispiel: „Wir machen vom 22.12. bis 6.1. Betriebsurlaub. Bitte einen Hinweis ganz oben auf die Startseite.“
 2. **Die KI setzt es um.** Ein KI-Assistent (Claude) liest den Wunsch, ändert die Website und meldet sich nach ein paar Minuten mit einer kurzen Erklärung zurück.
 3. **Vorschau ansehen.** Live ist noch nichts. Man sieht zuerst genau, wie die geänderte Seite aussehen wird, und kann nachbessern lassen.
