@@ -69,13 +69,7 @@ export default defineConfig({
     mdx(),
     shipyard({
       css: fileURLToPath(new URL('./src/styles/app.css', import.meta.url)),
-      // Der Eintrag ist bewusst als `html` gesetzt: Shipyard stellt `href`-Werte
-      // aus der Navigation das Locale-Präfix voran (`/de…`), was einen externen
-      // Link zerschießen würde.
       navigation: {
-        waermenetz: {
-          html: '<a href="https://waermenetz-adensen.levinkeller.de">Wärmenetz Adensen</a>',
-        },
         docs: {
           label: 'Wissen',
           href: '/docs',
