@@ -14,6 +14,8 @@ spec:
       labels:
         app: levinkeller-de
     spec:
+      # Eigener User-Namespace: root im Container ist auf dem Host kein root.
+      hostUsers: false
       containers:
       - name: app
         image: ghcr.io/levino/levinkeller.de

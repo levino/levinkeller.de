@@ -123,6 +123,7 @@ jobs:
                   app: $PREVIEW_NAME
                   preview: "true"
               spec:
+                hostUsers: false
                 containers:
                   - name: app
                     image: $IMAGE
