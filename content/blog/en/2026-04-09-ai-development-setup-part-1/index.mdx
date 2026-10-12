@@ -1,0 +1,218 @@
+---
+title: 'My AI Development Setup: Autonomous Agents with Claude Code (Part 1)'
+authors:
+  - name: Levin Keller
+description:
+  A feasibility study of my AI-driven development setup. How I run Claude
+  Code almost fully autonomously inside isolated dev containers, why the
+  "obvious" solutions don't actually work, and how deployments become
+  trustless through GitHub Actions and K3s with OIDC.
+date: 2026-04-09
+tags: [code, ai]
+---
+
+This is the first post in a series about how I develop software with AI
+these days. Call it a blog post, call it a feasibility study — either fits.
+I want to show what my stack looks like, which building blocks I have
+screwed together, and, most importantly, **why the seemingly obvious
+solutions don't actually work**. Nearly all of them come with drawbacks that
+most people aren't aware of.
+
+## What this is about
+
+I build Astro websites and full-stack applications — some with
+user-generated data, some without. As long as there is no real user data in
+play, you don't really need a database anymore, in my opinion. I also do a
+lot of content work: Astro pages or Markdown content that gets edited by AI.
+Branches, preview links, reviews, merges — almost all of it runs through AI
+agents now. I barely create, review or merge pull requests by hand anymore.
+I don't even need an IDE open most of the time. And all of this happens in
+parallel across several tasks at once.
+
+What follows is a walkthrough of the building blocks. This first part covers
+isolation, containerization, tokens, speech-to-text, and deployments.
+Further parts will add more pieces to the picture.
+
+## Claude Code, unbraked — but isolated
+
+I work with [Claude Code](https://docs.anthropic.com/en/docs/claude-code),
+using Sonnet or Opus depending on the task. By default, Claude Code asks for
+confirmation on every action, which breaks the flow. So I always run Claude
+with `--dangerously-skip-permissions`, letting the agent just do what it
+thinks is right.
+
+This is only acceptable if the agent runs in an **isolated environment**.
+For me that means dev containers. Each project has one or more repositories
+on GitHub — where "GitHub" stands in for the category: Gitea or Forgejo
+would work too with some patches, GitLab probably as well. Bitbucket and
+Azure DevOps probably not. What we need from the forge is, above all, **a
+good CLI with API access** — more on that in a moment.
+
+## Hatchery: spawning drones, StarCraft-style
+
+To spin up dev containers comfortably, I wrote my own tool: **Hatchery**.
+The name is a StarCraft reference — a hatchery produces drones, and that's
+exactly what the tool does: it starts dev containers based on the
+dev-container configuration that lives in the repository. Each project
+ideally starts from a template that already contains an Astro setup and a
+dev-container config.
+
+Critical rule: put **as much context as possible** into the repository.
+Everything you know about the project should be there. The AI is only as
+good as the information it has, and the most common mistake is to feed it
+salami-style, a slice at a time. Don't hold back. Dump it all in.
+
+Hatchery does a few extra things on top inside the containers:
+
+- **Tailscale** is installed and automatically joins the tailnet.
+- **An SSH server** is started.
+- **The user's personal SSH keys** are pulled from
+  `https://github.com/<username>.keys` and installed.
+- **Zellij** (a terminal multiplexer) is installed.
+- **The GitHub CLI** (`gh`) is installed.
+- **The user's dotfiles** are injected into the drone — the same feature
+  VS Code's dev containers provide.
+
+Why SSH over Tailscale instead of exposing port 2222? Because I run many
+drones simultaneously. Exposing a port per drone would turn into a mess fast
+and create a security headache on top. Via Tailscale, each drone is
+reachable from any of my machines on the tailnet, but not from the public
+internet.
+
+## Why not just use VS Code's "Clone repository into container volume"?
+
+That would be the obvious alternative — and it is *almost* as good. But
+only almost:
+
+- No native SSH server in the container. You can jury-rig one, but it gets
+  fiddly.
+- **No clean persistence.** When you close VS Code, the agent in the
+  container should keep going. That's exactly what you want for autonomous
+  work.
+
+Which is why I run Zellij inside the drone as a persistent multiplexer.
+Inside Zellij, I start Claude Code, log in once (copying the auth token is
+the one ugly handshake step I haven't managed to eliminate), and then fire
+it up via an alias `go claude` that runs
+`claude --dangerously-skip-permissions`. The alias is part of my dotfiles.
+
+## Scoped tokens — the crucial trick
+
+Hatchery exposes a socket inside each container that drones can use to
+request **app tokens**. To make this work, you set up a GitHub App once,
+install it for your account or organization and give Hatchery the
+installation ID. A supervisor process running outside the containers
+manages the tokens and only hands the right token to the right drone.
+
+Why all the effort? Because nothing else actually works:
+
+- **Personal Access Tokens (classic)** can read CI action logs, but cannot
+  be scoped to individual repositories. Too powerful.
+- **Fine-grained PATs** can be scoped to repositories, but can *not* read
+  the logs of CI actions. Too weak.
+- **App tokens from a GitHub App** give you both: fine scoping *and* full
+  access to action logs.
+
+And reading action logs is critical — I'll get to that in a moment.
+
+The drone only receives a token for the repository it was started for.
+Hatchery also allows granting access to multiple repositories from the same
+org or account, in case you want to work on two repos in one drone.
+Cross-org or cross-account access isn't supported yet.
+
+With `gh` available, Claude sees the entire repository: issues, pull
+requests, branches, discussions, projects — everything. The agent starts
+with the full project-management context already loaded.
+
+## Working in parallel with git worktrees
+
+If the host is beefy enough (I use a rented dev server), you can open
+multiple Zellij panes and run a Claude instance in each. That requires
+separate working directories — which is exactly what git worktrees are for.
+Five or six worktrees of the same repository, each with its own agent
+chewing through its own task.
+
+What I'm still missing is a good overview layer: a dashboard that shows me
+what's happening in which drone on which project. Things get messy quickly,
+especially when juggling multiple projects. I might build that at some
+point.
+
+## Don't type — speak
+
+One point that is easy to underestimate: don't type at the agent. I use **OpenWhispr**, a Whisper-based speech-to-text tool, and simply
+dictate my instructions. The text lands directly in the prompt.
+That's how I "talk" to a drone — I hand
+it features, say "build X, write tests, push it, open a PR, get CI green,
+test the preview", and at the end, "clean up the old PRs and merge whatever
+is done". Much faster than typing and much easier to sustain over long
+sessions.
+
+## Deployments: why the Cloudflare Worker webhook isn't enough
+
+The classic path for a static site: the drone pushes, GitHub triggers a
+Cloudflare webhook, Cloudflare pulls the code, builds it and deploys a
+preview. Sounds elegant — until the build fails. Now you have to dig into
+Cloudflare's logs, copy them back into the drone so the agent even knows
+what happened. That breaks the feedback loop.
+
+So I do it the old-fashioned way: **deployments run from GitHub Actions.**
+An `on: push` triggers a deploy action that builds, pushes to the registry
+and rolls out to the target system. The upside: everything that happens
+ends up in the action logs. And the drone can read those logs via
+`gh run view`. When a build fails, the agent debugs and iterates on its own
+until it's green — just like a human would.
+
+Once the deployment is live, the drone fetches the preview URL from the
+pull request and can test the deployment itself. Only then is the loop
+closed. The drone gets real feedback across the entire stack, with nothing
+manually handed back in.
+
+For more complex apps with user input, the logical next step would be a
+staging or test environment in which the drone can actually exercise use
+cases and keep debugging if they fail. I don't have that yet, but the path
+is clear.
+
+## Trustless deployments via K3s and GitHub as OIDC provider
+
+How do you make a deploy action push to your own server without storing
+secrets in GitHub — and without the action ending up with more power than
+it should have?
+
+My solution: a small VPS running **K3s** (a lightweight Kubernetes
+distribution), with **GitHub registered as an OIDC provider** inside the
+cluster. Using the OIDC tokens GitHub signs for each actions run, the
+action authenticates against the cluster. Inside the cluster, resources are
+scoped so that each repository can only touch its own namespace.
+
+The result:
+
+- **No secrets in GitHub.** No service account keys, no kubeconfigs,
+  nothing to rotate or leak.
+- **Strictly scoped:** a repository can only deploy into its own namespace.
+- **Forges like Forgejo or Gitea** can be registered as OIDC providers in
+  the same way, in case you want to move away from GitHub.
+- With **plain Docker (no Kubernetes)** this doesn't work cleanly — you
+  can't draw these access boundaries via OIDC. With K3s, it works
+  beautifully.
+
+The deploy flow becomes: the action builds the image, pushes it to the
+registry, calls the cluster and says "deploy this image at this preview
+URL", the cluster pulls and starts the pod. The action waits until the
+deployment is stable — only then does it go green. The drone watches all
+of this live. If anything fails, the full failure chain is visible in the
+action logs.
+
+The drone itself never needs access to the server or the cluster. For
+runtime issues you could later give it its own scoped token into the
+cluster, but that's a topic for another post.
+
+## Where this leaves us
+
+The whole stack — dev containers, token supervisor, GitHub Actions, OIDC,
+K3s — shares a single thread: **the drone gets a complete feedback loop
+without softening any isolation boundaries.** No secrets, no duct tape, no
+blind spots. That's the prerequisite for an agent to actually work
+autonomously.
+
+In the next part I'll continue — with the review flow, managing multiple
+parallel projects, and how to scale this entire setup for teams.
