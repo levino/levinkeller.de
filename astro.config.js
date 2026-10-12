@@ -130,14 +130,16 @@ export default defineConfig({
           href: '/about',
         },
       },
-      // Farben aus dem CDU CI Kit (Cadenabbia-Türkis auf Rhöndorf-Blau), nicht
-      // aus dem DaisyUI-Theme dieser Seite — das ist rosa.
+      // Zwei laufende Kampagnen in einer Leiste. Neutrale Farben (Dunkelblau mit
+      // Gelb wie auf s4-muss-bleiben.de), nicht das CDU CI Kit: beide Kampagnen
+      // laufen als Privatperson. Die id ändern, damit die Leiste auch bei denen
+      // wieder erscheint, die sie schon weggeklickt haben.
       announcementBar: {
-        id: 'waermenetz-adensen',
+        id: 's4-und-waermenetz',
         content:
-          'Wärmenetz Adensen-Hallerburg: Warum die Gemeinde Nordstemmen dafür keinen Kredit über 3,8 Mio. € aufnehmen sollte. <a href="https://waermenetz-adensen.levinkeller.de">Zu Akten, Video und Podcast &rarr;</a>',
-        backgroundColor: '#52b7c1',
-        textColor: '#2d3c4b',
+          '<strong>Die S4 muss bleiben:</strong> 2027 soll die S-Bahn Hannover–Hildesheim ein Jahr ausfallen. <a href="https://s4-muss-bleiben.de">Video ansehen und Brief schreiben &rarr;</a> &nbsp;·&nbsp; <strong>Wärmenetz Adensen-Hallerburg:</strong> kein 3,8-Mio.-€-Kredit der Gemeinde. <a href="https://waermenetz-adensen.levinkeller.de">Akten, Video, Podcast &rarr;</a>',
+        backgroundColor: '#12325c',
+        textColor: '#fbf7ef',
       },
       title: 'Levin Keller',
       tagline: 'Levins Homepage',
