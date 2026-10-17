@@ -1,0 +1,45 @@
+# Titel ohne 番茄炒蛋: die eingebaute PDF-Schrift hat keine chinesischen Zeichen
+title: Tomate-Ei
+servings: für 2 Personen
+time: ca. 10 Min.
+description: Das schnelle chinesische Pfannengericht aus Tomaten und Rührei.
+process:
+  action: mit Reis servieren
+  with:
+    - action:
+        - Hitze aus, einrühren
+        - nach Geschmack beträufeln
+      with:
+        - action: schnell unterheben, nicht verkochen
+          with:
+            - action:
+                - verquirlen
+                - in rauchend heißem Öl im Wok stocken lassen, wenig rühren
+                - herausnehmen
+              with:
+                - 4 Eier
+                - ¼ TL Salz
+                - 1 EL Speiseöl
+            - action: 1–2 Min. pfannenrühren, bis die Tomaten Saft abgeben
+              with:
+                - action: im leeren Wok 30–60 Sek. braten, bis es duftet
+                  with:
+                    - 1 EL Speiseöl
+                    - ingredient: 2–3 Frühlingszwiebeln, davon die Hälfte
+                      action: hacken
+                - ingredient: 3 Tomaten
+                  action: in ca. 1 cm breite Spalten schneiden
+                - ingredient: 2 TL Sojasoße
+                  action: an den heißen Wokrand gießen
+                - 1 TL Ketchup
+                - ¼ TL Salz
+        - ingredient: restliche Frühlingszwiebeln
+          action: hacken
+        - Sesamöl (optional)
+    - gekochter Reis
+tips:
+  - Die Sojasoße am heißen Rand des Woks leicht anbrennen lassen – das gibt Aroma und Umami.
+  - Die Eier beim Stocken nicht zu viel rühren, damit sie zusammenhalten.
+source:
+  text: Seonkyoung Longest, Tomato Egg Stir Fry
+  url: https://seonkyounglongest.com/tomato-egg-stir-fry/

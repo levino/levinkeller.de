@@ -1,0 +1,40 @@
+title: Semmelknödel
+servings: etwa 8 Knödel
+time: ca. 1 Std.
+description: Klassische Semmelknödel aus angetrocknetem Baguette – die perfekte Beilage zu Braten, Pilzrahmsoße oder Gulasch.
+process:
+  action:
+    - mit nassen Händen 8 Knödel formen
+    - ins siedende Salzwasser gleiten lassen
+    - 20 Min. bei schwacher Hitze ziehen lassen (nicht kochen!)
+  with:
+    - action:
+        - gut verkneten
+        - 15–20 Min. ziehen lassen
+      with:
+        - action: vermischen
+          with:
+            - ingredient: 2 Baguettes (angetrocknet)
+              action: in kleine Würfel schneiden
+            - action:
+                - goldbraun anbraten
+                - abkühlen lassen
+              with:
+                - ingredient: 4 Zwiebeln
+                  action: fein würfeln
+                - etwas Öl
+            - 2 Eier
+            - 3 EL Mehl
+            - ingredient: 1 Bund Petersilie
+              action: hacken
+            - Salz, Pfeffer
+        - ingredient: 0,5 l Hafermilch
+          action: erhitzen
+    - ingredient: großer Topf Salzwasser
+      action: aufkochen, dann Hitze reduzieren
+tips:
+  - Das Brot sollte mindestens einen Tag alt und angetrocknet sein, damit die Knödel ihre Form behalten.
+  - Die Masse sollte feucht, aber nicht zu nass sein. Falls sie zu feucht ist, etwas mehr Mehl hinzufügen.
+  - Einen Probeknödel machen – wenn er im Wasser zerfällt, mehr Ei oder Mehl zur Masse geben.
+source:
+  text: Rezept von meinem Vater

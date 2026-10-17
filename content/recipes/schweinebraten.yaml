@@ -1,0 +1,40 @@
+title: Schweinebraten
+servings: für 4–6 Personen
+time: ca. 3 Std.
+description: Ein klassischer Schweinebraten mit knuspriger Kruste, geschmort in Dunkelbier.
+prep:
+  - Ofen auf 180 °C Ober-/Unterhitze vorheizen
+process:
+  action:
+    - Braten herausnehmen, auf dem Ofengitter knusprig werden lassen (ggf. 240 °C Oberhitze)
+    - Fond durchs Sieb in einen Topf passieren, Gemüse gut durchdrücken
+    - etwas einköcheln, entfetten, mit Salz und Pfeffer abschmecken
+    - in Scheiben mit Soße servieren
+  with:
+    - action:
+        - Schwarte rautenförmig einschneiden, Schwarte nach oben legen, salzen, pfeffern
+        - ca. 2 Std. garen, nach und nach Bier (ggf. Wasser) angießen
+      with:
+        - action:
+            - Schwarte nach unten in die Flüssigkeit legen
+            - Fleischseite salzen und pfeffern
+            - ca. 30 Min. im Ofen schmoren
+          with:
+            - action: mit Wasser ablöschen
+              with:
+                - action: in geölter Bratreine ca. 20 Min. im Ofen bräunen
+                  with:
+                    - ingredient: 2 Zwiebeln
+                      action: schälen, grob würfeln
+                    - ingredient: 2 Möhren
+                      action: schälen, grob würfeln
+                    - ingredient: 150 g Knollensellerie
+                      action: schälen, grob würfeln
+                    - 1–2 EL Öl
+                - ca. 250 ml Wasser
+            - ingredient: 1,5 kg Schweineschulter
+              action: abbrausen, trocken tupfen
+            - Salz, frisch gemahlener Pfeffer
+        - 500 ml Dunkelbier
+source:
+  text: Frankfurter Allgemeine Zeitung

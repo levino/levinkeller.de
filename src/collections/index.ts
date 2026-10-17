@@ -3,6 +3,7 @@ import { file, glob } from 'astro/loaders'
 import { parse as parseYaml } from 'yaml'
 import { plantingLogSchema } from './plantingLogSchema'
 import { plantSchema } from './plantSchema'
+import { recipeSchema } from './recipeSchema'
 import { sowingLogSchema } from './sowingLogSchema'
 import { vegetablesSchema } from './vegetableSchema'
 
@@ -77,6 +78,12 @@ export const collections = {
       parser: (text) => parseYaml(text) as Record<string, unknown>[],
     }),
     schema: plantingLogSchema,
+  }),
+  // Kochrezepte im Tabellenformat, siehe src/recipes/layout.ts. Die Seiten
+  // unter content/docs/de/kochrezepte/ binden sie mit <Recipe id="…" /> ein.
+  recipes: defineCollection({
+    loader: glob({ pattern: '*.yaml', base: './content/recipes' }),
+    schema: recipeSchema,
   }),
   plantStock: defineCollection({
     schema: z.object({
