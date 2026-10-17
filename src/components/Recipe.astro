@@ -1,0 +1,105 @@
+---
+// Zeigt ein Rezept aus der Collection `recipes` als Tabelle im Format von
+// „Cooking for Engineers“: Zutaten links, Arbeitsschritte rechts, jeder
+// Schritt überspannt die Zeilen, die er zusammenführt. Dasselbe Raster
+// landet über Typst im PDF (src/pages/de/kochrezepte/[id].pdf.ts).
+import { getEntry } from 'astro:content'
+import { layoutRecipe } from '@/recipes/layout'
+
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+const recipe = await getEntry('recipes', id)
+if (!recipe) throw new Error(`Rezept „${id}“ gibt es nicht in content/recipes/`)
+
+const { servings, time, description, prep, process, tips, source } = recipe.data
+const grid = layoutRecipe(process)
+const rows = Array.from({ length: grid.rows }, (_, row) =>
+  grid.cells.filter((cell) => cell.row === row)
+)
+const pdf = `/de/kochrezepte/${id}.pdf`
+const meta = [servings, time].filter(Boolean).join(' · ')
+---
+
+{description && <p class="lead">{description}</p>}
+{meta && <p><strong>{meta}</strong></p>}
+
+<div class="not-prose my-6 overflow-x-auto">
+  <table
+    class="w-full min-w-[36rem] border-collapse border-2 border-success bg-warning/5 text-sm leading-snug"
+  >
+    <tbody>
+      {
+        prep.map((text) => (
+          <tr>
+            <td
+              colspan={grid.columns}
+              class="border border-success px-2 py-1 text-center"
+            >
+              {text}
+            </td>
+          </tr>
+        ))
+      }
+      {
+        rows.map((cells) => (
+          <tr>
+            {cells.map((cell) => (
+              <td
+                rowspan={cell.rowSpan}
+                colspan={cell.colSpan}
+                class:list={[
+                  'border border-success px-2 py-1',
+                  cell.kind === 'ingredient'
+                    ? 'min-w-40 text-left'
+                    : 'text-center align-middle',
+                ]}
+              >
+                {cell.text}
+              </td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<p class="not-prose flex flex-wrap gap-2">
+  <a class="btn btn-sm btn-primary" href={pdf} target="_blank" rel="noopener">
+    Als PDF zum Ausdrucken
+  </a>
+  <a class="btn btn-sm btn-ghost" href="/de/kochrezepte/alle-rezepte.pdf" target="_blank" rel="noopener">
+    Alle Rezepte als PDF
+  </a>
+</p>
+
+{
+  tips.length > 0 && (
+    <>
+      <h2>Tipps</h2>
+      <ul>
+        {tips.map((tip) => (
+          <li>{tip}</li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+{
+  source && (
+    <>
+      <h2>Quelle</h2>
+      <p>
+        {source.url ? (
+          <a href={source.url}>{source.text}</a>
+        ) : (
+          source.text
+        )}
+      </p>
+    </>
+  )
+}

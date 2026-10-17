@@ -1,0 +1,49 @@
+title: Kartoffelgratin mit Blumenkohl und Möhren
+servings: für 4 Personen
+time: ca. 1¼ Std.
+description: Kartoffeln und Möhren in Muskat-Sahne, obendrauf Blumenkohl und eine Käsekruste.
+prep:
+  - Ofen auf 180 °C Ober-/Unterhitze vorheizen
+  - Auflaufform (ca. 20 × 30 cm) mit etwas Margarine einfetten
+process:
+  action:
+    - ca. 45 Min. bei 180 °C goldbraun backen
+    - 10 Min. ruhen lassen
+  with:
+    - action: mit Käse bestreuen, Margarine in Flöckchen daraufsetzen
+      with:
+        - action: Blumenkohl darauf verteilen, leicht andrücken
+          with:
+            - action:
+                - 5 Min. sanft köcheln, öfter umrühren
+                - in die Form geben, glatt streichen
+              with:
+                - ingredient: 1 kg festkochende Kartoffeln
+                  action:
+                    - schälen
+                    - in 3 mm dünne Scheiben hobeln
+                - ingredient: 3 Möhren (ca. 300 g)
+                  action:
+                    - schälen
+                    - in 3 mm dünne Scheiben hobeln
+                - action: im großen Topf verrühren, aufkochen
+                  with:
+                    - 400 ml Sahne
+                    - 200 ml Gemüsebrühe
+                    - ingredient: 1 Knoblauchzehe
+                      action: pressen
+                    - 1½ TL Salz
+                    - Pfeffer
+                    - ½ TL frisch geriebene Muskatnuss
+            - ingredient: 1 Blumenkohl (ca. 700 g)
+              action:
+                - in kleine Röschen teilen
+                - 4 Min. in Salzwasser vorgaren, abtropfen
+        - 150 g geriebener Käse (Gouda oder Bergkäse)
+        - 1 EL Margarine
+tips:
+  - Die Kartoffeln müssen nicht vorgekocht werden. Dünn gehobelt und 5 Minuten in der Sahne geköchelt, garen sie im Ofen sicher durch – und ihre Stärke bindet die Soße.
+  - Der Blumenkohl wird kurz vorgegart, weil er oben auf dem Gratin sonst nicht rechtzeitig weich wird.
+  - Statt Gemüsebrühe kann man 200 ml vom Kochwasser des Blumenkohls nehmen.
+  - Wer es lieber durchgemischt mag, hebt die Röschen unter die Kartoffeln, bevor alles in die Form kommt, und streut nur den Käse obendrauf.
+  - Gar ist das Gratin, wenn ein Messer ohne Widerstand durch die Kartoffeln gleitet. Wird der Käse zu dunkel, mit Alufolie abdecken.

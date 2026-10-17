@@ -1,0 +1,29 @@
+title: Haferflockenkekse mit Schokolade
+servings: etwa 1 Blech
+time: ca. 25 Min.
+description: Einfache, saftige und weiche Haferkekse mit Schokolade.
+prep:
+  - Backofen auf 180 °C vorheizen
+  - Blech mit Backpapier auslegen
+process:
+  action:
+    - unterheben
+    - kleine Kugeln formen, mit Abstand aufs Blech setzen
+    - ca. 10 Min. bei 180 °C goldbraun backen
+    - abkühlen lassen
+  with:
+    - action: zu einem Teig verkneten
+      with:
+        - action: vermischen
+          with:
+            - 240 g Mehl (Vollkorn oder Typ 550)
+            - 120 g Haferflocken
+            - 80 g Zucker
+            - 15 g Backpulver
+        - 150 g weiche Margarine oder Butter
+        - 2 Eier
+    - ingredient: 100 g Schokolade
+      action: hacken (oder Schokotropfen nehmen)
+tips:
+  - Die Kekse bleiben schön weich und saftig.
+  - Statt Schokolade können auch Rosinen oder Nüsse verwendet werden.

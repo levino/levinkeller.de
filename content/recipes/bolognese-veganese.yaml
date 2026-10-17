@@ -1,0 +1,57 @@
+title: Bolognese Veganese
+servings: für 3–4 Personen
+time: ca. 50 Min.
+description: Eine vegane Bolognese-Soße auf Basis von Linsen und getrockneten Pilzen.
+process:
+  action: in tiefen Tellern servieren
+  with:
+    - action:
+        - vermengen, ggf. etwas Nudelwasser dazu
+        - einige Min. erhitzen
+      with:
+        - ingredient: 400 g Tagliatelle
+          action:
+            - in Salzwasser al dente kochen
+            - 1 Tasse Nudelwasser abnehmen, abgießen (nicht abschrecken!)
+        - action: weitere 5–8 Min. köcheln
+          with:
+            - action: zugedeckt 5–8 Min. bei schwacher Hitze köcheln
+              with:
+                - action: Anis und Zimt entfernen, kräftig verrühren
+                  with:
+                    - action: Alkohol bei großer Hitze verdampfen lassen
+                      with:
+                        - action: in einer großen Pfanne 5–7 Min. braten, bis die Zwiebel glasig ist
+                          with:
+                            - action: in der Küchenmaschine sehr fein hacken (max. 3 mm, kein Brei)
+                              with:
+                                - 1 kleine Zwiebel
+                                - 1 kleine Karotte
+                                - 1 Stange Staudensellerie
+                            - Extra-Vergine-Olivenöl
+                            - 1 Anisstern
+                            - ½ Zimtstange
+                            - 1 Prise Salz
+                        - ¼ EL trockener Weiß- oder Rotwein
+                    - action:
+                        - zugedeckt bei schwacher Hitze 25–30 Min. kochen, bis die Brühe aufgesogen ist und die Linsen leicht anbraten
+                        - im Mixer grob häckseln
+                      with:
+                        - 4 EL getrocknete grüne Linsen
+                        - 15 getrocknete Pilze
+                        - 1 Tasse Brühe
+                        - 2 EL Olivenöl
+                        - 2 EL Sojasoße
+                - 1¼ EL Tomatenmark
+                - 1 Tasse Brühe
+                - Salz und schwarzer Pfeffer
+            - 2–3 EL ungesüßte Pflanzenmilch
+    - vegetarischer Parmesan oder Hefeflocken
+    - frisch gemahlener schwarzer Pfeffer
+tips:
+  - Der Schlüssel zu diesem Rezept ist, dass die Linsen gekocht und dann im Topf leicht angebraten werden.
+  - Der Anisstern setzt in Kombination mit Zwiebeln einen Umami-Geschmack frei.
+  - Die Zimtstange verleiht dem Ganzen eine tiefe Süße.
+  - Im Originalrezept wird das Gemüse von Hand in 2–3 mm kleine Würfel geschnitten, was sehr aufwendig ist. Der Tipp mit der Küchenmaschine stammt aus „Sehr gut mediterran kochen“ von Christian Soehlke und Dorothee Soehlke-Lennert (Stiftung Warentest).
+source:
+  text: Marta Dymek, International Zufällig Vegan, smarticular Verlag, ISBN 978-3-946658-46-7

@@ -22,14 +22,10 @@ describe('Financial helper functions', () => {
       annuity: 1135.29507423021,
       expected: 250_000,
     },
-  ])('annuity payment', ({ runtime, annuity, expected }) =>
-    expect(
-      loanData({
-        runtime,
-        annuity,
-        interestRates,
-      }).amount
-    ).toBeCloseTo(expected, 5))
+  ])('annuity payment', ({ runtime, annuity, expected }) => {
+    const { amount } = loanData({ runtime, annuity, interestRates })
+    expect(amount).toBeCloseTo(expected, 5)
+  })
 
   test('totalInterest', () =>
     expect(

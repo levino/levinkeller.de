@@ -128,6 +128,19 @@ levinkeller.de gezeigt wird:
   Download-Link (`download`-Attribut) nur zusätzlich zu einem Öffnen-Link
   anbieten.
 
+## Kochrezepte
+
+- Rezepte liegen als YAML in `content/recipes/` (Collection `recipes`, Schema in
+  `src/collections/recipeSchema.ts`). Der Ablauf ist ein Baum: Blätter sind
+  Zutaten, `action` + `with` ein Arbeitsschritt, der Zutaten/Zwischenergebnisse
+  zusammenführt. Daraus entsteht die Tabelle im Format von „Cooking for
+  Engineers“ (`src/recipes/layout.ts`).
+- Die Seite unter `content/docs/de/kochrezepte/<id>.mdx` bindet das Rezept mit
+  `<Recipe id="<id>" />` ein; neue Rezepte auch in `index.mdx` verlinken.
+- PDFs werden beim Build mit Typst erzeugt (`src/recipes/recipes.typ`,
+  Endpunkte `src/pages/de/kochrezepte/[id].pdf.ts` und `alle-rezepte.pdf.ts`)
+  – sie liegen deshalb ausnahmsweise nicht in `public/`.
+
 ## File Structure Notes
 
 - Source code is in `src/`
