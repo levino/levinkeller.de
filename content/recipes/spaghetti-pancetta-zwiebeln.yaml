@@ -1,0 +1,39 @@
+title: Spaghetti mit Pancetta und roten Zwiebeln
+servings: für 5 hungrige Personen
+time: ca. 30 Min.
+description: Carbonara-Technik mit Ei und Pecorino, dazu langsam geschmorte rote Zwiebeln. Ohne Sahne – die Cremigkeit kommt aus Ei, Käse und Nudelwasser.
+process:
+  action:
+    - in der Glasschüssel zügig verrühren, bis die Sauce cremig bindet
+    - bei Bedarf etwas Nudelwasser dazu
+    - sofort servieren
+  with:
+    - action:
+        - kurz durchschwenken
+        - Pfanne von der Hitze nehmen
+      with:
+        - ingredient: 500 g Spaghetti
+          action:
+            - in Salzwasser al dente kochen
+            - 1 Tasse Nudelwasser abnehmen, abgießen
+        - action: kurz mitbraten, bis alles heiß ist
+          with:
+            - action: bei niedriger Hitze 10–15 Min. langsam weich und leicht süßlich braten
+              with:
+                - ingredient: 5 rote Zwiebeln
+                  action: in Ringe schneiden
+                - 2 EL Olivenöl
+            - ingredient: 250 g Pancetta
+              action: in Streifen schneiden
+    - action: in einer großen Glasschüssel verquirlen
+      with:
+        - 5 Eier
+        - 1 Eigelb
+        - 100 g Pecorino Romano, gerieben
+        - reichlich frisch gemahlener schwarzer Pfeffer
+    - Pecorino und schwarzer Pfeffer zum Nachwürzen
+tips:
+  - Die Ei-Käse-Mischung kommt nie auf die Herdplatte – sonst wird aus der Sauce Rührei. Darum die Nudeln erst aus der Pfanne in die Glasschüssel umfüllen und dort mit den Eiern verrühren.
+  - Pecorino ist salzig; deshalb erst am Ende probieren und nur bei Bedarf nachsalzen.
+  - Die Zwiebeln brauchen Geduld. Je länger sie langsam schmoren, desto süßer werden sie. Mit echten roten Tropea-Zwiebeln wird es noch milder und süßer, normale rote Zwiebeln funktionieren aber gut.
+  - Eigene Variante nach einem Restaurantgericht, kein überliefertes Originalrezept. Die klassische Carbonara kommt ganz ohne Zwiebeln aus und nimmt Guanciale statt Pancetta.
