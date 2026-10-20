@@ -1,0 +1,28 @@
+title: Schokopudding
+servings: 4 Portionen
+time: ca. 15 Min. + 2 Std. Kühlen
+description: Schokoladenpudding ohne Tüte – nur Milch, Speisestärke, Kakao und Zucker.
+process:
+  action:
+    - in 4 Schälchen füllen
+    - Frischhaltefolie direkt auf die Oberfläche legen
+    - mind. 2 Std. kalt stellen
+  with:
+    - action:
+        - Topf kurz vom Herd nehmen, Kakaomischung mit dem Schneebesen zügig einrühren
+        - zurück auf den Herd, unter ständigem Rühren 1–2 Min. sprudelnd kochen lassen, bis er andickt
+      with:
+        - ingredient: 400 ml Milch
+          action: in einem Topf aufkochen
+        - action: klümpchenfrei glattrühren
+          with:
+            - 100 ml Milch (kalt)
+            - 40 g Speisestärke
+            - 30 g Kakaopulver (ungesüßt, Backkakao)
+            - 60 g Zucker
+tips:
+  - Merkverhältnis pro ½ Liter Milch – 40 g Stärke, 30 g Kakao, 60 g Zucker. Das lässt sich beliebig skalieren, für 8 Portionen einfach alles verdoppeln.
+  - Die Stärke muss richtig aufkochen, sonst wird der Pudding nicht fest und schmeckt mehlig. Ständig rühren und dabei über den Topfboden kratzen, damit nichts anbrennt.
+  - Fester Pudding zum Stürzen – 50 g Stärke nehmen. Cremiger – 35 g.
+  - Wer gesüßten Trinkkakao (z. B. Kaba) statt Backkakao nimmt, verdoppelt die Kakaomenge auf 60 g und lässt den Zucker fast ganz weg.
+  - Die Folie direkt auf dem Pudding verhindert die Haut. Wer die Haut mag, lässt sie weg.
