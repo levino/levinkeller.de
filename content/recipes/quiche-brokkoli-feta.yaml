@@ -1,0 +1,43 @@
+title: Quiche mit Brokkoli und Feta
+servings: 1 Springform (28 cm), für 4 Personen
+time: ca. 1 Std.
+description: Vegetarische Quiche mit blanchiertem Brokkoli und salzigem Feta in einem Guss aus Eiern und Schmand.
+prep:
+  - Ofen auf 200 °C Ober-/Unterhitze vorheizen
+  - Teig ca. 10 Min. vor dem Verarbeiten aus dem Kühlschrank nehmen
+  - Salzwasser zum Kochen bringen
+process:
+  action:
+    - auf unterster Schiene 35–40 Min. backen, bis der Guss gestockt und goldbraun ist
+    - 10 Min. ruhen lassen, aus der Form lösen
+  with:
+    - action:
+        - Brokkoli und Feta auf dem Boden verteilen
+        - Guss darübergießen
+      with:
+        - ingredient: 1 Rolle Quiche- oder Mürbeteig (rund, 32 cm)
+          action:
+            - mit dem Backpapier in die Springform (28 cm) legen, Rand ca. 2 cm hochdrücken
+            - Boden mehrfach mit der Gabel einstechen
+            - 10 Min. bei 200 °C vorbacken, dann Ofen auf 180 °C herunterschalten
+        - ingredient: 1 Brokkoli (ca. 500 g)
+          action:
+            - in kleine Röschen teilen, Strunk schälen und würfeln
+            - 3 Min. im Salzwasser blanchieren
+            - kalt abschrecken und sehr gut abtropfen lassen
+        - ingredient: 200 g Feta
+          action: grob zerbröseln
+        - action: kräftig verquirlen
+          with:
+            - 4 Eier
+            - 200 g Schmand
+            - 100 ml Milch
+            - 1 Knoblauchzehe, gepresst
+            - frisch geriebene Muskatnuss
+            - Pfeffer
+            - wenig Salz
+tips:
+  - Den Brokkoli wirklich gut abtropfen lassen (am besten kurz auf ein Küchentuch legen), sonst wird der Guss wässrig.
+  - Salz sparsam einsetzen, der Feta ist schon salzig.
+  - Ein runder 32-cm-Teig reicht in einer 28er-Springform für einen Rand von gut 2 cm.
+  - Lecker dazu – ein paar Pinienkerne oder Kürbiskerne obendrauf streuen, oder eine in Ringe geschnittene rote Zwiebel mit dem Brokkoli verteilen.
