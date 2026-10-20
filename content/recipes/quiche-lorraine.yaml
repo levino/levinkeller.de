@@ -1,7 +1,7 @@
 title: Quiche Lorraine
 servings: 1 Springform (28 cm), für 4 Personen
 time: ca. 1 Std.
-description: Der Klassiker aus Lothringen – Speck und ein Guss aus Eiern und Sahne auf Mürbeteig, ganz ohne Käse.
+description: Speck und Lauch in einem Guss aus Eiern und Sahne auf Mürbeteig.
 prep:
   - Ofen auf 200 °C Ober-/Unterhitze vorheizen
   - Teig ca. 10 Min. vor dem Verarbeiten aus dem Kühlschrank nehmen
@@ -11,7 +11,7 @@ process:
     - 10 Min. ruhen lassen, aus der Form lösen
   with:
     - action:
-        - Speck auf dem Boden verteilen
+        - Speck und Lauch auf dem Boden verteilen
         - Guss darübergießen
       with:
         - ingredient: 1 Rolle Quiche- oder Mürbeteig (rund, 32 cm)
@@ -19,10 +19,14 @@ process:
             - mit dem Backpapier in die Springform (28 cm) legen, Rand ca. 2 cm hochdrücken
             - Boden mehrfach mit der Gabel einstechen
             - 10 Min. bei 200 °C vorbacken, dann Ofen auf 180 °C herunterschalten
-        - ingredient: 200 g Speckwürfel (geräuchert)
-          action:
-            - ohne Fett bei mittlerer Hitze ca. 5 Min. anbraten, bis das Fett austritt
-            - auf Küchenpapier abtropfen lassen
+        - action:
+            - Lauch dazugeben und im Speckfett ca. 5 Min. weich dünsten
+            - etwas abkühlen lassen
+          with:
+            - ingredient: 200 g Speckwürfel (geräuchert)
+              action: ohne Fett bei mittlerer Hitze ca. 5 Min. anbraten, bis das Fett austritt
+            - ingredient: 2 Stangen Lauch
+              action: längs halbieren, gründlich waschen, in feine Halbringe schneiden
         - action: kräftig verquirlen
           with:
             - 4 Eier
@@ -32,8 +36,9 @@ process:
             - Pfeffer
             - wenig Salz
 tips:
-  - Den Speck vorher anbraten – roh gibt er Wasser und Fett in den Guss, der Boden weicht durch und der Speck bleibt blass und weich.
+  - Den Speck vorher anbraten – roh gibt er Wasser und Fett in den Guss, der Boden weicht durch und der Speck bleibt blass und weich. Im ausgelassenen Fett dünstet dann gleich der Lauch.
   - Salz sparsam einsetzen, der Speck bringt schon viel mit.
   - Ein runder 32-cm-Teig reicht in einer 28er-Springform für einen Rand von gut 2 cm – genau richtig für die Menge Guss.
   - Das Vorbacken sorgt dafür, dass der Boden knusprig bleibt. Wer es eilig hat, kann es weglassen und dafür 5–10 Min. länger backen.
-  - Das Original kommt ohne Käse aus. Wer mag, streut 100 g geriebenen Gruyère oder Bergkäse mit auf den Speck.
+  - Der Lauch sollte weich, aber nicht braun sein. Gibt er viel Wasser ab, kurz offen weiterdünsten, bis es verdampft ist – sonst wird der Guss wässrig.
+  - Das Original aus Lothringen kommt ohne Lauch und ohne Käse aus. Wer mag, streut zusätzlich 100 g geriebenen Gruyère oder Bergkäse auf die Füllung.
