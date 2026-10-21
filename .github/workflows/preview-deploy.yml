@@ -107,7 +107,7 @@ jobs:
             const botComment = comments.find(c =>
               c.user.type === 'Bot' && c.body.includes('Preview deployment')
             )
-            const body = `### Preview deployment\n\nhttps://${{ env.PREVIEW_HOST }}\n\nImage \`${{ env.IMAGE }}\` is built. The preview appears once Argo CD has synced it, typically within 1-3 minutes.`
+            const body = `### Preview deployment\n\nhttps://${{ env.PREVIEW_HOST }}\n\nImage \`${{ env.IMAGE }}\` is built. The preview appears once the label \`preview\` is set on this PR and Argo CD has synced it (typically within 1-3 minutes).`
             if (botComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
