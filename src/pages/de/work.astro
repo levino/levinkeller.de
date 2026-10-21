@@ -21,9 +21,39 @@ const title = 'Projekte & Portfolio'
       </p>
 
       <PortfolioCard
+        title="git-forge"
+        href="https://github.com/levino/git-forge"
+        imageUrl="/images/projects/git-forge-preview.png"
+      >
+        <Fragment slot="description">
+          Eine eigene Git-Plattform, die komplett serverlos auf Cloudflare läuft:
+          Repositories, Git LFS, Issues, Pull Requests, Code-Review und CI mit
+          GitHub-kompatiblen Actions. Die API spricht die Sprache von GitHub, so
+          dass bestehende Werkzeuge weiter funktionieren. Instanzen spiegeln sich
+          gegenseitig, damit Code nicht an einem einzigen Anbieter hängt. Eine
+          eigene Instanz ist mit einem Klick eingerichtet, meine läuft unter
+          forge.levinkeller.de.
+        </Fragment>
+        <Fragment slot="motivation">
+          <p>
+            Fast aller Code der Welt liegt bei GitHub, also bei einem einzigen
+            US-Konzern. Ich wollte zeigen, dass man eine vollwertige Alternative
+            betreiben kann, ohne einen Server zu warten, und für wenige Euro im
+            Monat.
+          </p>
+          <p>
+            Wie bei Shipyard ist es auch ein Test, wie weit man mit KI kommt:
+            git-forge ist fast vollständig von KI-Agenten geschrieben, die ich
+            koordiniere.
+          </p>
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
         title="Shipyard"
         href="https://github.com/levino/shipyard"
         imageUrl="/images/projects/shipyard-preview.png"
+        reverse
       >
         <Fragment slot="description">
           Ein modulares Astro-Framework zum schnellen Erstellen von Websites. Es
@@ -52,7 +82,6 @@ const title = 'Projekte & Portfolio'
         title="mock-jwks"
         href="https://github.com/levino/mock-jwks"
         imageUrl="/images/projects/mock-jwks-preview.png"
-        reverse
       >
         <Fragment slot="description">
           Eine Bibliothek zum Testen von JWT-Authentifizierung in Node.js. Sie
