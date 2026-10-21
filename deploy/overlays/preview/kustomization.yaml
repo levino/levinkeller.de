@@ -1,0 +1,17 @@
+# Per-PR preview, rendered by an Argo CD ApplicationSet (PullRequest generator,
+# defined in the server-config repo). Argo sets, per PR:
+#   - destination namespace (levinkeller-de-previews) -> no namespace field here
+#   - image tag   ghcr.io/levino/levinkeller.de:pr-<n>-<head_sha>
+#   - nameSuffix  -pr-<n>, commonLabels preview=pr-<n>
+#   - Ingress host/tls hosts/secretName (pr-<n>.levinkeller.de)
+# Intentionally self-contained (not built on ../../base): base carries the
+# production Namespace, namespace fields and the production hosts.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+images:
+- name: ghcr.io/levino/levinkeller.de
+  newTag: placeholder
