@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: levinkeller-de
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: pr-0.levinkeller.de   # placeholder, patched per PR by Argo
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: levinkeller-de
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - pr-0.levinkeller.de       # placeholder, patched per PR by Argo
+    secretName: levinkeller-de-tls
