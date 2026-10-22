@@ -71,7 +71,9 @@ jobs:
   # Pull-based: no cluster credentials here. An Argo CD ApplicationSet
   # (server-config repo) watches open PRs, deploys deploy/overlays/preview at the
   # PR's head commit with this image tag, and prunes it when the PR closes.
-  publish-manifest:
+  # The job id stays `deploy-preview`: the main ruleset requires a status check
+  # of that name.
+  deploy-preview:
     runs-on: ubuntu-latest
     needs: [build-amd64, build-arm64]
     env:
