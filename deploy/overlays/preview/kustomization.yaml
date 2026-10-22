@@ -15,3 +15,4 @@ resources:
 images:
 - name: ghcr.io/levino/levinkeller.de
   newTag: placeholder
+# smoke test for pull-based previews (PR is closed without merge)
