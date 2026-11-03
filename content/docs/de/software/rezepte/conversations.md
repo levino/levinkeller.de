@@ -248,10 +248,6 @@ geht auch ohne.
 - **Rückgängig statt Nachfragen:** Papierkorb, Archiv und Spam lassen sich ein
   paar Sekunden lang zurücknehmen. Endgültiges Löschen fragt nach, und der
   Server verlangt diese Bestätigung auch.
-- **Kein doppeltes Absenden:** Jeder Knopf wird beim Klick gesperrt und zeigt
-  einen Ladezustand. Die eigentliche Sicherung liegt auf dem Server: Jedes
-  Formular trägt eine einmalige Kennung, und eine doppelt ankommende Absendung
-  wird nur einmal ausgeführt. Mir ist vorher eine Mail zweimal rausgegangen.
 - **Web Push:** Die Benachrichtigung geht in dem Moment raus, in dem die Mail
   im Posteingang einsortiert ist. Eine Benachrichtigung pro Konto, die
   hochzählt, mit zwei wählbaren Knöpfen (Löschen, Archivieren, Gelesen, Spam).
