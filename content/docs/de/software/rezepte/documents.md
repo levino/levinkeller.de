@@ -32,14 +32,16 @@ obendrauf.
 - **Eingang Mail:** Der Mailserver übergibt Anhänge über eine interne
   Verbindung zwischen den beiden Workern (Service Binding), ohne öffentlichen
   Endpunkt.
-- **Verarbeitung:** pro Datei ein Job in einer Queue: herunterladen, Hash
-  bilden, Texterkennung und Auswertung, speichern, Embeddings, in Nextcloud
-  umbenennen und ablegen.
+- **Verarbeitung:** pro Datei ein Job in der Eingangs-Queue: herunterladen,
+  Hash bilden, Texterkennung und Auswertung, speichern, in Nextcloud umbenennen
+  und ablegen. Die Embeddings laufen danach in einer eigenen Queue. Jede Queue
+  hat eine Dead-Letter-Queue für Jobs, die endgültig scheitern.
 - **Speicher:** Das PDF (und jedes abgetrennte Teil) in R2 mit
-  EU-Jurisdiktion. Text, Felder, Labels, Herkunft und das Protokoll der
-  Freigaben in einem Durable Object mit SQLite und FTS5.
-- **Suche:** Volltext und Vektoren (Vectorize), zusammengeführt mit Reciprocal
-  Rank Fusion.
+  EU-Jurisdiktion. Text, Felder, Labels, Herkunft, das Protokoll der Freigaben
+  und die Suchvektoren in einem Durable Object mit SQLite und FTS5, fest in der
+  EU.
+- **Suche:** Volltext und Vektoren, beide im Durable Object, zusammengeführt
+  mit Reciprocal Rank Fusion.
 - **Zugang:** MCP für KI-Assistenten, dazu eine REST-API für Massenarbeit,
   beides hinter OpenID Connect.
 
@@ -48,10 +50,11 @@ obendrauf.
 | Baustein | Wofür | Warum |
 |---|---|---|
 | Cloudflare Workers, Cron, Queues | Abholen und Verarbeiten | Kein Server; ein Job pro Datei, Wiederholungen gratis |
-| Durable Object mit SQLite + FTS5 | Bibliothek | Ein Schreiber, Volltextsuche eingebaut |
+| Durable Object mit SQLite + FTS5, Jurisdiktion EU | Bibliothek und Vektoren | Ein Schreiber, Volltextsuche eingebaut, bleibt in der EU |
 | R2 (EU) | Originale | Billig, unabhängig von Nextcloud |
 | Gemini Flash auf Vertex AI, EU-Multiregion | Texterkennung und Auswertung in einem Aufruf | Liest PDFs direkt, sehr gut bei Tabellen und Deutsch, Verarbeitung in der EU, kein Training mit den Daten |
-| Qwen3-Embedding-8B bei einem EU-Anbieter | Semantische Suche | Dasselbe Modell wie beim Mailserver |
+| Qwen3-Embedding-8B bei EU-Anbietern | Semantische Suche | Dasselbe Modell wie beim Mailserver |
+| D1 (EU) | Anmeldung, Freigaben, API-Schlüssel | Klein, in der EU angelegt |
 | Nextcloud-Freigabelink mit Passwort | Zugriff auf den Scan-Ordner | Der Worker sieht nur diesen einen Ordner, nicht die ganze Cloud |
 | OpenID Connect (bei mir ZITADEL) | Anmeldung | Gemeinsam mit dem Mailserver |
 
@@ -107,12 +110,19 @@ funktioniert hier anders:
 - Sichtbar ist ein Dokument für den Eigentümer und für das Publikum jedes
   Labels darauf. Das wird an genau einer Stelle im Code geprüft, die jede
   Suche, jeder Abruf und jeder Download benutzt.
+- Jeder Eigentümer hat seine eigene Kopie. Kommt dieselbe Datei von jemand
+  anderem, wird daraus dessen eigenes Dokument. So kann niemand ein privates
+  Dokument teilen, nur weil er die gleiche Datei besitzt (die Bank, der Arzt
+  und das Finanzamt haben sie natürlich).
+- Labels, die ich entfernt habe, kommen nie automatisch zurück.
 - Labels vergibt die KI, und zwar nach Regeln, die ich einmal in Alltagssprache
   aufgeschrieben habe („Wohnung, Versicherungen, Auto, gemeinsame Steuern:
   Familie. Gesundheit und mein Job: nur ich.“).
 - **Im Zweifel privat.** Ein fälschlich privates Dokument kostet nichts, ein
   fälschlich geteiltes schon. Jede Änderung am Teilen landet in einem
   Protokoll.
+- Will ein KI-Assistent über MCP das Teilen ändern, muss ich das freigeben,
+  wie beim Mailserver.
 - Themen-Labels („Auto“, „Steuern“) gibt es bewusst nicht. Die semantische
   Suche findet „alles zum Auto“ besser, als es eine Verschlagwortung je würde.
 
@@ -124,7 +134,9 @@ Zusammenfassung), mehrere Dokumente auf einmal lesen, Download-Links holen.
 
 Für alles Größere gibt es eine REST-API. Den Schlüssel dafür holt sich der
 Assistent über ein MCP-Werkzeug: kurzlebig, standardmäßig nur lesend,
-widerrufbar, und die Antwort enthält gleich eine kleine curl-Anleitung. So
+widerrufbar und an die Verbindung des Assistenten gebunden: Trenne ich die,
+sind auch die Schlüssel tot. Die Antwort enthält gleich eine kleine
+curl-Anleitung. So
 nutzt man die Anmeldung von MCP und die Effizienz von REST.
 
 ## Testen
@@ -152,15 +164,28 @@ nutzt man die Anmeldung von MCP und die Effizienz von REST.
    Absender, Zeitraum, Betrag, Fristen).
 5. **Zugang:** Anmeldung, MCP-Werkzeuge, REST-API mit kurzlebigen Schlüsseln.
 6. **Mailanhänge:** Übergabe vom Mailserver, nur echte Dokumente (PDFs und
-   Bilder ab einer Mindestgröße), Mails aus dem Spam-Ordner gar nicht.
+   Bilder ab einer Mindestgröße). Spam gar nicht, und Anhänge von Absendern,
+   die die Absenderprüfung nicht bestehen, nur als „nicht vertrauenswürdig“:
+   privat, zur Prüfung markiert, ohne KI-Labels. Sonst könnte jeder per Mail
+   gefälschte „Finanzamt“-Briefe ins Archiv legen. Dazu eine Obergrenze für
+   Seiten pro Datei und Dateien pro Absender und Tag.
 7. **Probelauf:** 20 echte Scans, Namen und Felder prüfen, dann den Rest in
    Portionen.
+
+## Alle Daten in der EU
+
+Wie beim [Mailserver](/de/docs/software/rezepte/conversations): Durable
+Objects, R2 und D1 mit EU-Jurisdiktion, Vektoren im Durable Object statt in
+Vectorize (das sich nicht festlegen lässt), keine Protokolle mit Dateinamen,
+Pfaden oder Inhalten. Gemini läuft über den EU-Endpunkt von Vertex, die
+Embeddings bei EU-Anbietern.
 
 ## Kosten
 
 Bei 3,8 Flash mit wenig „Denken“ habe ich gut 3,70 $ pro 1.000 Seiten gemessen
-(Einführungspreis bis Ende 2026, danach etwa das Doppelte). Tausend Scans mit
-einigen tausend Seiten kosten also rund zehn Dollar, einmalig. Die günstigere
+(Einführungspreis bis Ende 2026, danach etwa das Doppelte). Meine knapp 1.000
+Scans kosteten also rund zehn Dollar, einmalig; zwei scheiterten an einem
+vorübergehenden Zeitlimit und liefen beim zweiten Versuch durch. Die günstigere
 Variante für digitale PDFs liegt deutlich darunter. Speicher und Plattform
 fallen bei Haushaltsgröße kaum ins Gewicht.
 
@@ -178,6 +203,10 @@ fallen bei Haushaltsgröße kaum ins Gewicht.
 - **Gemini 2.5 Flash wurde im Oktober 2026 abgeschaltet.** Wer noch darauf
   setzt, sollte umstellen. Die Lite-Varianten der neueren Modelle verlieren bei
   Tabellen Inhalte; für Scans lohnt das volle Flash-Modell.
+- **Die Lite-Modelle sparen an der falschen Stelle.** Im Vergleich auf echten
+  Scans verloren sie Tabelleninhalte und trennten einen zweiseitigen Brief
+  fälschlich. Für digitale PDFs, bei denen nur Felder und Zusammenfassung
+  gebraucht werden, reichen sie.
 - **Ein Google-Cloud-Abrechnungskonto kann standardmäßig nur fünf Projekte
   haben.** Mehr gibt es auf Antrag. Und Budgets in Google Cloud sind nur
   Warnungen, keine harte Grenze.
