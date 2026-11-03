@@ -4,9 +4,22 @@ interface Props {
   href: string
   imageUrl: string
   reverse?: boolean
+  /** Button text; defaults to "Projekt besuchen →". */
+  linkLabel?: string
 }
 
-const { title, href, imageUrl, reverse = false } = Astro.props
+const {
+  title,
+  href,
+  imageUrl,
+  reverse = false,
+  linkLabel = 'Projekt besuchen →',
+} = Astro.props
+// Links within this site open in the same tab and show the site's address in the mock browser bar.
+const internal = href.startsWith('/')
+const target = internal ? undefined : '_blank'
+const rel = internal ? undefined : 'noopener noreferrer'
+const shownUrl = internal ? `levinkeller.de${href}` : href
 const hasMotivation = Astro.slots.has('motivation')
 ---
 
@@ -17,10 +30,10 @@ const hasMotivation = Astro.slots.has('motivation')
   ]}
 >
   <figure class="p-4 lg:w-1/2">
-    <a href={href} target="_blank" rel="noopener noreferrer" class="w-full">
+    <a href={href} target={target} rel={rel} class="w-full">
       <div class="mockup-browser border-base-300 border bg-base-300">
         <div class="mockup-browser-toolbar">
-          <div class="input">{href}</div>
+          <div class="input">{shownUrl}</div>
         </div>
         <img src={imageUrl} alt={`Screenshot von ${title}`} class="w-full" />
       </div>
@@ -42,10 +55,10 @@ const hasMotivation = Astro.slots.has('motivation')
       <a
         class="btn btn-primary"
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={target}
+        rel={rel}
       >
-        Projekt besuchen →
+        {linkLabel}
       </a>
     </div>
   </div>
