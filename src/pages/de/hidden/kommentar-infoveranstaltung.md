@@ -1,11 +1,11 @@
 ---
-layout: '@levino/shipyard-base/layouts/Splash.astro'
+layout: '@levino/shipyard-base/layouts/Markdown.astro'
 title: Kommentar zur Infoveranstaltung der Bürgernergie Leinebergland
 locale: 'de'
 prev: false
 next: false
 tableOfContents: false
-customMetaTags:
+custom_meta_tags:
   - name: robots
     content: 'noindex, nofollow'
 ---
