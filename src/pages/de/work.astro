@@ -95,6 +95,65 @@ const title = 'Projekte & Portfolio'
         </Fragment>
       </PortfolioCard>
 
+      <h2>Eigene Infrastruktur</h2>
+      <p>
+        Dienste, die ich für meine Familie und mich betreibe: KI-nativ, in
+        Europa gehostet und ohne eigene Server.
+      </p>
+
+      <PortfolioCard
+        title="Conversations"
+        href="https://conversations.levinkeller.de/"
+        imageUrl="/images/projects/conversations-preview.png"
+      >
+        <Fragment slot="description">
+          Ein serverloser, KI-nativer Mailserver für Familie und Freunde auf
+          Cloudflare. Mails kommen über Cloudflare Email Routing an und werden in
+          Europa gespeichert. Eine hybride Suche aus Stichworten und Semantik
+          (mit Embeddings aus der EU) findet Mails nach ihrer Bedeutung, auch
+          über Sprachgrenzen hinweg. Apps sprechen den offenen Standard JMAP,
+          und über einen Connector können KI-Assistenten wie Claude Mails lesen,
+          durchsuchen und Entwürfe schreiben. Alles, was im Auftrag der KI Mails
+          versendet, verschiebt oder löscht, wartet auf eine ausdrückliche
+          Freigabe auf einer Seite, die genau zeigt, was passieren wird. Das
+          Zurückstellen von Mails (Snooze) wie bei Gmail erledigt der Server,
+          Anhänge landen automatisch im Dokumentenarchiv. Eine Weboberfläche
+          ist noch in Arbeit.
+        </Fragment>
+        <Fragment slot="motivation">
+          Nach meinem Abschied von Google Mail wollte ich ein Postfach, das für
+          die Arbeit mit KI gebaut ist und mir selbst gehört:
+          datenschutzfreundlich, europäisch und ohne dass ich dafür Server
+          betreiben muss.
+        </Fragment>
+      </PortfolioCard>
+
+      <PortfolioCard
+        title="Documents"
+        href="https://documents.levinkeller.de/"
+        imageUrl="/images/projects/documents-preview.png"
+        reverse
+      >
+        <Fragment slot="description">
+          Ein Dokumentenarchiv mit KI-Suche. Scans vom ScanSnap landen in
+          Nextcloud und werden automatisch abgeholt. Gemini erkennt in der EU
+          den Text und liest die wichtigsten Angaben aus: Dokumenttyp,
+          Absender, Datum, Beträge, Fristen, Aktenzeichen und eine deutsche
+          Zusammenfassung. Gestapelte Scans werden in einzelne Dokumente
+          getrennt, sinnvoll benannt und abgelegt. Gesucht wird hybrid nach
+          Stichworten und Bedeutung, KI-Assistenten greifen über einen
+          Connector oder eine API mit kurzlebigen Zugängen darauf zu. Mit der
+          Familie teile ich Dokumente über Labels, die die KI nach Regeln in
+          Alltagssprache vergibt; im Zweifel bleibt ein Dokument privat.
+          Mailanhänge kommen automatisch dazu.
+        </Fragment>
+        <Fragment slot="motivation">
+          Ich wollte keine „KI-Magie“, sondern nur eines: Dinge wiederfinden.
+          Jahre an Papierkram sind jetzt nach ihrer Bedeutung durchsuchbar, etwa
+          mit der Frage „Was hat die Autoversicherung 2025 gekostet?“.
+        </Fragment>
+      </PortfolioCard>
+
       <h2>Bildung</h2>
       <p>
         Kinder für Technik und strategisches Denken begeistern - das liegt mir
