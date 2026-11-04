@@ -12,7 +12,8 @@ sidebar:
 A single rented bare-metal server in a data centre that runs all development
 environments. Mine is a second-hand machine from the Hetzner server auction: an older
 Intel quad-core with 62 GB of RAM. Nothing fancy, but it runs around the clock, sits on
-a fast line and costs a two-digit euro amount per month.
+a fast line and costs a two-digit euro amount per month. Four cores are too few,
+though, so I'll soon switch to a machine with 24 cores and 64 GB of RAM.
 
 **Rent, don't buy** is the most important decision in the whole setup. A laptop with
 64 GB of RAM costs several thousand euros, is outdated after a few years and still has
@@ -25,10 +26,11 @@ It's the workhorse. Every repository an agent works on gets its own container th
 with its own toolchain, dependencies, dev server and tests. Five to ten of them at
 the same time is normal.
 
-For what agents do, **memory** is the scarce resource, not CPU time: every container
-holds its Node process, its language server, its test runner, sometimes a browser for
-end-to-end tests. 16 GB is enough to start with; with 64 GB you stop thinking about it.
-Many cores help when several agents build at once.
+Agents need **memory and cores**. Every container holds its Node process, its
+language server, its test runner, sometimes a browser for end-to-end tests – that
+costs RAM. And as soon as several agents build, test and start dev servers at the same
+time, the **CPU** becomes the bottleneck: with four cores the agents wait for each
+other. A good size is 64 GB of RAM and around 24 cores.
 
 ## What it buys you: rent the machine, don't buy a powerful laptop
 
@@ -59,8 +61,8 @@ And the agents keep working when the laptop lid is closed.
 
 ## Why this way
 
-A rented, used dedicated server is the cheapest way to have lots of RAM permanently
-available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
+A rented, used dedicated server is the cheapest way to have lots of RAM and cores
+permanently available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their
 `devcontainer.json` files.
