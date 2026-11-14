@@ -1,63 +1,66 @@
 title: Coq au vin
 servings: für 4 Personen
 time: ca. 2 Std.
-description: Französisches Schmorhuhn in Rotwein mit Räucherspeck, Champignons und Zwiebeln.
+description: Französisches Schmorhuhn in Rotwein mit Räucherspeck, Champignons und Gemüse, im Ofen geschmort.
 process:
   action:
     - mit gehackter Petersilie bestreuen
     - mit Baguette, Kartoffelpüree oder Bandnudeln servieren
   with:
     - action:
-        - Mehlbutter in die Sauce rühren
+        - Topf aus dem Ofen nehmen, auf dem Herd Mehlbutter in die Sauce rühren
         - ca. 5 Min. köcheln, bis die Sauce sämig ist
         - mit Salz und Pfeffer abschmecken
       with:
         - action:
-            - zugedeckt bei schwacher Hitze ca. 45 Min. schmoren
-            - Pilze nach 30 Min. zugeben
-            - Brustfilets (falls dabei) erst die letzten 15 Min. mitgaren
+            - Huhn und Speck zurück in den Topf legen
+            - zugedeckt im Ofen bei 160 °C (Ober-/Unterhitze) ca. 1¼ Std. schmoren
+            - Pilze die letzten 15 Min. mitschmoren
           with:
+            - action: beiseitestellen
+              with:
+                - ingredient: 150 g geräucherter Bauchspeck
+                  action: in Streifen schneiden, im ofenfesten Schmortopf knusprig auslassen, herausnehmen
+                - ingredient: 1 großes Huhn (ca. 1,5–1,8 kg)
+                  action:
+                    - in 8 Stücke teilen (Brüste halbieren), salzen, pfeffern
+                    - im Speckfett (ggf. etwas Butterschmalz dazu) rundum anbraten, herausnehmen
             - action:
                 - mit Cognac ablöschen (optional)
-                - Wein und Fond angießen, aufkochen
-                - Huhn zurück in den Topf legen
+                - Wein und Fond angießen, Kräuter zugeben, aufkochen
               with:
                 - action:
-                    - Zwiebeln, Möhren und Knoblauch im Speckfett ca. 5 Min. anbraten
+                    - im Bratfett ca. 5 Min. anbraten
                     - Tomatenmark kurz mitrösten
                   with:
-                    - ingredient: 150 g geräucherter Bauchspeck
-                      action: in Streifen schneiden, im Schmortopf knusprig auslassen, herausnehmen
                     - ingredient: 12 kleine Schalotten oder Perlzwiebeln
                       action: schälen
                     - ingredient: 2 Möhren
                       action: schälen, in Scheiben schneiden
+                    - ingredient: 1 Stange Staudensellerie (optional)
+                      action: in Scheiben schneiden
                     - ingredient: 2 Knoblauchzehen
                       action: andrücken
                     - 1 EL Tomatenmark
-                - ingredient: 1 Huhn (ca. 1,5 kg)
-                  action:
-                    - in 8 Stücke teilen, salzen, pfeffern
-                    - in Butterschmalz rundum anbraten, herausnehmen
                 - 3 EL Cognac (optional)
                 - 750 ml kräftiger Rotwein (z. B. Pinot Noir)
                 - 400 ml Geflügelfond
                 - 3 Zweige Thymian
                 - 2 Lorbeerblätter
+                - einige Petersilienstängel
             - action: in Butter goldbraun braten
               with:
                 - ingredient: 250 g Champignons
                   action: halbieren
                 - 1 EL Butter
-            - ingredient: 2 Hähnchenbrustfilets (optional)
-              action: separat kurz anbraten
         - action: zu Mehlbutter verkneten
           with:
             - 1 EL Mehl
             - 1 EL weiche Butter
-    - 1 Handvoll Petersilie, gehackt
+    - 1 Bund Petersilie, gehackt
     - Baguette, Kartoffelpüree oder Bandnudeln
 tips:
   - Das Huhn über Nacht im Rotwein marinieren, dann wird es aromatischer und die Sauce schöner in der Farbe.
   - Geräucherten Bauchspeck am Stück kaufen und selbst schneiden. Stark geräucherter Schinkenspeck kann die Sauce dominieren.
-  - Hähnchenbrustfilets werden schnell trocken. Separat anbraten und nur die letzten 15 Min. in der Sauce ziehen lassen.
+  - Im Ofen schmort das Huhn gleichmäßiger als auf dem Herd und brennt nicht an. Das Fleisch ist fertig, wenn es sich leicht vom Knochen löst.
+  - Staudensellerie ist im klassischen burgundischen Rezept nicht üblich, passt aber gut ins Gemüse.
