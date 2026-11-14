@@ -44,9 +44,7 @@ process:
                         - 3 EL Cognac (optional)
                     - 750 ml Rotwein (Pinot Noir)
                     - 250 ml Geflügelfond
-                    - 3 Zweige Thymian
-                    - 2 Lorbeerblätter
-                    - einige Petersilienstängel
+                    - "Kräuter: 3 Zweige Thymian, 2 Lorbeerblätter, einige Petersilienstängel"
             - action: in Butter goldbraun braten
               with:
                 - ingredient: 250 g Champignons
