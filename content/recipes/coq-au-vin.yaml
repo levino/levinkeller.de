@@ -5,11 +5,9 @@ description: Französisches Schmorhuhn in Rotwein mit Räucherspeck, Champignons
 process:
   action: mit Petersilie bestreuen, mit Baguette servieren
   with:
-    - action:
-        - auf dem Herd ohne Deckel ca. 10 Min. einkochen, bis die Sauce sämig ist
-        - mit Salz und Pfeffer abschmecken
+    - action: mit Salz und Pfeffer abschmecken
       with:
-        - action: Pilze zugeben, weitere 15 Min. im Ofen schmoren
+        - action: Pilze zugeben, ohne Deckel weitere 15 Min. im Ofen einkochen
           with:
             - action:
                 - Huhn und Speck zurück in den Topf legen
