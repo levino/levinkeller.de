@@ -5,26 +5,26 @@ description: Französisches Schmorhuhn in Rotwein mit Räucherspeck, Champignons
 process:
   action:
     - mit gehackter Petersilie bestreuen
-    - mit Baguette, Kartoffelpüree oder Bandnudeln servieren
+    - mit Baguette oder Kartoffelpüree servieren
   with:
     - action:
-        - Topf aus dem Ofen nehmen, auf dem Herd Mehlbutter in die Sauce rühren
+        - auf dem Herd Mehlbutter einrühren
         - ca. 5 Min. köcheln, bis die Sauce sämig ist
         - mit Salz und Pfeffer abschmecken
       with:
         - action:
             - Huhn und Speck zurück in den Topf legen
-            - zugedeckt im Ofen bei 160 °C (Ober-/Unterhitze) ca. 1¼ Std. schmoren
+            - zugedeckt im Ofen bei 160 °C ca. 1¼ Std. schmoren
             - Pilze die letzten 15 Min. mitschmoren
           with:
-            - action: beiseitestellen
+            - action: beiseite stellen
               with:
                 - ingredient: 150 g geräucherter Bauchspeck
-                  action: in Streifen schneiden, im ofenfesten Schmortopf knusprig auslassen, herausnehmen
+                  action: in Streifen schneiden, im Bräter auslassen, herausnehmen
                 - ingredient: 1 großes Huhn (ca. 1,5–1,8 kg)
                   action:
-                    - in 8 Stücke teilen (Brüste halbieren), salzen, pfeffern
-                    - im Speckfett (ggf. etwas Butterschmalz dazu) rundum anbraten, herausnehmen
+                    - in 8 Stücke teilen, salzen, pfeffern
+                    - im Speckfett anbraten, herausnehmen
             - action:
                 - mit Cognac ablöschen (optional)
                 - Wein und Fond angießen, Kräuter zugeben, aufkochen
@@ -37,13 +37,13 @@ process:
                       action: schälen
                     - ingredient: 2 Möhren
                       action: schälen, in Scheiben schneiden
-                    - ingredient: 1 Stange Staudensellerie (optional)
+                    - ingredient: 1 Stange Staudensellerie
                       action: in Scheiben schneiden
                     - ingredient: 2 Knoblauchzehen
                       action: andrücken
                     - 1 EL Tomatenmark
                 - 3 EL Cognac (optional)
-                - 750 ml kräftiger Rotwein (z. B. Pinot Noir)
+                - 750 ml Rotwein (Pinot Noir)
                 - 400 ml Geflügelfond
                 - 3 Zweige Thymian
                 - 2 Lorbeerblätter
@@ -58,9 +58,8 @@ process:
             - 1 EL Mehl
             - 1 EL weiche Butter
     - 1 Bund Petersilie, gehackt
-    - Baguette, Kartoffelpüree oder Bandnudeln
+    - Baguette oder Kartoffelpüree
 tips:
   - Das Huhn über Nacht im Rotwein marinieren, dann wird es aromatischer und die Sauce schöner in der Farbe.
   - Geräucherten Bauchspeck am Stück kaufen und selbst schneiden. Stark geräucherter Schinkenspeck kann die Sauce dominieren.
-  - Im Ofen schmort das Huhn gleichmäßiger als auf dem Herd und brennt nicht an. Das Fleisch ist fertig, wenn es sich leicht vom Knochen löst.
-  - Staudensellerie ist im klassischen burgundischen Rezept nicht üblich, passt aber gut ins Gemüse.
+  - Ofenfesten Bräter verwenden, 160 °C Ober-/Unterhitze. Fertig, wenn sich das Fleisch leicht vom Knochen löst.
