@@ -55,6 +55,10 @@ const meta = [servings, time].filter(Boolean).join(' · ')
                   cell.kind === 'ingredient'
                     ? 'min-w-40 text-left'
                     : 'text-center align-middle',
+                  // Wie bei Cooking for Engineers: Leerzellen haben rechts
+                  // keinen Rand, der Schritt daneben reicht „um die Ecke“ bis
+                  // zur Zutat, die er aufnimmt.
+                  cell.kind === 'empty' && '[border-right-style:hidden]',
                 ]}
               >
                 {cell.text}
