@@ -3,51 +3,50 @@ servings: für 4 Personen
 time: ca. 2 Std.
 description: Französisches Schmorhuhn in Rotwein mit Räucherspeck, Champignons und Gemüse, im Ofen geschmort.
 process:
-  action:
-    - mit gehackter Petersilie bestreuen
-    - mit Baguette oder Kartoffelpüree servieren
+  action: mit Petersilie bestreuen, mit Baguette servieren
   with:
     - action:
         - auf dem Herd Mehlbutter einrühren
         - ca. 5 Min. köcheln, bis die Sauce sämig ist
         - mit Salz und Pfeffer abschmecken
       with:
-        - action:
-            - Huhn und Speck zurück in den Topf legen
-            - zugedeckt im Ofen bei 160 °C ca. 1¼ Std. schmoren
-            - Pilze die letzten 15 Min. mitschmoren
+        - action: Pilze zugeben, weitere 15 Min. im Ofen schmoren
           with:
-            - action: beiseite stellen
-              with:
-                - ingredient: 150 g geräucherter Bauchspeck
-                  action: in Streifen schneiden, im Bräter auslassen, herausnehmen
-                - ingredient: 1 großes Huhn (ca. 1,5–1,8 kg)
-                  action:
-                    - in 8 Stücke teilen, salzen, pfeffern
-                    - im Speckfett anbraten, herausnehmen
             - action:
-                - mit Cognac ablöschen (optional)
-                - Wein und Fond angießen, Kräuter zugeben, aufkochen
+                - Huhn und Speck zurück in den Topf legen
+                - zugedeckt im Ofen bei 160 °C 1 Std. schmoren
               with:
-                - action:
-                    - im Bratfett ca. 5 Min. anbraten
-                    - Tomatenmark kurz mitrösten
+                - action: beiseite stellen
                   with:
-                    - ingredient: 12 kleine Schalotten oder Perlzwiebeln
-                      action: schälen
-                    - ingredient: 2 Möhren
-                      action: schälen, in Scheiben schneiden
-                    - ingredient: 1 Stange Staudensellerie
-                      action: in Scheiben schneiden
-                    - ingredient: 2 Knoblauchzehen
-                      action: andrücken
-                    - 1 EL Tomatenmark
-                - 3 EL Cognac (optional)
-                - 750 ml Rotwein (Pinot Noir)
-                - 400 ml Geflügelfond
-                - 3 Zweige Thymian
-                - 2 Lorbeerblätter
-                - einige Petersilienstängel
+                    - ingredient: 150 g geräucherter Bauchspeck
+                      action: in Streifen schneiden, im Bräter auslassen, herausnehmen
+                    - ingredient: 1 großes Huhn (ca. 1,5–1,8 kg)
+                      action:
+                        - in 8 Stücke teilen, salzen, pfeffern
+                        - im Speckfett anbraten, herausnehmen
+                - action:
+                    - mit Cognac ablöschen (optional)
+                    - Wein und Fond angießen, Kräuter zugeben, aufkochen
+                  with:
+                    - action:
+                        - im Bratfett ca. 5 Min. anbraten
+                        - Tomatenmark kurz mitrösten
+                      with:
+                        - ingredient: 12 kleine Schalotten oder Perlzwiebeln
+                          action: schälen
+                        - ingredient: 2 Möhren
+                          action: schälen, in Scheiben schneiden
+                        - ingredient: 1 Stange Staudensellerie
+                          action: in Scheiben schneiden
+                        - ingredient: 2 Knoblauchzehen
+                          action: andrücken
+                        - 1 EL Tomatenmark
+                    - 3 EL Cognac (optional)
+                    - 750 ml Rotwein (Pinot Noir)
+                    - 400 ml Geflügelfond
+                    - 3 Zweige Thymian
+                    - 2 Lorbeerblätter
+                    - einige Petersilienstängel
             - action: in Butter goldbraun braten
               with:
                 - ingredient: 250 g Champignons
@@ -58,8 +57,8 @@ process:
             - 1 EL Mehl
             - 1 EL weiche Butter
     - 1 Bund Petersilie, gehackt
-    - Baguette oder Kartoffelpüree
+    - Baguette
 tips:
   - Das Huhn über Nacht im Rotwein marinieren, dann wird es aromatischer und die Sauce schöner in der Farbe.
   - Geräucherten Bauchspeck am Stück kaufen und selbst schneiden. Stark geräucherter Schinkenspeck kann die Sauce dominieren.
-  - Ofenfesten Bräter verwenden, 160 °C Ober-/Unterhitze. Fertig, wenn sich das Fleisch leicht vom Knochen löst.
+  - Das Huhn ist fertig, wenn sich das Fleisch leicht vom Knochen löst.
