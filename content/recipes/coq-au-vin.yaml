@@ -6,8 +6,7 @@ process:
   action: mit Petersilie bestreuen, mit Baguette servieren
   with:
     - action:
-        - auf dem Herd Mehlbutter einrühren
-        - ca. 5 Min. köcheln, bis die Sauce sämig ist
+        - auf dem Herd ohne Deckel ca. 10 Min. einkochen, bis die Sauce sämig ist
         - mit Salz und Pfeffer abschmecken
       with:
         - action: Pilze zugeben, weitere 15 Min. im Ofen schmoren
@@ -24,26 +23,29 @@ process:
                       action:
                         - in 8 Stücke teilen, salzen, pfeffern
                         - im Speckfett anbraten, herausnehmen
-                - action:
-                    - mit Cognac ablöschen (optional)
-                    - Wein und Fond angießen, Kräuter zugeben, aufkochen
+                - action: Wein und Fond angießen, Kräuter zugeben, aufkochen
                   with:
-                    - action:
-                        - im Bratfett ca. 5 Min. anbraten
-                        - Tomatenmark kurz mitrösten
+                    - action: mit Cognac ablöschen (optional)
                       with:
-                        - ingredient: 12 kleine Schalotten oder Perlzwiebeln
-                          action: schälen
-                        - ingredient: 2 Möhren
-                          action: schälen, in Scheiben schneiden
-                        - ingredient: 1 Stange Staudensellerie
-                          action: in Scheiben schneiden
-                        - ingredient: 2 Knoblauchzehen
-                          action: andrücken
-                        - 1 EL Tomatenmark
-                    - 3 EL Cognac (optional)
+                        - action: Mehl darüberstäuben, 1 Min. unter Rühren anschwitzen
+                          with:
+                            - action: Tomatenmark kurz mitrösten
+                              with:
+                                - action: im Bratfett ca. 5 Min. anbraten
+                                  with:
+                                    - ingredient: 12 kleine Schalotten oder Perlzwiebeln
+                                      action: schälen
+                                    - ingredient: 2 Möhren
+                                      action: schälen, in Scheiben schneiden
+                                    - ingredient: 1 Stange Staudensellerie
+                                      action: in Scheiben schneiden
+                                    - ingredient: 2 Knoblauchzehen
+                                      action: andrücken
+                                - 1 EL Tomatenmark
+                            - 2 EL Mehl
+                        - 3 EL Cognac (optional)
                     - 750 ml Rotwein (Pinot Noir)
-                    - 400 ml Geflügelfond
+                    - 250 ml Geflügelfond
                     - 3 Zweige Thymian
                     - 2 Lorbeerblätter
                     - einige Petersilienstängel
@@ -52,10 +54,6 @@ process:
                 - ingredient: 250 g Champignons
                   action: halbieren
                 - 1 EL Butter
-        - action: zu Mehlbutter verkneten
-          with:
-            - 1 EL Mehl
-            - 1 EL weiche Butter
     - 1 Bund Petersilie, gehackt
     - Baguette
 tips:
