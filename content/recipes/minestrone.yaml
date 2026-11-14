@@ -1,0 +1,52 @@
+title: Minestrone
+servings: für 4 Personen
+time: ca. 1 Std. 15 Min.
+description: Italienische Gemüsesuppe mit weißen Bohnen und kleinen Nudeln, mit Wintergemüse.
+process:
+  action:
+    - mit Parmesan und Basilikum (oder einem Klecks Pesto) servieren
+  with:
+    - action:
+        - Nudeln ca. 10 Min. vor Ende mitkochen, Bohnen die letzten 5 Min.
+        - Parmesanrinde entfernen
+        - mit Salz und Pfeffer abschmecken
+      with:
+        - action:
+            - aufkochen, bei schwacher Hitze ca. 30 Min. köcheln
+            - Parmesanrinde mitkochen
+          with:
+            - action:
+                - bei mittlerer Hitze 8–10 Min. anschwitzen
+                - Tomatenmark kurz mitrösten
+              with:
+                - ingredient: 50 g geräucherter Bauchspeck
+                  action: würfeln, im Topf mit dem Olivenöl auslassen
+                - 2 EL Olivenöl
+                - ingredient: 1 Zwiebel
+                  action: schälen, würfeln
+                - ingredient: 2 Möhren
+                  action: schälen, würfeln
+                - ingredient: 2 Stangen Staudensellerie
+                  action: in Scheiben schneiden
+                - ingredient: 1 Stange Lauch
+                  action: in Ringe schneiden
+                - ingredient: 2 Knoblauchzehen
+                  action: fein hacken
+                - 1 EL Tomatenmark
+            - ingredient: 2 mittelgroße Kartoffeln
+              action: schälen, würfeln
+            - ingredient: ¼ Wirsing (ca. 250 g)
+              action: Strunk entfernen, in Streifen schneiden
+            - 1 Dose gehackte Tomaten (400 g)
+            - ca. 1 l Gemüsefond (mit Wasser aufgefüllt)
+            - 1 Lorbeerblatt
+            - 1 Stück Parmesanrinde
+        - 100 g kleine Nudeln (z. B. Ditalini)
+        - ingredient: 1 Dose weiße Bohnen (400 g)
+          action: abspülen, abtropfen
+    - Parmesan, frisch gerieben
+    - Basilikum oder Pesto
+tips:
+  - Die Nudeln nicht zu früh zugeben, sonst werden sie matschig und saugen die Brühe auf. Alternativ separat garen.
+  - Im Sommer passen Zucchini und grüne Bohnen, im Winter Wirsing, Lauch und Kartoffeln.
+  - Statt Nudeln kann man Reis nehmen.
