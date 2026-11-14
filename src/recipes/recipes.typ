@@ -27,6 +27,9 @@
     rowspan: cell.rowSpan,
     colspan: cell.colSpan,
     align: if cell.kind == "ingredient" { left + horizon } else { center + horizon },
+    // Wie bei Cooking for Engineers: Leerzellen haben rechts keinen Rand, der
+    // Schritt daneben reicht „um die Ecke“ bis zur Zutat, die er aufnimmt.
+    ..if cell.kind == "empty" { (stroke: (right: 0.6pt + paper)) } else { (:) },
     cell.text,
   ))
   // Lange Rezepte etwas kleiner setzen, damit sie auf eine Seite passen
