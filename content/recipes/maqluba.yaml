@@ -1,0 +1,67 @@
+title: Maqluba
+servings: für 4–6 Personen
+time: ca. 2 Std.
+description: Palästinensisches Reisgericht mit frittierten Auberginen, Blumenkohl, Tomaten und Hähnchen, im Topf geschichtet und zum Servieren umgestürzt.
+prep:
+  - 'Topf: ca. 24 cm breit, 12 cm hoch, möglichst antihaftbeschichtet (sonst nach dem Frittieren den Boden mit Backpapier auslegen)'
+process:
+  action: mit Pinienkernen bestreuen, mit Gurkenjoghurt servieren
+  with:
+    - action:
+        - Servierplatte umgekehrt auflegen, Topf rasch, aber vorsichtig umdrehen
+        - 2–3 Min. stehen lassen, Topf langsam abheben
+      with:
+        - action:
+            - zum Köcheln bringen, zugedeckt 30 Min. bei geringer Hitze garen, Deckel nicht abnehmen
+            - vom Herd, Geschirrtuch unter den Deckel legen, 10 Min. ruhen lassen
+          with:
+            - action: über den Reis gießen, alles mit den Händen andrücken, bis der Reis bedeckt ist (ggf. Wasser nachgießen)
+              with:
+                - action: 'in den Topf schichten: Tomaten, Auberginen, Blumenkohl, Hähnchen, zuletzt Reis und Knoblauch'
+                  with:
+                    - ingredient: zerlassene Butter
+                      action: Topf auswischen, Rand einfetten
+                    - ingredient: 3–4 reife Tomaten (350 g)
+                      action: in 0,5 cm dicke Scheiben schneiden
+                    - action: im Topf 2 cm hoch erhitzen, portionsweise goldbraun frittieren (ca. 3 Min.), abtropfen lassen, salzen
+                      with:
+                        - Sonnenblumenöl zum Frittieren (danach abgießen)
+                        - ingredient: 2 Auberginen (650 g)
+                          action:
+                            - in 0,5 cm dicke Scheiben schneiden
+                            - beidseitig salzen, 20 Min. Wasser ziehen lassen, trocken tupfen
+                        - ingredient: 1 Blumenkohl (500 g)
+                          action: in große Röschen teilen
+                    - action:
+                        - aufkochen, zugedeckt 20 Min. bei geringer Hitze garen
+                        - Keulen herausnehmen, Brühe durchsieben und entfetten
+                      with:
+                        - ingredient: 3–4 Hähnchenkeulen (ca. 800 g), entbeint
+                          action: im großen Topf rundherum goldbraun anbraten
+                        - ingredient: 1 große Zwiebel
+                          action: schälen, längs vierteln
+                        - 10 schwarze Pfefferkörner
+                        - 2 Lorbeerblätter, 900 ml Wasser
+                    - ingredient: 320 g Basmatireis
+                      action: waschen, mind. 30 Min. in Salzwasser einweichen, abtropfen
+                    - ingredient: 4 große Knoblauchzehen
+                      action: halbieren
+                - action: verrühren
+                  with:
+                    - 700 ml Hühnerbrühe (vom Hähnchen)
+                    - 1 TL Kurkuma
+                    - 1 TL Zimt
+                    - 1 TL Piment
+                    - ¼ TL gemahlener schwarzer Pfeffer
+                    - 1 TL Baharat
+                    - 1 TL Salz
+    - action: goldbraun rösten
+      with:
+        - 30 g Pinienkerne
+        - 15 g Ghee oder Butter
+    - Gurkenjoghurt (eigenes Rezept)
+tips:
+  - Die Hähnchenkeulen geben beim Anbraten meist genug Fett ab; sonst etwas Sonnenblumenöl zugeben.
+  - Das Öl ist heiß genug, wenn kleine Bläschen an die Oberfläche steigen. Vorsicht beim Hineingeben, es spritzt.
+source:
+  text: Yotam Ottolenghi, Sami Tamimi – Jerusalem, S. 127

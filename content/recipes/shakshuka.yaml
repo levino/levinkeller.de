@@ -1,0 +1,38 @@
+title: Shakshuka
+servings: für 2–4 Personen
+time: ca. 40 Min.
+description: Eier in einer würzigen Sauce aus Tomaten und Paprika – Frühstück oder kleines Mittagessen.
+process:
+  action:
+    - vom Herd nehmen, ein paar Min. stehen lassen
+    - mit Labneh und Weißbrot servieren
+  with:
+    - action:
+        - 8 Mulden in die Sauce drücken, Eier hineingleiten lassen, Eigelbe auf die Mulden verteilen
+        - Eiweiß mit einer Gabel leicht mit der Sauce verquirlen, Eigelbe nicht verletzen
+        - 8–10 Min. köcheln, bis das Eiweiß gestockt, das Eigelb noch flüssig ist (ggf. Deckel auflegen)
+      with:
+        - action: 10 Min. zu einer dicken Sauce einköcheln, abschmecken
+          with:
+            - action: bei geringer Hitze ca. 8 Min. anschwitzen, bis die Paprika weich ist
+              with:
+                - ingredient: 2 EL Olivenöl
+                  action: in großer Pfanne bei mittlerer Hitze erhitzen
+                - 2 EL Pilpelchuma oder Harissa
+                - 2 TL Tomatenmark
+                - ingredient: 2 große rote Paprika (300 g)
+                  action: entkernen, in 0,5 cm große Würfel schneiden
+                - ingredient: 4 Knoblauchzehen
+                  action: fein hacken
+                - 1 TL gemahlener Kreuzkümmel
+                - ¾ TL Salz
+            - ingredient: 5 große, sehr reife Tomaten (800 g) oder 2 Dosen Tomatenstücke (à 400 g)
+              action: hacken
+        - 4 Eier (M)
+        - 4 Eigelb
+    - 120 g Labneh oder stichfester Joghurt
+    - gutes Weißbrot
+tips:
+  - Im Winter mit Kartoffeln, im Frühjahr mit Auberginen anreichern. Die Schärfe nach Geschmack anpassen.
+source:
+  text: Yotam Ottolenghi, Sami Tamimi – Jerusalem
