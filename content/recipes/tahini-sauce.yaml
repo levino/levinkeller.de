@@ -1,0 +1,21 @@
+title: Tahini-Sauce
+servings: ergibt ca. 350 ml
+time: ca. 5 Min.
+description: Die Grundsauce aus Sesampaste, Zitrone und Knoblauch – zu Gemüse, Fisch, Fleisch und Falafel.
+process:
+  action:
+    - zu einer dicken Sauce verrühren
+    - ggf. tropfenweise Wasser zugeben, bis sie die Konsistenz von flüssigem Honig hat
+  with:
+    - ingredient: 150 g helles Tahini
+      action: im Glas gut umrühren (das Fett setzt sich ab)
+    - 120 ml Wasser
+    - 2 EL Zitronensaft
+    - ingredient: 1 mittelgroße Knoblauchzehe
+      action: zerdrücken
+    - ¼ TL Salz
+tips:
+  - Im Schraubglas im Kühlschrank bis zu 1 Woche haltbar. Vor Gebrauch umrühren und bei Bedarf etwas verdünnen.
+  - Helles Tahini aus Nablus, Nazareth, dem Libanon oder Palästina schmeckt am besten.
+source:
+  text: Yotam Ottolenghi, Sami Tamimi – Jerusalem, S. 298

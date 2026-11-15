@@ -1,0 +1,25 @@
+title: Gurkenjoghurt
+servings: für 8 Personen
+time: ca. 15 Min. + 30 Min. Kühlen
+description: Joghurt mit Gurke, Knoblauch und Minze (Khyar B’laban) – passt zu Reisgerichten wie Maqluba, zu Lamm und Hähnchen.
+process:
+  action:
+    - Gurke unterrühren, abschmecken
+    - 30 Min. im Kühlschrank durchziehen lassen, gut gekühlt servieren
+  with:
+    - action: verrühren
+      with:
+        - 500 g griechischer Joghurt
+        - ingredient: 1 Knoblauchzehe
+          action: zerdrücken
+        - 1 Prise Cayennepfeffer
+        - 1 EL getrocknete Minze
+        - ingredient: 2 EL frische Minze
+          action: hacken
+        - 2 EL Zitronensaft
+        - ½ TL Salz
+        - ¼ TL gemahlener weißer Pfeffer
+    - ingredient: 2 Minigurken (200 g)
+      action: schälen, in hauchdünne Scheiben schneiden
+source:
+  text: Yotam Ottolenghi, Sami Tamimi – Jerusalem, S. 299
