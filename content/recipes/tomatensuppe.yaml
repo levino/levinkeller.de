@@ -1,0 +1,44 @@
+title: Tomatensuppe
+servings: für 4 Personen
+time: ca. 45 Min.
+description: Cremige Tomatensuppe aus Dosentomaten – gelingt das ganze Jahr, auch wenn es keine reifen Tomaten gibt.
+process:
+  action:
+    - mit Basilikum, einem Klecks Sahne und Brot servieren
+  with:
+    - action:
+        - fein pürieren
+        - Sahne einrühren, nicht mehr kochen lassen
+        - mit Salz, Pfeffer und ggf. etwas Zucker oder Essig abschmecken
+      with:
+        - action:
+            - aufkochen, bei schwacher Hitze ca. 20 Min. köcheln
+            - Lorbeerblatt entfernen
+          with:
+            - action:
+                - bei mittlerer Hitze ca. 8 Min. glasig und weich dünsten
+                - Tomatenmark 1–2 Min. mitrösten
+              with:
+                - ingredient: 2 EL Butter
+                  action: im Topf zerlassen
+                - 1 EL Olivenöl
+                - ingredient: 2 Zwiebeln
+                  action: schälen, würfeln
+                - ingredient: 1 Möhre
+                  action: schälen, fein würfeln
+                - ingredient: 3 Knoblauchzehen
+                  action: in Scheiben schneiden
+                - 2 EL Tomatenmark
+            - 2 Dosen geschälte Tomaten (à 400 g)
+            - 500 ml Gemüsebrühe
+            - 1 Lorbeerblatt
+            - 1 TL getrockneter Oregano
+            - 1 TL Zucker
+        - 100 ml Sahne
+    - frisches Basilikum
+    - Brot oder geröstete Croûtons
+tips:
+  - Am besten schmecken ganze geschälte Tomaten (z. B. San Marzano), sie sind meist aromatischer als gehackte.
+  - Im Spätsommer 1 kg reife Tomaten halbieren und mit dem Gemüse 30 Min. bei 200 °C rösten statt Dosentomaten zu verwenden.
+  - Für eine vegane Variante Butter durch Olivenöl und Sahne durch Kokosmilch oder Hafersahne ersetzen.
+  - Mit 100 g Reis oder kleinen Nudeln (nach dem Pürieren mitkochen) wird daraus ein Hauptgericht.
