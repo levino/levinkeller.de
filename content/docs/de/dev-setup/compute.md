@@ -13,7 +13,8 @@ Ein einzelner gemieteter Bare-Metal-Server in einem Rechenzentrum, auf dem alle
 Entwicklungsumgebungen laufen. Bei mir ist das ein gebrauchter Rechner aus der
 Hetzner-Serverbörse: ein älterer Intel-Vierkerner mit 62 GB RAM. Nichts
 Besonderes, aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und
-kostet einen zweistelligen Eurobetrag im Monat.
+kostet einen zweistelligen Eurobetrag im Monat. Vier Kerne sind allerdings zu
+wenig, deshalb wechsle ich demnächst auf eine Maschine mit 24 Kernen und 64 GB RAM.
 
 **Mieten statt kaufen** ist dabei die wichtigste Entscheidung im ganzen Setup. Ein
 Laptop mit 64 GB RAM kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet
@@ -27,11 +28,11 @@ Er ist das Arbeitspferd. Jedes Repository, an dem ein Agent arbeitet, bekommt do
 einen eigenen Container mit eigener Toolchain, eigenen Dependencies, eigenem
 Dev-Server und eigenen Tests. Fünf bis zehn davon gleichzeitig sind normal.
 
-Für das, was Agenten tun, ist vor allem **Arbeitsspeicher** knapp, nicht Rechenzeit:
-Jeder Container hält seinen Node-Prozess, seinen Language-Server, seinen
-Testrunner, manchmal einen Browser für End-to-End-Tests. 16 GB reichen für den
-Anfang, mit 64 GB muss man nicht mehr nachdenken. Viele Kerne helfen, wenn mehrere
-Agenten gleichzeitig bauen.
+Agenten brauchen **Arbeitsspeicher und Kerne**. Jeder Container hält seinen
+Node-Prozess, seinen Language-Server, seinen Testrunner, manchmal einen Browser für
+End-to-End-Tests – das kostet RAM. Und sobald mehrere Agenten gleichzeitig bauen,
+testen und Dev-Server starten, wird die **CPU** zum Engpass: Mit vier Kernen warten
+die Agenten aufeinander. Eine gute Größe sind 64 GB RAM und um die 24 Kerne.
 
 ## Was er bringt: Miete die Maschine, kauf keinen starken Laptop
 
@@ -63,8 +64,8 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
 
 ## Warum so
 
-Ein gemieteter gebrauchter dedizierter Server ist die billigste Art, viel RAM dauerhaft
-verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen, aufrüsten oder
+Ein gemieteter gebrauchter dedizierter Server ist die billigste Art, viel RAM und viele
+Kerne dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen, aufrüsten oder
 mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen
 sich aus ihren `devcontainer.json`-Dateien auf jedem anderen Rechner neu bauen.
