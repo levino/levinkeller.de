@@ -3,59 +3,54 @@ servings: für 4 Personen
 time: ca. 3 Std.
 description: Rindsgulasch mit viel Zwiebeln und Paprika, lange geschmort, bis ein sämiger, glänzender Saft entsteht – ganz ohne Mehl.
 process:
-  action: mit Semmeln, Salzstangerl oder Knödeln und Essiggurken servieren
+  action: mit Beilage und Essiggurken servieren
   with:
     - action:
-        - Deckel abnehmen, Saft 15–20 Min. einkochen, bis sich oben rotes Fett absetzt
-        - mit Salz abschmecken
+        - ohne Deckel 15–20 Min. einkochen, bis sich rotes Fett absetzt, salzen
       with:
         - action:
-            - mit ca. 500 ml Wasser aufgießen, bis das Fleisch knapp bedeckt ist
-            - aufkochen, zugedeckt bei kleiner Hitze 2–2½ Std. schmoren, bis das Fleisch weich ist
-            - ab und zu umrühren, bei Bedarf Wasser nachgießen
+            - mit ca. 500 ml Wasser knapp bedecken, aufkochen
+            - zugedeckt bei kleiner Hitze 2–2½ Std. schmoren, ab und zu rühren
           with:
-            - action: sofort mit Essig und 250 ml Wasser ablöschen, einmal aufkochen
+            - action: sofort mit Essig und 250 ml Wasser ablöschen
               with:
-                - action: Topf vom Herd ziehen, Paprika einrühren
+                - action: vom Herd ziehen, Paprika einrühren
                   with:
-                    - action: Tomatenmark 1–2 Min. mitrösten
+                    - action: Tomatenmark kurz mitrösten
                       with:
-                        - action: bei mittlerer Hitze 20–30 Min. goldbraun rösten, öfter rühren
+                        - action: 20–30 Min. goldbraun rösten
                           with:
-                            - ingredient: 2 EL Schweineschmalz oder Öl
-                              action: im großen Topf erhitzen
+                            - ingredient: 2 EL Schmalz oder Öl
+                              action: im Topf erhitzen
                             - ingredient: 800 g Zwiebeln
-                              action: halbieren, in feine Streifen schneiden
+                              action: in feine Streifen schneiden
                         - 1 EL Tomatenmark
-                    - ingredient: 3 EL Paprikapulver edelsüß
+                    - ingredient: 3 EL Paprika edelsüß
                       bowl: Paprika
-                    - ingredient: 1 TL Paprikapulver scharf
+                    - ingredient: 1 TL Paprika scharf
                       bowl: Paprika
                 - 1 EL Weißweinessig
             - ingredient: 800 g Rindergulasch
-              action: ggf. auf ca. 4 cm Würfel nachschneiden
+              action: ggf. kleiner schneiden
               bowl: Fleisch
             - ingredient: 1 TL Kümmel
               action: im Mörser zerstoßen
               bowl: Fleisch
-            - ingredient: 1 TL getrockneter Majoran
+            - ingredient: 1 TL Majoran
               bowl: Fleisch
             - ingredient: 2 Knoblauchzehen
               action: fein hacken
               bowl: Fleisch
-            - ingredient: Schale von ½ Bio-Zitrone
-              action: fein abreiben
+            - ingredient: ½ Bio-Zitrone
+              action: Schale abreiben
               bowl: Fleisch
             - ingredient: 1 Lorbeerblatt
               bowl: Fleisch
             - ingredient: 1½ TL Salz
               bowl: Fleisch
-    - Semmeln, Salzstangerl oder Knödel
+    - Knödel, Semmeln oder Salzstangerl
     - Essiggurken
 tips:
-  - Das Fleisch wird beim Saftgulasch nicht angebraten – es kommt roh zu den Zwiebeln. Die Farbe und der Geschmack kommen von den gut gerösteten Zwiebeln und dem Paprika.
-  - Paprikapulver verbrennt schnell und wird dann bitter. Deshalb den Topf vom Herd ziehen und sofort ablöschen.
-  - Normales Rindergulasch aus der Keule funktioniert gut. Wadschinken (Beinscheibe ohne Knochen) hat mehr Bindegewebe und macht den Saft noch sämiger. Ist der Saft am Ende zu dünn, eine kleine rohe Kartoffel fein hineinreiben und 10 Min. mitkochen.
-  - Wenn es schneller gehen muss, das Fleisch in 2–3 cm große Würfel schneiden. Dann reichen etwa 1½–2 Std. Schmorzeit.
-  - Statt auf dem Herd kann das Gulasch auch zugedeckt im Ofen bei 150–160 °C schmoren – gleiche Zeit, dafür brennt am Boden nichts an. Zum Einkochen zurück auf den Herd.
-  - Aufgewärmt am nächsten Tag schmeckt das Gulasch noch besser.
+  - Das Fleisch wird nicht angebraten. Farbe und Geschmack kommen von den gut gerösteten Zwiebeln und dem Paprika, der nicht verbrennen darf.
+  - Gulasch aus der Keule geht gut; Wadschinken macht den Saft sämiger. Zu dünner Saft? Eine rohe Kartoffel hineinreiben, 10 Min. mitkochen.
+  - Schneller geht es mit 2–3 cm großen Würfeln (1½–2 Std.). Im Ofen bei 150–160 °C zugedeckt schmoren geht auch.
