@@ -10,10 +10,11 @@ process:
         - mit Salz abschmecken
       with:
         - action:
+            - mit ca. 500 ml Wasser aufgießen, bis das Fleisch knapp bedeckt ist
             - aufkochen, zugedeckt bei kleiner Hitze 2–2½ Std. schmoren, bis das Fleisch weich ist
             - ab und zu umrühren, bei Bedarf Wasser nachgießen
           with:
-            - action: sofort ablöschen, einmal aufkochen
+            - action: sofort mit Essig und 250 ml Wasser ablöschen, einmal aufkochen
               with:
                 - action: Topf vom Herd ziehen, Paprika einrühren
                   with:
@@ -30,28 +31,25 @@ process:
                       bowl: Paprika
                     - ingredient: 1 TL Paprikapulver scharf
                       bowl: Paprika
-                - ingredient: 1 EL Weißweinessig
-                  bowl: Ablöschen
-                - ingredient: 250 ml Wasser
-                  bowl: Ablöschen
+                - 1 EL Weißweinessig
             - ingredient: 800 g Rindergulasch
               action: ggf. auf ca. 4 cm Würfel nachschneiden
+              bowl: Fleisch
             - ingredient: 1 TL Kümmel
               action: im Mörser zerstoßen
-              bowl: Gewürze
+              bowl: Fleisch
             - ingredient: 1 TL getrockneter Majoran
-              bowl: Gewürze
+              bowl: Fleisch
             - ingredient: 2 Knoblauchzehen
               action: fein hacken
-              bowl: Gewürze
+              bowl: Fleisch
             - ingredient: Schale von ½ Bio-Zitrone
               action: fein abreiben
-              bowl: Gewürze
+              bowl: Fleisch
             - ingredient: 1 Lorbeerblatt
-              bowl: Gewürze
+              bowl: Fleisch
             - ingredient: 1½ TL Salz
-              bowl: Gewürze
-            - ca. 500 ml Wasser (Fleisch knapp bedeckt)
+              bowl: Fleisch
     - Semmeln oder Salzstangerl
     - Essiggurken
 tips:
