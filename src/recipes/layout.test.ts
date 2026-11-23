@@ -54,4 +54,22 @@ describe('layoutRecipe', () => {
     expect(covered).toHaveLength(grid.rows * grid.columns)
     expect(new Set(covered.map(String)).size).toBe(grid.rows * grid.columns)
   })
+
+  it('färbt Zutaten derselben Schale gleich, verschiedene Schalen verschieden', () => {
+    const grid = layoutRecipe({
+      action: 'zugeben',
+      with: [
+        { ingredient: 'Paprika', bowl: 'Gewürze' },
+        'Fleisch',
+        { ingredient: 'Kümmel', bowl: 'Gewürze' },
+        { ingredient: 'Essig', bowl: 'Ablöschen' },
+      ],
+    })
+    const bowl = (text: string) =>
+      grid.cells.find((cell) => cell.text === text)?.bowl
+    expect(bowl('Paprika')).toEqual(bowl('Kümmel'))
+    expect(bowl('Paprika')?.name).toBe('Gewürze')
+    expect(bowl('Essig')?.color).not.toBe(bowl('Paprika')?.color)
+    expect(bowl('Fleisch')).toBeUndefined()
+  })
 })

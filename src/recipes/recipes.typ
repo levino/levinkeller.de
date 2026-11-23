@@ -30,7 +30,11 @@
     // Wie bei Cooking for Engineers: Leerzellen haben rechts keinen Rand, der
     // Schritt daneben reicht „um die Ecke“ bis zur Zutat, die er aufnimmt.
     ..if cell.kind == "empty" { (stroke: (right: 0.6pt + paper)) } else { (:) },
-    cell.text,
+    // Zutaten, die zusammen in eine Schale kommen, haben dieselbe Farbe
+    ..if cell.at("bowl", default: none) != none { (fill: rgb(cell.bowl.color)) } else { (:) },
+    if cell.at("bowl", default: none) != none [
+      #cell.text #h(1fr) #text(size: 0.8em, style: "italic", fill: luma(80), cell.bowl.name)
+    ] else { cell.text },
   ))
   // Lange Rezepte etwas kleiner setzen, damit sie auf eine Seite passen
   let dense = grid.rows + recipe.prep.len() > 15
@@ -68,6 +72,10 @@
   ]
   #v(0.4em)
   #recipe-table(recipe)
+  #if recipe.grid.cells.any(cell => cell.at("bowl", default: none) != none) [
+    #v(0.2em)
+    #text(size: 9pt, fill: luma(70))[Farbig hinterlegte Zutaten mit demselben Namen kommen vorab zusammen in eine Schale und werden auf einmal zugegeben.]
+  ]
   #if recipe.tips.len() > 0 [
     #v(0.6em)
     *Tipps*

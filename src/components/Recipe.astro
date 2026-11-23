@@ -21,6 +21,7 @@ const rows = Array.from({ length: grid.rows }, (_, row) =>
 )
 const pdf = `/de/kochrezepte/${id}.pdf`
 const meta = [servings, time].filter(Boolean).join(' · ')
+const hasBowls = grid.cells.some((cell) => cell.bowl)
 ---
 
 {description && <p class="lead">{description}</p>}
@@ -50,6 +51,11 @@ const meta = [servings, time].filter(Boolean).join(' · ')
               <td
                 rowspan={cell.rowSpan}
                 colspan={cell.colSpan}
+                style={
+                  cell.bowl
+                    ? { backgroundColor: cell.bowl.color, color: '#1f1f1f' }
+                    : undefined
+                }
                 class:list={[
                   'border border-success px-2 py-1',
                   cell.kind === 'ingredient'
@@ -62,6 +68,11 @@ const meta = [servings, time].filter(Boolean).join(' · ')
                 ]}
               >
                 {cell.text}
+                {cell.bowl && (
+                  <span class="float-right ml-2 text-xs italic opacity-70">
+                    {cell.bowl.name}
+                  </span>
+                )}
               </td>
             ))}
           </tr>
@@ -70,6 +81,15 @@ const meta = [servings, time].filter(Boolean).join(' · ')
     </tbody>
   </table>
 </div>
+
+{
+  hasBowls && (
+    <p class="text-sm">
+      Farbig hinterlegte Zutaten mit demselben Namen kommen vorab zusammen in
+      eine Schale und werden auf einmal zugegeben.
+    </p>
+  )
+}
 
 <p class="not-prose flex flex-wrap gap-2">
   <a class="btn btn-sm btn-primary" href={pdf} target="_blank" rel="noopener">

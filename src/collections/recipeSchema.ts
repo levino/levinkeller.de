@@ -6,7 +6,11 @@ const actionSchema = z.union([z.string(), z.array(z.string()).min(1)])
 const nodeSchema: z.ZodType<RecipeNode> = z.lazy(() =>
   z.union([
     z.string(),
-    z.strictObject({ ingredient: z.string(), action: actionSchema.optional() }),
+    z.strictObject({
+      ingredient: z.string(),
+      action: actionSchema.optional(),
+      bowl: z.string().optional(),
+    }),
     stepSchema,
   ])
 )

@@ -8,6 +8,10 @@
  * Arbeitsschritte. Dieses Modul rechnet den Baum in ein Raster aus Zellen mit
  * Zeilen-/Spaltenspannen um. Webseite (HTML-Tabelle) und PDF (Typst) zeichnen
  * beide genau dieses Raster.
+ *
+ * Zutaten können einer Schale (`bowl`) zugeordnet werden: Was dieselbe Schale
+ * hat, wird vorab zusammen bereitgestellt und auf einmal zugegeben. Jede Schale
+ * bekommt eine eigene Hintergrundfarbe.
  */
 
 /** Ein Arbeitsschritt oder mehrere, die nacheinander folgen. */
@@ -20,6 +24,8 @@ export type PlainIngredient = string
 export interface PreparedIngredient {
   ingredient: string
   action?: Action
+  /** Name der Schale, in der die Zutat mit anderen bereitgestellt wird */
+  bowl?: string
 }
 
 /** Arbeitsschritt, der mehrere Zutaten oder Zwischenergebnisse verbindet. */
@@ -41,7 +47,25 @@ export interface Cell {
   col: number
   rowSpan: number
   colSpan: number
+  /** Nur bei Zutaten: Schale, in der sie bereitgestellt wird */
+  bowl?: Bowl
 }
+
+export interface Bowl {
+  name: string
+  /** Hintergrundfarbe als Hex, hell genug für schwarzen Text und den Druck */
+  color: string
+}
+
+/** Pastelltöne, die sich gedruckt und am Bildschirm gut unterscheiden lassen */
+export const bowlColors = [
+  '#fbd9b4',
+  '#cfe3f7',
+  '#f6cfdc',
+  '#e2d6f3',
+  '#fff0a8',
+  '#cdeee6',
+]
 
 export interface Grid {
   rows: number
@@ -84,8 +108,10 @@ const actionCells = (
  */
 const layNode = (node: RecipeNode, row: number): Laid => {
   if (!isStep(node)) {
-    const { ingredient, action } =
-      typeof node === 'string' ? { ingredient: node, action: undefined } : node
+    const { ingredient, action, bowl } =
+      typeof node === 'string'
+        ? { ingredient: node, action: undefined, bowl: undefined }
+        : node
     const actions = toActions(action)
     return {
       cells: [
@@ -96,6 +122,9 @@ const layNode = (node: RecipeNode, row: number): Laid => {
           col: 0,
           rowSpan: 1,
           colSpan: 1,
+          ...(bowl === undefined
+            ? {}
+            : { bowl: { name: bowl, color: bowlColors[0] } }),
         },
         ...actionCells(actions, row, 1, 1),
       ],
@@ -141,11 +170,32 @@ const layNode = (node: RecipeNode, row: number): Laid => {
   }
 }
 
+/** Schalen in der Reihenfolge ihres ersten Auftretens durchfärben. */
+const colorBowls = (cells: Cell[]): Cell[] => {
+  const names = [
+    ...new Set(cells.flatMap((cell) => (cell.bowl ? [cell.bowl.name] : []))),
+  ]
+  return cells.map((cell) =>
+    cell.bowl
+      ? {
+          ...cell,
+          bowl: {
+            name: cell.bowl.name,
+            color:
+              bowlColors[names.indexOf(cell.bowl.name) % bowlColors.length],
+          },
+        }
+      : cell
+  )
+}
+
 export const layoutRecipe = (process: RecipeNode): Grid => {
   const { cells, rows, lastCol } = layNode(process, 0)
   return {
     rows,
     columns: lastCol + 1,
-    cells: [...cells].sort((a, b) => a.row - b.row || a.col - b.col),
+    cells: colorBowls(
+      [...cells].sort((a, b) => a.row - b.row || a.col - b.col)
+    ),
   }
 }
