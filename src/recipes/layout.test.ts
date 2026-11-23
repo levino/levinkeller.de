@@ -57,11 +57,16 @@ describe('layoutRecipe', () => {
 
   it('färbt Zutaten derselben Schale gleich, verschiedene Schalen verschieden', () => {
     const grid = layoutRecipe({
-      action: 'zugeben',
+      action: 'ablöschen',
       with: [
-        { ingredient: 'Paprika', bowl: 'Gewürze' },
-        'Fleisch',
-        { ingredient: 'Kümmel', bowl: 'Gewürze' },
+        {
+          action: 'einrühren',
+          with: [
+            { ingredient: 'Paprika', bowl: 'Gewürze' },
+            'Fleisch',
+            { ingredient: 'Kümmel', bowl: 'Gewürze' },
+          ],
+        },
         { ingredient: 'Essig', bowl: 'Ablöschen' },
       ],
     })
@@ -71,5 +76,32 @@ describe('layoutRecipe', () => {
     expect(bowl('Paprika')?.name).toBe('Gewürze')
     expect(bowl('Essig')?.color).not.toBe(bowl('Paprika')?.color)
     expect(bowl('Fleisch')).toBeUndefined()
+  })
+
+  it('lehnt zwei Schalen im selben Schritt ab', () => {
+    expect(() =>
+      layoutRecipe({
+        action: 'zugeben',
+        with: [
+          { ingredient: 'Paprika', bowl: 'Paprika' },
+          { ingredient: 'Essig', bowl: 'Ablöschen' },
+        ],
+      })
+    ).toThrow(/denselben Schritt/)
+  })
+
+  it('lehnt eine Schale ab, die auf mehrere Schritte verteilt ist', () => {
+    expect(() =>
+      layoutRecipe({
+        action: 'ablöschen',
+        with: [
+          {
+            action: 'einrühren',
+            with: ['Zwiebeln', { ingredient: 'Paprika', bowl: 'A' }],
+          },
+          { ingredient: 'Essig', bowl: 'A' },
+        ],
+      })
+    ).toThrow(/mehrere Schritte/)
   })
 })

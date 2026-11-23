@@ -170,6 +170,36 @@ const layNode = (node: RecipeNode, row: number): Laid => {
   }
 }
 
+const bowlOf = (node: RecipeNode): string | undefined =>
+  typeof node === 'object' && !isStep(node) ? node.bowl : undefined
+
+/**
+ * Eine Schale wird auf einmal in genau einen Schritt gekippt. Deshalb gilt:
+ * Alle Zutaten einer Schale hängen direkt am selben Schritt, und kein Schritt
+ * nimmt zwei Schalen auf – sonst wären es nicht zwei Schalen.
+ */
+const checkBowls = (process: RecipeNode): void => {
+  const owner = new Map<string, Step>()
+  const visit = (node: RecipeNode): void => {
+    if (!isStep(node)) return
+    const bowls = [...new Set(node.with.flatMap((c) => bowlOf(c) ?? []))]
+    if (bowls.length > 1)
+      throw new Error(
+        `Die Schalen ${bowls.map((b) => `„${b}“`).join(', ')} münden in denselben Schritt „${toActions(node.action)[0]}“ – jede Schale braucht einen eigenen Schritt.`
+      )
+    for (const bowl of bowls) {
+      const previous = owner.get(bowl)
+      if (previous && previous !== node)
+        throw new Error(
+          `Die Zutaten der Schale „${bowl}“ verteilen sich auf mehrere Schritte – eine Schale wird auf einmal zugegeben.`
+        )
+      owner.set(bowl, node)
+    }
+    node.with.forEach(visit)
+  }
+  visit(process)
+}
+
 /** Schalen in der Reihenfolge ihres ersten Auftretens durchfärben. */
 const colorBowls = (cells: Cell[]): Cell[] => {
   const names = [
@@ -190,6 +220,7 @@ const colorBowls = (cells: Cell[]): Cell[] => {
 }
 
 export const layoutRecipe = (process: RecipeNode): Grid => {
+  checkBowls(process)
   const { cells, rows, lastCol } = layNode(process, 0)
   return {
     rows,
