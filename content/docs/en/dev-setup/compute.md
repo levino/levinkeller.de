@@ -10,10 +10,19 @@ sidebar:
 ## What it is
 
 A single rented bare-metal server in a data centre that runs all development
-environments. Mine is a second-hand machine from the Hetzner server auction: an older
-Intel quad-core with 62 GB of RAM. Nothing fancy, but it runs around the clock, sits on
-a fast line and costs a two-digit euro amount per month. Four cores are too few,
-though, so I'll soon switch to a machine with 24 cores and 64 GB of RAM.
+environments. Since November 2026 mine is a
+[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein,
+Germany:
+
+- Intel Core Ultra 7 265 with 20 cores (8 performance, 12 efficiency)
+- 64 GB of DDR5 RAM
+- 2× 1 TB NVMe
+- €149 net per month including IPv4, plus a one-off €74 setup fee
+- no minimum term, billed by the hour, cancellable at any time
+
+Before that, everything ran on a second-hand Intel quad-core with 62 GB of RAM from the
+Hetzner server auction. There was enough RAM, but four cores were too few: the agents
+kept waiting for each other.
 
 **Rent, don't buy** is the most important decision in the whole setup. A laptop with
 64 GB of RAM costs several thousand euros, is outdated after a few years and still has
@@ -30,7 +39,22 @@ Agents need **memory and cores**. Every container holds its Node process, its
 language server, its test runner, sometimes a browser for end-to-end tests – that
 costs RAM. And as soon as several agents build, test and start dev servers at the same
 time, the **CPU** becomes the bottleneck: with four cores the agents wait for each
-other. A good size is 64 GB of RAM and around 24 cores.
+other. On top of that come Android emulators for app testing. Without a GPU they
+render in software, so each instance needs several cores and a few gigabytes of RAM.
+A good size is 64 GB of RAM and 20 to 24 fast cores.
+
+## How I picked it
+
+By late 2026 dedicated servers had become noticeably more expensive. Hetzner, OVHcloud
+and netcup all raised prices, mostly because RAM got pricier. The Hetzner server
+auction had thinned out: under €200 with 64 GB there were only old Ryzen machines with
+hard disks. OVH's cheap 24-core Kimsufi servers were sold out.
+
+In the end the new EX63 won. Per core it is much faster than old EPYC or Xeon machines
+with more cores, and that's what matters for TypeScript builds, language servers and
+emulators. The catch: the RAM is fixed. More than 64 GB is only available in a much
+more expensive EX63 variant. Since there is no minimum term, that's not a big risk: if
+it isn't enough, I cancel and rent something bigger.
 
 ## What it buys you: rent the machine, don't buy a powerful laptop
 
@@ -61,7 +85,7 @@ And the agents keep working when the laptop lid is closed.
 
 ## Why this way
 
-A rented, used dedicated server is the cheapest way to have lots of RAM and cores
+A rented dedicated server is the cheapest way to have lots of RAM and cores
 permanently available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their

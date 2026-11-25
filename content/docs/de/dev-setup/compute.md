@@ -10,11 +10,18 @@ sidebar:
 ## Was es ist
 
 Ein einzelner gemieteter Bare-Metal-Server in einem Rechenzentrum, auf dem alle
-Entwicklungsumgebungen laufen. Bei mir ist das ein gebrauchter Rechner aus der
-Hetzner-Serverbörse: ein älterer Intel-Vierkerner mit 62 GB RAM. Nichts
-Besonderes, aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und
-kostet einen zweistelligen Eurobetrag im Monat. Vier Kerne sind allerdings zu
-wenig, deshalb wechsle ich demnächst auf eine Maschine mit 24 Kernen und 64 GB RAM.
+Entwicklungsumgebungen laufen. Bei mir ist das seit November 2026 ein
+[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein:
+
+- Intel Core Ultra 7 265 mit 20 Kernen (8 Performance-, 12 Effizienzkerne)
+- 64 GB DDR5-RAM
+- 2× 1 TB NVMe
+- 149 € netto im Monat inklusive IPv4, einmalig 74 € Einrichtung
+- keine Mindestlaufzeit, stundengenaue Abrechnung, sofort kündbar
+
+Vorher lief alles auf einem gebrauchten Intel-Vierkerner mit 62 GB RAM aus der
+Hetzner-Serverbörse. RAM war genug da, aber vier Kerne waren zu wenig: Die Agenten
+haben aufeinander gewartet.
 
 **Mieten statt kaufen** ist dabei die wichtigste Entscheidung im ganzen Setup. Ein
 Laptop mit 64 GB RAM kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet
@@ -32,7 +39,23 @@ Agenten brauchen **Arbeitsspeicher und Kerne**. Jeder Container hält seinen
 Node-Prozess, seinen Language-Server, seinen Testrunner, manchmal einen Browser für
 End-to-End-Tests – das kostet RAM. Und sobald mehrere Agenten gleichzeitig bauen,
 testen und Dev-Server starten, wird die **CPU** zum Engpass: Mit vier Kernen warten
-die Agenten aufeinander. Eine gute Größe sind 64 GB RAM und um die 24 Kerne.
+die Agenten aufeinander. Dazu kommen Android-Emulatoren für App-Tests. Die laufen
+ohne Grafikkarte, rendern also in Software und brauchen pro Instanz mehrere Kerne
+und ein paar Gigabyte RAM. Eine gute Größe sind 64 GB RAM und 20 bis 24 schnelle
+Kerne.
+
+## Wie ich ihn ausgesucht habe
+
+Ende 2026 sind dedizierte Server spürbar teurer geworden. Hetzner, OVHcloud und netcup
+haben ihre Preise erhöht, vor allem wegen gestiegener RAM-Preise. Die Hetzner-Serverbörse
+ist dünn geworden: Unter 200 € gab es mit 64 GB nur noch alte Ryzen-Rechner mit
+Festplatten. Die günstigen Kimsufi-Server von OVH mit 24 Kernen waren ausverkauft.
+
+Am Ende lag der neue EX63 vorn. Pro Kern ist er deutlich schneller als alte EPYC- oder
+Xeon-Maschinen mit mehr Kernen, und genau das zählt bei TypeScript-Builds,
+Language-Servern und Emulatoren. Der Haken: Das RAM ist fest. Mehr als 64 GB gibt es
+beim EX63 nur in einer deutlich teureren Variante. Weil es keine Laufzeit gibt, ist
+das aber kein großes Risiko: Reicht es nicht, kündige ich und miete etwas Größeres.
 
 ## Was er bringt: Miete die Maschine, kauf keinen starken Laptop
 
@@ -64,8 +87,8 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
 
 ## Warum so
 
-Ein gemieteter gebrauchter dedizierter Server ist die billigste Art, viel RAM und viele
-Kerne dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen, aufrüsten oder
-mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
+Ein gemieteter dedizierter Server ist die billigste Art, viel RAM und viele Kerne
+dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen,
+aufrüsten oder mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen
 sich aus ihren `devcontainer.json`-Dateien auf jedem anderen Rechner neu bauen.
