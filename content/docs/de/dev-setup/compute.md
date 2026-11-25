@@ -31,27 +31,11 @@ Er ist das Arbeitspferd. Jedes Repository, an dem ein Agent arbeitet, bekommt do
 einen eigenen Container mit eigener Toolchain, eigenen Dependencies, eigenem
 Dev-Server und eigenen Tests. Fünf bis zehn davon gleichzeitig sind normal.
 
-Agenten brauchen **Arbeitsspeicher und Kerne**. Jeder Container hält seinen
-Node-Prozess, seinen Language-Server, seinen Testrunner, manchmal einen Browser für
-End-to-End-Tests – das kostet RAM. Und sobald mehrere Agenten gleichzeitig bauen,
-testen und Dev-Server starten, wird die **CPU** zum Engpass: Mit zu wenigen Kernen
-warten die Agenten aufeinander. Dazu kommen Android-Emulatoren für App-Tests. Die laufen
-ohne Grafikkarte, rendern also in Software und brauchen pro Instanz mehrere Kerne
-und ein paar Gigabyte RAM. Eine gute Größe sind 64 GB RAM und 20 bis 24 schnelle
-Kerne.
-
-## Wie ich ihn ausgesucht habe
-
-Ende 2026 sind dedizierte Server spürbar teurer geworden. Hetzner, OVHcloud und netcup
-haben ihre Preise erhöht, vor allem wegen gestiegener RAM-Preise. Die Hetzner-Serverbörse
-ist dünn geworden: Unter 200 € gab es mit 64 GB nur noch alte Ryzen-Rechner mit
-Festplatten. Die günstigen Kimsufi-Server von OVH mit 24 Kernen waren ausverkauft.
-
-Am Ende lag der neue EX63 vorn. Pro Kern ist er deutlich schneller als alte EPYC- oder
-Xeon-Maschinen mit mehr Kernen, und genau das zählt bei TypeScript-Builds,
-Language-Servern und Emulatoren. Der Haken: Das RAM ist fest. Mehr als 64 GB gibt es
-beim EX63 nur in einer deutlich teureren Variante. Weil es keine Laufzeit gibt, ist
-das aber kein großes Risiko: Reicht es nicht, kündige ich und miete etwas Größeres.
+Die Rechnung ist einfach: Je dicker die Maschine, desto mehr Agenten arbeiten
+gleichzeitig, ohne aufeinander zu warten – Builds, Tests, Dev-Server, Browser für
+End-to-End-Tests, Android-Emulatoren. Ob das gerade an der CPU, am RAM oder an der
+Platte hängt, ist egal. Mehr Leistung ist besser. Wie viel Geld man dafür auf den
+Tisch legt und wie stark man die Maschine auslastet, entscheidet jeder selbst.
 
 ## Was er bringt: Miete die Maschine, kauf keinen starken Laptop
 
@@ -83,7 +67,7 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
 
 ## Warum so
 
-Ein gemieteter dedizierter Server ist die billigste Art, viel RAM und viele Kerne
+Ein gemieteter dedizierter Server ist die billigste Art, viel Rechenleistung
 dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen,
 aufrüsten oder mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen

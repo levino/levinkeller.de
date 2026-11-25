@@ -31,26 +31,11 @@ It's the workhorse. Every repository an agent works on gets its own container th
 with its own toolchain, dependencies, dev server and tests. Five to ten of them at
 the same time is normal.
 
-Agents need **memory and cores**. Every container holds its Node process, its
-language server, its test runner, sometimes a browser for end-to-end tests – that
-costs RAM. And as soon as several agents build, test and start dev servers at the same
-time, the **CPU** becomes the bottleneck: with too few cores the agents wait for
-each other. On top of that come Android emulators for app testing. Without a GPU they
-render in software, so each instance needs several cores and a few gigabytes of RAM.
-A good size is 64 GB of RAM and 20 to 24 fast cores.
-
-## How I picked it
-
-By late 2026 dedicated servers had become noticeably more expensive. Hetzner, OVHcloud
-and netcup all raised prices, mostly because RAM got pricier. The Hetzner server
-auction had thinned out: under €200 with 64 GB there were only old Ryzen machines with
-hard disks. OVH's cheap 24-core Kimsufi servers were sold out.
-
-In the end the new EX63 won. Per core it is much faster than old EPYC or Xeon machines
-with more cores, and that's what matters for TypeScript builds, language servers and
-emulators. The catch: the RAM is fixed. More than 64 GB is only available in a much
-more expensive EX63 variant. Since there is no minimum term, that's not a big risk: if
-it isn't enough, I cancel and rent something bigger.
+The maths is simple: the bigger the machine, the more agents can work at the same
+time without waiting for each other – builds, tests, dev servers, browsers for
+end-to-end tests, Android emulators. Whether the limit is CPU, RAM or disk at any given
+moment doesn't matter. More power is better. How much money you put on the table for
+it and how hard you push the machine is up to you.
 
 ## What it buys you: rent the machine, don't buy a powerful laptop
 
@@ -81,7 +66,7 @@ And the agents keep working when the laptop lid is closed.
 
 ## Why this way
 
-A rented dedicated server is the cheapest way to have lots of RAM and cores
+A rented dedicated server is the cheapest way to have lots of computing power
 permanently available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their
