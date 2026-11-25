@@ -11,17 +11,13 @@ sidebar:
 
 Ein einzelner gemieteter Bare-Metal-Server in einem Rechenzentrum, auf dem alle
 Entwicklungsumgebungen laufen. Bei mir ist das seit November 2026 ein
-[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein:
+[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein[^vorher]:
 
 - Intel Core Ultra 7 265 mit 20 Kernen (8 Performance-, 12 Effizienzkerne)
 - 64 GB DDR5-RAM
 - 2× 1 TB NVMe
 - 149 € netto im Monat inklusive IPv4, einmalig 74 € Einrichtung
 - keine Mindestlaufzeit, stundengenaue Abrechnung, sofort kündbar
-
-Vorher lief alles auf einem gebrauchten Intel-Vierkerner mit 62 GB RAM aus der
-Hetzner-Serverbörse. RAM war genug da, aber vier Kerne waren zu wenig: Die Agenten
-haben aufeinander gewartet.
 
 **Mieten statt kaufen** ist dabei die wichtigste Entscheidung im ganzen Setup. Ein
 Laptop mit 64 GB RAM kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet
@@ -38,8 +34,8 @@ Dev-Server und eigenen Tests. Fünf bis zehn davon gleichzeitig sind normal.
 Agenten brauchen **Arbeitsspeicher und Kerne**. Jeder Container hält seinen
 Node-Prozess, seinen Language-Server, seinen Testrunner, manchmal einen Browser für
 End-to-End-Tests – das kostet RAM. Und sobald mehrere Agenten gleichzeitig bauen,
-testen und Dev-Server starten, wird die **CPU** zum Engpass: Mit vier Kernen warten
-die Agenten aufeinander. Dazu kommen Android-Emulatoren für App-Tests. Die laufen
+testen und Dev-Server starten, wird die **CPU** zum Engpass: Mit zu wenigen Kernen
+warten die Agenten aufeinander. Dazu kommen Android-Emulatoren für App-Tests. Die laufen
 ohne Grafikkarte, rendern also in Software und brauchen pro Instanz mehrere Kerne
 und ein paar Gigabyte RAM. Eine gute Größe sind 64 GB RAM und 20 bis 24 schnelle
 Kerne.
@@ -92,3 +88,7 @@ dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen
 aufrüsten oder mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen
 sich aus ihren `devcontainer.json`-Dateien auf jedem anderen Rechner neu bauen.
+
+[^vorher]: Vorher hatte ich einen kleineren, billigeren Server: einen Intel-Vierkerner
+    mit 62 GB RAM für einen zweistelligen Eurobetrag im Monat. Der hat irgendwann
+    einfach nicht mehr gereicht, deshalb jetzt der größere.

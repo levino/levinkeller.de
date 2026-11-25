@@ -12,17 +12,13 @@ sidebar:
 A single rented bare-metal server in a data centre that runs all development
 environments. Since November 2026 mine is a
 [Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein,
-Germany:
+Germany[^before]:
 
 - Intel Core Ultra 7 265 with 20 cores (8 performance, 12 efficiency)
 - 64 GB of DDR5 RAM
 - 2× 1 TB NVMe
 - €149 net per month including IPv4, plus a one-off €74 setup fee
 - no minimum term, billed by the hour, cancellable at any time
-
-Before that, everything ran on a second-hand Intel quad-core with 62 GB of RAM from the
-Hetzner server auction. There was enough RAM, but four cores were too few: the agents
-kept waiting for each other.
 
 **Rent, don't buy** is the most important decision in the whole setup. A laptop with
 64 GB of RAM costs several thousand euros, is outdated after a few years and still has
@@ -38,8 +34,8 @@ the same time is normal.
 Agents need **memory and cores**. Every container holds its Node process, its
 language server, its test runner, sometimes a browser for end-to-end tests – that
 costs RAM. And as soon as several agents build, test and start dev servers at the same
-time, the **CPU** becomes the bottleneck: with four cores the agents wait for each
-other. On top of that come Android emulators for app testing. Without a GPU they
+time, the **CPU** becomes the bottleneck: with too few cores the agents wait for
+each other. On top of that come Android emulators for app testing. Without a GPU they
 render in software, so each instance needs several cores and a few gigabytes of RAM.
 A good size is 64 GB of RAM and 20 to 24 fast cores.
 
@@ -90,3 +86,7 @@ permanently available, and the most convenient: I don't have to buy, upgrade or 
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their
 `devcontainer.json` files.
+
+[^before]: Before this I had a smaller, cheaper server: an Intel quad-core with 62 GB
+    of RAM for a two-digit euro amount per month. At some point it simply wasn't
+    enough any more, so now I have the bigger one.
