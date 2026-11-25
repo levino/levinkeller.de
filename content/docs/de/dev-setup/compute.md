@@ -10,10 +10,14 @@ sidebar:
 ## Was es ist
 
 Ein einzelner gemieteter Bare-Metal-Server in einem Rechenzentrum, auf dem alle
-Entwicklungsumgebungen laufen. Bei mir ist das ein gebrauchter Rechner aus der
-Hetzner-Serverbörse: ein älterer Intel-Vierkerner mit 62 GB RAM. Nichts
-Besonderes, aber er läuft rund um die Uhr, hängt an einer schnellen Leitung und
-kostet einen zweistelligen Eurobetrag im Monat.
+Entwicklungsumgebungen laufen. Bei mir ist das seit November 2026 ein
+[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein[^vorher]:
+
+- Intel Core Ultra 7 265 mit 20 Kernen (8 Performance-, 12 Effizienzkerne)
+- 64 GB DDR5-RAM
+- 2× 1 TB NVMe
+- 149 € netto im Monat inklusive IPv4, einmalig 74 € Einrichtung
+- keine Mindestlaufzeit, stundengenaue Abrechnung, sofort kündbar
 
 **Mieten statt kaufen** ist dabei die wichtigste Entscheidung im ganzen Setup. Ein
 Laptop mit 64 GB RAM kostet mehrere tausend Euro, ist nach ein paar Jahren veraltet
@@ -27,11 +31,11 @@ Er ist das Arbeitspferd. Jedes Repository, an dem ein Agent arbeitet, bekommt do
 einen eigenen Container mit eigener Toolchain, eigenen Dependencies, eigenem
 Dev-Server und eigenen Tests. Fünf bis zehn davon gleichzeitig sind normal.
 
-Für das, was Agenten tun, ist vor allem **Arbeitsspeicher** knapp, nicht Rechenzeit:
-Jeder Container hält seinen Node-Prozess, seinen Language-Server, seinen
-Testrunner, manchmal einen Browser für End-to-End-Tests. 16 GB reichen für den
-Anfang, mit 64 GB muss man nicht mehr nachdenken. Viele Kerne helfen, wenn mehrere
-Agenten gleichzeitig bauen.
+Die Rechnung ist einfach: Je dicker die Maschine, desto mehr Agenten arbeiten
+gleichzeitig, ohne aufeinander zu warten – Builds, Tests, Dev-Server, Browser für
+End-to-End-Tests, Android-Emulatoren. Ob das gerade an der CPU, am RAM oder an der
+Platte hängt, ist egal. Mehr Leistung ist besser. Wie viel Geld man dafür auf den
+Tisch legt und wie stark man die Maschine auslastet, entscheidet jeder selbst.
 
 ## Was er bringt: Miete die Maschine, kauf keinen starken Laptop
 
@@ -63,8 +67,12 @@ Und: Die Agenten arbeiten weiter, wenn der Laptop zugeklappt ist.
 
 ## Warum so
 
-Ein gemieteter gebrauchter dedizierter Server ist die billigste Art, viel RAM dauerhaft
-verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen, aufrüsten oder
-mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
+Ein gemieteter dedizierter Server ist die billigste Art, viel Rechenleistung
+dauerhaft verfügbar zu haben, und die bequemste: Ich muss keine Hardware kaufen,
+aufrüsten oder mit mir herumtragen. Für Entwicklungsumgebungen brauche ich keine Hochverfügbarkeit:
 Fällt der Server aus, ist der Code trotzdem auf GitHub, und die Umgebungen lassen
 sich aus ihren `devcontainer.json`-Dateien auf jedem anderen Rechner neu bauen.
+
+[^vorher]: Vorher hatte ich einen kleineren, billigeren Server: einen Intel-Vierkerner
+    mit 62 GB RAM für einen zweistelligen Eurobetrag im Monat. Der hat irgendwann
+    einfach nicht mehr gereicht, deshalb jetzt der größere.

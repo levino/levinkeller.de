@@ -10,9 +10,15 @@ sidebar:
 ## What it is
 
 A single rented bare-metal server in a data centre that runs all development
-environments. Mine is a second-hand machine from the Hetzner server auction: an older
-Intel quad-core with 62 GB of RAM. Nothing fancy, but it runs around the clock, sits on
-a fast line and costs a two-digit euro amount per month.
+environments. Since November 2026 mine is a
+[Hetzner EX63](https://www.hetzner.com/dedicated-rootserver/ex63/) in Falkenstein,
+Germany[^before]:
+
+- Intel Core Ultra 7 265 with 20 cores (8 performance, 12 efficiency)
+- 64 GB of DDR5 RAM
+- 2× 1 TB NVMe
+- €149 net per month including IPv4, plus a one-off €74 setup fee
+- no minimum term, billed by the hour, cancellable at any time
 
 **Rent, don't buy** is the most important decision in the whole setup. A laptop with
 64 GB of RAM costs several thousand euros, is outdated after a few years and still has
@@ -25,10 +31,11 @@ It's the workhorse. Every repository an agent works on gets its own container th
 with its own toolchain, dependencies, dev server and tests. Five to ten of them at
 the same time is normal.
 
-For what agents do, **memory** is the scarce resource, not CPU time: every container
-holds its Node process, its language server, its test runner, sometimes a browser for
-end-to-end tests. 16 GB is enough to start with; with 64 GB you stop thinking about it.
-Many cores help when several agents build at once.
+The maths is simple: the bigger the machine, the more agents can work at the same
+time without waiting for each other – builds, tests, dev servers, browsers for
+end-to-end tests, Android emulators. Whether the limit is CPU, RAM or disk at any given
+moment doesn't matter. More power is better. How much money you put on the table for
+it and how hard you push the machine is up to you.
 
 ## What it buys you: rent the machine, don't buy a powerful laptop
 
@@ -59,8 +66,12 @@ And the agents keep working when the laptop lid is closed.
 
 ## Why this way
 
-A rented, used dedicated server is the cheapest way to have lots of RAM permanently
-available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
+A rented dedicated server is the cheapest way to have lots of computing power
+permanently available, and the most convenient: I don't have to buy, upgrade or carry any hardware.
 Development environments don't need high availability: if the server dies, the code is
 still on GitHub, and the environments can be rebuilt on any other machine from their
 `devcontainer.json` files.
+
+[^before]: Before this I had a smaller, cheaper server: an Intel quad-core with 62 GB
+    of RAM for a two-digit euro amount per month. At some point it simply wasn't
+    enough any more, so now I have the bigger one.
